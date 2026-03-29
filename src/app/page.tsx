@@ -144,7 +144,7 @@ export default function HomePage() {
         >
           Documentation for
           <br />
-          <span style={{ color: "var(--color-gold)" }}>webhouse.app</span>
+          webhouse<span style={{ color: "var(--color-gold)" }}>.app</span>
         </h1>
 
         <p
