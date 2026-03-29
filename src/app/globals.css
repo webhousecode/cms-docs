@@ -151,15 +151,19 @@ body {
   background: #1a1a2e !important;
 }
 .code-block .shiki .line {
-  background: none !important;
-  border: none !important;
   display: block;
+  background: transparent !important;
+  background-color: transparent !important;
 }
 .code-block .shiki code {
-  background: none !important;
+  background: transparent !important;
+  background-color: transparent !important;
   border: none !important;
   color: inherit;
   padding: 0;
+}
+.code-block .shiki pre {
+  background: #1a1a2e !important;
 }
 
 /* Code block title bar (dots + lang + copy) */

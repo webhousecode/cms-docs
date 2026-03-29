@@ -48,6 +48,10 @@ async function markdownToHtml(md: string): Promise<string> {
           lang,
           theme: "vitesse-dark",
         });
+        // Strip background-color from Shiki's generated HTML (we set our own)
+        highlighted = highlighted
+          .replace(/background-color:#[0-9a-fA-F]+;?/g, "")
+          .replace(/background:#[0-9a-fA-F]+;?/g, "");
       } catch {
         highlighted = `<pre style="padding:1rem;background:#1a1a2e;border-radius:6px;overflow-x:auto;color:#e5e5e5"><code>${esc(code)}</code></pre>`;
       }
