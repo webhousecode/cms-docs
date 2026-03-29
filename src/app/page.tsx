@@ -9,72 +9,96 @@ import {
   Search,
   Palette,
   Zap,
+  HelpCircle,
+  FileText,
+  Bot,
+  Shield,
+  Image,
+  Plug,
+  ArrowRight,
 } from "lucide-react";
 
 const FEATURES = [
   {
-    icon: Terminal,
-    title: "File-based & Git-friendly",
-    description:
-      "Content stored as JSON files in your repo. Version control, branching, and PR-based workflows built in.",
-  },
-  {
     icon: Cpu,
-    title: "AI-native engine",
+    title: "AI Agent Orchestration",
     description:
-      "Built-in agents for content generation, SEO optimization, translation, and proofreading.",
+      "Provider-agnostic agents for content generation, rewriting, translation, and SEO optimization. Swap between Anthropic, OpenAI, or local models.",
+    tag: "@webhouse/cms-ai",
   },
   {
-    icon: Blocks,
-    title: "22 field types",
+    icon: FileText,
+    title: "Schema-Driven Content",
     description:
-      "Text, richtext, images, galleries, blocks, relations, maps, interactives, and more.",
-  },
-  {
-    icon: Globe,
-    title: "i18n from day one",
-    description:
-      "Multi-language content with translation groups, AI translation, and locale routing.",
-  },
-  {
-    icon: Search,
-    title: "SEO + GEO scoring",
-    description:
-      "Dual visibility scoring — optimize for search engines AND AI platforms like ChatGPT and Claude.",
-  },
-  {
-    icon: Palette,
-    title: "Visual admin UI",
-    description:
-      "Full-featured editor with rich text, blocks, media library, scheduling, and curation queue.",
+      "22 field types. Collections and blocks defined in TypeScript. Every piece of content is typed, validated, and introspectable.",
+    tag: "cms.config.ts",
   },
   {
     icon: Zap,
-    title: "Static-first output",
+    title: "Static-First Output",
     description:
-      "9-phase build pipeline: HTML, sitemap, robots.txt, RSS, llms.txt, per-page markdown.",
+      "9-phase build pipeline: HTML, sitemap, robots.txt, RSS, llms.txt, per-page markdown. Zero runtime JS unless you opt in.",
+    tag: "npx cms build",
   },
   {
-    icon: BookOpen,
-    title: "TypeScript-first config",
+    icon: Plug,
+    title: "Framework Adapters",
     description:
-      "Type-safe cms.config.ts with defineConfig, defineCollection, defineBlock helpers.",
+      "First-class Next.js integration (App Router, Server Components, ISR). Also works with Astro, plain Node.js, or any static host.",
+    tag: "Next.js · Astro · Node",
+  },
+  {
+    icon: Image,
+    title: "Media Pipeline",
+    description:
+      "Sharp-based image processing with AI-generated captions and alt text. WebP conversion, responsive variants, EXIF extraction.",
+    tag: "Sharp · AI Analysis",
+  },
+  {
+    icon: Shield,
+    title: "AI Lock System",
+    description:
+      "Field-level protection. AI agents can never overwrite human edits. WriteContext actor threading through all CRUD operations.",
+    tag: "AI Lock",
+  },
+  {
+    icon: Globe,
+    title: "i18n from Day One",
+    description:
+      "Translation groups link documents across locales. AI auto-translates. Hreflang, locale routing, and language switcher built in.",
+    tag: "F48 i18n",
+  },
+  {
+    icon: Search,
+    title: "SEO + GEO Visibility",
+    description:
+      "Dual scoring: 13 SEO rules for search engines + 8 GEO rules for AI citation. Combined Visibility dashboard in admin.",
+    tag: "F112 GEO",
   },
 ];
 
+const STATS = [
+  { value: "<3min", label: "AI scaffold time" },
+  { value: "<50", label: "Lines of CMS code" },
+  { value: "95+", label: "Lighthouse score" },
+  { value: "0", label: "Runtime JS in output" },
+];
+
 export default function HomePage() {
-  const docCount = getCollection("docs").filter(
+  const enDocs = getCollection("docs").filter(
     (d) => (d.locale ?? "en") === "en"
-  ).length;
+  );
+  const daDocs = getCollection("docs").filter((d) => d.locale === "da");
+  const changelogCount = getCollection("changelog").length;
 
   return (
     <div>
-      {/* Hero */}
+      {/* ── Hero ── */}
       <section
         style={{
-          padding: "6rem 1.5rem 4rem",
+          padding: "5rem 1.5rem 3rem",
           textAlign: "center",
-          maxWidth: "52rem",
+          maxWidth: "54rem",
           margin: "0 auto",
         }}
       >
@@ -99,7 +123,7 @@ export default function HomePage() {
               background: "#4ade80",
             }}
           />
-          v0.2.13 — Now in active development
+          v0.2.13 — Open source · MIT License
         </div>
 
         <h1
@@ -111,24 +135,23 @@ export default function HomePage() {
             letterSpacing: "-0.02em",
           }}
         >
-          The AI-native CMS
+          Documentation for
           <br />
-          <span style={{ color: "var(--color-gold)" }}>
-            for TypeScript projects
-          </span>
+          <span style={{ color: "var(--color-gold)" }}>webhouse.app</span>
         </h1>
 
         <p
           style={{
-            fontSize: "1.15rem",
+            fontSize: "1.1rem",
             color: "var(--fg-muted)",
-            maxWidth: "36rem",
+            maxWidth: "38rem",
             margin: "0 auto 2rem",
             lineHeight: 1.7,
           }}
         >
-          File-based content, visual admin UI, AI content generation, and a
-          static build pipeline — all configured in a single{" "}
+          The AI-native content engine for TypeScript projects. File-based
+          content, visual admin UI, AI agents, and a static build pipeline —
+          all configured in{" "}
           <code
             style={{
               background: "rgba(247,187,46,0.1)",
@@ -154,6 +177,9 @@ export default function HomePage() {
           <Link
             href="/docs/quick-start"
             style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.4rem",
               padding: "0.65rem 1.5rem",
               background: "var(--color-gold)",
               color: "#000",
@@ -164,11 +190,10 @@ export default function HomePage() {
             }}
           >
             Get Started
+            <ArrowRight size={16} />
           </Link>
-          <a
-            href="https://github.com/webhousecode/cms"
-            target="_blank"
-            rel="noopener"
+          <Link
+            href="/docs/introduction"
             style={{
               padding: "0.65rem 1.5rem",
               border: "1px solid var(--border)",
@@ -179,16 +204,32 @@ export default function HomePage() {
               textDecoration: "none",
             }}
           >
+            Read the Docs
+          </Link>
+          <a
+            href="https://github.com/webhousecode/cms"
+            target="_blank"
+            rel="noopener"
+            style={{
+              padding: "0.65rem 1.5rem",
+              border: "1px solid var(--border)",
+              borderRadius: 8,
+              color: "var(--fg-muted)",
+              fontWeight: 500,
+              fontSize: "0.9rem",
+              textDecoration: "none",
+            }}
+          >
             GitHub
           </a>
         </div>
       </section>
 
-      {/* Install command */}
+      {/* ── Terminal ── */}
       <section
         style={{
-          maxWidth: "32rem",
-          margin: "0 auto 4rem",
+          maxWidth: "36rem",
+          margin: "0 auto 2.5rem",
           padding: "0 1.5rem",
         }}
       >
@@ -210,46 +251,65 @@ export default function HomePage() {
               background: "#161628",
             }}
           >
-            <span
-              style={{
-                width: 10,
-                height: 10,
-                borderRadius: "50%",
-                background: "#ff5f57",
-              }}
-            />
-            <span
-              style={{
-                width: 10,
-                height: 10,
-                borderRadius: "50%",
-                background: "#ffbd2e",
-              }}
-            />
-            <span
-              style={{
-                width: 10,
-                height: 10,
-                borderRadius: "50%",
-                background: "#28c840",
-              }}
-            />
+            <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#ff5f57" }} />
+            <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#ffbd2e" }} />
+            <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#28c840" }} />
           </div>
           <div
             style={{
               padding: "1rem 1.25rem",
               fontFamily: "var(--font-mono)",
               fontSize: "0.85rem",
-              color: "#e5e5e5",
+              lineHeight: 1.6,
             }}
           >
-            <span style={{ color: "#888" }}>$</span> npm create @webhouse/cms
-            my-site
+            <div style={{ color: "#e5e5e5" }}>
+              <span style={{ color: "#888" }}>$</span> npx @webhouse/cms init
+              --framework next
+            </div>
+            <div style={{ color: "#4ade80" }}>✓ Created cms.config.ts</div>
+            <div style={{ color: "#4ade80" }}>✓ Schema definitions ready</div>
+            <div style={{ color: "#4ade80" }}>✓ AI agents configured</div>
+            <div style={{ color: "#4ade80" }}>
+              ✓ Admin dashboard at localhost:3000/admin
+            </div>
+            <div style={{ color: "#e5e5e5", marginTop: "0.25rem" }}>
+              <span style={{ color: "#888" }}>$</span> Ready in 847ms
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Features grid */}
+      {/* ── Stats ── */}
+      <section
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          gap: "clamp(1.5rem, 4vw, 3rem)",
+          flexWrap: "wrap",
+          padding: "0 1.5rem 4rem",
+        }}
+      >
+        {STATS.map((s) => (
+          <div key={s.label} style={{ textAlign: "center" }}>
+            <div
+              style={{
+                fontSize: "clamp(1.5rem, 3vw, 2rem)",
+                fontWeight: 800,
+                color: "var(--color-gold)",
+                fontFamily: "var(--font-mono)",
+              }}
+            >
+              {s.value}
+            </div>
+            <div style={{ fontSize: "0.75rem", color: "var(--fg-muted)" }}>
+              {s.label}
+            </div>
+          </div>
+        ))}
+      </section>
+
+      {/* ── Features grid ── */}
       <section
         style={{
           maxWidth: "64rem",
@@ -257,15 +317,31 @@ export default function HomePage() {
           padding: "0 1.5rem 5rem",
         }}
       >
-        <h2
+        <p
           style={{
             textAlign: "center",
-            fontSize: "1.5rem",
-            fontWeight: 700,
+            fontSize: "0.7rem",
+            fontFamily: "var(--font-mono)",
+            color: "var(--color-gold)",
+            textTransform: "uppercase",
+            letterSpacing: "0.1em",
             marginBottom: "0.5rem",
           }}
         >
-          Everything you need
+          Features
+        </p>
+        <h2
+          style={{
+            textAlign: "center",
+            fontSize: "1.75rem",
+            fontWeight: 700,
+            marginBottom: "0.5rem",
+            lineHeight: 1.3,
+          }}
+        >
+          Everything the AI
+          <br />
+          shouldn&apos;t reinvent.
         </h2>
         <p
           style={{
@@ -273,15 +349,18 @@ export default function HomePage() {
             color: "var(--fg-muted)",
             marginBottom: "2.5rem",
             fontSize: "0.95rem",
+            maxWidth: "32rem",
+            margin: "0 auto 2.5rem",
           }}
         >
-          A complete CMS engine — not just a content layer
+          Content modeling, persistence, media pipelines, AI orchestration, and
+          static output — all in one embeddable TypeScript library.
         </p>
 
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fit, minmax(270px, 1fr))",
             gap: "1rem",
           }}
         >
@@ -297,10 +376,28 @@ export default function HomePage() {
                   background: "var(--bg-secondary)",
                 }}
               >
-                <Icon
-                  size={20}
-                  style={{ color: "var(--color-gold)", marginBottom: "0.75rem" }}
-                />
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    marginBottom: "0.75rem",
+                  }}
+                >
+                  <Icon size={20} style={{ color: "var(--color-gold)" }} />
+                  <span
+                    style={{
+                      fontSize: "0.6rem",
+                      fontFamily: "var(--font-mono)",
+                      color: "var(--fg-muted)",
+                      padding: "0.15rem 0.4rem",
+                      border: "1px solid var(--border)",
+                      borderRadius: 4,
+                    }}
+                  >
+                    {f.tag}
+                  </span>
+                </div>
                 <h3
                   style={{
                     fontSize: "0.95rem",
@@ -325,7 +422,188 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Docs stats */}
+      {/* ── HelpCards + Docs Connection ── */}
+      <section
+        style={{
+          borderTop: "1px solid var(--border)",
+          padding: "4rem 1.5rem",
+          maxWidth: "54rem",
+          margin: "0 auto",
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "flex-start", gap: "3rem", flexWrap: "wrap" }}>
+          <div style={{ flex: "1 1 300px" }}>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                marginBottom: "1rem",
+              }}
+            >
+              <HelpCircle size={20} style={{ color: "var(--color-gold)" }} />
+              <span
+                style={{
+                  fontSize: "0.7rem",
+                  fontFamily: "var(--font-mono)",
+                  color: "var(--color-gold)",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.1em",
+                }}
+              >
+                Contextual Help
+              </span>
+            </div>
+            <h2 style={{ fontSize: "1.5rem", fontWeight: 700, marginBottom: "0.75rem" }}>
+              Docs that live
+              <br />
+              inside your editor.
+            </h2>
+            <p style={{ color: "var(--fg-muted)", fontSize: "0.9rem", lineHeight: 1.7, marginBottom: "1rem" }}>
+              Every page in the CMS admin has contextual <strong>HelpCards</strong> —
+              collapsible help panels that explain the feature you&apos;re looking at.
+              Each HelpCard links directly to its expanded documentation page here.
+            </p>
+            <p style={{ color: "var(--fg-muted)", fontSize: "0.9rem", lineHeight: 1.7 }}>
+              The same content source powers both: in-app help is concise and actionable,
+              while docs pages go deep with code examples, configuration reference, and guides.
+            </p>
+          </div>
+          <div style={{ flex: "1 1 280px" }}>
+            {/* Mock HelpCard */}
+            <div
+              style={{
+                border: "1px solid var(--border)",
+                borderRadius: 10,
+                overflow: "hidden",
+                background: "var(--bg-secondary)",
+              }}
+            >
+              <div
+                style={{
+                  padding: "0.6rem 0.85rem",
+                  borderBottom: "1px solid var(--border)",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.4rem",
+                  fontSize: "0.8rem",
+                  fontWeight: 600,
+                }}
+              >
+                <HelpCircle size={14} style={{ color: "var(--color-gold)" }} />
+                What is Visibility?
+              </div>
+              <div style={{ padding: "0.85rem", fontSize: "0.8rem", color: "var(--fg-muted)", lineHeight: 1.6 }}>
+                Visibility measures how easy it is for people AND AI to find your content.
+                It combines <strong style={{ color: "var(--fg)" }}>SEO Score</strong> (search engines) and{" "}
+                <strong style={{ color: "var(--fg)" }}>GEO Score</strong> (AI platforms).
+              </div>
+              <div style={{ padding: "0 0.85rem 0.75rem" }}>
+                <Link
+                  href="/docs/seo"
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "0.3rem",
+                    fontSize: "0.75rem",
+                    color: "var(--color-gold)",
+                    textDecoration: "none",
+                  }}
+                >
+                  Learn more
+                  <ArrowRight size={12} />
+                </Link>
+              </div>
+            </div>
+            <div style={{ marginTop: "0.5rem", display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
+              {["visibility-intro", "geo-score", "seo-meta", "agents-intro", "media-ai"].map((id) => (
+                <span
+                  key={id}
+                  style={{
+                    fontSize: "0.6rem",
+                    fontFamily: "var(--font-mono)",
+                    color: "var(--fg-muted)",
+                    padding: "0.15rem 0.4rem",
+                    border: "1px solid var(--border)",
+                    borderRadius: 4,
+                  }}
+                >
+                  {id}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── MCP Section ── */}
+      <section
+        style={{
+          borderTop: "1px solid var(--border)",
+          padding: "4rem 1.5rem",
+          maxWidth: "54rem",
+          margin: "0 auto",
+        }}
+      >
+        <p
+          style={{
+            textAlign: "center",
+            fontSize: "0.7rem",
+            fontFamily: "var(--font-mono)",
+            color: "var(--color-gold)",
+            textTransform: "uppercase",
+            letterSpacing: "0.1em",
+            marginBottom: "0.5rem",
+          }}
+        >
+          Model Context Protocol
+        </p>
+        <h2
+          style={{
+            textAlign: "center",
+            fontSize: "1.5rem",
+            fontWeight: 700,
+            marginBottom: "0.5rem",
+          }}
+        >
+          Every site speaks to every AI.
+        </h2>
+        <p
+          style={{
+            textAlign: "center",
+            color: "var(--fg-muted)",
+            marginBottom: "2rem",
+            fontSize: "0.9rem",
+            maxWidth: "30rem",
+            margin: "0 auto 2rem",
+          }}
+        >
+          Two MCP servers. One public and read-only. One authenticated for content production.
+        </p>
+
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "1rem" }}>
+          <div style={{ padding: "1.25rem", borderRadius: 10, border: "1px solid var(--border)", background: "var(--bg-secondary)" }}>
+            <span style={{ fontSize: "0.6rem", fontFamily: "var(--font-mono)", color: "#4ade80", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+              Public · Read-only
+            </span>
+            <h3 style={{ fontSize: "1rem", fontWeight: 600, margin: "0.5rem 0 0.35rem" }}>cms-mcp-client</h3>
+            <p style={{ fontSize: "0.8rem", color: "var(--fg-muted)", lineHeight: 1.6 }}>
+              Bundled with every site. Any AI agent can discover and query published content — no API keys needed.
+            </p>
+          </div>
+          <div style={{ padding: "1.25rem", borderRadius: 10, border: "1px solid var(--border)", background: "var(--bg-secondary)" }}>
+            <span style={{ fontSize: "0.6rem", fontFamily: "var(--font-mono)", color: "var(--color-gold)", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+              Authenticated · Read+Write
+            </span>
+            <h3 style={{ fontSize: "1rem", fontWeight: 600, margin: "0.5rem 0 0.35rem" }}>cms-mcp-server</h3>
+            <p style={{ fontSize: "0.8rem", color: "var(--fg-muted)", lineHeight: 1.6 }}>
+              Full content production from Claude, Cursor, or any MCP client. Create, edit, publish, generate with AI.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Docs stats footer ── */}
       <section
         style={{
           borderTop: "1px solid var(--border)",
@@ -333,34 +611,50 @@ export default function HomePage() {
           textAlign: "center",
         }}
       >
-        <p
-          style={{
-            color: "var(--fg-muted)",
-            fontSize: "0.85rem",
-            marginBottom: "1rem",
-          }}
-        >
-          {docCount} documentation pages · English + Danish · Open source
-        </p>
         <div
           style={{
             display: "flex",
-            gap: "0.75rem",
             justifyContent: "center",
+            gap: "2rem",
             flexWrap: "wrap",
+            marginBottom: "1.5rem",
           }}
         >
+          <div style={{ textAlign: "center" }}>
+            <div style={{ fontSize: "1.5rem", fontWeight: 700, color: "var(--color-gold)" }}>{enDocs.length}</div>
+            <div style={{ fontSize: "0.7rem", color: "var(--fg-muted)" }}>English docs</div>
+          </div>
+          <div style={{ textAlign: "center" }}>
+            <div style={{ fontSize: "1.5rem", fontWeight: 700, color: "var(--color-gold)" }}>{daDocs.length}</div>
+            <div style={{ fontSize: "0.7rem", color: "var(--fg-muted)" }}>Danish docs</div>
+          </div>
+          <div style={{ textAlign: "center" }}>
+            <div style={{ fontSize: "1.5rem", fontWeight: 700, color: "var(--color-gold)" }}>{changelogCount}</div>
+            <div style={{ fontSize: "0.7rem", color: "var(--fg-muted)" }}>Changelog entries</div>
+          </div>
+          <div style={{ textAlign: "center" }}>
+            <div style={{ fontSize: "1.5rem", fontWeight: 700, color: "var(--color-gold)" }}>8</div>
+            <div style={{ fontSize: "0.7rem", color: "var(--fg-muted)" }}>npm packages</div>
+          </div>
+        </div>
+
+        <div style={{ display: "flex", gap: "0.75rem", justifyContent: "center", flexWrap: "wrap" }}>
           <Link
             href="/docs/introduction"
             style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.35rem",
               padding: "0.5rem 1.25rem",
-              border: "1px solid var(--border)",
+              background: "var(--color-gold)",
+              color: "#000",
               borderRadius: 8,
-              color: "var(--fg)",
+              fontWeight: 600,
               fontSize: "0.85rem",
               textDecoration: "none",
             }}
           >
+            <BookOpen size={15} />
             Read the docs
           </Link>
           <Link
@@ -376,7 +670,30 @@ export default function HomePage() {
           >
             Changelog
           </Link>
+          <a
+            href="https://webhouse.app"
+            target="_blank"
+            rel="noopener"
+            style={{
+              padding: "0.5rem 1.25rem",
+              border: "1px solid var(--border)",
+              borderRadius: 8,
+              color: "var(--fg-muted)",
+              fontSize: "0.85rem",
+              textDecoration: "none",
+            }}
+          >
+            webhouse.app
+          </a>
         </div>
+
+        <p style={{ marginTop: "2rem", fontSize: "0.75rem", color: "var(--fg-muted)" }}>
+          Built with{" "}
+          <a href="https://github.com/webhousecode/cms" style={{ color: "var(--color-gold)" }}>
+            @webhouse/cms
+          </a>{" "}
+          — dogfooding our own product
+        </p>
       </section>
     </div>
   );
