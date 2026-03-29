@@ -1,21 +1,21 @@
 {
-  "id": "12703d32-a3dd-4660-b9de-929744e045ac",
+  "id": "3ff45867-1b73-48ac-b600-dae2a1dbd703",
   "slug": "v0-2-6",
   "status": "published",
   "locale": "en",
-  "translationGroup": "b86a0296-b142-4d21-ac58-b8c79a28709c",
+  "translationGroup": "30bb900d-f29b-4a2a-8226-c169eb371a7d",
   "data": {
-    "title": "Release 0.2.6",
+    "title": "Release v0.2.6",
     "version": "0.2.6",
     "date": "2026-03-14",
-    "content": "## Changes\n\n- chore: release v0.2.6\n- feat: seed webhouse.app eye logo as favicon in scaffolded projects",
+    "content": "## What's New in v0.2.6\n\n**2 changes** released on 2026-03-14\n\n### Features\n\n- feat: seed webhouse.app eye logo as favicon in scaffolded projects\n\n### Other Changes\n\n- chore: release v0.2.6\n\n",
     "breaking": false,
     "_seo": {
-      "metaTitle": "v0.2.6 Release Notes — webhouse.app",
-      "metaDescription": "Release notes for @webhouse/cms v0.2.6"
+      "metaTitle": "Release v0.2.6 — webhouse.app Changelog",
+      "metaDescription": "Release notes for @webhouse/cms 0.2.6"
     }
   },
   "_fieldMeta": {},
-  "createdAt": "2026-03-29T21:57:54.309Z",
-  "updatedAt": "2026-03-29T21:57:54.309Z"
+  "createdAt": "2026-03-29T22:35:17.882Z",
+  "updatedAt": "2026-03-29T22:35:17.882Z"
 }

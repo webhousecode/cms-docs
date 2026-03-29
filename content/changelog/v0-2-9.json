@@ -1,21 +1,21 @@
 {
-  "id": "c4c5a07c-f86e-4151-94a4-7d21ac5bd5ec",
+  "id": "7cb044f1-ebe4-4b5b-a21d-2c528405ca0f",
   "slug": "v0-2-9",
   "status": "published",
   "locale": "en",
-  "translationGroup": "37495d16-c27b-4c38-b314-5bbdb62c2910",
+  "translationGroup": "1a54040d-a3ed-416c-9960-c708b11eebd4",
   "data": {
-    "title": "Release 0.2.9",
+    "title": "Release v0.2.9",
     "version": "0.2.9",
     "date": "2026-03-16",
-    "content": "## Changes\n\n- chore: release v0.2.9\n- fix: upgrade GHA to Node 24, fix SQLite close() null guard\n- docs: add root CLAUDE.md with development instructions",
+    "content": "## What's New in v0.2.9\n\n**3 changes** released on 2026-03-16\n\n### Bug Fixes\n\n- fix: upgrade GHA to Node 24, fix SQLite close() null guard\n\n### Other Changes\n\n- chore: release v0.2.9\n- docs: add root CLAUDE.md with development instructions\n\n",
     "breaking": false,
     "_seo": {
-      "metaTitle": "v0.2.9 Release Notes — webhouse.app",
-      "metaDescription": "Release notes for @webhouse/cms v0.2.9"
+      "metaTitle": "Release v0.2.9 — webhouse.app Changelog",
+      "metaDescription": "Release notes for @webhouse/cms 0.2.9"
     }
   },
   "_fieldMeta": {},
-  "createdAt": "2026-03-29T21:57:54.270Z",
-  "updatedAt": "2026-03-29T21:57:54.270Z"
+  "createdAt": "2026-03-29T22:35:17.924Z",
+  "updatedAt": "2026-03-29T22:35:17.924Z"
 }
