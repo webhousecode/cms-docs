@@ -147,11 +147,10 @@ body {
   border-radius: 0;
   overflow-x: auto;
   font-size: 0.85rem;
-  line-height: 1.7;
+  line-height: 1.5;
   background: #1a1a2e !important;
 }
 .code-block .shiki .line {
-  display: block;
   background: transparent !important;
   background-color: transparent !important;
 }
