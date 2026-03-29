@@ -11,7 +11,7 @@ export function MobileMenuButton() {
     <button
       onClick={toggle}
       aria-label="Toggle navigation"
-      className="md:hidden flex items-center"
+      className="hidden max-md:flex items-center"
       style={{
         background: "none",
         border: "none",
