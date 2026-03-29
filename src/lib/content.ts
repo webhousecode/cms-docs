@@ -66,12 +66,14 @@ export const CATEGORIES: Category[] = [
   { slug: "deployment", label: "Deployment", order: 6 },
 ];
 
-/** Get all docs grouped by category, sorted by order */
-export function getDocsByCategory(): Map<
+/** Get all docs grouped by category, sorted by order, filtered by locale */
+export function getDocsByCategory(locale: string = "en"): Map<
   string,
   { category: Category; docs: DocDocument[] }
 > {
-  const allDocs = getCollection("docs");
+  const allDocs = getCollection("docs").filter(
+    (d) => (d.locale ?? "en") === locale
+  );
   const map = new Map<string, { category: Category; docs: DocDocument[] }>();
 
   for (const cat of CATEGORIES) {
@@ -86,16 +88,17 @@ export function getDocsByCategory(): Map<
   return map;
 }
 
-/** Get prev/next docs within same category */
+/** Get prev/next docs within same category and locale */
 export function getPrevNext(doc: DocDocument): {
   prev: DocDocument | null;
   next: DocDocument | null;
 } {
   const category = doc.data.category;
+  const locale = doc.locale ?? "en";
   if (!category) return { prev: null, next: null };
 
   const allDocs = getCollection("docs")
-    .filter((d) => d.data.category === category)
+    .filter((d) => d.data.category === category && (d.locale ?? "en") === locale)
     .sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99));
 
   const idx = allDocs.findIndex((d) => d.slug === doc.slug);

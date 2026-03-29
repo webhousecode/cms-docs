@@ -43,8 +43,8 @@ export async function generateMetadata(props: {
   };
 }
 
-function buildSidebarData(): SidebarCategory[] {
-  const grouped = getDocsByCategory();
+function buildSidebarData(locale: string): SidebarCategory[] {
+  const grouped = getDocsByCategory(locale);
   const result: SidebarCategory[] = [];
   for (const cat of CATEGORIES) {
     const group = grouped.get(cat.slug);
@@ -69,7 +69,8 @@ export default async function DocPage(props: {
   const doc = getDocument("docs", slug);
   if (!doc || doc.status !== "published") notFound();
 
-  const sidebarData = buildSidebarData();
+  const locale = doc.locale ?? "en";
+  const sidebarData = buildSidebarData(locale);
   const content = doc.data.content ?? "";
   const headings = extractHeadings(content);
   const { prev, next } = getPrevNext(doc);

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ThemeToggle } from "./theme-toggle";
 import { SearchTrigger } from "./search-trigger";
 import { MobileMenuButton } from "./mobile-menu-button";
+import { LocaleSwitcher } from "./locale-switcher";
 
 export function Header() {
   return (
@@ -97,6 +98,7 @@ export function Header() {
             GitHub
           </a>
         </nav>
+        <LocaleSwitcher />
         <ThemeToggle />
       </div>
     </header>
