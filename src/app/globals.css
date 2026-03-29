@@ -47,6 +47,14 @@
 
 * { box-sizing: border-box; }
 
+/* Theme-dependent logo visibility */
+.dark-only { display: block; }
+.light-only { display: none; }
+.dark .dark-only { display: block; }
+.dark .light-only { display: none; }
+:root:not(.dark) .dark-only { display: none; }
+:root:not(.dark) .light-only { display: block; }
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;
