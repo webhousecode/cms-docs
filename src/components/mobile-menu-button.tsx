@@ -11,15 +11,13 @@ export function MobileMenuButton() {
     <button
       onClick={toggle}
       aria-label="Toggle navigation"
-      className="md:hidden"
+      className="md:hidden flex items-center"
       style={{
         background: "none",
         border: "none",
         cursor: "pointer",
         color: "var(--fg-muted)",
         padding: 6,
-        display: "flex",
-        alignItems: "center",
       }}
     >
       <Menu size={20} />
