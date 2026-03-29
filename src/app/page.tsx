@@ -75,6 +75,13 @@ const FEATURES = [
       "Dual scoring: 13 SEO rules for search engines + 8 GEO rules for AI citation. Combined Visibility dashboard in admin.",
     tag: "F112 GEO",
   },
+  {
+    icon: Bot,
+    title: "Chat with your site",
+    description:
+      "Built-in AI chat that knows your content, schema, and configuration. Ask questions, get answers with citations from your own docs.",
+    tag: "F107 Chat",
+  },
 ];
 
 const STATS = [
