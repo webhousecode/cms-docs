@@ -144,22 +144,26 @@ body {
   background: #1a1a2e !important;
 }
 
-.code-lang {
+/* Code block title bar (dots + lang + copy) */
+.code-titlebar {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.4rem 0.75rem;
-  font-size: 0.65rem;
-  font-family: var(--font-mono);
-  color: #888;
+  gap: 0.6rem;
+  padding: 0.5rem 0.75rem;
   border-bottom: 1px solid #2a2a3e;
   background: #161628;
+}
+
+.code-lang-text {
+  font-size: 0.65rem;
+  font-family: var(--font-mono);
+  color: #666;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   font-weight: 500;
 }
 
-/* Terminal dots */
+/* Terminal dots — always shown */
 .code-dots {
   display: flex;
   gap: 5px;
@@ -173,35 +177,26 @@ body {
 .dot-yellow { background: #ffbd2e; }
 .dot-green { background: #28c840; }
 
-/* Terminal style */
-.code-terminal {
-  border-color: #1e1e32;
-}
-.code-terminal .code-lang {
-  background: #13132a;
-}
-
+/* Copy button — always visible, right-aligned in title bar */
 .code-copy {
-  position: absolute;
-  top: 0.3rem;
-  right: 0.5rem;
-  padding: 4px 6px;
+  margin-left: auto;
+  padding: 3px 6px;
   background: #252540;
   border: 1px solid #3a3a5a;
   border-radius: 4px;
   cursor: pointer;
   color: #888;
-  opacity: 0;
-  transition: opacity 0.15s;
   display: flex;
   align-items: center;
+  transition: color 0.15s;
 }
-.code-block:hover .code-copy { opacity: 1; }
 .code-copy:hover { color: var(--color-gold); }
 .code-copy.copied { color: var(--color-success); }
 
-/* If lang label is present, shift copy button down */
-.code-block:has(.code-lang) .code-copy { top: 2.3rem; }
+/* Terminal style */
+.code-terminal .code-titlebar {
+  background: #13132a;
+}
 
 .doc-content table {
   width: 100%;

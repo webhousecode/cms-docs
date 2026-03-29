@@ -37,14 +37,14 @@ export function Header() {
             src="/logo-dark.svg"
             alt="webhouse.app"
             className="dark-only"
-            style={{ height: 22, width: "auto" }}
+            style={{ height: 16, width: "auto" }}
           />
           {/* webhouse.app wordmark — light theme */}
           <img
             src="/logo-light.svg"
             alt="webhouse.app"
             className="light-only"
-            style={{ height: 22, width: "auto" }}
+            style={{ height: 16, width: "auto" }}
           />
           <span
             style={{
