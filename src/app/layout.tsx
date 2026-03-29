@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Header } from "@/components/header";
 import { DocsSearch } from "@/components/docs-search";
+import { CodeCopyHandler } from "@/components/code-copy-handler";
 import { getSearchIndex } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -36,6 +37,7 @@ export default function RootLayout({
         <Header />
         {children}
         <DocsSearch searchIndex={searchIndex} />
+        <CodeCopyHandler />
       </body>
     </html>
   );

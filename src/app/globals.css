@@ -111,18 +111,70 @@ body {
 }
 
 .doc-content pre {
-  margin: 1rem 0;
-  padding: 0;
+  margin: 0;
+  padding: 1rem;
   background: transparent;
-  overflow: visible;
+  overflow-x: auto;
 }
 
 .doc-content pre code {
   background: transparent;
   padding: 0;
   font-size: 0.85rem;
-  line-height: 1.6;
+  line-height: 1.7;
 }
+
+/* ---- Code blocks with Shiki ---- */
+.code-block {
+  position: relative;
+  margin: 1rem 0;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.code-block .shiki {
+  padding: 1rem 1.25rem;
+  margin: 0;
+  border-radius: 0;
+  overflow-x: auto;
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+
+.code-lang {
+  padding: 0.3rem 0.75rem;
+  font-size: 0.65rem;
+  font-family: var(--font-mono);
+  color: var(--fg-muted);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+.code-copy {
+  position: absolute;
+  top: 0.3rem;
+  right: 0.5rem;
+  padding: 4px 6px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  cursor: pointer;
+  color: var(--fg-muted);
+  opacity: 0;
+  transition: opacity 0.15s;
+  display: flex;
+  align-items: center;
+}
+.code-block:hover .code-copy { opacity: 1; }
+.code-copy:hover { color: var(--color-gold); }
+.code-copy.copied { color: var(--color-success); }
+
+/* If lang label is present, shift copy button down */
+.code-block:has(.code-lang) .code-copy { top: 2.1rem; }
 
 .doc-content table {
   width: 100%;

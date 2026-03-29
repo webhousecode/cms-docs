@@ -32,25 +32,19 @@ export function Header() {
             gap: "0.6rem",
           }}
         >
-          {/* Eye icon — always visible */}
+          {/* webhouse.app wordmark — dark theme */}
           <img
-            src="/webhouse-eye.svg"
+            src="/logo-dark.svg"
             alt="webhouse.app"
-            style={{ height: 32, width: "auto" }}
-          />
-          {/* Wordmark text — dark theme (white text), hidden in light */}
-          <img
-            src="/webhouse-text-dark.svg"
-            alt="webhouse"
             className="dark-only"
-            style={{ height: 18, width: "auto" }}
+            style={{ height: 22, width: "auto" }}
           />
-          {/* Wordmark text — light theme (dark text), hidden in dark */}
+          {/* webhouse.app wordmark — light theme */}
           <img
-            src="/webhouse-text-light.svg"
-            alt="webhouse"
+            src="/logo-light.svg"
+            alt="webhouse.app"
             className="light-only"
-            style={{ height: 18, width: "auto" }}
+            style={{ height: 22, width: "auto" }}
           />
           <span
             style={{
