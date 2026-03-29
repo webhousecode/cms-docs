@@ -43,21 +43,24 @@ async function markdownToHtml(md: string): Promise<string> {
 
       let highlighted: string;
       try {
+        // Always use dark theme for code blocks — looks better
         highlighted = await codeToHtml(code, {
           lang,
-          themes: {
-            dark: "vitesse-dark",
-            light: "vitesse-light",
-          },
+          theme: "vitesse-dark",
         });
       } catch {
-        highlighted = `<pre style="padding:1rem;background:var(--code-bg);border-radius:6px;overflow-x:auto"><code>${esc(code)}</code></pre>`;
+        highlighted = `<pre style="padding:1rem;background:#1a1a2e;border-radius:6px;overflow-x:auto;color:#e5e5e5"><code>${esc(code)}</code></pre>`;
       }
 
-      // Wrap with language label + copy button placeholder
-      const langLabel = lang !== "text" ? `<div class="code-lang">${lang}</div>` : "";
+      const isTerminal = ["bash", "sh", "shell", "zsh", "terminal"].includes(lang);
+      const dots = isTerminal
+        ? `<div class="code-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>`
+        : "";
+      const langLabel = lang !== "text" ? `<div class="code-lang">${dots}${lang}</div>` : "";
+      const blockClass = isTerminal ? "code-block code-terminal" : "code-block";
+
       codeBlocks[i].html =
-        `<div class="code-block">${langLabel}<div class="code-shiki">${highlighted}</div><button class="code-copy" data-code="${encodeURIComponent(code)}" aria-label="Copy code"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button></div>`;
+        `<div class="${blockClass}">${langLabel}<div class="code-shiki">${highlighted}</div><button class="code-copy" data-code="${encodeURIComponent(code)}" aria-label="Copy code"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button></div>`;
     })
   );
 
