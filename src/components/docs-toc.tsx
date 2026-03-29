@@ -8,7 +8,7 @@ export interface TocItem {
   level: number;
 }
 
-export function DocsToc({ items }: { items: TocItem[] }) {
+export function DocsToc({ items, locale = "en" }: { items: TocItem[]; locale?: string }) {
   const [activeId, setActiveId] = useState("");
 
   useEffect(() => {
@@ -58,7 +58,7 @@ export function DocsToc({ items }: { items: TocItem[] }) {
           marginBottom: "0.75rem",
         }}
       >
-        On this page
+        {locale === "da" ? "På denne side" : "On this page"}
       </p>
       <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
         {items.map((item) => (

@@ -14,7 +14,15 @@ export interface SidebarCategory {
 export function DocsSidebar({ categories }: { categories: SidebarCategory[] }) {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [collapsed, setCollapsed] = useState<Record<string, boolean>>({});
+  // Default: all categories collapsed, except the one containing the active page
+  const [collapsed, setCollapsed] = useState<Record<string, boolean>>(() => {
+    const initial: Record<string, boolean> = {};
+    for (const cat of categories) {
+      const hasActive = cat.docs.some((d) => pathname === `/docs/${d.slug}`);
+      initial[cat.slug] = !hasActive; // collapsed unless active
+    }
+    return initial;
+  });
 
   // Listen for toggle event from header hamburger
   useEffect(() => {

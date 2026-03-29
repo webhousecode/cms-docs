@@ -56,15 +56,29 @@ export interface Category {
   order: number;
 }
 
-export const CATEGORIES: Category[] = [
-  { slug: "getting-started", label: "Getting Started", order: 0 },
-  { slug: "guides", label: "Guides", order: 1 },
-  { slug: "concepts", label: "Concepts", order: 2 },
-  { slug: "config", label: "Configuration", order: 3 },
-  { slug: "cli", label: "CLI", order: 4 },
-  { slug: "api-reference", label: "API Reference", order: 5 },
-  { slug: "deployment", label: "Deployment", order: 6 },
-];
+const CATEGORY_LABELS: Record<string, Record<string, string>> = {
+  "getting-started": { en: "Getting Started", da: "Kom i gang" },
+  "guides": { en: "Guides", da: "Guider" },
+  "concepts": { en: "Concepts", da: "Koncepter" },
+  "config": { en: "Configuration", da: "Konfiguration" },
+  "cli": { en: "CLI", da: "CLI" },
+  "api-reference": { en: "API Reference", da: "API-reference" },
+  "deployment": { en: "Deployment", da: "Udrulning" },
+};
+
+export function getCategories(locale: string = "en"): Category[] {
+  return [
+    { slug: "getting-started", label: CATEGORY_LABELS["getting-started"][locale] ?? "Getting Started", order: 0 },
+    { slug: "guides", label: CATEGORY_LABELS["guides"][locale] ?? "Guides", order: 1 },
+    { slug: "concepts", label: CATEGORY_LABELS["concepts"][locale] ?? "Concepts", order: 2 },
+    { slug: "config", label: CATEGORY_LABELS["config"][locale] ?? "Configuration", order: 3 },
+    { slug: "cli", label: CATEGORY_LABELS["cli"][locale] ?? "CLI", order: 4 },
+    { slug: "api-reference", label: CATEGORY_LABELS["api-reference"][locale] ?? "API Reference", order: 5 },
+    { slug: "deployment", label: CATEGORY_LABELS["deployment"][locale] ?? "Deployment", order: 6 },
+  ];
+}
+
+export const CATEGORIES = getCategories("en");
 
 /** Get all docs grouped by category, sorted by order, filtered by locale */
 export function getDocsByCategory(locale: string = "en"): Map<
@@ -74,9 +88,10 @@ export function getDocsByCategory(locale: string = "en"): Map<
   const allDocs = getCollection("docs").filter(
     (d) => (d.locale ?? "en") === locale
   );
+  const cats = getCategories(locale);
   const map = new Map<string, { category: Category; docs: DocDocument[] }>();
 
-  for (const cat of CATEGORIES) {
+  for (const cat of cats) {
     const docs = allDocs
       .filter((d) => d.data.category === cat.slug)
       .sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99));

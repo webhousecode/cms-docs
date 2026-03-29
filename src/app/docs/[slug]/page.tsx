@@ -5,7 +5,7 @@ import {
   getDocument,
   getDocsByCategory,
   getPrevNext,
-  CATEGORIES,
+  getCategories,
   type DocDocument,
 } from "@/lib/content";
 import { extractHeadings } from "@/lib/markdown";
@@ -45,8 +45,9 @@ export async function generateMetadata(props: {
 
 function buildSidebarData(locale: string): SidebarCategory[] {
   const grouped = getDocsByCategory(locale);
+  const cats = getCategories(locale);
   const result: SidebarCategory[] = [];
-  for (const cat of CATEGORIES) {
+  for (const cat of cats) {
     const group = grouped.get(cat.slug);
     if (group) {
       result.push({
@@ -76,7 +77,7 @@ export default async function DocPage(props: {
   const { prev, next } = getPrevNext(doc);
 
   const categoryLabel =
-    CATEGORIES.find((c) => c.slug === doc.data.category)?.label ?? "";
+    getCategories(locale).find((c) => c.slug === doc.data.category)?.label ?? "";
 
   return (
     <div style={{ display: "flex" }}>
@@ -91,6 +92,7 @@ export default async function DocPage(props: {
         }}
       >
         <Breadcrumbs
+          locale={locale}
           items={[
             ...(categoryLabel
               ? [{ label: categoryLabel }]
@@ -115,6 +117,7 @@ export default async function DocPage(props: {
         <DocContent content={content} />
 
         <PrevNext
+          locale={locale}
           prev={
             prev ? { slug: prev.slug, title: prev.data.title } : null
           }
@@ -124,7 +127,7 @@ export default async function DocPage(props: {
         />
       </main>
 
-      <DocsToc items={headings} />
+      <DocsToc items={headings} locale={locale} />
     </div>
   );
 }

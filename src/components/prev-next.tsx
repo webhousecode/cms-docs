@@ -9,9 +9,11 @@ interface NavDoc {
 export function PrevNext({
   prev,
   next,
+  locale = "en",
 }: {
   prev: NavDoc | null;
   next: NavDoc | null;
+  locale?: string;
 }) {
   if (!prev && !next) return null;
 
@@ -45,7 +47,7 @@ export function PrevNext({
           <ArrowLeft size={16} style={{ color: "var(--fg-muted)" }} />
           <div>
             <div style={{ fontSize: "0.7rem", color: "var(--fg-muted)" }}>
-              Previous
+              {locale === "da" ? "Forrige" : "Previous"}
             </div>
             <div style={{ fontWeight: 500 }}>{prev.title}</div>
           </div>
@@ -72,7 +74,7 @@ export function PrevNext({
         >
           <div>
             <div style={{ fontSize: "0.7rem", color: "var(--fg-muted)" }}>
-              Next
+              {locale === "da" ? "Næste" : "Next"}
             </div>
             <div style={{ fontWeight: 500 }}>{next.title}</div>
           </div>
