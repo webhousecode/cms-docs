@@ -150,6 +150,17 @@ body {
   line-height: 1.7;
   background: #1a1a2e !important;
 }
+.code-block .shiki .line {
+  background: none !important;
+  border: none !important;
+  display: block;
+}
+.code-block .shiki code {
+  background: none !important;
+  border: none !important;
+  color: inherit;
+  padding: 0;
+}
 
 /* Code block title bar (dots + lang + copy) */
 .code-titlebar {
