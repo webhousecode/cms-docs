@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, ChevronsDownUp, ChevronsUpDown } from "lucide-react";
 
 export interface SidebarCategory {
   slug: string;
@@ -42,8 +42,40 @@ export function DocsSidebar({ categories }: { categories: SidebarCategory[] }) {
     setCollapsed((p) => ({ ...p, [slug]: !p[slug] }));
   }
 
+  const allExpanded = categories.every((c) => !collapsed[c.slug]);
+
+  function toggleAll() {
+    const next: Record<string, boolean> = {};
+    for (const cat of categories) {
+      next[cat.slug] = allExpanded; // collapse all if all expanded, else expand all
+    }
+    setCollapsed(next);
+  }
+
   const nav = (
     <nav style={{ padding: "1rem 0" }}>
+      <div style={{ padding: "0 1rem 0.5rem", display: "flex", justifyContent: "flex-end" }}>
+        <button
+          onClick={toggleAll}
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "0.3rem",
+            padding: "0.2rem 0.5rem",
+            fontSize: "0.65rem",
+            fontWeight: 500,
+            color: "var(--fg-muted)",
+            background: "none",
+            border: "1px solid var(--border)",
+            borderRadius: 4,
+            cursor: "pointer",
+            letterSpacing: "0.02em",
+          }}
+        >
+          {allExpanded ? <ChevronsDownUp size={12} /> : <ChevronsUpDown size={12} />}
+          {allExpanded ? "Collapse" : "Expand"}
+        </button>
+      </div>
       {categories.map((cat) => {
         const isCollapsed = collapsed[cat.slug] ?? false;
         const hasActive = cat.docs.some(
