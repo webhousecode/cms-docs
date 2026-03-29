@@ -1,0 +1,27 @@
+{
+  "id": "93b7c4e2-545b-456f-b094-e621551c2f01",
+  "slug": "cli-reference",
+  "status": "published",
+  "locale": "en",
+  "translationGroup": "d1cd299f-272e-41c9-90ae-d3a62f43252a",
+  "data": {
+    "title": "CLI Reference",
+    "description": "All CMS CLI commands — init, dev, build, serve, AI generate, AI rewrite, SEO, and MCP.",
+    "content": "## Commands\n\nAll commands run via `npx cms <command>` (provided by `@webhouse/cms-cli`).\n\n| Command | Description |\n|---------|-------------|\n| `cms init [name]` | Scaffold a new CMS project |\n| `cms dev [--port 3000]` | Start dev server with hot reload |\n| `cms build [--outDir dist]` | Build static site |\n| `cms serve [--port 5000] [--dir dist]` | Serve the built static site |\n| `cms ai generate <collection> \"<prompt>\"` | Generate a new document with AI |\n| `cms ai rewrite <collection>/<slug> \"<instruction>\"` | Rewrite existing document |\n| `cms ai seo [--status published]` | Run SEO optimization on all documents |\n| `cms mcp keygen [--label \"key\"] [--scopes \"read,write\"]` | Generate MCP API key |\n| `cms mcp test [--endpoint url]` | Test local MCP server |\n| `cms mcp status [--endpoint url]` | Check MCP server status |\n\n## AI commands\n\nAI commands require `@webhouse/cms-ai` and an `ANTHROPIC_API_KEY` or `OPENAI_API_KEY` in `.env`.\n\n```bash\n# Generate a blog post\nnpx cms ai generate posts \"Write a guide to TypeScript generics\"\n\n# Rewrite with instructions\nnpx cms ai rewrite posts/hello-world \"Make it more concise and add code examples\"\n\n# SEO optimization across all published content\nnpx cms ai seo\n```\n\n## MCP commands\n\n```bash\n# Generate an API key for MCP access\nnpx cms mcp keygen --label \"My App\" --scopes \"read\"\n\n# Test the MCP endpoint\nnpx cms mcp test --endpoint http://localhost:3000/api/mcp\n\n# Check MCP server status\nnpx cms mcp status\n```",
+    "category": "cli",
+    "order": 0,
+    "_seo": {
+      "metaTitle": "CLI Reference — webhouse.app Docs",
+      "metaDescription": "All CMS CLI commands — init, dev, build, serve, AI generate, AI rewrite, SEO, and MCP.",
+      "keywords": [
+        "webhouse",
+        "cms",
+        "documentation",
+        "cli"
+      ]
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-29T21:41:59.069Z",
+  "updatedAt": "2026-03-29T21:41:59.069Z"
+}

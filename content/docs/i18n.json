@@ -1,0 +1,27 @@
+{
+  "id": "a7084a12-4ad4-499c-b887-cd21cccb700f",
+  "slug": "i18n",
+  "status": "published",
+  "locale": "en",
+  "translationGroup": "ac48668a-63fd-41de-9fe8-24d33407b531",
+  "data": {
+    "title": "Internationalization (i18n)",
+    "description": "Multi-language content with automatic AI translation, locale routing, and hreflang.",
+    "content": "## Configure locales\n\n```typescript\nexport default defineConfig({\n  defaultLocale: 'en',\n  locales: ['en', 'da'],\n\n  collections: [\n    defineCollection({\n      name: 'posts',\n      sourceLocale: 'en',\n      locales: ['en', 'da'],\n      translatable: true,\n      fields: [\n        { name: 'title', type: 'text', required: true },\n        { name: 'content', type: 'richtext' },\n      ],\n    }),\n  ],\n});\n```\n\n## How translations work\n\nEach translation is a **separate document** linked via `translationGroup` — a shared UUID connecting all language versions:\n\n```json\n// content/posts/hello-world.json (English)\n{\n  \"slug\": \"hello-world\",\n  \"locale\": \"en\",\n  \"translationGroup\": \"abc-123\",\n  \"data\": { \"title\": \"Hello, World!\" }\n}\n\n// content/posts/hello-world-da.json (Danish)\n{\n  \"slug\": \"hello-world-da\",\n  \"locale\": \"da\",\n  \"translationGroup\": \"abc-123\",\n  \"data\": { \"title\": \"Hej, Verden!\" }\n}\n```\n\n## Admin UI translation workflow\n\nIn the admin UI:\n1. Open a document — see the locale badge showing current language\n2. Click **\"+ Add translation\"** to create a new locale version\n3. The AI translator auto-translates all fields\n4. Review and publish the translation\n\nTranslations appear grouped in the document list and the editor shows a locale switcher.\n\n## AI translation\n\n```typescript\nimport { createAi } from '@webhouse/cms-ai';\n\nconst ai = await createAi();\nconst result = await ai.content.translate(\n  sourceDoc.data,\n  'da',\n  { collection: collectionConfig },\n);\n// result.fields contains translated data\n```\n\n## Locale routing in Next.js\n\nUse a `[locale]` route segment:\n\n```\napp/\n  [locale]/\n    blog/\n      [slug]/page.tsx\n    page.tsx\n  layout.tsx\n```\n\nWith a middleware for locale detection:\n\n```typescript\n// middleware.ts\nimport { NextRequest, NextResponse } from 'next/server';\n\nconst LOCALES = ['en', 'da'];\nconst DEFAULT = 'en';\n\nexport function middleware(request: NextRequest) {\n  const { pathname } = request.nextUrl;\n  const hasLocale = LOCALES.some(l => pathname.startsWith(`/${l}/`) || pathname === `/${l}`);\n  if (hasLocale) return;\n\n  const preferred = request.headers.get('accept-language')?.split(',')[0]?.split('-')[0] ?? DEFAULT;\n  const locale = LOCALES.includes(preferred) ? preferred : DEFAULT;\n  return NextResponse.redirect(new URL(`/${locale}${pathname}`, request.url));\n}\n```",
+    "category": "guides",
+    "order": 3,
+    "_seo": {
+      "metaTitle": "Internationalization (i18n) — webhouse.app Docs",
+      "metaDescription": "Multi-language content with automatic AI translation, locale routing, and hreflang.",
+      "keywords": [
+        "webhouse",
+        "cms",
+        "documentation",
+        "guides"
+      ]
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-29T21:41:59.068Z",
+  "updatedAt": "2026-03-29T21:41:59.068Z"
+}

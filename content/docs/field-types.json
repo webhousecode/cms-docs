@@ -1,0 +1,27 @@
+{
+  "id": "6db06424-2c4d-4384-9cf3-d74fc3144d48",
+  "slug": "field-types",
+  "status": "published",
+  "locale": "en",
+  "translationGroup": "c9e67e71-385d-4823-984a-409de33f3205",
+  "data": {
+    "title": "Field Types",
+    "description": "Complete reference for all 22 field types — text, richtext, image, blocks, relation, and more.",
+    "content": "## Common field properties\n\nEvery field supports these properties:\n\n```typescript\n{\n  name: string;          // Required: field key in document data\n  type: FieldType;       // Required: one of the types below\n  label?: string;        // Display label in admin UI\n  required?: boolean;    // Must have a value\n  defaultValue?: unknown;\n  ai?: {                 // AI generation hints\n    hint?: string;       // e.g. \"Write in a friendly tone\"\n    maxLength?: number;\n    tone?: string;       // e.g. \"professional\", \"casual\"\n  };\n  aiLock?: {             // AI lock behavior\n    autoLockOnEdit?: boolean;  // Lock when user edits (default: true)\n    lockable?: boolean;\n    requireApproval?: boolean;\n  };\n}\n```\n\n## Basic types\n\n### text\nSingle-line text input.\n```typescript\n{ name: 'title', type: 'text', required: true, maxLength: 120 }\n```\n\n### textarea\nMulti-line plain text.\n```typescript\n{ name: 'excerpt', type: 'textarea', maxLength: 300 }\n```\n\n### number\n```typescript\n{ name: 'price', type: 'number' }\n```\n\n### boolean\n```typescript\n{ name: 'featured', type: 'boolean' }\n```\n\n### date\nISO date string.\n```typescript\n{ name: 'publishDate', type: 'date' }\n```\n\n## Content types\n\n### richtext\nRich text / Markdown content with a block editor in admin UI. Optional `features` array controls toolbar.\n```typescript\n{ name: 'content', type: 'richtext' }\n\n// Restricted features\n{ name: 'content', type: 'richtext', features: ['bold', 'italic', 'heading', 'link', 'image'] }\n```\n\n### htmldoc\nFull HTML document editor (visual WYSIWYG).\n```typescript\n{ name: 'template', type: 'htmldoc' }\n```\n\n## Media types\n\n### image\nSingle image reference.\n```typescript\n{ name: 'heroImage', type: 'image' }\n```\n\n### image-gallery\nMultiple images. **Values must be `{ url, alt }[]` objects, not plain strings.**\n```typescript\n{ name: 'photos', type: 'image-gallery' }\n```\n\n### video\n```typescript\n{ name: 'intro', type: 'video' }\n```\n\n### audio\n```typescript\n{ name: 'podcast', type: 'audio' }\n```\n\n### file\n```typescript\n{ name: 'download', type: 'file' }\n```\n\n## Structure types\n\n### select\n```typescript\n{\n  name: 'category', type: 'select',\n  options: [\n    { label: 'Web', value: 'web' },\n    { label: 'Mobile', value: 'mobile' },\n  ],\n}\n```\n\n### tags\nFree-form tags stored as `string[]`.\n```typescript\n{ name: 'tags', type: 'tags' }\n```\n\n### relation\nReference to documents in another collection.\n```typescript\n{ name: 'author', type: 'relation', collection: 'team' }\n{ name: 'related', type: 'relation', collection: 'posts', multiple: true }\n```\n\n### array\nRepeatable items. Without `fields` it stores `string[]`.\n```typescript\n{ name: 'bullets', type: 'array' }\n{ name: 'stats', type: 'array', fields: [\n  { name: 'value', type: 'text' },\n  { name: 'label', type: 'text' },\n]}\n```\n\n### object\nNested field group.\n```typescript\n{ name: 'address', type: 'object', fields: [\n  { name: 'street', type: 'text' },\n  { name: 'city', type: 'text' },\n]}\n```\n\n### blocks\nDynamic content sections using the block system.\n```typescript\n{ name: 'sections', type: 'blocks', blocks: ['hero', 'features', 'cta'] }\n```\n\n## Special types\n\n### map\nOpenStreetMap with draggable pin. Stores `{ lat, lng, address, zoom }`.\n```typescript\n{ name: 'location', type: 'map' }\n```\n\n### interactive\nReference to an Interactive component from the library.\n```typescript\n{ name: 'chart', type: 'interactive' }\n```\n\n### column-slots\nMulti-column layout with nested fields.\n```typescript\n{ name: 'layout', type: 'column-slots' }\n```",
+    "category": "config",
+    "order": 1,
+    "_seo": {
+      "metaTitle": "Field Types — webhouse.app Docs",
+      "metaDescription": "Complete reference for all 22 field types — text, richtext, image, blocks, relation, and more.",
+      "keywords": [
+        "webhouse",
+        "cms",
+        "documentation",
+        "config"
+      ]
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-29T21:41:59.068Z",
+  "updatedAt": "2026-03-29T21:41:59.068Z"
+}

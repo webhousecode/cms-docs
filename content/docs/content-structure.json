@@ -1,0 +1,27 @@
+{
+  "id": "f7b54f5f-9669-46e1-9b91-e877135cd676",
+  "slug": "content-structure",
+  "status": "published",
+  "locale": "en",
+  "translationGroup": "358352ed-3a28-414a-aa65-f696925de37a",
+  "data": {
+    "title": "Content Structure",
+    "description": "How documents are stored as JSON files — the document format, directory layout, and conventions.",
+    "content": "## Document format\n\nEvery document is a JSON file in `content/{collection}/{slug}.json`:\n\n```json\n{\n  \"id\": \"unique-uuid\",\n  \"slug\": \"my-document\",\n  \"status\": \"published\",\n  \"locale\": \"en\",\n  \"translationGroup\": \"shared-uuid\",\n  \"data\": {\n    \"title\": \"My Document\",\n    \"content\": \"Markdown content here...\",\n    \"_seo\": {\n      \"metaTitle\": \"SEO Title\",\n      \"metaDescription\": \"Description for search engines\"\n    }\n  },\n  \"_fieldMeta\": {},\n  \"createdAt\": \"2026-01-15T10:30:00Z\",\n  \"updatedAt\": \"2026-03-29T14:00:00Z\"\n}\n```\n\n## Key rules\n\n1. **Slug must match filename** — `hello-world.json` must have `\"slug\": \"hello-world\"`\n2. **`_fieldMeta` is required** — can be empty `{}`, tracks AI lock state\n3. **Always filter by status** — skip drafts with `status === \"published\"`\n4. **`data` contains all content fields** — everything defined in your collection's `fields` array\n5. **`_seo` is a reserved field** — used for SEO metadata\n\n## Directory layout\n\n```\ncontent/\n  posts/\n    hello-world.json\n    hello-world-da.json    # Danish translation\n    typescript-guide.json\n  pages/\n    home.json\n    about.json\n  global/\n    global.json            # Singleton for site settings\n```\n\n## Status lifecycle\n\n| Status | Meaning |\n|--------|---------|\n| `draft` | Work in progress, not visible on site |\n| `published` | Live on site |\n| `archived` | Removed from site but kept for reference |\n| `expired` | Auto-set when `unpublishAt` date passes |\n\n## Scheduled publishing\n\nDocuments support automatic publish/unpublish via date fields:\n\n```json\n{\n  \"status\": \"draft\",\n  \"publishAt\": \"2026-04-01T09:00:00Z\",\n  \"unpublishAt\": \"2026-04-30T23:59:59Z\"\n}\n```\n\nThe scheduler automatically changes status when the date arrives.",
+    "category": "concepts",
+    "order": 0,
+    "_seo": {
+      "metaTitle": "Content Structure — webhouse.app Docs",
+      "metaDescription": "How documents are stored as JSON files — the document format, directory layout, and conventions.",
+      "keywords": [
+        "webhouse",
+        "cms",
+        "documentation",
+        "concepts"
+      ]
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-29T21:41:59.069Z",
+  "updatedAt": "2026-03-29T21:41:59.069Z"
+}

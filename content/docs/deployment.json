@@ -1,0 +1,27 @@
+{
+  "id": "97dd2bb6-2b23-416f-a2db-0b2b7c6ff2bf",
+  "slug": "deployment",
+  "status": "published",
+  "locale": "en",
+  "translationGroup": "f59fe81f-c6bd-495a-971d-de4eac3c6d2f",
+  "data": {
+    "title": "Deployment",
+    "description": "Deploy your CMS-powered site to Vercel, Fly.io, Netlify, or Docker.",
+    "content": "## Pre-deployment checklist\n\n- All documents intended to be live have `status: \"published\"`\n- No published pages reference draft-only documents\n- All relation fields point to existing, published documents\n- OG images exist for key pages\n- Environment variables are configured\n- `next build` succeeds locally\n\n## Vercel\n\n```bash\nnpx vercel\n```\n\nConfigure image domains in `next.config.ts`:\n\n```typescript\nimages: {\n  remotePatterns: [\n    { protocol: 'https', hostname: 'your-domain.com', pathname: '/uploads/**' },\n  ],\n}\n```\n\n## Fly.io\n\n```toml\n# fly.toml\nprimary_region = \"arn\"\n\n[build]\n  dockerfile = \"Dockerfile\"\n\n[env]\n  NODE_ENV = \"production\"\n```\n\n```dockerfile\nFROM node:22-alpine AS builder\nWORKDIR /app\nCOPY . .\nRUN npm ci && npm run build\n\nFROM node:22-alpine\nWORKDIR /app\nCOPY --from=builder /app/.next/standalone ./\nCOPY --from=builder /app/.next/static ./.next/static\nCOPY --from=builder /app/public ./public\nCOPY --from=builder /app/content ./content\nCMD [\"node\", \"server.js\"]\n```\n\n## Netlify\n\n```bash\nnpx netlify-cli deploy --build\n```\n\n## Docker (self-hosted)\n\n```dockerfile\nFROM node:22-alpine AS builder\nWORKDIR /app\nCOPY . .\nRUN npm ci && npm run build\n\nFROM node:22-alpine\nWORKDIR /app\nCOPY --from=builder /app/.next ./.next\nCOPY --from=builder /app/public ./public\nCOPY --from=builder /app/content ./content\nCOPY --from=builder /app/package.json ./\nRUN npm ci --omit=dev\nCMD [\"npm\", \"start\"]\n```\n\n## Post-deployment verification\n\n- Visit `/sitemap.xml` and confirm all pages are listed\n- Check page source for OpenGraph and JSON-LD tags\n- Test social sharing preview\n- Confirm images load correctly\n- If using revalidation, test the webhook endpoint",
+    "category": "deployment",
+    "order": 0,
+    "_seo": {
+      "metaTitle": "Deployment — webhouse.app Docs",
+      "metaDescription": "Deploy your CMS-powered site to Vercel, Fly.io, Netlify, or Docker.",
+      "keywords": [
+        "webhouse",
+        "cms",
+        "documentation",
+        "deployment"
+      ]
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-29T21:41:59.069Z",
+  "updatedAt": "2026-03-29T21:41:59.069Z"
+}
