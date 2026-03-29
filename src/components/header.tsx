@@ -28,23 +28,15 @@ export function Header() {
             textDecoration: "none",
             display: "flex",
             alignItems: "center",
-            gap: "0.5rem",
+            gap: "0.6rem",
           }}
         >
-          {/* CMS logo — dark variant for dark mode, light for light */}
-          <picture>
-            <source
-              srcSet="/cms-logo-dark.svg"
-              media="(prefers-color-scheme: dark)"
-            />
-            <img
-              src="/cms-logo-dark.svg"
-              alt="webhouse.app CMS"
-              height={24}
-              style={{ height: 24, width: "auto" }}
-              className="dark-logo"
-            />
-          </picture>
+          <img
+            src="/webhouse-wordmark-dark.svg"
+            alt="webhouse.app"
+            height={28}
+            style={{ height: 28, width: "auto" }}
+          />
           <span
             style={{
               width: 1,
@@ -55,10 +47,9 @@ export function Header() {
           />
           <span
             style={{
-              fontSize: "0.8rem",
+              fontSize: "0.85rem",
               fontWeight: 600,
               color: "var(--fg-muted)",
-              fontFamily: "var(--font-mono)",
               letterSpacing: "0.02em",
             }}
           >
