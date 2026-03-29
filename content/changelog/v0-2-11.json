@@ -1,0 +1,21 @@
+{
+  "id": "c67ceda3-76af-4501-a473-6b793a9929b6",
+  "slug": "v0-2-11",
+  "status": "published",
+  "locale": "en",
+  "translationGroup": "ae77b147-5391-4683-bb72-a44ab4088cd3",
+  "data": {
+    "title": "Release 0.2.11",
+    "version": "0.2.11",
+    "date": "2026-03-18",
+    "content": "## Changes\n\n- chore: release v0.2.11\n- chore: bump all packages to 0.2.10\n- feat: add F67 Security Gate to roadmap (Tier 1)\n- fix: graceful GitHub error gate instead of crashing entire UI\n- fix: cache GitHub config for 2min in dev to avoid API rate limiting\n- feat: Supabase-style default view + Switch Site/Org actions\n- feat: add keyboard shortcuts — Cmd+S save, Cmd+Shift+Arrow tab switch, n/g collection actions\n- feat: add dynamic collections to command palette\n- feat: Spotlight-style command palette with navigation, settings, and actions\n- fix: search keyboard navigation highlight was hidden by inline style\n- feat: add F66 Search Index feature plan\n- perf: parallelize search across collections\n- fix: remove UI zoom feature + fix logo icon persistence\n- fix: apply zoom on html element instead of body for proper layout\n- fix: styled checkbox for scheduler notifications + inline delete confirm for field defaults\n- refactor: move Interface settings from Site Settings to Account Preferences\n- feat: styled Checkbox and Radio components replacing native inputs\n- feat: add F65 Agent Pipeline E2E Tests to roadmap (Tier 1)\n- feat: add F64 Toast Notifications System to feature roadmap\n- feat: toast notifications across all CMS admin actions",
+    "breaking": false,
+    "_seo": {
+      "metaTitle": "v0.2.11 Release Notes — webhouse.app",
+      "metaDescription": "Release notes for @webhouse/cms v0.2.11"
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-29T21:57:54.251Z",
+  "updatedAt": "2026-03-29T21:57:54.251Z"
+}

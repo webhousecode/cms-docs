@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ChevronRight, Menu, X } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 
 export interface SidebarCategory {
   slug: string;
@@ -15,6 +15,20 @@ export function DocsSidebar({ categories }: { categories: SidebarCategory[] }) {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [collapsed, setCollapsed] = useState<Record<string, boolean>>({});
+
+  // Listen for toggle event from header hamburger
+  useEffect(() => {
+    function onToggle() {
+      setMobileOpen((prev) => !prev);
+    }
+    window.addEventListener("docs:toggle-sidebar", onToggle);
+    return () => window.removeEventListener("docs:toggle-sidebar", onToggle);
+  }, []);
+
+  // Close sidebar on route change
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [pathname]);
 
   function toggleCategory(slug: string) {
     setCollapsed((p) => ({ ...p, [slug]: !p[slug] }));
@@ -67,7 +81,6 @@ export function DocsSidebar({ categories }: { categories: SidebarCategory[] }) {
                     <Link
                       key={doc.slug}
                       href={`/docs/${doc.slug}`}
-                      onClick={() => setMobileOpen(false)}
                       style={{
                         display: "block",
                         padding: "0.3rem 1rem 0.3rem 1.5rem",
@@ -96,32 +109,6 @@ export function DocsSidebar({ categories }: { categories: SidebarCategory[] }) {
 
   return (
     <>
-      {/* Mobile hamburger */}
-      <button
-        className="md:hidden"
-        onClick={() => setMobileOpen(!mobileOpen)}
-        aria-label="Toggle navigation"
-        style={{
-          position: "fixed",
-          bottom: 16,
-          right: 16,
-          zIndex: 50,
-          width: 48,
-          height: 48,
-          borderRadius: "50%",
-          background: "var(--color-gold)",
-          color: "#000",
-          border: "none",
-          cursor: "pointer",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          boxShadow: "0 4px 12px rgba(0,0,0,0.3)",
-        }}
-      >
-        {mobileOpen ? <X size={20} /> : <Menu size={20} />}
-      </button>
-
       {/* Mobile overlay */}
       {mobileOpen && (
         <div
@@ -142,9 +129,9 @@ export function DocsSidebar({ categories }: { categories: SidebarCategory[] }) {
         style={{
           width: 260,
           position: mobileOpen ? "fixed" : "sticky",
-          top: mobileOpen ? 0 : "3.5rem",
+          top: mobileOpen ? "3.5rem" : "3.5rem",
           left: 0,
-          height: mobileOpen ? "100vh" : "calc(100vh - 3.5rem)",
+          height: mobileOpen ? "calc(100vh - 3.5rem)" : "calc(100vh - 3.5rem)",
           overflowY: "auto",
           background: "var(--sidebar-bg)",
           borderRight: "1px solid var(--border)",

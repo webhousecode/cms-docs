@@ -1,0 +1,21 @@
+{
+  "id": "282b9ba6-5f49-4cf6-b6fe-880715ec7903",
+  "slug": "v0-2-13",
+  "status": "published",
+  "locale": "en",
+  "translationGroup": "4e1de563-0626-4393-a73d-80eb0070f6a3",
+  "data": {
+    "title": "Release 0.2.13",
+    "version": "0.2.13",
+    "date": "2026-03-28",
+    "content": "## Changes\n\n- chore: release v0.2.13\n- fix: exclude boilerplates from pnpm workspace + Discord only on failure\n- chore: update pnpm-lock.yaml for nextjs-boilerplate workspace\n- chore: bump all packages to 0.2.12 — includes map field type\n- feat(F42): Next.js GitHub boilerplate — webhook revalidation + LiveRefresh\n- feat(F42): Next.js boilerplate — Next.js 16 + React 19 + Tailwind v4\n- docs: add 'map' to AI guide field types summary\n- feat(F42): static site boilerplate — complete starter template\n- feat: add F112 GEO Generative Engine Optimization (Tier 1)\n- feat: add F111 External Publishing to feature roadmap (Tier 2)\n- docs: add F111 External Publishing feature plan\n- security: add denyViewers() role check to 57 write endpoints — scanner now 0 findings\n- fix: add .gitleaks.toml — suppress test file false positives\n- security: fix 11 command injection findings — execSync → execFileSync\n- security: protect ALL /api/* routes via middleware — closes 27 unauthed route findings\n- feat(F67): Discord notification on security gate failure + weekly scan\n- feat(F67): security gate — pre-commit hook, CI workflow, custom CMS scanner\n- fix: gitignore deploy output, WebP variants, revisions, example uploads\n- feat(F79): site config validator — friendly errors, validate button, suggestion engine\n- fix: internal link search uses collection name as URL fallback",
+    "breaking": false,
+    "_seo": {
+      "metaTitle": "v0.2.13 Release Notes — webhouse.app",
+      "metaDescription": "Release notes for @webhouse/cms v0.2.13"
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-29T21:57:54.230Z",
+  "updatedAt": "2026-03-29T21:57:54.231Z"
+}

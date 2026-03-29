@@ -1,0 +1,28 @@
+{
+  "id": "1037e8c7-d965-4be8-8aac-55df22e19762",
+  "slug": "media-da",
+  "status": "published",
+  "locale": "da",
+  "translationGroup": "c38af0f9-693d-43c0-a7ae-d02b06d7894e",
+  "data": {
+    "title": "Mediehåndtering",
+    "description": "Billedbehandling, AI-analyse, gallerier og mediebibliotekets funktioner.",
+    "content": "## Media library\n\nThe CMS admin includes a full media library with:\n- **Upload** — drag & drop or file picker\n- **Organization** — folders, tags, search\n- **Processing** — automatic WebP conversion, responsive variants\n- **AI analysis** — auto-generated captions, alt text, and tags\n\n## Image processing\n\nUploaded images are automatically:\n1. Converted to WebP for optimal file size\n2. Resized to responsive variants (e.g., 400w, 800w, 1200w)\n3. EXIF data extracted (camera, lens, GPS, etc.)\n4. AI-analyzed for captions and alt text\n\n## AI image analysis\n\nWhen you upload an image, the AI analyzes it to generate:\n- **Caption** — descriptive text for context\n- **Alt text** — accessibility description for screen readers and SEO\n- **Tags** — auto-generated tags for organization\n\nYou can also batch-analyze existing images from the media library.\n\n## Using images in content\n\n### Image field\n```typescript\n{ name: 'heroImage', type: 'image' }\n```\n\n### Image gallery\n```typescript\n{ name: 'photos', type: 'image-gallery' }\n```\n\nGallery values must be `{ url, alt }[]` objects:\n```json\n\"photos\": [\n  { \"url\": \"/uploads/photo-1.webp\", \"alt\": \"Description\" },\n  { \"url\": \"/uploads/photo-2.webp\", \"alt\": \"Another photo\" }\n]\n```\n\n## Rendering images in Next.js\n\n```typescript\nimport Image from 'next/image';\n\nfunction HeroImage({ src, alt }: { src: string; alt: string }) {\n  return (\n    <Image\n      src={src}\n      alt={alt}\n      width={1200}\n      height={630}\n      priority\n    />\n  );\n}\n```",
+    "category": "concepts",
+    "order": 2,
+    "helpCardId": "media-ai-analysis",
+    "_seo": {
+      "metaTitle": "Mediehåndtering — webhouse.app Docs",
+      "metaDescription": "Billedbehandling, AI-analyse, gallerier og mediebibliotekets funktioner.",
+      "keywords": [
+        "webhouse",
+        "cms",
+        "dokumentation",
+        "concepts"
+      ]
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-29T21:57:53.108Z",
+  "updatedAt": "2026-03-29T21:57:53.108Z"
+}

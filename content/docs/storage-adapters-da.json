@@ -1,0 +1,27 @@
+{
+  "id": "7033639d-57b7-42bd-960a-cf56d1048c93",
+  "slug": "storage-adapters-da",
+  "status": "published",
+  "locale": "da",
+  "translationGroup": "3caa7ad8-755a-44c0-bc1e-0a2225bd4486",
+  "data": {
+    "title": "Lagringsadaptere",
+    "description": "Vælg hvor dit indhold gemmes — filsystem, GitHub, SQLite eller Supabase.",
+    "content": "## Choosing a storage adapter\n\n@webhouse/cms supports four storage backends. Each has different trade-offs for performance, collaboration, and deployment.\n\n> **Critical:** You MUST always specify `storage` in `cms.config.ts`. If omitted, it defaults to SQLite — not filesystem. This is the most common configuration mistake.\n\n## Filesystem (recommended)\n\nStores documents as JSON files in `content/<collection>/<slug>.json`. Best for:\n- Static sites with `build.ts`\n- Git-based version control\n- Local development\n\n```typescript\nstorage: {\n  adapter: 'filesystem',\n  filesystem: { contentDir: 'content' },\n}\n```\n\n## GitHub\n\nReads and writes files via the GitHub API. Each create/update/delete is a Git commit. Best for:\n- Collaborative editing without local Git\n- PR-based content review workflows\n- Sites hosted on GitHub Pages\n\n```typescript\nstorage: {\n  adapter: 'github',\n  github: {\n    owner: 'your-org',\n    repo: 'your-repo',\n    branch: 'main',\n    contentDir: 'content',\n    token: process.env.GITHUB_TOKEN!,\n  },\n}\n```\n\n## SQLite\n\nLocal SQLite database. Best for:\n- API-heavy use cases\n- When you don't need file-based content\n- Prototyping\n\n```typescript\nstorage: {\n  adapter: 'sqlite',\n  sqlite: { path: './data/cms.db' },\n}\n```\n\n## Supabase\n\nCloud-hosted PostgreSQL with Row Level Security. Best for:\n- Multi-user environments\n- Cloud-native deployments\n- When you need real-time subscriptions\n\n```typescript\nstorage: {\n  adapter: 'supabase',\n  supabase: {\n    url: process.env.SUPABASE_URL!,\n    serviceKey: process.env.SUPABASE_SERVICE_KEY!,\n  },\n}\n```",
+    "category": "guides",
+    "order": 0,
+    "_seo": {
+      "metaTitle": "Lagringsadaptere — webhouse.app Docs",
+      "metaDescription": "Vælg hvor dit indhold gemmes — filsystem, GitHub, SQLite eller Supabase.",
+      "keywords": [
+        "webhouse",
+        "cms",
+        "dokumentation",
+        "guides"
+      ]
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-29T21:57:53.110Z",
+  "updatedAt": "2026-03-29T21:57:53.110Z"
+}

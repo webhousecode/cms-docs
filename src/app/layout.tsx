@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   },
   description:
     "Documentation for @webhouse/cms — the AI-native, file-based CMS for TypeScript projects",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({

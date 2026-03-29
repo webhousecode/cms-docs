@@ -1,0 +1,21 @@
+{
+  "id": "c3b17344-a57c-4849-bb46-6ca4c29576a6",
+  "slug": "v0-2-4",
+  "status": "published",
+  "locale": "en",
+  "translationGroup": "08a3cf00-bd9f-4695-82e5-7818b46f3eb1",
+  "data": {
+    "title": "Release 0.2.4",
+    "version": "0.2.4",
+    "date": "2026-03-14",
+    "content": "## Changes\n\n- chore: release v0.2.4\n- feat: add start.sh and simplify scaffolder output",
+    "breaking": false,
+    "_seo": {
+      "metaTitle": "v0.2.4 Release Notes — webhouse.app",
+      "metaDescription": "Release notes for @webhouse/cms v0.2.4"
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-29T21:57:54.348Z",
+  "updatedAt": "2026-03-29T21:57:54.348Z"
+}

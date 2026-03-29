@@ -1,0 +1,26 @@
+{
+  "id": "203f3da2-8472-498f-beae-cbfa6255fd02",
+  "slug": "troubleshooting",
+  "status": "published",
+  "locale": "en",
+  "translationGroup": "2442bcd6-bbc3-4b72-93e0-4bdf99647210",
+  "data": {
+    "title": "Troubleshooting",
+    "description": "Common issues and fixes — GitHub adapter, content not showing, port conflicts, images, and more.",
+    "content": "## GitHub adapter: \"Bad Token\"\n\n**Cause:** OAuth token expired or revoked.\n\n**Fix:**\n1. Go to Sites → Settings → reconnect GitHub\n2. Use a fine-grained PAT with `contents: read/write` for long-term stability\n3. For automation: use a GitHub App installation token\n\n## \"Collection Not Found\"\n\n**Cause:** Collection name in `cms.config.ts` doesn't match content directory.\n\n**Fix:** Names must be identical:\n```\ncms.config.ts: defineCollection({ name: 'posts' })\nDirectory:     content/posts/\n```\n\n## Content not showing after save\n\n**Cause:** Next.js static cache — pages built at deploy time aren't regenerated until next build.\n\n**Fix options:**\n1. **On-demand revalidation** (recommended) — configure webhook in Site Settings → Revalidation\n2. **Time-based revalidation** — add `export const revalidate = 60;` to pages\n3. **Rebuild on content change** — Git webhook triggers deployment\n\n## Port already in use\n\n```bash\n# Find what's using the port\nlsof -ti:3000\n\n# Use a different port\nnpx cms dev --port 3001\n```\n\n## Images not loading in production\n\n**Cause:** Missing `remotePatterns` in `next.config.ts`.\n\n**Fix:**\n```typescript\n// next.config.ts\nimages: {\n  remotePatterns: [\n    { protocol: 'https', hostname: 'your-domain.com', pathname: '/uploads/**' },\n  ],\n}\n```\n\n## Supabase: \"Could Not Find Table\"\n\n**Cause:** PostgREST hasn't refreshed its schema cache.\n\n**Fix:**\n1. Restart the Supabase project\n2. Verify table exists: `SELECT * FROM information_schema.tables WHERE table_name = 'documents';`\n3. Check that the `anon` key has `SELECT` permission\n\n## Storage adapter defaults to SQLite\n\nIf you forget to specify `storage` in `cms.config.ts`, it defaults to SQLite. This means:\n- Admin UI writes to a SQLite database\n- `build.ts` reads from `content/` JSON files\n- The two systems are disconnected\n\n**Fix:** Always specify the adapter explicitly:\n```typescript\nstorage: {\n  adapter: 'filesystem',\n  filesystem: { contentDir: 'content' },\n}\n```",
+    "category": "guides",
+    "order": 7,
+    "_seo": {
+      "metaTitle": "Troubleshooting — webhouse.app Docs",
+      "metaDescription": "Common issues and fixes — GitHub adapter, content not showing, port conflicts, images, and more.",
+      "keywords": [
+        "webhouse",
+        "cms",
+        "guides"
+      ]
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-29T21:56:59.903Z",
+  "updatedAt": "2026-03-29T21:56:59.903Z"
+}

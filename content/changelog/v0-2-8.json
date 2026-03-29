@@ -1,0 +1,21 @@
+{
+  "id": "b3c8d953-7b31-4080-a7f4-46e4dcf92af8",
+  "slug": "v0-2-8",
+  "status": "published",
+  "locale": "en",
+  "translationGroup": "2e1f9f60-47eb-4746-92c5-c37434ce709b",
+  "data": {
+    "title": "Release 0.2.8",
+    "version": "0.2.8",
+    "date": "2026-03-16",
+    "content": "## Changes\n\n- chore: release v0.2.8\n- chore: bump all packages to 0.2.7, cms-admin to 0.2.0\n- docs: reorder Tier 1 roadmap, add Claude Code toolkit to F42\n- docs: prioritized roadmap with 4 tiers and product milestones\n- feat: add F44-F49 feature plans from master plan audit\n- chore: add knip code audit tool and initial report\n- chore: F41 code review cleanup\n- feat: add F43 Persist User State to feature roadmap\n- fix: use full page load after login instead of router.push\n- fix: slug rename dispatches delete for old slug + push for new slug\n- fix: hide Revalidation HR for filesystem sites, collapsible delivery log\n- fix: hide Revalidation section for filesystem sites\n- docs: content push architecture + two boilerplates in F42\n- feat: content push — webhook sends full document to site\n- fix: revalidation endpoint includes git pull before revalidatePath\n- fix: update README for clarity on framework support\n- feat: F41 — GitHub site auto-sync & webhook revalidation\n- feat: add F42 Framework Boilerplates feature proposal\n- docs: CLAUDE.md — react-markdown as standard richtext renderer\n- feat: CMS admin proxies /images/, /audio/, /interactives/ via rewrites",
+    "breaking": false,
+    "_seo": {
+      "metaTitle": "v0.2.8 Release Notes — webhouse.app",
+      "metaDescription": "Release notes for @webhouse/cms v0.2.8"
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-29T21:57:54.289Z",
+  "updatedAt": "2026-03-29T21:57:54.289Z"
+}

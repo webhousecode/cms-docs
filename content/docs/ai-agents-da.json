@@ -1,0 +1,28 @@
+{
+  "id": "d403052e-8a62-4da3-b197-bb4c39c22dce",
+  "slug": "ai-agents-da",
+  "status": "published",
+  "locale": "da",
+  "translationGroup": "124d6e34-5c63-4298-b0a8-4604a86f3b3f",
+  "data": {
+    "title": "AI-agenter",
+    "description": "Indbyggede AI-agenter til indholdsgenerering, SEO-optimering, GEO-optimering og oversættelse.",
+    "content": "## What are AI agents?\n\nAI agents generate and optimize content based on your brand voice and configuration. Each agent has a specific role:\n\n| Agent | Role |\n|-------|------|\n| **Content Writer** | Creates new blog posts, pages, descriptions |\n| **SEO Optimizer** | Improves meta fields, keywords, heading structure |\n| **GEO Optimizer** | Restructures content for AI citation (answer-first, statistics, sources) |\n| **Translator** | Translates content to configured locales |\n| **Content Refresher** | Updates stale content with current information |\n\n## How agents work\n\n1. You configure agents in the admin UI (Settings → Agents)\n2. Each agent has a system prompt that defines its behavior\n3. Agents produce **drafts** that land in the **Curation Queue**\n4. You review, approve, or reject each draft\n5. Approved content is published automatically\n\n## AI Lock\n\nFields you've edited by hand are **locked** — agents won't overwrite them. This ensures human edits are preserved even when agents run bulk operations.\n\nThe lock state is tracked in `_fieldMeta`:\n\n```json\n{\n  \"_fieldMeta\": {\n    \"title\": { \"lockedBy\": \"user\", \"lockedAt\": \"2026-03-29T10:00:00Z\" }\n  }\n}\n```\n\n## Brand voice\n\nConfigure a brand voice in Settings to ensure all AI-generated content matches your tone:\n\n- **Tone** — professional, casual, friendly, authoritative\n- **Audience** — developers, marketers, general public\n- **Guidelines** — specific instructions like \"Always use active voice\" or \"Include code examples\"\n\n## Programmatic usage\n\n```typescript\nimport { createAi } from '@webhouse/cms-ai';\n\nconst ai = await createAi();\n\n// Generate content\nconst result = await ai.content.generate('posts', {\n  prompt: 'Write a guide to TypeScript generics',\n});\n\n// Translate\nconst translated = await ai.content.translate(\n  sourceDoc.data,\n  'da',\n  { collection: collectionConfig },\n);\n```",
+    "category": "concepts",
+    "order": 1,
+    "helpCardId": "agents-intro",
+    "_seo": {
+      "metaTitle": "AI-agenter — webhouse.app Docs",
+      "metaDescription": "Indbyggede AI-agenter til indholdsgenerering, SEO-optimering, GEO-optimering og oversættelse.",
+      "keywords": [
+        "webhouse",
+        "cms",
+        "dokumentation",
+        "concepts"
+      ]
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-29T21:57:53.104Z",
+  "updatedAt": "2026-03-29T21:57:53.104Z"
+}

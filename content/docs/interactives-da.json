@@ -1,0 +1,27 @@
+{
+  "id": "4687ec82-82a3-4a1e-acfc-8cf3a8d5c1b1",
+  "slug": "interactives-da",
+  "status": "published",
+  "locale": "da",
+  "translationGroup": "152264a2-1746-4be9-93ac-9b628f9d6563",
+  "data": {
+    "title": "Interaktive elementer",
+    "description": "Datadrevet interaktivt indhold — diagrammer, beregnere, demoer med CMS-styret data.",
+    "content": "## The separation principle\n\nWhen building interactive content (charts, animations, calculators), **all text and data must be stored in CMS collections — never hardcoded.**\n\n| What | Where | Editable by |\n|------|-------|-------------|\n| Text labels, headings | CMS text fields | Editor in admin |\n| Data points, numbers | CMS array/object fields | Editor in admin |\n| Visualization, animation | Interactive component | Developer |\n| Styling, colors | Interactive CSS | Developer |\n\n## Pattern: CMS → Page → Interactive\n\n**1. Define a data collection:**\n```typescript\ndefineCollection({\n  name: \"chart-data\",\n  fields: [\n    { name: \"title\", type: \"text\", required: true },\n    { name: \"chartType\", type: \"select\", options: [\n      { label: \"Line\", value: \"line\" },\n      { label: \"Bar\", value: \"bar\" },\n    ]},\n    { name: \"dataPoints\", type: \"array\", fields: [\n      { name: \"label\", type: \"text\" },\n      { name: \"value\", type: \"number\" },\n    ]},\n  ],\n})\n```\n\n**2. Create the component (client):**\n```typescript\n\"use client\";\nexport function Chart({ title, data }: { title: string; data: { label: string; value: number }[] }) {\n  // Use Chart.js, D3, or any visualization library\n  return <div><h3>{title}</h3>{/* render chart */}</div>;\n}\n```\n\n**3. Use in a page (server reads CMS, passes props):**\n```typescript\nimport { getDocument } from \"@/lib/content\";\nimport { Chart } from \"@/components/chart\";\n\nexport default function Page() {\n  const data = getDocument(\"chart-data\", \"monthly-sales\");\n  if (!data) return null;\n  return <Chart title={data.data.title} data={data.data.dataPoints} />;\n}\n```\n\n## Standalone HTML interactives\n\nThe CMS also supports standalone HTML interactives managed via the Interactives Manager. These are complete HTML files that render in iframes. Use for:\n- Self-contained interactives without CMS data\n- Quick prototyping with \"Create with AI\" in admin\n- One-off visualizations\n\n## Richtext embedding\n\nInteractives can be embedded in richtext fields:\n```\n!!INTERACTIVE[chart-id|Chart Title|align:center]\n```\n\nYour renderer must convert these tokens to iframes:\n```typescript\nhtml = html.replace(\n  /!!INTERACTIVE\\[([^\\]]+)\\]/g,\n  (_match, inner) => {\n    const [id, title = id] = inner.split(\"|\");\n    return `<iframe src=\"/uploads/interactives/${id}.html\" title=\"${title}\"\n      style=\"width:100%; border:none; border-radius:0.5rem;\"\n      loading=\"lazy\" sandbox=\"allow-scripts allow-same-origin\"></iframe>`;\n  },\n);\n```\n\n## Scaled rendering\n\nRender full-size interactives as miniatures using CSS transform:\n```typescript\n<div style={{ width: 500, height: 400, overflow: \"hidden\" }}>\n  <iframe\n    src=\"/interactives/chart.html\"\n    style={{ width: 1000, height: 800, transform: \"scale(0.5)\", transformOrigin: \"top left\" }}\n  />\n</div>\n```",
+    "category": "guides",
+    "order": 8,
+    "_seo": {
+      "metaTitle": "Interaktive elementer — webhouse.app Docs",
+      "metaDescription": "Datadrevet interaktivt indhold — diagrammer, beregnere, demoer med CMS-styret data.",
+      "keywords": [
+        "webhouse",
+        "cms",
+        "dokumentation",
+        "guides"
+      ]
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-29T21:57:53.107Z",
+  "updatedAt": "2026-03-29T21:57:53.107Z"
+}

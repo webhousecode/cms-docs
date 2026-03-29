@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ThemeToggle } from "./theme-toggle";
 import { SearchTrigger } from "./search-trigger";
+import { MobileMenuButton } from "./mobile-menu-button";
 
 export function Header() {
   return (
@@ -19,7 +20,8 @@ export function Header() {
         backdropFilter: "blur(12px)",
       }}
     >
-      <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
+      <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+        <MobileMenuButton />
         <Link
           href="/"
           style={{
@@ -29,21 +31,35 @@ export function Header() {
             gap: "0.5rem",
           }}
         >
+          {/* CMS logo — dark variant for dark mode, light for light */}
+          <picture>
+            <source
+              srcSet="/cms-logo-dark.svg"
+              media="(prefers-color-scheme: dark)"
+            />
+            <img
+              src="/cms-logo-dark.svg"
+              alt="webhouse.app CMS"
+              height={24}
+              style={{ height: 24, width: "auto" }}
+              className="dark-logo"
+            />
+          </picture>
           <span
             style={{
-              fontWeight: 700,
-              fontSize: "1rem",
-              color: "var(--color-gold)",
-              fontFamily: "var(--font-mono)",
+              width: 1,
+              height: 20,
+              background: "var(--border)",
+              flexShrink: 0,
             }}
-          >
-            webhouse
-          </span>
+          />
           <span
             style={{
-              fontSize: "0.75rem",
+              fontSize: "0.8rem",
+              fontWeight: 600,
               color: "var(--fg-muted)",
               fontFamily: "var(--font-mono)",
+              letterSpacing: "0.02em",
             }}
           >
             docs
@@ -53,7 +69,10 @@ export function Header() {
 
       <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
         <SearchTrigger />
-        <nav style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+        <nav
+          className="max-sm:hidden"
+          style={{ display: "flex", alignItems: "center", gap: "1rem" }}
+        >
           <Link
             href="/docs/introduction"
             style={{

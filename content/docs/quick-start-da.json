@@ -1,0 +1,27 @@
+{
+  "id": "86975737-e6e2-4747-952e-35560631a479",
+  "slug": "quick-start-da",
+  "status": "published",
+  "locale": "da",
+  "translationGroup": "f43819ce-5574-4ee3-bbfd-80c3236ea41c",
+  "data": {
+    "title": "Hurtig start",
+    "description": "Opret et nyt projekt og hav en CMS-drevet side kørende på under 5 minutter.",
+    "content": "## Create a new project\n\n```bash\n# Scaffold a new project\nnpm create @webhouse/cms my-site\n\n# Or with the CLI directly\nnpx @webhouse/cms-cli init my-site\n```\n\nThis generates:\n\n```\nmy-site/\n  cms.config.ts          # Collection + field definitions\n  package.json           # Dependencies\n  .env                   # AI provider keys\n  content/\n    posts/\n      hello-world.json   # Example document\n```\n\n## Install and run\n\n```bash\ncd my-site\nnpm install\nnpx cms dev       # Start dev server + admin UI\n```\n\nThe dev server starts at `http://localhost:3000` and the admin UI opens automatically.\n\n## Create content\n\nOpen the admin UI and create your first document. It will be saved as a JSON file in `content/posts/`.\n\nEvery document follows this structure:\n\n```json\n{\n  \"slug\": \"my-first-post\",\n  \"status\": \"published\",\n  \"data\": {\n    \"title\": \"My First Post\",\n    \"content\": \"Hello, world!\"\n  },\n  \"id\": \"unique-id\",\n  \"_fieldMeta\": {}\n}\n```\n\n## Build for production\n\n```bash\nnpx cms build     # Build static site\nnpx cms serve     # Preview the build locally\n```\n\nThe build pipeline generates:\n- HTML pages for all published documents\n- `sitemap.xml` for search engines\n- `robots.txt` with AI crawler rules\n- `llms.txt` and `llms-full.txt` for AI discovery\n- `feed.xml` RSS feed\n- Per-page `.md` files for AI consumption\n\n## Next steps\n\n- [Configuration Reference](/docs/config-reference) — define your own collections\n- [Field Types](/docs/field-types) — explore all available field types\n- [Storage Adapters](/docs/storage-adapters) — choose where content is stored\n- [Deployment](/docs/deployment) — deploy to Vercel, Fly.io, or Netlify",
+    "category": "getting-started",
+    "order": 1,
+    "_seo": {
+      "metaTitle": "Hurtig start — webhouse.app Docs",
+      "metaDescription": "Opret et nyt projekt og hav en CMS-drevet side kørende på under 5 minutter.",
+      "keywords": [
+        "webhouse",
+        "cms",
+        "dokumentation",
+        "getting-started"
+      ]
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-29T21:57:53.109Z",
+  "updatedAt": "2026-03-29T21:57:53.109Z"
+}
