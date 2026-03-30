@@ -7,16 +7,26 @@ const SNIPPETS_DIR = join(process.cwd(), "content", "snippets");
 
 /**
  * Resolve {{snippet:slug}} tokens to actual code blocks from the snippets collection.
+ * Tokens inside code fences (``` ... ```) are left as literal text.
  */
 function resolveSnippets(content: string): string {
-  return content.replace(/\{\{snippet:([a-z0-9-]+)\}\}/g, (_match, slug) => {
-    const file = join(SNIPPETS_DIR, `${slug}.json`);
-    if (!existsSync(file)) return `<!-- snippet not found: ${slug} -->`;
-    const snippet = JSON.parse(readFileSync(file, "utf-8"));
-    const lang = snippet.data.lang || "text";
-    const code = snippet.data.code || "";
-    return "```" + lang + "\n" + code + "\n```";
-  });
+  // Split on code fences — odd indices are inside fences, even are outside
+  const parts = content.split(/(```[\s\S]*?```)/g);
+  return parts
+    .map((part, i) => {
+      // Odd indices = inside code fence → don't resolve
+      if (i % 2 === 1) return part;
+      // Even indices = outside code fence → resolve tokens
+      return part.replace(/\{\{snippet:([a-z0-9-]+)\}\}/g, (_match, slug) => {
+        const file = join(SNIPPETS_DIR, `${slug}.json`);
+        if (!existsSync(file)) return `<!-- snippet not found: ${slug} -->`;
+        const snippet = JSON.parse(readFileSync(file, "utf-8"));
+        const lang = snippet.data.lang || "text";
+        const code = snippet.data.code || "";
+        return "```" + lang + "\n" + code + "\n```";
+      });
+    })
+    .join("");
 }
 
 /**
