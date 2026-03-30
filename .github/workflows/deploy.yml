@@ -14,6 +14,8 @@ on:
       - 'src/**'
       - 'scripts/**'
       - 'public/**'
+      - '.github/workflows/**'
+      - 'Dockerfile'
 
 jobs:
   deploy:
