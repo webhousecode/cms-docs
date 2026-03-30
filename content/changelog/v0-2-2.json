@@ -1,0 +1,21 @@
+{
+  "id": "895b79ef-dc8d-4113-961f-d450e65a25aa",
+  "slug": "v0-2-2",
+  "status": "published",
+  "locale": "en",
+  "translationGroup": "c5ae3924-4929-453b-824c-d49e6f7d0e19",
+  "data": {
+    "title": "Release v0.2.2",
+    "version": "0.2.2",
+    "date": "2026-03-14",
+    "content": "## What's New in v0.2.2\n\n**2 changes** released on 2026-03-14\n\n### Features\n\n- feat: add .claude/settings.json to scaffolded projects\n\n### Other Changes\n\n- chore: release v0.2.2\n\n",
+    "breaking": false,
+    "_seo": {
+      "metaTitle": "Release v0.2.2 — webhouse.app Changelog",
+      "metaDescription": "Release notes for @webhouse/cms 0.2.2"
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-30T23:02:09.992Z",
+  "updatedAt": "2026-03-30T23:02:09.992Z"
+}

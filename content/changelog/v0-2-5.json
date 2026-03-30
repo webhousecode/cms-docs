@@ -1,0 +1,21 @@
+{
+  "id": "c4f6b7da-464a-4b43-9071-a3917e382a14",
+  "slug": "v0-2-5",
+  "status": "published",
+  "locale": "en",
+  "translationGroup": "80ebb2ae-092f-4137-a48d-17e07f134d40",
+  "data": {
+    "title": "Release v0.2.5",
+    "version": "0.2.5",
+    "date": "2026-03-14",
+    "content": "## What's New in v0.2.5\n\n**3 changes** released on 2026-03-14\n\n### Features\n\n- feat: standalone CMS admin CLI + Docker image\n\n### Other Changes\n\n- chore: release v0.2.5\n- docs: add CMS admin options to CLAUDE.md files\n\n",
+    "breaking": false,
+    "_seo": {
+      "metaTitle": "Release v0.2.5 — webhouse.app Changelog",
+      "metaDescription": "Release notes for @webhouse/cms 0.2.5"
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-30T23:02:10.068Z",
+  "updatedAt": "2026-03-30T23:02:10.068Z"
+}

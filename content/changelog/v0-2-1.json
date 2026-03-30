@@ -1,0 +1,21 @@
+{
+  "id": "1f119b6e-2ae2-48eb-8460-f62da6170598",
+  "slug": "v0-2-1",
+  "status": "published",
+  "locale": "en",
+  "translationGroup": "94c3be74-9f86-4922-b1ca-114e611ea021",
+  "data": {
+    "title": "Release v0.2.1",
+    "version": "0.2.1",
+    "date": "2026-03-14",
+    "content": "## What's New in v0.2.1\n\n**2 changes** released on 2026-03-14\n\n### Bug Fixes\n\n- fix: remove .nvmrc from scaffolder — CMS works with Node 20+\n\n### Other Changes\n\n- chore: release v0.2.1\n\n",
+    "breaking": false,
+    "_seo": {
+      "metaTitle": "Release v0.2.1 — webhouse.app Changelog",
+      "metaDescription": "Release notes for @webhouse/cms 0.2.1"
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-30T23:02:09.965Z",
+  "updatedAt": "2026-03-30T23:02:09.965Z"
+}

@@ -1,0 +1,21 @@
+{
+  "id": "02fba918-ff8b-464c-821b-7916c7fae80c",
+  "slug": "v0-2-3",
+  "status": "published",
+  "locale": "en",
+  "translationGroup": "fd469dd4-33fe-41ed-a3ec-8168c703c5d0",
+  "data": {
+    "title": "Release v0.2.3",
+    "version": "0.2.3",
+    "date": "2026-03-14",
+    "content": "## What's New in v0.2.3\n\n**2 changes** released on 2026-03-14\n\n### Bug Fixes\n\n- fix: add pnpm permissions to scaffolded .claude/settings.json\n\n### Other Changes\n\n- chore: release v0.2.3\n\n",
+    "breaking": false,
+    "_seo": {
+      "metaTitle": "Release v0.2.3 — webhouse.app Changelog",
+      "metaDescription": "Release notes for @webhouse/cms 0.2.3"
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-30T23:02:10.025Z",
+  "updatedAt": "2026-03-30T23:02:10.025Z"
+}

@@ -1,0 +1,21 @@
+{
+  "id": "1404d33b-d2fd-4f3f-a8e8-4c806376ec12",
+  "slug": "v0-2-6",
+  "status": "published",
+  "locale": "en",
+  "translationGroup": "0875902d-7683-4b02-b7ec-8e28abf2597a",
+  "data": {
+    "title": "Release v0.2.6",
+    "version": "0.2.6",
+    "date": "2026-03-14",
+    "content": "## What's New in v0.2.6\n\n**2 changes** released on 2026-03-14\n\n### Features\n\n- feat: seed webhouse.app eye logo as favicon in scaffolded projects\n\n### Other Changes\n\n- chore: release v0.2.6\n\n",
+    "breaking": false,
+    "_seo": {
+      "metaTitle": "Release v0.2.6 — webhouse.app Changelog",
+      "metaDescription": "Release notes for @webhouse/cms 0.2.6"
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-30T23:02:10.089Z",
+  "updatedAt": "2026-03-30T23:02:10.089Z"
+}
