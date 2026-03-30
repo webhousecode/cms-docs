@@ -3,7 +3,7 @@
   "slug": "docker-deployment-da",
   "status": "published",
   "locale": "da",
-  "translationGroup": "0fe45faa-420a-4a29-96f3-3e32de8f7768",
+  "translationGroup": "c71102e1-e175-454f-a9d5-7171cde71cf8",
   "data": {
     "title": "Docker-udrulning",
     "description": "Deploy @webhouse/cms med Docker — kombineret eller opdelt arkitektur, Docker Hub, GitHub Container Registry og Fly.io.",

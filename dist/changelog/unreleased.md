@@ -1,0 +1,225 @@
+# Unreleased
+
+*Updated: 2026-03-29*
+*Language: en*
+
+## Unreleased Changes
+
+**207 changes** since v0.2.13
+
+### Features
+
+- feat: wire HelpCard learnMorePath links to docs.webhouse.app
+- feat: F109 Inline Proofreading + tab isolation fix
+- feat: add F117 MCP ↔ Chat Tool Parity to roadmap (Tier 2)
+- feat: F114 master memory — immutable product identity in every chat
+- feat: Visibility card on Dashboard with combined SEO + GEO score
+- feat: import preview with merge confirmation + timestamps in memory export
+- feat: F114 full chat export/import — portable ZIP archive
+- feat: F114 Phase 4 — memory import/export + conversation search
+- feat: F116 Contextual Help — HelpCard framework with 10 articles
+- feat: F114 Chat Memory — cross-conversation intelligence
+- feat: add F116 Contextual Help (HelpCard Framework) to feature roadmap
+- feat: F112 G05 — Visibility dashboard (SEO + GEO combined)
+- feat: F48 session — previewable flag, chat fixes, link translations tool
+- feat: rename Performance → AI Analytics, add Visibility page placeholder
+- feat: previewable flag on collections + Copy ID in chat history
+- feat: add F115 CMS Help Chat — product knowledge base for chat
+- feat: RSS feed generator — /feed.xml with configurable collections
+- feat: content search covers ALL data fields (tags, author, category, etc.)
+- feat: search_content now searches ALL content including media tags
+- feat: F112 G08 — GEO settings panel (robots.txt strategy, organization, API keys)
+- feat: Link translations tool in Properties + fix chat hydration error
+- feat: show thinking toggle in chat input area
+- feat: F112 G07 — GEO Optimizer agent for AI citation-friendly content
+- feat: F112 G04 — 5 new JSON-LD templates (HowTo, Service, Software, Breadcrumb, WebSite)
+- feat: F112 G02 UI — dual SEO + GEO score in panel and dashboard API
+- feat: F112 G02 — GEO score with 8 AI visibility rules + combined Visibility Score
+- feat: add F114 Chat Memory & Cross-Conversation Intelligence
+- feat: collection list — Preview in context menu + menu on grid cards
+- feat: create_document accepts locale parameter from chat AI
+- feat: F112 G03 — llms-full.txt + per-page .md markdown endpoints
+- feat: F112 G01 — smart robots.txt generator with 4 AI crawler strategies
+- feat: F48 final locale coverage — AI routes, SEO score, JSON-LD
+- feat: chat avatars use Gravatar + larger matching size
+- feat: side-by-side tabs for 3+ locales
+- feat: search_media returns locale-specific alt-text and captions
+- feat: force-change locale in Properties drawer + No locale indicator
+- feat: F48 chat i18n — auto-translate toggle + locale-aware chat
+- feat: chat create_document auto-translates to all configured locales
+- feat: thumbnail size control (S/M/L) in media action bar
+- feat: rotate images from media lightbox toolbar
+- feat: extend F104 with Fase 6 — Frontend Media UI Performance
+- feat: F63 audit as Sharp PNG billboard — 25 components, Illustrator-ready
+- feat: F63 audit SVG with 25 precise element screenshots via data-testid
+- feat: interactive translate auto-flips direction when language detected
+- feat: F80 selector-map.json + Playwright helpers + roadmap update
+- feat: F80 Admin Selector Map — 65 data-testid attributes across 17 files
+- feat: interactive translate detects actual language from HTML lang attr
+- feat: side-by-side for interactives — preview sibling alongside editor
+- feat: F63 component audit — Playwright screenshots + Sharp crops + SVG visual reference
+- feat: translate endpoint swaps interactive IDs to locale versions
+- feat: side-by-side always available — equal partners, no source concept
+- feat: restore stale banner as info-only (no re-translate button)
+- feat: showStaleTranslations site config toggle — OFF by default
+- feat: F48 translationGroup — bidirectional ID-based translation partners
+- feat: F27 backup includes cms.config.ts + feature markers for i18n compatibility
+- feat: interactives list view matches collection-list pattern exactly
+- feat: interactives list view uses table layout matching collections
+- feat: Interactive editor — locale switcher + download in menu
+- feat: F48 i18n — Interactive translation as first-class feature
+- feat: F48 i18n — Interactive translation
+- feat: F48 i18n — complete remaining features
+- feat: F13 Notification Channels — shared webhook dispatcher + wire all automations
+- feat: F48 i18n — upload auto-analyzes for all site locales
+- feat: F48 i18n — translate endpoint replaces image alt-text per locale
+- feat: F48 i18n — lightbox AI panel with per-locale caption/alt pills
+- feat: F48 i18n — per-locale media metadata + SEO translation
+- feat: F48 i18n — build.ts with DA/EN locale support + flag toggle
+- feat: F48 i18n — AI-generated translated slugs
+- feat: F48 i18n — locale switcher navigation + new document locale picker
+- feat: F48 i18n — localeStrategy setting + bulk locale on existing docs
+- feat: F48 i18n Phase 6 — SEO locale filter, header locale indicator
+- feat: F48 i18n Phase 5 — hreflang sitemap, locale URL prefixes, JSON-LD inLanguage
+- feat: F48 i18n Phase 4 — auto-translate on publish, bulk translate, chat tools
+- feat: F48 i18n Phase 3 — translate API, AI translation dialog, stale detection
+- feat: F48 i18n — Playwright E2E tests + dev-token auth fixes
+- feat: chat renders Edit/View pills on document references
+- feat: add build_site tool to chat — auto-build after content changes
+- feat: F48 i18n — collection list locale filter + translation badges
+- feat: chat thinking toggle + elapsed timer
+- feat: F48 i18n Phase 1+2 — locale foundation + AI locale-awareness
+- feat: F99 Phase A — test infrastructure framework
+- feat: rewrite F99 — test infrastructure framework + continuous coverage
+- feat: rewrite F48 i18n plan — full AI auto-translation, 6 phases, 18 files
+- feat: rename site from Sites dashboard dropdown menu
+- feat(F12): mark One-Click Publish as Done
+- feat(F42): mark Framework Boilerplates as Done
+
+### Bug Fixes
+
+- fix: MCP site-scoped key resolution — API key determines site, not cookies
+- fix: zoom controls larger — 28px buttons, 0.75rem percentage, text ±
+- fix: editor zoom tool uses CSS zoom instead of fontSize
+- fix: MCP session persistence — globalThis survives Next.js HMR
+- fix: rename Conversations → Chats, server-side chat search
+- fix: F116 HelpCard — always visible, collapsible instead of dismissible
+- fix: Edit pill uses SPA navigation — preserves chat session
+- fix: Edit pill navigates to doc with ?mode=admin to exit chat mode
+- fix: DocPill View uses correct endpoints + schema returns urlPrefix
+- fix: search_media includes user tags in results (was only showing AI tags)
+- fix: click outside Properties drawer to close it
+- fix: link famous/bekannte ski posts with shared translationGroup
+- fix: chat View pill resolves exact preview URL with locale + category
+- fix: document editor preview URL includes locale prefix
+- fix: chat preview base uses previewSiteUrl first, sirv as fallback
+- fix: grid context menu in title bar + preview available on all collections
+- fix: resolve preview base URL in both grid and list views
+- fix: collection status filter persisted in localStorage per collection
+- fix: build.ts reads locales from site config + chat preview uses locale prefix
+- fix: chat system prompt — NEVER create_document twice for translations
+- fix: chat avatar uses sessionStorage cache instead of fetching /api/auth/me
+- fix: chat user avatar reads from d.user.gravatarUrl (not d.gravatarUrl)
+- fix: chat avatar vertically centered with first tool call card
+- fix: chat page path includes category segment when collection has category field
+- fix: chat get_document resolves hierarchical URLs (categories in path)
+- fix: chat preview card respects previewSiteUrl — same fix as preview page
+- fix: preview respects previewSiteUrl — never overrides with sirv
+- fix: translate button spinner + flushSync error in richtext editor
+- fix: locale dropdown shows only locale code, interactives get locale on upload
+- fix: link traening/training ski pages with shared translationGroup
+- fix: ALL document creation paths always set locale
+- fix: chat SEO generation uses document locale, not site default
+- fix: translate endpoint stamps locale on source doc if missing
+- fix: chat create_document sets locale on creation for multi-locale sites
+- fix: rotate buttons grouped with border for visibility
+- fix: media grid uses ⋮ dropdown menu + rotate buttons show for all images
+- fix: pass thumbMinWidth to GridView + robust rotate button check
+- fix: auto-correct locale before rejection check
+- fix: interactive translate shows error toast + reloads on locale correction
+- fix: EN ski post uses EN interactive (ski-vinter-slideshow-en)
+- fix: use xlink:href for SVG images — Adobe Illustrator compatibility
+- fix: richtext editor skips onChange when content didn't actually change
+- fix: side-by-side button matches sibling link style exactly
+- fix: TipTap onCreate dispatch no longer triggers dirty flag
+- fix: key={doc.id} on DocumentEditor — fresh state on doc navigation
+- fix: side-by-side reads localStorage after hydration to avoid dirty flag
+- fix: side-by-side button always says 'Side-by-side', yellow when active
+- fix: side-by-side persists across navigation via localStorage
+- fix: side-by-side button matches sibling link height exactly
+- fix: move side-by-side button to translations bar, compact size
+- fix: Language section toggles now trigger settings dirty state
+- fix: side-by-side shows default-locale source on translation docs
+- fix: remove all stale translation code, auto-translate only with toggle
+- fix: auto-translate only on first publish, remove stale triangles
+- fix: remove stale banner, preserve status on re-translate
+- fix: stale banner — only on non-default-locale docs + persistent dismiss
+- fix: stale banner only shows when a sibling is actually newer
+- fix: re-translate uses correct targetLocale fallback + better error messages
+- fix: stale banner — dismiss button + no page refresh on re-translate
+- fix: Re-translate button calls translate API directly instead of opening dialog
+- fix: interactives remembers grid/list view in localStorage
+- fix: interactives page uses same 2rem padding as collection pages
+- fix: interactives context menu uses same style as sites cards
+- fix: Interactive grid — context menu always visible in info bar
+- fix: Interactive i18n — match document editor design + locale badges
+- fix: Interactive code editor was permanently read-only
+- fix: side-by-side uses FieldEditor with locked=true for identical rendering
+- fix: side-by-side — inline heading/code/link styles without prose class
+- fix: side-by-side — proper heading rendering + field alignment spacing
+- fix: side-by-side parses TipTap image title for float/width styling
+- fix: side-by-side renders markdown content with mini converter
+- fix: side-by-side source pane styling — prose class, better field types
+- fix: side-by-side uses server-provided source data instead of API fetch
+- fix: move side-by-side button to action bar for visibility
+- fix: upload AI analysis — log errors instead of silently swallowing
+- fix: AI metadata popover captures per-locale fields after re-analyze
+- fix: EN pages use canonical paths (/en/about/ not /en/about-en/)
+- fix: add gap between EXIF labels and values
+- fix: AI panel shows Analyze button when no AI data exists + reverse geocoding
+- fix: remove CopyField reference — use inline click-to-copy on ID
+- fix: copy button on ID in Properties panel + translation chain guard
+- fix: only source documents can create translations + copyable doc ID
+- fix: create_document strips reserved doc-level fields from data
+- fix: locale badge is read-only, not a dropdown selector
+- fix: hide "+ Add translation" when all locales are covered
+- fix: CreateTranslationDialog only shows available locales
+- fix: editor reads locales from siteConfig instead of cms.config.ts
+- fix: create_document validates and remaps field names to schema
+- fix: Edit pill opens in admin mode, not chat mode
+- fix: chat history saves complete conversation including AI response
+- fix: AI prompts use field names instead of labels for JSON keys
+- fix: show Live button for sites with previewUrl — fallback when no deployProductionUrl
+- fix: allow iframe embedding in Next.js boilerplates
+- fix: persist GitHub OAuth token as service token on site creation
+- fix: link webhouse.app in footer across all 3 boilerplates
+
+### Other Changes
+
+- docs: mark F109 Inline Proofreading as done (milestone #36)
+- docs: F31 session prompt — build docs.webhouse.app dogfooded on CMS
+- docs: complete rewrite of F31 Documentation Site plan
+- docs: mark F48 i18n as Done in roadmap
+- docs: MCP setup guide + tool parity analysis (MCP vs Chat)
+- chore: update pnpm-lock.yaml for minisearch dependency
+- chore: add pnpm clean to root package.json
+- chore: add clean script to cms-admin
+- docs: mark F112 GEO as Done in roadmap
+- docs: absorb G06 Index Checker into G05 Visibility Monitor
+- docs: update F112 GEO plan with all shipped features (RSS, llms-full, robots, GEO score, agents, settings)
+- docs: F48 i18n — mark as DONE with implementation summary
+- docs: update F112 GEO progress — 5 of 8 phases complete
+- docs: F114 — add token budget section, bump default aiChatMaxTokens to 16384
+- docs: mark F13 Notification Channels as done in roadmap
+- docs: mark F84 Move Site to Org as done
+- docs: comprehensive roadmap audit — mark 7 more features as done
+- docs: mark F42, F67, F79, F96, F97, F99 as done in roadmap
+- docs: mark F48 i18n as Done
+- docs: add F48 i18n requirements to 56 content-facing feature plans
+- content: add 10 ski vacation posts + fix scenario test doc field names
+- docs: add F99 testing requirements to F96 + exclude .md from NEXT_PUBLIC check
+- docs: add F99 testing requirements to all 107 feature plans
+- docs: move F83 Vibe Site Builder to Tier 2 top priority
+- docs(F93): add Phase 2 — OAuth provider integration for Vercel/Netlify
+- docs: mark F89 Post-Build Enrichment as Done
+

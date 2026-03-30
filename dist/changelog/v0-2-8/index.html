@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Release v0.2.8 — webhouse.app Changelog — My Site</title>
+  <meta name="description" content="Release notes for @webhouse/cms 0.2.8">
+  <meta property="og:title" content="Release v0.2.8 — webhouse.app Changelog — My Site">
+  <meta property="og:description" content="Release notes for @webhouse/cms 0.2.8">
+  <meta property="og:type" content="website">
+  
+  <link rel="canonical" href="https://docs.webhouse.app/changelog/v0-2-8/">
+  
+  
+  <style>
+    :root {
+      --color-bg: #ffffff;
+      --color-fg: #111827;
+      --color-primary: #2563eb;
+      --color-muted: #6b7280;
+      --color-border: #e5e7eb;
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-mono: 'Courier New', monospace;
+      --font-size-base: 1rem;
+      --line-height-base: 1.7;
+      --spacing-base: 1rem;
+      --spacing-section: clamp(2rem, 5vw, 4rem);
+      --max-width: 72rem;
+      --radius: 0.5rem;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font-sans); background: var(--color-bg); color: var(--color-fg); font-size: var(--font-size-base); line-height: var(--line-height-base); }
+    a { color: var(--color-primary); }
+    img { max-width: 100%; height: auto; }
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 var(--spacing-base); }
+    header { border-bottom: 1px solid var(--color-border); padding: 1rem 0; margin-bottom: 2rem; }
+    header nav { display: flex; align-items: center; flex-wrap: wrap; position: relative; }
+    header .site-title { font-weight: 700; font-size: 1.25rem; text-decoration: none; color: var(--color-fg); flex: 1; }
+    .nav-toggle { display: none; }
+    .nav-burger { display: flex; flex-direction: column; gap: 4px; cursor: pointer; padding: 0.5rem; margin: -0.5rem; }
+    .nav-burger span { display: block; width: 20px; height: 2px; background: var(--color-fg); transition: transform 0.2s, opacity 0.2s; }
+    .nav-links { display: none; width: 100%; flex-direction: column; gap: 0; padding-top: 0.75rem; }
+    .nav-toggle:checked ~ .nav-links { display: flex; }
+    .nav-toggle:checked ~ .nav-burger span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
+    .nav-toggle:checked ~ .nav-burger span:nth-child(2) { opacity: 0; }
+    .nav-toggle:checked ~ .nav-burger span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4px); }
+    header nav a.nav-link { text-decoration: none; color: var(--color-muted); font-size: 0.9375rem; transition: color 0.15s; padding: 0.75rem 0; display: block; }
+    header nav a.nav-link:hover { color: var(--color-fg); }
+    @media (min-width: 768px) {
+      .nav-burger { display: none; }
+      .nav-links { display: flex; width: auto; flex-direction: row; gap: 2rem; padding-top: 0; margin-left: 2rem; }
+      header nav a.nav-link { padding: 0; display: inline; }
+    }
+    main { padding: var(--spacing-section) 0; }
+    footer { border-top: 1px solid var(--color-border); padding: 1.5rem 0; margin-top: var(--spacing-section); color: var(--color-muted); font-size: 0.875rem; }
+    .prose h1 { font-size: clamp(1.75rem, 4vw, 2.25rem); font-weight: 800; line-height: 1.2; margin-bottom: 1rem; }
+    .prose h2 { font-size: clamp(1.25rem, 3vw, 1.5rem); font-weight: 700; margin: 2rem 0 0.75rem; }
+    .prose h3 { font-size: clamp(1.1rem, 2.5vw, 1.25rem); font-weight: 600; margin: 1.5rem 0 0.5rem; }
+    .prose p { margin-bottom: 1.25rem; }
+    .prose pre { background: #1e293b; color: #e2e8f0; padding: 1rem; border-radius: var(--radius); overflow-x: auto; margin-bottom: 1.25rem; font-family: var(--font-mono); font-size: clamp(0.75rem, 1.5vw, 0.875rem); }
+    .prose code { background: #f1f5f9; padding: 0.125rem 0.375rem; border-radius: 0.25rem; font-family: var(--font-mono); font-size: 0.875em; }
+    .prose pre code { background: none; padding: 0; }
+    .prose ul, .prose ol { padding-left: 1.5rem; margin-bottom: 1.25rem; }
+    .prose li { margin-bottom: 0.375rem; }
+    .prose blockquote { border-left: 4px solid var(--color-primary); padding-left: 1rem; margin: 1.5rem 0; color: var(--color-muted); }
+    .prose img { border-radius: var(--radius); margin: 1.5rem 0; }
+    .card-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
+    @media (min-width: 640px) {
+      .card-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+    }
+    .card { border: 1px solid var(--color-border); border-radius: var(--radius); padding: 1.5rem; transition: box-shadow 0.2s; }
+    .card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+    .card h2 { font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .card h2 a { text-decoration: none; color: var(--color-fg); }
+    .card h2 a:hover { color: var(--color-primary); }
+    .card .meta { color: var(--color-muted); font-size: 0.875rem; margin-bottom: 0.75rem; }
+    .card .excerpt { color: var(--color-muted); font-size: 0.9375rem; }
+    .hero { padding: var(--spacing-section) 0; text-align: center; }
+    .hero h1 { font-size: clamp(2rem, 6vw, 3rem); font-weight: 800; margin-bottom: 1rem; }
+    .hero p { font-size: clamp(1rem, 2.5vw, 1.25rem); color: var(--color-muted); max-width: 42rem; margin: 0 auto 2rem; }
+    .btn { display: inline-block; padding: 0.75rem 1.5rem; background: var(--color-primary); color: #fff; border-radius: var(--radius); text-decoration: none; font-weight: 600; }
+    .btn:hover { opacity: 0.9; }
+    .post-header { margin-bottom: 2rem; }
+    .post-header h1 { font-size: clamp(1.75rem, 5vw, 2.5rem); font-weight: 800; line-height: 1.2; margin-bottom: 0.5rem; }
+    .post-meta { color: var(--color-muted); font-size: 0.875rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <a href="/" class="site-title">My Site</a>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
+        <label for="nav-toggle" class="nav-burger" aria-label="Menu"><span></span><span></span><span></span></label>
+        <div class="nav-links">
+          <a href="/docs/" class="nav-link">Documentation</a>
+<a href="/changelog/" class="nav-link">Changelog</a>
+<a href="/snippets/" class="nav-link">Shared Snippets</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      
+<article>
+  <header class="post-header">
+    <h1>Release v0.2.8</h1>
+    <p class="post-meta">March 16, 2026</p>
+    
+  </header>
+  <div class="prose">
+    <h2>What&#39;s New in v0.2.8</h2>
+<p><strong>124 changes</strong> released on 2026-03-16</p>
+<h3>Features</h3>
+<ul>
+<li>feat: add F44-F49 feature plans from master plan audit</li>
+<li>feat: add F43 Persist User State to feature roadmap</li>
+<li>feat: content push — webhook sends full document to site</li>
+<li>feat: F41 — GitHub site auto-sync &amp; webhook revalidation</li>
+<li>feat: add F42 Framework Boilerplates feature proposal</li>
+<li>feat: CMS admin proxies /images/, /audio/, /interactives/ via rewrites</li>
+<li>feat: add F41 GitHub Site Auto-Sync &amp; Webhook Revalidation plan</li>
+<li>feat: Image and Audio toolbar buttons support Browse Media</li>
+<li>feat: FileAttachment supports upload + browse from Media library</li>
+<li>feat: Interactive picker has search, ESC close, matches block picker style</li>
+<li>feat: add search to image field Media Library browser</li>
+<li>feat: image field with upload, media browser, and preview</li>
+<li>feat: add InteractiveEmbed TipTap node for inline interactive embeds</li>
+<li>feat: add F40 Drag and Drop Tab Reordering to feature roadmap</li>
+<li>feat: Media files use soft delete (trash) with metadata tracking</li>
+<li>feat: Trash page shows trashed Interactives alongside documents</li>
+<li>feat: Interactives list — Media Manager top bar + Pitch Vault list view</li>
+<li>feat: SVG filter, proper Properties panel, fix preview URL</li>
+<li>feat: Interactives Properties panel with rename</li>
+<li>feat: Interactives status workflow (draft/published/trashed)</li>
+<li>feat: add History, Properties, Delete buttons to Interactives top bar</li>
+<li>feat: add Clone button to Interactives detail page</li>
+<li>feat: Interactives detail page — fullscreen layout + Monaco editor</li>
+<li>feat: MediaAdapter pattern for adapter-agnostic media operations</li>
+<li>feat: add Interactives Manager (F39 Phase 1)</li>
+<li>feat: add F39 Interactives Engine to feature roadmap</li>
+<li>feat: add Supabase dependencies and new home.json example</li>
+<li>feat: add F38 Environment Manager to feature roadmap</li>
+<li>feat: add htmldoc field type with visual editing, AI edit, and code modes</li>
+<li>feat: add F37 HTML Document Field (htmldoc) to feature roadmap</li>
+<li>feat: add AudioEmbed, FileAttachment, and Callout TipTap nodes to rich text editor</li>
+<li>feat: media library supports all file types with type filter</li>
+<li>feat: add audio field type with inline player preview</li>
+<li>feat: dynamic collection list columns based on schema fields</li>
+<li>feat: disable RLS in migrate, add seed script with real content</li>
+<li>feat: add F36 Framework Integrations to feature roadmap</li>
+<li>feat: add F35 Webhooks to feature roadmap</li>
+<li>feat: upgrade /feature skill to idea-first workflow</li>
+<li>feat: add /feature skill for implementing features from plan docs</li>
+<li>feat: add UI screenshot agent using Playwright</li>
+<li>feat: add experimental Supabase/PostgreSQL storage adapter</li>
+<li>feat: add AI analytics module with run tracking and performance dashboard</li>
+<li>feat: wire up per-collection lifecycle hooks in ContentService</li>
+<li>feat: add framework adapter helpers for Next.js content loading</li>
+<li>feat: landing page build pipeline (roadmap #15)</li>
+<li>feat: add initial documentation for Admin UI &amp; Deployment Plan and Plan Summary</li>
+</ul>
+<h3>Bug Fixes</h3>
+<ul>
+<li>fix: use full page load after login instead of router.push</li>
+<li>fix: slug rename dispatches delete for old slug + push for new slug</li>
+<li>fix: hide Revalidation HR for filesystem sites, collapsible delivery log</li>
+<li>fix: hide Revalidation section for filesystem sites</li>
+<li>fix: revalidation endpoint includes git pull before revalidatePath</li>
+<li>fix: update README for clarity on framework support</li>
+<li>fix: editor image browse stores relative path, not proxy URL</li>
+<li>fix: embedded nodes use !!FILE[] and !!INTERACTIVE[] text tokens</li>
+<li>fix: editor image browse uses /api/uploads/ proxy for non-uploads paths</li>
+<li>fix: use HTML comments for embedded node serialization in markdown</li>
+<li>fix: re-enable html:true in markdown plugin</li>
+<li>fix: richtext editor saves as HTML instead of markdown</li>
+<li>fix: enable HTML in markdown parser so embedded nodes survive roundtrip</li>
+<li>fix: uploaded files preserve original filename</li>
+<li>fix: video dialog, AI bubble menu, interactive embed serialization</li>
+<li>fix: Interactive picker shows titles, embed survives markdown roundtrip</li>
+<li>fix: all custom modals and panels close on Escape key</li>
+<li>fix: add confirmation dialogs to all delete/remove actions</li>
+<li>fix: Media Library browser closes on Escape</li>
+<li>fix: image field preview uses proxy for non-absolute URLs</li>
+<li>fix: dropdown menus no longer clipped on Media and Collection lists</li>
+<li>fix: dropdown menu no longer clipped by card overflow-hidden</li>
+<li>fix: Media usage scanning works for all media paths, not just /uploads/</li>
+<li>fix: Content sidebar toggle persists state in localStorage</li>
+<li>fix: move Interactives menu item below Content, before Media</li>
+<li>fix: Interactives Properties panel closes on Escape</li>
+<li>fix: Media Manager uses proper icons per media type</li>
+<li>fix: Interactives top bar uses same Button components and icon sizes as editor</li>
+<li>fix: Interactives top bar matches document editor exactly</li>
+<li>fix: Interactives detail page sets tab title to interactive name</li>
+<li>fix: Media Manager uses site preview URL, excludes interactives</li>
+<li>fix: GitHub media proxy handles files &gt;1MB and uses correct Content-Type</li>
+<li>fix: GitHub sites use local cache dir for media/interactives storage</li>
+<li>fix: Interactives API uses getActiveSitePaths() for site-scoped storage</li>
+<li>fix: F38 uses built-in port scanner, no Code Launcher dependency</li>
+<li>fix: close Properties and Revision panels with Escape key</li>
+<li>fix: auto-reload PostgREST schema cache after migrate</li>
+<li>fix: enable RLS with proper policies instead of disabling</li>
+<li>fix: use service role key for all Supabase operations + add test script</li>
+<li>fix: new-site screenshot navigates via sidebar instead of direct URL</li>
+<li>fix: screenshot agent uses sidebar navigation + dynamic collections</li>
+<li>fix: type curation status as DocumentStatus literal for Docker build</li>
+<li>fix: cast trashed status comparison in stats route for Docker build</li>
+<li>fix: Docker build — add .pnpmfile.cjs COPY and fix trashed status type</li>
+<li>fix: standalone Docker admin Dockerfile with complete workspace support</li>
+</ul>
+<h3>Other Changes</h3>
+<ul>
+<li>chore: release v0.2.8</li>
+<li>chore: bump all packages to 0.2.7, cms-admin to 0.2.0</li>
+<li>docs: reorder Tier 1 roadmap, add Claude Code toolkit to F42</li>
+<li>docs: prioritized roadmap with 4 tiers and product milestones</li>
+<li>chore: add knip code audit tool and initial report</li>
+<li>chore: F41 code review cleanup</li>
+<li>docs: content push architecture + two boilerplates in F42</li>
+<li>docs: CLAUDE.md — react-markdown as standard richtext renderer</li>
+<li>revert: back to markdown serialization for richtext fields</li>
+<li>docs: mark TipTap interactiveEmbed node as done in F39</li>
+<li>docs: update F39 with checkboxes tracking implementation progress</li>
+<li>docs: update Docker command to Docker Hub + add link</li>
+<li>docs: add sections 3-8 to cms CLAUDE.md (relationships, SEO, images, i18n, deployment, troubleshooting)</li>
+<li>docs: add Common Mistakes, Site Building Patterns, and SEO guide to CLAUDE.md</li>
+<li>docs: note that richtext fields expect markdown, not HTML</li>
+<li>docs: add audio field type, richtext embedded media, and rendering guide to CLAUDE.md</li>
+<li>docs: clean up ROADMAP — 22 done, 34 features indexed</li>
+<li>docs: add admin UI screenshots to README</li>
+<li>docs: update FEATURES.md and add ARTICLES.md and TECH.md with new content</li>
+<li>docs: ROADMAP — all 10 overnight tasks complete</li>
+<li>docs: ROADMAP overnight update — 9 of 10 tasks done</li>
+<li>docs: add 31 detailed feature plan documents (F01-F34)</li>
+<li>docs: update ROADMAP — #23 screenshot agent done</li>
+<li>docs: update ROADMAP — #22 Supabase adapter done</li>
+<li>docs: update ROADMAP — #16, #18 done, #17, #22, #23 still in progress</li>
+<li>docs: update ROADMAP — #15, #21, #24 done, #16-18, #22-23 in progress</li>
+<li>docs: numbered feature roadmap with 34 features</li>
+<li>docs: add numbered ROADMAP.md with full project status</li>
+<li>docs: update OpenAPI spec to v0.2.6</li>
+<li>docs: expand CLI section and add REST API documentation to README</li>
+<li>docs: add global CLI install instructions to README</li>
+<li>Refactor code structure for improved readability and maintainability</li>
+<li>docs: complete README rewrite with all 4 admin options</li>
+</ul>
+
+  </div>
+</article>
+    </div>
+  </main>
+  <footer>
+    <div class="container">
+      <p>Built with @webhouse/cms</p>
+    </div>
+  </footer>
+</body>
+</html>

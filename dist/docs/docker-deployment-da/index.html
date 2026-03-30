@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Docker-udrulning — webhouse.app Docs — My Site</title>
+  <meta name="description" content="Deploy @webhouse/cms med Docker — kombineret eller opdelt arkitektur, Docker Hub, GitHub Container Registry og Fly.io.">
+  <meta property="og:title" content="Docker-udrulning — webhouse.app Docs — My Site">
+  <meta property="og:description" content="Deploy @webhouse/cms med Docker — kombineret eller opdelt arkitektur, Docker Hub, GitHub Container Registry og Fly.io.">
+  <meta property="og:type" content="website">
+  
+  <link rel="canonical" href="https://docs.webhouse.app/docs/docker-deployment-da/">
+  
+  
+  <style>
+    :root {
+      --color-bg: #ffffff;
+      --color-fg: #111827;
+      --color-primary: #2563eb;
+      --color-muted: #6b7280;
+      --color-border: #e5e7eb;
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-mono: 'Courier New', monospace;
+      --font-size-base: 1rem;
+      --line-height-base: 1.7;
+      --spacing-base: 1rem;
+      --spacing-section: clamp(2rem, 5vw, 4rem);
+      --max-width: 72rem;
+      --radius: 0.5rem;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font-sans); background: var(--color-bg); color: var(--color-fg); font-size: var(--font-size-base); line-height: var(--line-height-base); }
+    a { color: var(--color-primary); }
+    img { max-width: 100%; height: auto; }
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 var(--spacing-base); }
+    header { border-bottom: 1px solid var(--color-border); padding: 1rem 0; margin-bottom: 2rem; }
+    header nav { display: flex; align-items: center; flex-wrap: wrap; position: relative; }
+    header .site-title { font-weight: 700; font-size: 1.25rem; text-decoration: none; color: var(--color-fg); flex: 1; }
+    .nav-toggle { display: none; }
+    .nav-burger { display: flex; flex-direction: column; gap: 4px; cursor: pointer; padding: 0.5rem; margin: -0.5rem; }
+    .nav-burger span { display: block; width: 20px; height: 2px; background: var(--color-fg); transition: transform 0.2s, opacity 0.2s; }
+    .nav-links { display: none; width: 100%; flex-direction: column; gap: 0; padding-top: 0.75rem; }
+    .nav-toggle:checked ~ .nav-links { display: flex; }
+    .nav-toggle:checked ~ .nav-burger span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
+    .nav-toggle:checked ~ .nav-burger span:nth-child(2) { opacity: 0; }
+    .nav-toggle:checked ~ .nav-burger span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4px); }
+    header nav a.nav-link { text-decoration: none; color: var(--color-muted); font-size: 0.9375rem; transition: color 0.15s; padding: 0.75rem 0; display: block; }
+    header nav a.nav-link:hover { color: var(--color-fg); }
+    @media (min-width: 768px) {
+      .nav-burger { display: none; }
+      .nav-links { display: flex; width: auto; flex-direction: row; gap: 2rem; padding-top: 0; margin-left: 2rem; }
+      header nav a.nav-link { padding: 0; display: inline; }
+    }
+    main { padding: var(--spacing-section) 0; }
+    footer { border-top: 1px solid var(--color-border); padding: 1.5rem 0; margin-top: var(--spacing-section); color: var(--color-muted); font-size: 0.875rem; }
+    .prose h1 { font-size: clamp(1.75rem, 4vw, 2.25rem); font-weight: 800; line-height: 1.2; margin-bottom: 1rem; }
+    .prose h2 { font-size: clamp(1.25rem, 3vw, 1.5rem); font-weight: 700; margin: 2rem 0 0.75rem; }
+    .prose h3 { font-size: clamp(1.1rem, 2.5vw, 1.25rem); font-weight: 600; margin: 1.5rem 0 0.5rem; }
+    .prose p { margin-bottom: 1.25rem; }
+    .prose pre { background: #1e293b; color: #e2e8f0; padding: 1rem; border-radius: var(--radius); overflow-x: auto; margin-bottom: 1.25rem; font-family: var(--font-mono); font-size: clamp(0.75rem, 1.5vw, 0.875rem); }
+    .prose code { background: #f1f5f9; padding: 0.125rem 0.375rem; border-radius: 0.25rem; font-family: var(--font-mono); font-size: 0.875em; }
+    .prose pre code { background: none; padding: 0; }
+    .prose ul, .prose ol { padding-left: 1.5rem; margin-bottom: 1.25rem; }
+    .prose li { margin-bottom: 0.375rem; }
+    .prose blockquote { border-left: 4px solid var(--color-primary); padding-left: 1rem; margin: 1.5rem 0; color: var(--color-muted); }
+    .prose img { border-radius: var(--radius); margin: 1.5rem 0; }
+    .card-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
+    @media (min-width: 640px) {
+      .card-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+    }
+    .card { border: 1px solid var(--color-border); border-radius: var(--radius); padding: 1.5rem; transition: box-shadow 0.2s; }
+    .card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+    .card h2 { font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .card h2 a { text-decoration: none; color: var(--color-fg); }
+    .card h2 a:hover { color: var(--color-primary); }
+    .card .meta { color: var(--color-muted); font-size: 0.875rem; margin-bottom: 0.75rem; }
+    .card .excerpt { color: var(--color-muted); font-size: 0.9375rem; }
+    .hero { padding: var(--spacing-section) 0; text-align: center; }
+    .hero h1 { font-size: clamp(2rem, 6vw, 3rem); font-weight: 800; margin-bottom: 1rem; }
+    .hero p { font-size: clamp(1rem, 2.5vw, 1.25rem); color: var(--color-muted); max-width: 42rem; margin: 0 auto 2rem; }
+    .btn { display: inline-block; padding: 0.75rem 1.5rem; background: var(--color-primary); color: #fff; border-radius: var(--radius); text-decoration: none; font-weight: 600; }
+    .btn:hover { opacity: 0.9; }
+    .post-header { margin-bottom: 2rem; }
+    .post-header h1 { font-size: clamp(1.75rem, 5vw, 2.5rem); font-weight: 800; line-height: 1.2; margin-bottom: 0.5rem; }
+    .post-meta { color: var(--color-muted); font-size: 0.875rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <a href="/" class="site-title">My Site</a>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
+        <label for="nav-toggle" class="nav-burger" aria-label="Menu"><span></span><span></span><span></span></label>
+        <div class="nav-links">
+          <a href="/docs/" class="nav-link">Documentation</a>
+<a href="/changelog/" class="nav-link">Changelog</a>
+<a href="/snippets/" class="nav-link">Shared Snippets</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      
+<article>
+  <header class="post-header">
+    <h1>Docker-udrulning</h1>
+    <p class="post-meta">30. marts 2026</p>
+    
+  </header>
+  <div class="prose">
+    <h2>To udrulningsmodeller</h2>
+<p>@webhouse/cms understøtter to Docker-udrulningsarkitekturer:</p>
+<h3>Model 1: Kombineret (alt-i-én)</h3>
+<p>CMS admin + dit site i én container. Simpleste setup — ét deploy, én URL, én server.</p>
+<pre><code>┌─────────────────────────────────┐
+│         Docker Container         │
+│                                  │
+│  ┌──────────┐  ┌──────────────┐ │
+│  │ CMS Admin│  │  Dit Site    │ │
+│  │ :3010    │  │  :3000       │ │
+│  └──────────┘  └──────────────┘ │
+│         │              │         │
+│         └──── /content ──────┘  │
+│         (delt filsystem)        │
+└─────────────────────────────────┘
+</code></pre>
+<p><strong>Bedst til:</strong> Solo-projekter, prototyping, små sites.</p>
+<h3>Model 2: Opdelt (to containere)</h3>
+<p>CMS admin på én server, dit site på en anden. Sitet modtager indholdsopdateringer via signerede webhooks.</p>
+<pre><code>┌─────────────┐    webhook     ┌─────────────┐
+│  CMS Admin  │ ──────────────→│  Dit Site    │
+│  :3010      │   content push │  :3000       │
+│  fly.io/a   │                │  fly.io/b    │
+└─────────────┘                └─────────────┘
+</code></pre>
+<p><strong>Bedst til:</strong> Produktionssites, teams, uafhængig skalering.</p>
+<hr>
+<h2>Container images</h2>
+<pre><code class="language-bash"># Hent fra GitHub Container Registry
+docker pull ghcr.io/webhousecode/cms-admin:latest
+
+# Kør med dit sites content-mappe mounted
+docker run -p 3010:3010 \
+  -v $(pwd)/cms.config.ts:/app/cms.config.ts \
+  -v $(pwd)/content:/app/content \
+  ghcr.io/webhousecode/cms-admin:latest
+</code></pre>
+<hr>
+<h2>Deploy til Fly.io</h2>
+<h3>Kombineret (én app)</h3>
+<pre><code class="language-bash">fly apps create my-site
+fly deploy --now
+</code></pre>
+<h3>Opdelt (to apps)</h3>
+<pre><code class="language-bash"># Deploy CMS admin
+cd admin/ &amp;&amp; fly apps create my-site-admin &amp;&amp; fly deploy --now
+
+# Deploy site
+cd site/ &amp;&amp; fly apps create my-site &amp;&amp; fly deploy --now
+
+# Konfigurér webhook: CMS admin → site
+# I CMS admin → Site Settings → Revalidation
+</code></pre>
+<hr>
+<h2>Første opstart: auto-oprettet admin-konto</h2>
+<p>Ved første start opretter CMS admin automatisk en standard admin-konto. Sæt det initiale password via miljøvariabel:</p>
+<pre><code class="language-bash">fly secrets set ADMIN_PASSWORD=$(openssl rand -hex 16)
+</code></pre>
+<hr>
+<h2>Miljøvariabler</h2>
+<table>
+<thead>
+<tr>
+<th>Variabel</th>
+<th>Påkrævet</th>
+<th>Beskrivelse</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ADMIN_PASSWORD</code></td>
+<td>Første start</td>
+<td>Initialt admin-password</td>
+</tr>
+<tr>
+<td><code>ANTHROPIC_API_KEY</code></td>
+<td>AI-funktioner</td>
+<td>Claude API-nøgle</td>
+</tr>
+<tr>
+<td><code>REVALIDATE_SECRET</code></td>
+<td>Opdelt mode</td>
+<td>Webhook HMAC-secret</td>
+</tr>
+<tr>
+<td><code>GITHUB_TOKEN</code></td>
+<td>GitHub-adapter</td>
+<td>Fine-grained PAT</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>Hurtigreference</h2>
+<table>
+<thead>
+<tr>
+<th>Opgave</th>
+<th>Kommando</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Hent seneste image</td>
+<td><code>docker pull ghcr.io/webhousecode/cms-admin:latest</code></td>
+</tr>
+<tr>
+<td>Kør lokalt</td>
+<td><code>docker run -p 3010:3010 -v $(pwd):/app ghcr.io/webhousecode/cms-admin</code></td>
+</tr>
+<tr>
+<td>Deploy til Fly.io</td>
+<td><code>fly deploy --now</code></td>
+</tr>
+<tr>
+<td>Sæt secrets</td>
+<td><code>fly secrets set KEY=value</code></td>
+</tr>
+<tr>
+<td>Se logs</td>
+<td><code>fly logs</code></td>
+</tr>
+</tbody></table>
+
+  </div>
+</article>
+    </div>
+  </main>
+  <footer>
+    <div class="container">
+      <p>Built with @webhouse/cms</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -3,7 +3,7 @@
   "slug": "shared-snippets-da",
   "status": "published",
   "locale": "da",
-  "translationGroup": "dda91266-cbb4-4ffc-af1d-de6f569eace2",
+  "translationGroup": "741a83d7-eb8d-414e-8788-ddaa1c862bb0",
   "data": {
     "title": "Delte Snippets — Genbrugelige kodeblokke",
     "description": "Sådan byggede vi et delt snippet-system til docs.webhouse.app med vores eget CMS — og hvordan du kan gøre det samme.",

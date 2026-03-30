@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guide to build.ts — Static Site Generation — webhouse.app Docs — My Site</title>
+  <meta name="description" content="Step-by-step guide to building the perfect build.ts for a static HTML site powered by @webhouse/cms.">
+  <meta property="og:title" content="Guide to build.ts — Static Site Generation — webhouse.app Docs — My Site">
+  <meta property="og:description" content="Step-by-step guide to building the perfect build.ts for a static HTML site powered by @webhouse/cms.">
+  <meta property="og:type" content="website">
+  
+  <link rel="canonical" href="https://docs.webhouse.app/docs/build-guide/">
+  
+  
+  <style>
+    :root {
+      --color-bg: #ffffff;
+      --color-fg: #111827;
+      --color-primary: #2563eb;
+      --color-muted: #6b7280;
+      --color-border: #e5e7eb;
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-mono: 'Courier New', monospace;
+      --font-size-base: 1rem;
+      --line-height-base: 1.7;
+      --spacing-base: 1rem;
+      --spacing-section: clamp(2rem, 5vw, 4rem);
+      --max-width: 72rem;
+      --radius: 0.5rem;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font-sans); background: var(--color-bg); color: var(--color-fg); font-size: var(--font-size-base); line-height: var(--line-height-base); }
+    a { color: var(--color-primary); }
+    img { max-width: 100%; height: auto; }
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 var(--spacing-base); }
+    header { border-bottom: 1px solid var(--color-border); padding: 1rem 0; margin-bottom: 2rem; }
+    header nav { display: flex; align-items: center; flex-wrap: wrap; position: relative; }
+    header .site-title { font-weight: 700; font-size: 1.25rem; text-decoration: none; color: var(--color-fg); flex: 1; }
+    .nav-toggle { display: none; }
+    .nav-burger { display: flex; flex-direction: column; gap: 4px; cursor: pointer; padding: 0.5rem; margin: -0.5rem; }
+    .nav-burger span { display: block; width: 20px; height: 2px; background: var(--color-fg); transition: transform 0.2s, opacity 0.2s; }
+    .nav-links { display: none; width: 100%; flex-direction: column; gap: 0; padding-top: 0.75rem; }
+    .nav-toggle:checked ~ .nav-links { display: flex; }
+    .nav-toggle:checked ~ .nav-burger span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
+    .nav-toggle:checked ~ .nav-burger span:nth-child(2) { opacity: 0; }
+    .nav-toggle:checked ~ .nav-burger span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4px); }
+    header nav a.nav-link { text-decoration: none; color: var(--color-muted); font-size: 0.9375rem; transition: color 0.15s; padding: 0.75rem 0; display: block; }
+    header nav a.nav-link:hover { color: var(--color-fg); }
+    @media (min-width: 768px) {
+      .nav-burger { display: none; }
+      .nav-links { display: flex; width: auto; flex-direction: row; gap: 2rem; padding-top: 0; margin-left: 2rem; }
+      header nav a.nav-link { padding: 0; display: inline; }
+    }
+    main { padding: var(--spacing-section) 0; }
+    footer { border-top: 1px solid var(--color-border); padding: 1.5rem 0; margin-top: var(--spacing-section); color: var(--color-muted); font-size: 0.875rem; }
+    .prose h1 { font-size: clamp(1.75rem, 4vw, 2.25rem); font-weight: 800; line-height: 1.2; margin-bottom: 1rem; }
+    .prose h2 { font-size: clamp(1.25rem, 3vw, 1.5rem); font-weight: 700; margin: 2rem 0 0.75rem; }
+    .prose h3 { font-size: clamp(1.1rem, 2.5vw, 1.25rem); font-weight: 600; margin: 1.5rem 0 0.5rem; }
+    .prose p { margin-bottom: 1.25rem; }
+    .prose pre { background: #1e293b; color: #e2e8f0; padding: 1rem; border-radius: var(--radius); overflow-x: auto; margin-bottom: 1.25rem; font-family: var(--font-mono); font-size: clamp(0.75rem, 1.5vw, 0.875rem); }
+    .prose code { background: #f1f5f9; padding: 0.125rem 0.375rem; border-radius: 0.25rem; font-family: var(--font-mono); font-size: 0.875em; }
+    .prose pre code { background: none; padding: 0; }
+    .prose ul, .prose ol { padding-left: 1.5rem; margin-bottom: 1.25rem; }
+    .prose li { margin-bottom: 0.375rem; }
+    .prose blockquote { border-left: 4px solid var(--color-primary); padding-left: 1rem; margin: 1.5rem 0; color: var(--color-muted); }
+    .prose img { border-radius: var(--radius); margin: 1.5rem 0; }
+    .card-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
+    @media (min-width: 640px) {
+      .card-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+    }
+    .card { border: 1px solid var(--color-border); border-radius: var(--radius); padding: 1.5rem; transition: box-shadow 0.2s; }
+    .card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+    .card h2 { font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .card h2 a { text-decoration: none; color: var(--color-fg); }
+    .card h2 a:hover { color: var(--color-primary); }
+    .card .meta { color: var(--color-muted); font-size: 0.875rem; margin-bottom: 0.75rem; }
+    .card .excerpt { color: var(--color-muted); font-size: 0.9375rem; }
+    .hero { padding: var(--spacing-section) 0; text-align: center; }
+    .hero h1 { font-size: clamp(2rem, 6vw, 3rem); font-weight: 800; margin-bottom: 1rem; }
+    .hero p { font-size: clamp(1rem, 2.5vw, 1.25rem); color: var(--color-muted); max-width: 42rem; margin: 0 auto 2rem; }
+    .btn { display: inline-block; padding: 0.75rem 1.5rem; background: var(--color-primary); color: #fff; border-radius: var(--radius); text-decoration: none; font-weight: 600; }
+    .btn:hover { opacity: 0.9; }
+    .post-header { margin-bottom: 2rem; }
+    .post-header h1 { font-size: clamp(1.75rem, 5vw, 2.5rem); font-weight: 800; line-height: 1.2; margin-bottom: 0.5rem; }
+    .post-meta { color: var(--color-muted); font-size: 0.875rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <a href="/" class="site-title">My Site</a>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
+        <label for="nav-toggle" class="nav-burger" aria-label="Menu"><span></span><span></span><span></span></label>
+        <div class="nav-links">
+          <a href="/docs/" class="nav-link">Documentation</a>
+<a href="/changelog/" class="nav-link">Changelog</a>
+<a href="/snippets/" class="nav-link">Shared Snippets</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      
+<article>
+  <header class="post-header">
+    <h1>Guide to build.ts — Static Site Generation</h1>
+    <p class="post-meta">March 30, 2026</p>
+    
+  </header>
+  <div class="prose">
+    <h2>What is build.ts?</h2>
+<p><code>build.ts</code> is a custom static site generator that reads your CMS content (JSON files) and outputs plain HTML. No framework, no runtime JavaScript — just HTML + CSS that works everywhere.</p>
+<pre><code class="language-bash">npx tsx build.ts    # Generate dist/
+</code></pre>
+<h2>Lesson 1: Load content</h2>
+<p>The foundation — read JSON files from <code>content/</code>:</p>
+<pre><code class="language-typescript">import { readFileSync, readdirSync, existsSync } from &#39;node:fs&#39;;
+import { join } from &#39;node:path&#39;;
+
+const CONTENT = join(import.meta.dirname, &#39;content&#39;);
+
+function getCollection(name: string) {
+  const dir = join(CONTENT, name);
+  if (!existsSync(dir)) return [];
+  return readdirSync(dir)
+    .filter(f =&gt; f.endsWith(&#39;.json&#39;))
+    .map(f =&gt; JSON.parse(readFileSync(join(dir, f), &#39;utf-8&#39;)))
+    .filter(d =&gt; d.status === &#39;published&#39;);
+}
+
+function getDocument(collection: string, slug: string) {
+  const file = join(CONTENT, collection, slug + &#39;.json&#39;);
+  if (!existsSync(file)) return null;
+  return JSON.parse(readFileSync(file, &#39;utf-8&#39;));
+}
+</code></pre>
+<h2>Lesson 2: Render markdown</h2>
+<p>Convert richtext content to HTML:</p>
+<pre><code class="language-typescript">import { marked } from &#39;marked&#39;;
+
+function renderMarkdown(content: string): string {
+  return marked.parse(content, { async: false }) as string;
+}
+</code></pre>
+<h2>Lesson 3: HTML template</h2>
+<p>Wrap content in a complete HTML document:</p>
+<pre><code class="language-typescript">function htmlPage(title: string, body: string, css: string): string {
+  return `&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;title&gt;${title}&lt;/title&gt;
+  &lt;style&gt;${css}&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  ${body}
+&lt;/body&gt;
+&lt;/html&gt;`;
+}
+</code></pre>
+<h2>Lesson 4: Build a page</h2>
+<p>Combine content loading, markdown rendering, and HTML template:</p>
+<pre><code class="language-typescript">function buildPage(doc: any, css: string): string {
+  const title = doc.data.title;
+  const content = renderMarkdown(doc.data.content || &#39;&#39;);
+  const body = `
+    &lt;article&gt;
+      &lt;h1&gt;${title}&lt;/h1&gt;
+      ${content}
+    &lt;/article&gt;
+  `;
+  return htmlPage(title, body, css);
+}
+</code></pre>
+<h2>Lesson 5: Render blocks</h2>
+<p>If your pages use blocks (hero, features, CTA), render each block type:</p>
+<pre><code class="language-typescript">interface Block { _block: string; [key: string]: unknown; }
+
+function renderBlock(block: Block): string {
+  switch (block._block) {
+    case &#39;hero&#39;:
+      return `&lt;section class=&quot;hero&quot;&gt;
+        &lt;h1&gt;${block.tagline}&lt;/h1&gt;
+        &lt;p&gt;${block.description}&lt;/p&gt;
+      &lt;/section&gt;`;
+    case &#39;features&#39;:
+      const items = (block.items as any[]) || [];
+      return `&lt;section class=&quot;features&quot;&gt;
+        &lt;h2&gt;${block.title}&lt;/h2&gt;
+        &lt;div class=&quot;grid&quot;&gt;
+          ${items.map(i =&gt; `&lt;div&gt;&lt;h3&gt;${i.title}&lt;/h3&gt;&lt;p&gt;${i.description}&lt;/p&gt;&lt;/div&gt;`).join(&#39;&#39;)}
+        &lt;/div&gt;
+      &lt;/section&gt;`;
+    case &#39;cta&#39;:
+      return `&lt;section class=&quot;cta&quot;&gt;
+        &lt;h2&gt;${block.title}&lt;/h2&gt;
+        &lt;a href=&quot;${block.buttonUrl}&quot;&gt;${block.buttonText}&lt;/a&gt;
+      &lt;/section&gt;`;
+    default:
+      return &#39;&#39;;
+  }
+}
+
+function renderBlocks(blocks: Block[]): string {
+  return blocks.map(renderBlock).join(&#39;\n&#39;);
+}
+</code></pre>
+<h2>Lesson 6: SEO metadata</h2>
+<p>Extract SEO fields and generate meta tags:</p>
+<pre><code class="language-typescript">function seoTags(doc: any): string {
+  const seo = doc.data._seo || {};
+  const title = seo.metaTitle || doc.data.title;
+  const desc = seo.metaDescription || doc.data.excerpt || &#39;&#39;;
+  return `
+    &lt;title&gt;${title}&lt;/title&gt;
+    &lt;meta name=&quot;description&quot; content=&quot;${desc}&quot;&gt;
+    &lt;meta property=&quot;og:title&quot; content=&quot;${title}&quot;&gt;
+    &lt;meta property=&quot;og:description&quot; content=&quot;${desc}&quot;&gt;
+    ${seo.ogImage ? `&lt;meta property=&quot;og:image&quot; content=&quot;${seo.ogImage}&quot;&gt;` : &#39;&#39;}
+  `;
+}
+</code></pre>
+<h2>Lesson 7: Write output</h2>
+<p>Generate files to <code>dist/</code>:</p>
+<pre><code class="language-typescript">import { writeFileSync, mkdirSync } from &#39;node:fs&#39;;
+
+const DIST = join(import.meta.dirname, &#39;dist&#39;);
+
+function writePage(urlPath: string, html: string) {
+  const dir = join(DIST, urlPath);
+  mkdirSync(dir, { recursive: true });
+  writeFileSync(join(dir, &#39;index.html&#39;), html);
+}
+
+// Build all pages
+const posts = getCollection(&#39;posts&#39;);
+for (const post of posts) {
+  const html = buildPage(post, css);
+  writePage(`/blog/${post.slug}`, html);
+}
+</code></pre>
+<h2>Lesson 8: Sitemap</h2>
+<p>Generate <code>sitemap.xml</code> for search engines:</p>
+<pre><code class="language-typescript">function generateSitemap(baseUrl: string, pages: string[]): string {
+  const urls = pages.map(p =&gt;
+    `  &lt;url&gt;&lt;loc&gt;${baseUrl}${p}&lt;/loc&gt;&lt;/url&gt;`
+  ).join(&#39;\n&#39;);
+  return `&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;urlset xmlns=&quot;http://www.sitemaps.org/schemas/sitemap/0.9&quot;&gt;
+${urls}
+&lt;/urlset&gt;`;
+}
+</code></pre>
+<h2>Lesson 9: Resolve snippets</h2>
+<p>Add snippet support to your build:</p>
+<pre><code class="language-typescript">function resolveSnippets(markdown: string): string {
+  return markdown.replace(
+    /\{\{snippet:([a-z0-9-]+)\}\}/g,
+    (_match, slug) =&gt; {
+      const snippet = getDocument(&#39;snippets&#39;, slug);
+      if (!snippet) return &#39;&#39;;
+      return &#39;\x60\x60\x60&#39; + (snippet.data.lang || &#39;text&#39;) +
+        &#39;\n&#39; + snippet.data.code + &#39;\n\x60\x60\x60&#39;;
+    }
+  );
+}
+
+// Use in your build pipeline:
+const content = resolveSnippets(doc.data.content);
+const html = renderMarkdown(content);
+</code></pre>
+<h2>Lesson 10: Copy static assets</h2>
+<p>Copy uploads and public files:</p>
+<pre><code class="language-typescript">import { cpSync } from &#39;node:fs&#39;;
+
+// Copy uploads
+cpSync(join(import.meta.dirname, &#39;public&#39;, &#39;uploads&#39;),
+       join(DIST, &#39;uploads&#39;), { recursive: true });
+
+// Copy favicon
+cpSync(join(import.meta.dirname, &#39;public&#39;, &#39;favicon.svg&#39;),
+       join(DIST, &#39;favicon.svg&#39;));
+</code></pre>
+<h2>The complete build pipeline</h2>
+<p>Putting it all together:</p>
+<pre><code class="language-typescript">// 1. Load CSS (inline in HTML)
+const css = readFileSync(&#39;styles.css&#39;, &#39;utf-8&#39;);
+
+// 2. Build collection index pages
+const posts = getCollection(&#39;posts&#39;);
+writePage(&#39;/blog&#39;, buildListPage(&#39;Blog&#39;, posts, css));
+
+// 3. Build individual pages
+for (const post of posts) {
+  writePage(`/blog/${post.slug}`, buildPage(post, css));
+}
+
+// 4. Build homepage
+const home = getDocument(&#39;pages&#39;, &#39;home&#39;);
+if (home) writePage(&#39;/&#39;, buildPage(home, css));
+
+// 5. Generate sitemap
+const allPaths = [&#39;/&#39;].concat(posts.map(p =&gt; `/blog/${p.slug}`));
+writeFileSync(join(DIST, &#39;sitemap.xml&#39;), generateSitemap(BASE_URL, allPaths));
+
+// 6. Copy assets
+cpSync(&#39;public/uploads&#39;, join(DIST, &#39;uploads&#39;), { recursive: true });
+
+console.log(&#39;Built &#39; + allPaths.length + &#39; pages&#39;);
+</code></pre>
+<h2>Next steps</h2>
+<ul>
+<li><a href="/docs/templates">Templates</a> — start from a working boilerplate instead of scratch</li>
+<li><a href="/docs/nextjs-patterns">Next.js Patterns</a> — if you want React instead of static HTML</li>
+<li><a href="/docs/shared-snippets">Shared Snippets</a> — reusable code blocks across pages</li>
+</ul>
+
+  </div>
+</article>
+    </div>
+  </main>
+  <footer>
+    <div class="container">
+      <p>Built with @webhouse/cms</p>
+    </div>
+  </footer>
+</body>
+</html>

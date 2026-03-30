@@ -1,0 +1,22 @@
+{
+  "schema_version": "v1",
+  "name_for_model": "site",
+  "name_for_human": "Site CMS",
+  "description_for_model": "Access published content from Site. Use get_site_summary first to discover available collections, then list_collection or search_content to find relevant content, and get_page to retrieve full documents.",
+  "description_for_human": "Published content from Site",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "mcp",
+    "url": "https://docs.webhouse.app/mcp"
+  },
+  "mcp": {
+    "endpoint": "https://docs.webhouse.app/mcp",
+    "transport": "sse",
+    "info": "https://docs.webhouse.app/mcp/info"
+  },
+  "logo_url": "https://docs.webhouse.app/favicon.ico",
+  "contact_email": "",
+  "legal_info_url": ""
+}

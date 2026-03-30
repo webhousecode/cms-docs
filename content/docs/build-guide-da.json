@@ -3,7 +3,7 @@
   "slug": "build-guide-da",
   "status": "published",
   "locale": "da",
-  "translationGroup": "af8f1055-a4bf-43f9-9183-25f1430fb5a9",
+  "translationGroup": "607d840a-e643-467b-8bd4-b7f5535bde93",
   "data": {
     "title": "Guide til build.ts — Statisk site-generering",
     "description": "Trin-for-trin guide til at bygge den perfekte build.ts til et statisk HTML-site drevet af @webhouse/cms.",

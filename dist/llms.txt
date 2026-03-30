@@ -1,0 +1,34 @@
+# Site
+
+## MCP Access
+- MCP endpoint: https://docs.webhouse.app/mcp
+- Protocol: Model Context Protocol (SSE transport)
+- Auth: none required
+- Docs: https://docs.webhouse.app/mcp/info
+
+## Collections
+- docs: Documentation (51 published documents)
+- changelog: Changelog (13 published documents)
+- snippets: Shared Snippets (15 published documents)
+
+## Recent Content
+- [Docker-udrulning](https://docs.webhouse.app/docs/docker-deployment-da)
+- [Docker Deployment](https://docs.webhouse.app/docs/docker-deployment)
+- [Guide til build.ts — Statisk site-generering](https://docs.webhouse.app/docs/build-guide-da)
+- [Next.js integrationsguide](https://docs.webhouse.app/docs/nextjs-guide-da)
+- [Next.js Integration Guide](https://docs.webhouse.app/docs/nextjs-guide)
+- [Guide to build.ts — Static Site Generation](https://docs.webhouse.app/docs/build-guide)
+- [Delte Snippets — Genbrugelige kodeblokke](https://docs.webhouse.app/docs/shared-snippets-da)
+- [Shared Snippets — Reusable Code Blocks](https://docs.webhouse.app/docs/shared-snippets)
+- [Konfigurationsreference](https://docs.webhouse.app/docs/config-reference-da)
+- [Configuration Reference](https://docs.webhouse.app/docs/config-reference)
+- [Next.js-mønstre](https://docs.webhouse.app/docs/nextjs-patterns-da)
+- [Next.js Patterns](https://docs.webhouse.app/docs/nextjs-patterns)
+- [Hurtig start](https://docs.webhouse.app/docs/quick-start-da)
+- [Quick Start](https://docs.webhouse.app/docs/quick-start)
+- [AI content generation](https://docs.webhouse.app/snippets/ai-generate)
+- [Block renderer](https://docs.webhouse.app/snippets/block-renderer)
+- [Fly.io deployment](https://docs.webhouse.app/snippets/deploy-fly)
+- [i18n configuration](https://docs.webhouse.app/snippets/i18n-config)
+- [Next.js blog listing page](https://docs.webhouse.app/snippets/nextjs-blog-page)
+- [Next.js blog post page](https://docs.webhouse.app/snippets/nextjs-post-page)

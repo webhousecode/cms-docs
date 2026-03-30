@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Richtext Editor — webhouse.app Docs — My Site</title>
+  <meta name="description" content="TipTap-based rich text editor with embedded media, callouts, tables, code blocks, and AI features.">
+  <meta property="og:title" content="Richtext Editor — webhouse.app Docs — My Site">
+  <meta property="og:description" content="TipTap-based rich text editor with embedded media, callouts, tables, code blocks, and AI features.">
+  <meta property="og:type" content="website">
+  
+  <link rel="canonical" href="https://docs.webhouse.app/docs/richtext/">
+  
+  
+  <style>
+    :root {
+      --color-bg: #ffffff;
+      --color-fg: #111827;
+      --color-primary: #2563eb;
+      --color-muted: #6b7280;
+      --color-border: #e5e7eb;
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-mono: 'Courier New', monospace;
+      --font-size-base: 1rem;
+      --line-height-base: 1.7;
+      --spacing-base: 1rem;
+      --spacing-section: clamp(2rem, 5vw, 4rem);
+      --max-width: 72rem;
+      --radius: 0.5rem;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font-sans); background: var(--color-bg); color: var(--color-fg); font-size: var(--font-size-base); line-height: var(--line-height-base); }
+    a { color: var(--color-primary); }
+    img { max-width: 100%; height: auto; }
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 var(--spacing-base); }
+    header { border-bottom: 1px solid var(--color-border); padding: 1rem 0; margin-bottom: 2rem; }
+    header nav { display: flex; align-items: center; flex-wrap: wrap; position: relative; }
+    header .site-title { font-weight: 700; font-size: 1.25rem; text-decoration: none; color: var(--color-fg); flex: 1; }
+    .nav-toggle { display: none; }
+    .nav-burger { display: flex; flex-direction: column; gap: 4px; cursor: pointer; padding: 0.5rem; margin: -0.5rem; }
+    .nav-burger span { display: block; width: 20px; height: 2px; background: var(--color-fg); transition: transform 0.2s, opacity 0.2s; }
+    .nav-links { display: none; width: 100%; flex-direction: column; gap: 0; padding-top: 0.75rem; }
+    .nav-toggle:checked ~ .nav-links { display: flex; }
+    .nav-toggle:checked ~ .nav-burger span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
+    .nav-toggle:checked ~ .nav-burger span:nth-child(2) { opacity: 0; }
+    .nav-toggle:checked ~ .nav-burger span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4px); }
+    header nav a.nav-link { text-decoration: none; color: var(--color-muted); font-size: 0.9375rem; transition: color 0.15s; padding: 0.75rem 0; display: block; }
+    header nav a.nav-link:hover { color: var(--color-fg); }
+    @media (min-width: 768px) {
+      .nav-burger { display: none; }
+      .nav-links { display: flex; width: auto; flex-direction: row; gap: 2rem; padding-top: 0; margin-left: 2rem; }
+      header nav a.nav-link { padding: 0; display: inline; }
+    }
+    main { padding: var(--spacing-section) 0; }
+    footer { border-top: 1px solid var(--color-border); padding: 1.5rem 0; margin-top: var(--spacing-section); color: var(--color-muted); font-size: 0.875rem; }
+    .prose h1 { font-size: clamp(1.75rem, 4vw, 2.25rem); font-weight: 800; line-height: 1.2; margin-bottom: 1rem; }
+    .prose h2 { font-size: clamp(1.25rem, 3vw, 1.5rem); font-weight: 700; margin: 2rem 0 0.75rem; }
+    .prose h3 { font-size: clamp(1.1rem, 2.5vw, 1.25rem); font-weight: 600; margin: 1.5rem 0 0.5rem; }
+    .prose p { margin-bottom: 1.25rem; }
+    .prose pre { background: #1e293b; color: #e2e8f0; padding: 1rem; border-radius: var(--radius); overflow-x: auto; margin-bottom: 1.25rem; font-family: var(--font-mono); font-size: clamp(0.75rem, 1.5vw, 0.875rem); }
+    .prose code { background: #f1f5f9; padding: 0.125rem 0.375rem; border-radius: 0.25rem; font-family: var(--font-mono); font-size: 0.875em; }
+    .prose pre code { background: none; padding: 0; }
+    .prose ul, .prose ol { padding-left: 1.5rem; margin-bottom: 1.25rem; }
+    .prose li { margin-bottom: 0.375rem; }
+    .prose blockquote { border-left: 4px solid var(--color-primary); padding-left: 1rem; margin: 1.5rem 0; color: var(--color-muted); }
+    .prose img { border-radius: var(--radius); margin: 1.5rem 0; }
+    .card-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
+    @media (min-width: 640px) {
+      .card-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+    }
+    .card { border: 1px solid var(--color-border); border-radius: var(--radius); padding: 1.5rem; transition: box-shadow 0.2s; }
+    .card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+    .card h2 { font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .card h2 a { text-decoration: none; color: var(--color-fg); }
+    .card h2 a:hover { color: var(--color-primary); }
+    .card .meta { color: var(--color-muted); font-size: 0.875rem; margin-bottom: 0.75rem; }
+    .card .excerpt { color: var(--color-muted); font-size: 0.9375rem; }
+    .hero { padding: var(--spacing-section) 0; text-align: center; }
+    .hero h1 { font-size: clamp(2rem, 6vw, 3rem); font-weight: 800; margin-bottom: 1rem; }
+    .hero p { font-size: clamp(1rem, 2.5vw, 1.25rem); color: var(--color-muted); max-width: 42rem; margin: 0 auto 2rem; }
+    .btn { display: inline-block; padding: 0.75rem 1.5rem; background: var(--color-primary); color: #fff; border-radius: var(--radius); text-decoration: none; font-weight: 600; }
+    .btn:hover { opacity: 0.9; }
+    .post-header { margin-bottom: 2rem; }
+    .post-header h1 { font-size: clamp(1.75rem, 5vw, 2.5rem); font-weight: 800; line-height: 1.2; margin-bottom: 0.5rem; }
+    .post-meta { color: var(--color-muted); font-size: 0.875rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <a href="/" class="site-title">My Site</a>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
+        <label for="nav-toggle" class="nav-burger" aria-label="Menu"><span></span><span></span><span></span></label>
+        <div class="nav-links">
+          <a href="/docs/" class="nav-link">Documentation</a>
+<a href="/changelog/" class="nav-link">Changelog</a>
+<a href="/snippets/" class="nav-link">Shared Snippets</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      
+<article>
+  <header class="post-header">
+    <h1>Richtext Editor</h1>
+    <p class="post-meta">March 29, 2026</p>
+    
+  </header>
+  <div class="prose">
+    <h2>Overview</h2>
+<p>Every <code>richtext</code> field uses a built-in TipTap v3 editor with full media embedding, structured content nodes, and AI assistance.</p>
+<h2>Embedded media types</h2>
+<table>
+<thead>
+<tr>
+<th>Node</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Image</strong></td>
+<td>Upload or paste. Supports resize handles and alignment.</td>
+</tr>
+<tr>
+<td><strong>Video embed</strong></td>
+<td>YouTube or Vimeo URL → responsive iframe.</td>
+</tr>
+<tr>
+<td><strong>Audio embed</strong></td>
+<td>Upload mp3/wav/ogg → inline <code>&lt;audio&gt;</code> player.</td>
+</tr>
+<tr>
+<td><strong>File attachment</strong></td>
+<td>Upload any file → download-link card.</td>
+</tr>
+<tr>
+<td><strong>Callout</strong></td>
+<td>Styled info/warning/tip/danger box with editable text.</td>
+</tr>
+<tr>
+<td><strong>Table</strong></td>
+<td>Structured data table with header row, context toolbar.</td>
+</tr>
+<tr>
+<td><strong>Code block</strong></td>
+<td>Fenced code block with syntax highlighting.</td>
+</tr>
+<tr>
+<td><strong>Interactive embed</strong></td>
+<td>Embed an Interactive from the Interactives manager.</td>
+</tr>
+</tbody></table>
+<h2>Controlling available features</h2>
+<p>Use the <code>features</code> array to control which toolbar items are shown:</p>
+<pre><code class="language-typescript">// Full-featured (default — all tools available)
+{ name: &#39;content&#39;, type: &#39;richtext&#39; }
+
+// Restricted — only basic formatting + images
+{
+  name: &#39;content&#39;,
+  type: &#39;richtext&#39;,
+  features: [&#39;bold&#39;, &#39;italic&#39;, &#39;heading&#39;, &#39;link&#39;, &#39;image&#39;, &#39;bulletList&#39;, &#39;orderedList&#39;]
+}
+
+// Minimal — text only, no media
+{
+  name: &#39;bio&#39;,
+  type: &#39;richtext&#39;,
+  features: [&#39;bold&#39;, &#39;italic&#39;, &#39;link&#39;]
+}
+</code></pre>
+<h2>All available features</h2>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Toolbar item</th>
+<th>Shortcut</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>bold</code></td>
+<td>Bold text</td>
+<td>Cmd+B</td>
+</tr>
+<tr>
+<td><code>italic</code></td>
+<td>Italic text</td>
+<td>Cmd+I</td>
+</tr>
+<tr>
+<td><code>underline</code></td>
+<td>Underline</td>
+<td>Cmd+U</td>
+</tr>
+<tr>
+<td><code>strike</code></td>
+<td>Strikethrough</td>
+<td>Cmd+Shift+S</td>
+</tr>
+<tr>
+<td><code>code</code></td>
+<td>Inline code</td>
+<td></td>
+</tr>
+<tr>
+<td><code>superscript</code></td>
+<td>Superscript (x²)</td>
+<td>Cmd+.</td>
+</tr>
+<tr>
+<td><code>subscript</code></td>
+<td>Subscript (x₂)</td>
+<td>Cmd+,</td>
+</tr>
+<tr>
+<td><code>heading</code></td>
+<td>Heading selector (H1-H3)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>bulletList</code></td>
+<td>Bullet list</td>
+<td></td>
+</tr>
+<tr>
+<td><code>orderedList</code></td>
+<td>Numbered list</td>
+<td></td>
+</tr>
+<tr>
+<td><code>blockquote</code></td>
+<td>Blockquote</td>
+<td></td>
+</tr>
+<tr>
+<td><code>horizontalRule</code></td>
+<td>Horizontal line</td>
+<td></td>
+</tr>
+<tr>
+<td><code>textAlign</code></td>
+<td>Text alignment</td>
+<td></td>
+</tr>
+<tr>
+<td><code>highlight</code></td>
+<td>Highlight with color picker</td>
+<td></td>
+</tr>
+<tr>
+<td><code>link</code></td>
+<td>Hyperlink</td>
+<td>Cmd+K</td>
+</tr>
+<tr>
+<td><code>table</code></td>
+<td>Data table</td>
+<td></td>
+</tr>
+<tr>
+<td><code>image</code></td>
+<td>Image upload/embed</td>
+<td></td>
+</tr>
+<tr>
+<td><code>video</code></td>
+<td>Video embed</td>
+<td></td>
+</tr>
+<tr>
+<td><code>audio</code></td>
+<td>Audio file upload</td>
+<td></td>
+</tr>
+<tr>
+<td><code>file</code></td>
+<td>File attachment</td>
+<td></td>
+</tr>
+<tr>
+<td><code>callout</code></td>
+<td>Info/warning/tip callout</td>
+<td></td>
+</tr>
+<tr>
+<td><code>interactive</code></td>
+<td>Interactive embed</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2>Markdown storage</h2>
+<p>Richtext fields store <strong>markdown</strong>. Standard formatting uses native markdown syntax. Features that markdown doesn&#39;t support use inline HTML:</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Stored as</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Underline</td>
+<td><code>&lt;u&gt;text&lt;/u&gt;</code></td>
+</tr>
+<tr>
+<td>Superscript</td>
+<td><code>&lt;sup&gt;text&lt;/sup&gt;</code></td>
+</tr>
+<tr>
+<td>Subscript</td>
+<td><code>&lt;sub&gt;text&lt;/sub&gt;</code></td>
+</tr>
+<tr>
+<td>Highlight</td>
+<td><code>&lt;mark style=&quot;background-color:#fde68a&quot;&gt;text&lt;/mark&gt;</code></td>
+</tr>
+<tr>
+<td>Text alignment</td>
+<td><code>&lt;p style=&quot;text-align:center&quot;&gt;text&lt;/p&gt;</code></td>
+</tr>
+<tr>
+<td>Interactive embed</td>
+<td>`!!INTERACTIVE[id</td>
+</tr>
+</tbody></table>
+<h2>Rendering in Next.js</h2>
+<p>Use <code>react-markdown</code> with <code>remark-gfm</code>:</p>
+<pre><code class="language-typescript">import ReactMarkdown from &#39;react-markdown&#39;;
+import remarkGfm from &#39;remark-gfm&#39;;
+
+function ArticleBody({ content }: { content: string }) {
+  return (
+    &lt;ReactMarkdown remarkPlugins={[remarkGfm]}&gt;
+      {content}
+    &lt;/ReactMarkdown&gt;
+  );
+}
+</code></pre>
+<blockquote>
+<p><strong>Never use <code>dangerouslySetInnerHTML</code></strong> with a regex-based parser — it breaks images with sizing, tables, and embedded media.</p>
+</blockquote>
+<h2>AI features</h2>
+<ul>
+<li><strong>AI Proofread</strong> — auto-detects language, checks spelling/grammar/style</li>
+<li><strong>AI Bubble Menu</strong> — select text for rewrite options (shorter, longer, formal, casual, translate)</li>
+<li><strong>Zoom</strong> — scale editor content 50%-200%</li>
+</ul>
+
+  </div>
+</article>
+    </div>
+  </main>
+  <footer>
+    <div class="container">
+      <p>Built with @webhouse/cms</p>
+    </div>
+  </footer>
+</body>
+</html>

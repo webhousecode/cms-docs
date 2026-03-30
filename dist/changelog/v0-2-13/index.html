@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Release v0.2.13 — webhouse.app Changelog — My Site</title>
+  <meta name="description" content="Release notes for @webhouse/cms 0.2.13">
+  <meta property="og:title" content="Release v0.2.13 — webhouse.app Changelog — My Site">
+  <meta property="og:description" content="Release notes for @webhouse/cms 0.2.13">
+  <meta property="og:type" content="website">
+  
+  <link rel="canonical" href="https://docs.webhouse.app/changelog/v0-2-13/">
+  
+  
+  <style>
+    :root {
+      --color-bg: #ffffff;
+      --color-fg: #111827;
+      --color-primary: #2563eb;
+      --color-muted: #6b7280;
+      --color-border: #e5e7eb;
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-mono: 'Courier New', monospace;
+      --font-size-base: 1rem;
+      --line-height-base: 1.7;
+      --spacing-base: 1rem;
+      --spacing-section: clamp(2rem, 5vw, 4rem);
+      --max-width: 72rem;
+      --radius: 0.5rem;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font-sans); background: var(--color-bg); color: var(--color-fg); font-size: var(--font-size-base); line-height: var(--line-height-base); }
+    a { color: var(--color-primary); }
+    img { max-width: 100%; height: auto; }
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 var(--spacing-base); }
+    header { border-bottom: 1px solid var(--color-border); padding: 1rem 0; margin-bottom: 2rem; }
+    header nav { display: flex; align-items: center; flex-wrap: wrap; position: relative; }
+    header .site-title { font-weight: 700; font-size: 1.25rem; text-decoration: none; color: var(--color-fg); flex: 1; }
+    .nav-toggle { display: none; }
+    .nav-burger { display: flex; flex-direction: column; gap: 4px; cursor: pointer; padding: 0.5rem; margin: -0.5rem; }
+    .nav-burger span { display: block; width: 20px; height: 2px; background: var(--color-fg); transition: transform 0.2s, opacity 0.2s; }
+    .nav-links { display: none; width: 100%; flex-direction: column; gap: 0; padding-top: 0.75rem; }
+    .nav-toggle:checked ~ .nav-links { display: flex; }
+    .nav-toggle:checked ~ .nav-burger span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
+    .nav-toggle:checked ~ .nav-burger span:nth-child(2) { opacity: 0; }
+    .nav-toggle:checked ~ .nav-burger span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4px); }
+    header nav a.nav-link { text-decoration: none; color: var(--color-muted); font-size: 0.9375rem; transition: color 0.15s; padding: 0.75rem 0; display: block; }
+    header nav a.nav-link:hover { color: var(--color-fg); }
+    @media (min-width: 768px) {
+      .nav-burger { display: none; }
+      .nav-links { display: flex; width: auto; flex-direction: row; gap: 2rem; padding-top: 0; margin-left: 2rem; }
+      header nav a.nav-link { padding: 0; display: inline; }
+    }
+    main { padding: var(--spacing-section) 0; }
+    footer { border-top: 1px solid var(--color-border); padding: 1.5rem 0; margin-top: var(--spacing-section); color: var(--color-muted); font-size: 0.875rem; }
+    .prose h1 { font-size: clamp(1.75rem, 4vw, 2.25rem); font-weight: 800; line-height: 1.2; margin-bottom: 1rem; }
+    .prose h2 { font-size: clamp(1.25rem, 3vw, 1.5rem); font-weight: 700; margin: 2rem 0 0.75rem; }
+    .prose h3 { font-size: clamp(1.1rem, 2.5vw, 1.25rem); font-weight: 600; margin: 1.5rem 0 0.5rem; }
+    .prose p { margin-bottom: 1.25rem; }
+    .prose pre { background: #1e293b; color: #e2e8f0; padding: 1rem; border-radius: var(--radius); overflow-x: auto; margin-bottom: 1.25rem; font-family: var(--font-mono); font-size: clamp(0.75rem, 1.5vw, 0.875rem); }
+    .prose code { background: #f1f5f9; padding: 0.125rem 0.375rem; border-radius: 0.25rem; font-family: var(--font-mono); font-size: 0.875em; }
+    .prose pre code { background: none; padding: 0; }
+    .prose ul, .prose ol { padding-left: 1.5rem; margin-bottom: 1.25rem; }
+    .prose li { margin-bottom: 0.375rem; }
+    .prose blockquote { border-left: 4px solid var(--color-primary); padding-left: 1rem; margin: 1.5rem 0; color: var(--color-muted); }
+    .prose img { border-radius: var(--radius); margin: 1.5rem 0; }
+    .card-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
+    @media (min-width: 640px) {
+      .card-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+    }
+    .card { border: 1px solid var(--color-border); border-radius: var(--radius); padding: 1.5rem; transition: box-shadow 0.2s; }
+    .card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+    .card h2 { font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .card h2 a { text-decoration: none; color: var(--color-fg); }
+    .card h2 a:hover { color: var(--color-primary); }
+    .card .meta { color: var(--color-muted); font-size: 0.875rem; margin-bottom: 0.75rem; }
+    .card .excerpt { color: var(--color-muted); font-size: 0.9375rem; }
+    .hero { padding: var(--spacing-section) 0; text-align: center; }
+    .hero h1 { font-size: clamp(2rem, 6vw, 3rem); font-weight: 800; margin-bottom: 1rem; }
+    .hero p { font-size: clamp(1rem, 2.5vw, 1.25rem); color: var(--color-muted); max-width: 42rem; margin: 0 auto 2rem; }
+    .btn { display: inline-block; padding: 0.75rem 1.5rem; background: var(--color-primary); color: #fff; border-radius: var(--radius); text-decoration: none; font-weight: 600; }
+    .btn:hover { opacity: 0.9; }
+    .post-header { margin-bottom: 2rem; }
+    .post-header h1 { font-size: clamp(1.75rem, 5vw, 2.5rem); font-weight: 800; line-height: 1.2; margin-bottom: 0.5rem; }
+    .post-meta { color: var(--color-muted); font-size: 0.875rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <a href="/" class="site-title">My Site</a>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
+        <label for="nav-toggle" class="nav-burger" aria-label="Menu"><span></span><span></span><span></span></label>
+        <div class="nav-links">
+          <a href="/docs/" class="nav-link">Documentation</a>
+<a href="/changelog/" class="nav-link">Changelog</a>
+<a href="/snippets/" class="nav-link">Shared Snippets</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      
+<article>
+  <header class="post-header">
+    <h1>Release v0.2.13</h1>
+    <p class="post-meta">March 28, 2026</p>
+    
+  </header>
+  <div class="prose">
+    <h2>What&#39;s New in v0.2.13</h2>
+<p><strong>619 changes</strong> released on 2026-03-28</p>
+<h3>Features</h3>
+<ul>
+<li>feat(F42): Next.js GitHub boilerplate — webhook revalidation + LiveRefresh</li>
+<li>feat(F42): Next.js boilerplate — Next.js 16 + React 19 + Tailwind v4</li>
+<li>feat(F42): static site boilerplate — complete starter template</li>
+<li>feat: add F112 GEO Generative Engine Optimization (Tier 1)</li>
+<li>feat: add F111 External Publishing to feature roadmap (Tier 2)</li>
+<li>feat(F67): Discord notification on security gate failure + weekly scan</li>
+<li>feat(F67): security gate — pre-commit hook, CI workflow, custom CMS scanner</li>
+<li>feat(F79): site config validator — friendly errors, validate button, suggestion engine</li>
+<li>feat(F96): interactive map preview in TipTap editor</li>
+<li>feat(F96): add Map option to richtext media insert dropdown</li>
+<li>feat(F96): embeddable maps — OSM/Leaflet map field type, richtext embed, interactive template</li>
+<li>feat: ESC closes history drawer</li>
+<li>feat: More menu on history items — Star, Rename, Delete</li>
+<li>feat(F97): canonical URL, social preview, readability, rewrite-for-keyword, duplicate title detection</li>
+<li>feat(F97): SEO dashboard tabs + keyword coverage on Dashboard card</li>
+<li>feat(F97): complete SEO module — keyword tracker, JSON-LD templates, export</li>
+<li>feat: delete conversations from history drawer</li>
+<li>feat: restructure AI defaults panel to match model resolver</li>
+<li>feat: F97 — SEO card on Dashboard + auto-generate OG images with Sharp</li>
+<li>feat: AI-powered SEO auto-generation on document creation in chat</li>
+<li>feat: configurable chat limits — model, max tokens, tool iterations</li>
+<li>feat: increase chat limits — 25 tool iterations, 8192 max_tokens</li>
+<li>feat: F97 Phase 2 — SEO Dashboard, bulk optimize, chat integration</li>
+<li>feat: expose EXIF/GPS data in chat media tools</li>
+<li>feat: add Phase 4 bulk tools — bulk_publish, bulk_update, schedule_publish</li>
+<li>feat: empty_trash tool — permanently delete all trashed items</li>
+<li>feat: arrow up on empty input recalls last user message</li>
+<li>feat: F97 SEO Module Phase 1 — per-document SEO panel</li>
+<li>feat: F102 schema drift auto-fix — remove orphaned fields from content</li>
+<li>feat: Simple Blog build.ts renders !!INTERACTIVE and !!FILE embeds</li>
+<li>feat: F110 Digital Island Apps — artifact cards in chat</li>
+<li>feat: add F110 Digital Island Apps to feature roadmap</li>
+<li>feat: file type validation + AI knows about upload capabilities</li>
+<li>feat: Media tags — comma to add tag + paste comma-separated list</li>
+<li>feat: mark F103 AI Image Analysis as Done</li>
+<li>feat: server-side PDF and Word text extraction for chat uploads</li>
+<li>feat: Claude Desktop-style input — textarea top, buttons bottom row</li>
+<li>feat: upload CSV, Markdown, Word, PowerPoint, PDF, HTML in chat</li>
+<li>feat: cancel button on building preview cards</li>
+<li>feat: AI Chat tools tab in Help &amp; Support drawer</li>
+<li>feat: history drawer from left side + Danish datetime format</li>
+<li>feat: rename conversations in history panel</li>
+<li>feat: 15 new chat tools — calendar, agents, curation, deploy, more</li>
+<li>feat: image upload in chat — + button and drag &amp; drop</li>
+<li>feat: update_site_settings tool — change settings via chat</li>
+<li>feat: rename &#39;View schema&#39; to &#39;Site info&#39; — broader and friendlier</li>
+<li>feat: add &#39;What can you do?&#39; and &#39;Edit a page&#39; to welcome screen</li>
+<li>feat: F107 Phase 3 — Inline edit forms in chat</li>
+<li>feat: mark F102 Schema Drift Detection as Done</li>
+<li>feat: F102 Schema Drift Detection — warns when content has fields missing from schema</li>
+<li>feat: mark F106 + F108 as Done, F108 shipped 2026-03-27</li>
+<li>feat: teach chat AI about image sizing and float in richtext</li>
+<li>feat: add F109 Inline Proofreading to feature roadmap</li>
+<li>feat: F108 Rich Text Editor Enhancements</li>
+<li>feat: media library tools — list_media + search_media for chat</li>
+<li>feat: include draft documents in preview builds with visible DRAFT banner</li>
+<li>feat: add F108 Rich Text Editor Enhancements to roadmap</li>
+<li>feat: table context toolbar — add/delete rows, columns, and table</li>
+<li>feat: branded 404 page with real SVG wordmark logo and favicon</li>
+<li>feat: copy buttons, branded 404 page, preview path fix</li>
+<li>feat: page preview cards in chat — iframe preview of actual pages</li>
+<li>feat: rich markdown rendering in chat messages</li>
+<li>feat: F107 Phase 2 — Create &amp; Edit via chat</li>
+<li>feat: support both Ctrl+Shift+C and Cmd+Shift+. for chat toggle</li>
+<li>feat: add Chat shortcuts to Help &amp; Support keyboard shortcuts list</li>
+<li>feat: F106 TipTap v3 upgrade (2.27→3.20)</li>
+<li>feat: F107 Chat with Your Site — Phase 1 (read &amp; search)</li>
+<li>feat: add F107 Chat with Your Site to feature roadmap</li>
+<li>feat: add F106 TipTap v3 Upgrade to roadmap (Tier 1)</li>
+<li>feat: user tags on media files — add, remove, filter, search</li>
+<li>feat: media sort, search improvements, hide variants, remove folder upload</li>
+<li>feat: F44 configurable media processing settings + mark F44 as Done</li>
+<li>feat: add F105 Voice Module to feature roadmap</li>
+<li>feat: add clear (X) button to media search field</li>
+<li>feat: Cmd+K media results navigate to filtered view, inline search matches AI metadata</li>
+<li>feat: AI image analysis runs automatically on upload (non-blocking)</li>
+<li>feat: Cmd+K searches media by EXIF + AI metadata</li>
+<li>feat: Analyze/Optimize on selected media + hide dotfiles from Media Library</li>
+<li>feat: F44 complete — auto WebP on upload, Optimize All button, EXIF persistence, enrichment</li>
+<li>feat: EXIF data panel in Media Library lightbox</li>
+<li>feat: build.ts renders markdown + auto-upgrades images to WebP <picture></li>
+<li>feat: F44 Phase 2 — Media Library filter, build.ts, EXIF extraction</li>
+<li>feat: add F104 Performance &amp; Data Optimization to feature roadmap</li>
+<li>feat: enriched scheduler notifications — org, site, title, instance</li>
+<li>feat: multi-select in Media — select files and bulk delete</li>
+<li>feat: F44 Media Processing Pipeline — Sharp + WebP variants + batch optimization</li>
+<li>feat: F103 video analysis + video thumbnails + media improvements</li>
+<li>feat: video thumbnails + video playback in Media lightbox</li>
+<li>feat: Apply alt-text button in AI popover + auto-fill on insert</li>
+<li>feat: AI Image overwrite setting in Org Settings + inheritance</li>
+<li>feat: AI Image Analysis — filter, overwrite setting, org hoist</li>
+<li>feat: F103 complete — batch analyze, grid badges, editor auto-fill</li>
+<li>feat: add AI metadata panel to Media lightbox zoom view</li>
+<li>feat: auto-slug from title for drafts + &quot;Update from title&quot; button</li>
+<li>feat: AI chat is field-type-aware — generates titles for text fields</li>
+<li>feat: implement F103 AI Image Analysis — foundation + UI integration</li>
+<li>feat: add F103 AI Image Analysis to feature roadmap (Tier 1)</li>
+<li>feat: add Source toggle button to rich text editor</li>
+<li>feat: add Export JSON button to Link Checker</li>
+<li>feat: extend Link Checker with broken image detection (F16)</li>
+<li>feat: F84 Move Site to Other Organization</li>
+<li>feat: color temperature themes — 6 themes via dual-axis selector</li>
+<li>feat: screenshot cache for grid view + No Preview for collections without pages</li>
+<li>feat: F102 Schema Drift Detection — plan doc + roadmap</li>
+<li>feat: add Grid/List view toggle to all collection pages</li>
+<li>feat: F87 badges — &quot;configured&quot; in Org Settings, &quot;inherited from X&quot; in Site Settings</li>
+<li>feat: F87 Phase 2 — full Org Settings UI + AI config integration</li>
+<li>feat: expand F87 scope — AI keys, web search, automation, webhooks, MCP, GitHub token</li>
+<li>feat: add F101 Update Manager to feature roadmap</li>
+<li>feat: implement F87 Org-Level Global Settings</li>
+<li>feat: add Feature Implementation Process to CLAUDE.md + F87 test suite (38 tests)</li>
+<li>feat: add F100 Custom Domain DNS Validation to roadmap</li>
+<li>feat: Fly.io org auto-detection + org field in deploy settings</li>
+<li>feat: add F99 End-to-End Testing Suite to feature roadmap</li>
+<li>feat: implement Fly.io deploy provider (F12)</li>
+<li>feat: branded README for auto-created GitHub repos</li>
+<li>feat: site intro card with sirv fallback — always shows preview</li>
+<li>feat: Dashboard intro card — site thumbnail + name + preview link</li>
+<li>feat: richtext features whitelist + default CSS for all elements</li>
+<li>feat: builtin blocks for all field types — text, richtext, image, tags, etc.</li>
+<li>feat: Add Block picker — type-ahead search + scrollable dropdown</li>
+<li>feat: F75 AI Site Builder Guide — split monolithic CLAUDE.md into 20 modules</li>
+<li>feat: add F98 Performance Audit (Lighthouse) to roadmap (Tier 2)</li>
+<li>feat: F91 Login with GitHub — sign in via GitHub OAuth</li>
+<li>feat: update Bridgeberg example with Christian Broberg&#39;s real profile and projects</li>
+<li>feat: F89 × F97 — _seo fields as first-class enrichment input</li>
+<li>feat: add F97 SEO Module to roadmap (Tier 1)</li>
+<li>feat: add F96 Embeddable Maps to feature roadmap (Tier 1)</li>
+<li>feat: add F95 Cloud Backup Providers to roadmap (Tier 2)</li>
+<li>feat: F89 Post-Build Enrichment — auto SEO, OG, JSON-LD, sitemap, robots.txt, llms.txt</li>
+<li>feat: add F94 Favorites to roadmap (Tier 2)</li>
+<li>feat: add /api/cms/heartbeat endpoint + major OpenAPI spec update</li>
+<li>feat: functional site filters — All, Local, GitHub, Live</li>
+<li>feat: preview button becomes dropdown when site has live URL</li>
+<li>feat: org switch → Sites overview when org has 2+ sites</li>
+<li>feat: add F93 Next.js App Deployment to feature roadmap</li>
+<li>feat: separate deploy/ dir from dist/ — preview always works</li>
+<li>feat: Connect GitHub button in Deploy tab + hasGitHubToken check</li>
+<li>feat: add F92 Desktop PWA to roadmap (Tier 2)</li>
+<li>feat: add F90 Marketing Content Bank + F91 Login with GitHub</li>
+<li>feat: health dots on Sites dashboard cards</li>
+<li>feat: health dots for all sites in dropdown — batch health check</li>
+<li>feat: add Bridgeberg static example site — monospace developer blog/portfolio</li>
+<li>feat: F86 — migrate interactives list to shared ActionBar</li>
+<li>feat: add F89 Post-Build Enrichment to feature roadmap (Tier 1)</li>
+<li>feat: deploy toast on auto-deploy — shows progress and result</li>
+<li>feat: F86 Phase 2 — document editor, agents, interactives use ActionBar</li>
+<li>feat: custom domain support for GitHub Pages deploys</li>
+<li>feat: add Deploy tab to Site Settings — status, history, manual deploy</li>
+<li>feat: auto-deploy on save — rebuild and push to GitHub Pages when content changes</li>
+<li>feat: auto-create GitHub repo for filesystem static sites</li>
+<li>feat: GitHub Pages deploy — build static HTML → push to gh-pages</li>
+<li>feat: zero-config deploy for GitHub-backed sites + Get token links</li>
+<li>feat: GitHub Pages auto-enable + friendly error messages</li>
+<li>feat: production URL field in deploy config</li>
+<li>feat: deploy provider compatibility warnings + docs link</li>
+<li>feat: F12 One-Click Deploy — provider config + deploy button + API</li>
+<li>feat: add F88 MCP Server Validation to feature roadmap</li>
+<li>feat: JSON pill toggle + copy button on MCP server config</li>
+<li>feat: copy-to-clipboard buttons on settings input fields</li>
+<li>feat: wrap AI, AI Defaults, AI Prompts panels in SettingsCard</li>
+<li>feat: SettingsCard component + wrap Automation and Email panels</li>
+<li>feat: add F87 Org-Level Global Settings to feature roadmap</li>
+<li>feat: actionable commands in ⌘K command palette</li>
+<li>feat: org switching from command palette</li>
+<li>feat: all Settings tabs searchable in command palette</li>
+<li>feat: Save button shows dimmed/Unsaved state based on dirty tracking</li>
+<li>feat: unified Save in ActionBar for all Settings tabs + Cockpit + Agent</li>
+<li>feat: move Save to ActionBar on Cockpit + Agent detail</li>
+<li>feat: F86 ActionBar rollout across all admin pages</li>
+<li>feat: F86 ActionBar component + first adoption on Backup page</li>
+<li>feat: add F86 Action Bar to feature roadmap</li>
+<li>feat: send test button on each webhook + remove old scheduler notifs</li>
+<li>feat: Automation tab with per-job webhook lists + link checker time</li>
+<li>feat: site switching from ⌘K command palette</li>
+<li>feat: &quot;c&quot; keyboard shortcut to close active tab</li>
+<li>feat: preview button in header bar with keyboard shortcut (p)</li>
+<li>feat: dynamic browser title + tools scheduler execution</li>
+<li>feat: calendar event types for Backup &amp; Link Check + schedule settings</li>
+<li>feat: add F85 CC Hooks &amp; Quality Gates to feature roadmap</li>
+<li>feat: add Tools sidebar group with Backup &amp; Restore (F27)</li>
+<li>feat: delete organization with confirmation dialog</li>
+<li>feat: org-level sidebar for empty orgs — Sites + Org Settings only</li>
+<li>feat: /admin/organizations/settings — Supabase-style org settings</li>
+<li>feat: dedicated /admin/organizations/new route with Name, Type, Plan</li>
+<li>feat: /admin/organizations page — grid view of all orgs</li>
+<li>feat: F76 Create New Organization</li>
+<li>feat: add F84 Move Site to Organization to roadmap (Tier 2)</li>
+<li>feat: click thumbnail to edit URL in image gallery</li>
+<li>feat: add Impact Analysis section to /feature skill</li>
+<li>feat: auto-rebuild static sites on Save</li>
+<li>feat: Rebuild + Reload buttons in preview toolbar</li>
+<li>feat: add Browse Media + Add URL to image gallery editor</li>
+<li>feat: add F83 Vibe Site Builder to roadmap (Tier 1)</li>
+<li>feat: add AURA. luxury fashion boutique static template</li>
+<li>feat: add F82 Loaders &amp; Spinners to roadmap (Tier 2)</li>
+<li>feat: native Browse button + drag &amp; drop for site import</li>
+<li>feat: Import from folder on New Site page</li>
+<li>feat: add F81 Homepage Designation to roadmap (Tier 2)</li>
+<li>feat: F78 preview server — sirv-based static file server for dist/</li>
+<li>feat: built-in static site preview server (F78 core)</li>
+<li>feat: add F80 Admin Selector Map to roadmap (Tier 1)</li>
+<li>feat: add install-site.sh script for registering static sites in CMS admin</li>
+<li>feat: add F79 Site Config Validator + fix portfolio-squared to read all content from JSON</li>
+<li>feat: add missing pages JSON content to all 5 static templates</li>
+<li>feat: add F78 Bundled Preview Server to roadmap (Tier 1)</li>
+<li>feat: add F77 Middleware to Proxy Migration to roadmap (Tier 1)</li>
+<li>feat: add F76 Create New Organization to roadmap (Tier 1)</li>
+<li>feat: add 5 static website templates (portfolio, agency, blog, studio, freelancer)</li>
+<li>feat: add F75 AI Site Builder Guide (Modular Docs) to roadmap (Tier 1)</li>
+<li>feat: add F73 Troubleshooting Guide + F74 System Status Page to roadmap</li>
+<li>feat: context-aware tab icons matching sidebar + hide status dot on non-document tabs</li>
+<li>feat: add F72 Website Screenshots to roadmap (Tier 2)</li>
+<li>feat: &#39;h&#39; keyboard shortcut for Help drawer (in addition to &#39;?&#39;)</li>
+<li>feat: Help drawer with tabbed Help + Shortcuts pages</li>
+<li>feat: Help &amp; Support drawer with docs, community, and keyboard shortcuts</li>
+<li>feat: &#39;t&#39; keyboard shortcut to open new tab</li>
+<li>feat: add F68-F71 — Shop, Social Media, Managed SaaS, Multi-Player</li>
+<li>feat: add View Landing Page to command palette (opens in new tab)</li>
+<li>feat: add debug and local login flow tests with detailed logging</li>
+</ul>
+<h3>Bug Fixes</h3>
+<ul>
+<li>fix: exclude boilerplates from pnpm workspace + Discord only on failure</li>
+<li>fix: add .gitleaks.toml — suppress test file false positives</li>
+<li>fix: gitignore deploy output, WebP variants, revisions, example uploads</li>
+<li>fix: internal link search uses collection name as URL fallback</li>
+<li>fix(F96): map embed geocodes address with Nominatim + renders Leaflet map</li>
+<li>fix: JSON-LD hides duplicate fields, chat creates full _seo with score + OG image</li>
+<li>fix: harmonize + and send button sizes — both 32px circular</li>
+<li>fix: row menu uses fixed positioning to avoid overflow clipping</li>
+<li>fix: React key warning on keyword tracker list — Fragment needs key, not child tr</li>
+<li>fix: dashboard media count excludes WebP variants and dotfiles</li>
+<li>fix: cap chat limits — max 32768 tokens, max 50 tool iterations</li>
+<li>fix: OG image generator — auto-rotate based on EXIF before resize</li>
+<li>fix: SEO Save button — visual feedback (Saving… → Saved ✓ → Save)</li>
+<li>fix: invisible scrollbar globally — visible only on hover</li>
+<li>fix: hidden scrollbar on main content + purple dot for scheduled docs</li>
+<li>fix: SEO uses configurable aiContentModel instead of hardcoded Haiku</li>
+<li>fix: remove min-h-screen from Media + Interactives — no forced scrollbar</li>
+<li>fix: remove min-h-screen from Link Checker — caused unnecessary scrollbar</li>
+<li>fix: apply overflow-y:overlay to sidebar-inset (main content area)</li>
+<li>fix: use overflow-y:overlay — scrollbar floats over content, no shift</li>
+<li>fix: scrollbar-gutter:stable prevents layout shift between pages</li>
+<li>fix: remove flex:1 + overflowY from SEO content wrapper</li>
+<li>fix: SEO page uses fragment wrapper like all other pages</li>
+<li>fix: Optimize All button in ActionBar actions slot (right side)</li>
+<li>fix: Optimize All button — variant=&quot;primary&quot; to match Link Checker</li>
+<li>fix: SEO dashboard — status dot indicator on each document</li>
+<li>fix: SEO dashboard — use ActionButton for Optimize All, add Tools breadcrumb</li>
+<li>fix: SEO tab title shows &quot;SEO&quot; not &quot;seo&quot;</li>
+<li>fix: bulk SEO optimize — use doc.id not doc.slug for cms.content.update</li>
+<li>fix: grid view builds with drafts before serving previews</li>
+<li>fix: grid view always attempts preview — fallback to /<collection>/<slug></li>
+<li>fix: eliminate Edge Runtime compile warnings from instrumentation</li>
+<li>fix: meta description textarea taller (100px min) to show 160 chars</li>
+<li>fix: SEO check messages — actionable, tell you exactly what to do</li>
+<li>fix: include field name in SEO score messages</li>
+<li>fix: restore 120-160 char requirement, fix AI prompt to hit target</li>
+<li>fix: lower meta description minimum from 120 to 70 chars</li>
+<li>fix: always re-extract OG image on AI optimize</li>
+<li>fix: OG image extraction — only accept valid /uploads/ paths</li>
+<li>fix: hide broken OG image preview — onError hides the img element</li>
+<li>fix: OG image extraction — only capture URL, not markdown title attr</li>
+<li>fix: AI Optimize auto-fills OG image from content</li>
+<li>fix: list_trash now includes media files, not just documents</li>
+<li>fix: SEO panel — Save button, auto-save after AI, better prompt, collapsible preview</li>
+<li>fix: unescaped backtick in system prompt caused &quot;uploads is not defined&quot;</li>
+<li>fix: SEO panel — lastOptimized flag + re-optimize warning + save reminder</li>
+<li>fix: use CustomSelect for robots directive in SEO panel</li>
+<li>fix: SEO panel renders as fixed sidebar drawer (same as Properties)</li>
+<li>fix: respect devInspector site setting — only render DevInspector when enabled</li>
+<li>fix: dynamic import getDocumentUrl to prevent Turbopack crash</li>
+<li>fix: dynamic import pdf-parse and mammoth to prevent Turbopack crash</li>
+<li>fix: wrap chat init in try-catch with descriptive error message</li>
+<li>fix: schema drift fix — use direct file writes instead of cms.content.update</li>
+<li>fix: auto-resize interactive iframes to content height</li>
+<li>fix: interactive thumbnails — add allow-same-origin to sandbox</li>
+<li>fix: interactive iframe path — /uploads/interactives/ not /interactives/</li>
+<li>fix: add immediatelyRender: false to TipTap useEditor for SSR</li>
+<li>fix: artifact card injects <base> tag for relative image URLs</li>
+<li>fix: Command Palette media results pass search term to Media filter</li>
+<li>fix: Command Palette search includes user-defined media tags</li>
+<li>fix: import pdf-parse/lib/pdf-parse.js to skip test file loader</li>
+<li>fix: static import of pdf-parse — Turbopack requires top-level import</li>
+<li>fix: pdf-parse + mammoth in root deps + robust import strategies</li>
+<li>fix: Empty Trash — race condition + missing file tolerance</li>
+<li>fix: dedicated /api/extract-text endpoint for PDF/DOCX extraction</li>
+<li>fix: inline PDF/DOCX extraction with require() in upload route</li>
+<li>fix: use createRequire for pdf-parse (CJS module in Turbopack)</li>
+<li>fix: PDF extraction working — pdf-parse v1 + logging + border fix</li>
+<li>fix: larger send button — 40px circle with 18px icon</li>
+<li>fix: send button always gold circle — visible when empty (30% opacity)</li>
+<li>fix: restore exact original send button style</li>
+<li>fix: send button always gold circle, dims when empty</li>
+<li>fix: restore send button to 32px with 16px icon</li>
+<li>fix: align message list with chat input — same maxWidth + padding</li>
+<li>fix: &nbsp; entities decoded + preview cards share single build</li>
+<li>fix: history titles wrap to max 2 lines, edit button always aligned</li>
+<li>fix: widen history drawer from 300px to 400px</li>
+<li>fix: bot avatar aligned with tool cards (marginTop 2px for assistant)</li>
+<li>fix: pixel-center icons in tool call cards</li>
+<li>fix: pixel-center avatars with first line of text</li>
+<li>fix: strict guardrail — only use image URLs from tool results</li>
+<li>fix: remove immediatelyRender:false to eliminate flushSync warning</li>
+<li>fix: suppress flushSync warning — add shouldRerenderOnTransaction: false</li>
+<li>fix: all content is Markdown — never generate HTML</li>
+<li>fix: teach AI to detect richtext format (HTML vs Markdown)</li>
+<li>fix: preview build works for all sites + fresh server restart</li>
+<li>fix: add CSS for highlight marks, underline, sup/sub, text-align</li>
+<li>fix: preview button opens in new window when in chat mode</li>
+<li>fix: move New + History buttons into AdminHeader (always visible)</li>
+<li>fix: prevent duplicate text output in chat</li>
+<li>fix: preview card rebuilds site before showing iframe</li>
+<li>fix: chat toolbar (+ New / History) is now sticky at top</li>
+<li>fix: 404 page — transparent logo (no white bg), fix Turbopack error</li>
+<li>fix: use getDocumentUrl from routing resolver for preview paths</li>
+<li>fix: preview path resolves against actual dist/ files</li>
+<li>fix: remove webpack config — incompatible with Turbopack</li>
+<li>fix: tabs system no longer hijacks navigation after site switch</li>
+<li>fix: re-focus chat input when AI finishes responding</li>
+<li>fix: Cmd+S stale closure — save was using old doc.data</li>
+<li>fix: chat input text scrolled out of view</li>
+<li>fix: make chat input placeholder text more visible</li>
+<li>fix: auto-focus chat input when switching to chat mode</li>
+<li>fix: chat input — auto-focus on mount + fix invisible text color</li>
+<li>fix: simplify RTE value sync — no guards, just compare and set</li>
+<li>fix: RTE sync — compare with actual editor content, not last emitted</li>
+<li>fix: use globalThis for doc state cache — survives HMR module re-eval</li>
+<li>fix: module-level doc state cache survives tab navigation</li>
+<li>fix: prevent content loss — remove router.refresh + ignore dist/ in webpack watcher</li>
+<li>fix: hide sidebar in chat mode</li>
+<li>fix: stronger guard against content overwrite on save/build</li>
+<li>fix: prevent content loss on save — skip round-trip setContent</li>
+<li>fix: Cmd+Shift+S no longer triggers save — only strikethrough</li>
+<li>fix: cache session user in sessionStorage to prevent avatar flash</li>
+<li>fix: toolbar state reactivity for TipTap v3</li>
+<li>fix: change chat toggle shortcut to Cmd+Shift+. (avoids Chrome DevTools)</li>
+<li>fix: wrap chat mode in TabsProvider to prevent useTabs crash</li>
+<li>fix: image picker dialog — paginated (50 at a time) + fixed height</li>
+<li>fix: clearfix on richtext editor so floated images don&#39;t overflow</li>
+<li>fix: images contained within richtext editor bounds</li>
+<li>fix: clear ?q= from URL after reading initial media search param</li>
+<li>fix: batch AI analyze skips optimized variants, respects selection</li>
+<li>fix: make Media sidebar sticky when scrolling through files</li>
+<li>fix: AI popover shows &quot;Applied ✓&quot; when alt-text already matches</li>
+<li>fix: Tools menu in sidebar defaults to closed</li>
+<li>fix: headings clear floated images, more bottom padding on floats</li>
+<li>fix: add padding on text-side of floated images, not opposite side</li>
+<li>fix: prevent bullets from overlapping floated images (overflow:hidden)</li>
+<li>fix: build.ts converts image title attributes to inline styles</li>
+<li>fix: filter WebP variants at load time — all counts now exclude generated files</li>
+<li>fix: auto-rotate images based on EXIF orientation before generating WebP variants</li>
+<li>fix: create content/ and public/uploads/ when adding a filesystem site</li>
+<li>fix: clean preview URLs — use encodeURI instead of encodeURIComponent</li>
+<li>fix: preview page preserves path when re-resolving sirv base URL</li>
+<li>fix: skip category path segment when it matches urlPrefix</li>
+<li>fix: refresh AI analyzed count when closing media lightbox</li>
+<li>fix: rename &quot;Organization settings&quot; to &quot;Settings&quot; on org card menu</li>
+<li>fix: media type counts respect active folder, AI, and search filters</li>
+<li>fix: trigger site rebuild after slug rename in Properties panel</li>
+<li>fix: tags-input paste support — split comma-separated text into tags</li>
+<li>fix: switch F103 image analysis to Anthropic-first, drop Google dependency</li>
+<li>fix: richtext toolbar always sticky, including inside blocks</li>
+<li>fix: Link Checker incorrectly flagging linked-images as broken links</li>
+<li>fix: flushSync error when toggling Source view in richtext editor</li>
+<li>fix: Add Block dropdown opens upward when near bottom of viewport</li>
+<li>fix: hydration mismatch — read localStorage in useEffect, not useState</li>
+<li>fix: grid view probes URLs before showing iframe, hides 404 pages</li>
+<li>fix: site activation uses window.location.href — eliminates router.push race condition</li>
+<li>fix: org switch uses sessionStorage flag to prevent tab restoration</li>
+<li>fix: org switch clears active site — always land on Sites page clean</li>
+<li>fix: org switch always lands on /admin/sites — never stale routes</li>
+<li>fix: Move Site navigates to /admin immediately — prevents 404 from stale tab routes</li>
+<li>fix: widen Move Site org selector (min-width 200px) for long org names</li>
+<li>fix: use CustomSelect for Move Site org dropdown — never native <select></li>
+<li>fix: thumbnail API rejects 404 pages, shows No Preview fallback</li>
+<li>fix: persist grid/list view preference per collection in localStorage</li>
+<li>fix: preview URLs include category segment when present</li>
+<li>fix: grid view preview URL resolution — sirv first, then previewSiteUrl</li>
+<li>fix: separate deploy hooks per provider in Org Settings</li>
+<li>fix: dashboard cards taller with minmax(10rem, auto) grid rows</li>
+<li>fix: site preview card fills full grid cell width and height</li>
+<li>fix: site preview card fills entire card edge-to-edge</li>
+<li>fix: site preview card — remove name/link text, match card sizing</li>
+<li>fix: remove site preview card from dashboard, uniform card grid</li>
+<li>fix: dashboard site preview now renders dark mode + deploy Get key icon</li>
+<li>fix: blog site missing storage adapter + update AI guide</li>
+<li>fix: org switcher now does full page reload to ensure correct site loads</li>
+<li>fix: preview button auto-refreshes after deploy success</li>
+<li>fix: preview button NEVER disabled — sirv is always available</li>
+<li>fix: sirv preview ALWAYS runs first — no config needed</li>
+<li>fix: branded README uses GitHub raw URL for logo + improved layout</li>
+<li>fix: site switcher uses full page load instead of router.push</li>
+<li>fix: site switch navigates to Dashboard instead of stale tab path</li>
+<li>fix: restore text block to richtext — was broken by wrapper-blocks change</li>
+<li>fix: text block field name &#39;content&#39; → &#39;body&#39; to match existing data</li>
+<li>fix: tab content always matches tab title after site switch</li>
+<li>fix: show max 10 deploys in history instead of 20</li>
+<li>fix: deploy button used stale provider state (closure bug)</li>
+<li>fix: richtext toolbar no longer overlaps content in blocks</li>
+<li>fix: add spinner to Save button while saving document</li>
+<li>fix: richtext editor min-height 300px → 120px</li>
+<li>fix: hide Deploy History when provider is off</li>
+<li>fix: don&#39;t auto-assume GitHub Pages for sites without build.ts</li>
+<li>fix: Add Block dropdown shows list immediately on open</li>
+<li>fix: Add Block — remove data-only blocks + fix dropdown clipping</li>
+<li>fix: Add Block picker — inline select with autocomplete, no floating popover</li>
+<li>fix: GitHub login requests repo scope — needed for deploy</li>
+<li>fix: skip dotfile directories in deploy collectFiles</li>
+<li>fix: Bridgeberg Lighthouse improvements — meta description + color contrast</li>
+<li>fix: GitHub login always visible + setup page gets GitHub option</li>
+<li>fix: F89 per-page descriptions + .well-known for GitHub Pages</li>
+<li>fix: Bridgeberg — colored buttons, philosophy sidebar layout, section dividers</li>
+<li>fix: grey out preview/live buttons when site health is down</li>
+<li>fix: setup page matches login page design</li>
+<li>fix: swap org/site switcher order — Sites · Org · User from left</li>
+<li>fix: remove cms-registry-change listener from Sites page</li>
+<li>fix: site card click — navigate first, fire events after</li>
+<li>fix: clicking site card navigates instantly — no reload of Sites page</li>
+<li>fix: copy button on custom domain — green check feedback like MCP panel</li>
+<li>fix: custom domain field — copy button, clearer when value is set</li>
+<li>fix: deploy always returns custom domain URL when set</li>
+<li>fix: match Bridgeberg CSS to aprilnea.me design — system monospace, gray bg, black borders, box-shadow brutalist buttons/cards</li>
+<li>fix: org switch — 1 site resets to Dashboard tab, not Sites</li>
+<li>fix: Sites page re-fetches on org switch (was showing stale org data)</li>
+<li>fix: add &quot;github&quot; keyword to Deploy command palette action</li>
+<li>fix: org switch to multi-site resets tabs to clean &quot;Sites&quot; tab</li>
+<li>fix: Live button hover uses green instead of primary gold</li>
+<li>fix: deploy UX — toast with link, dynamic placeholder, preview fix, live link</li>
+<li>fix: add Deploy to command palette</li>
+<li>fix: scheduler iterates ALL sites for backup/link-check, not just active</li>
+<li>fix: Content directory shows resolved full path, not relative &quot;content&quot;</li>
+<li>fix: show resolved full path for Content directory in Site Settings</li>
+<li>fix: show Content directory copy button for GitHub-backed sites</li>
+<li>fix: health check URL priority — customDomain first, then productionUrl</li>
+<li>fix: empty org guard — direct registry check before ANY site code</li>
+<li>fix: health check falls back to deployProductionUrl/customDomain</li>
+<li>fix: persist org type + plan in registry, empty state spacing</li>
+<li>fix: show empty state with &quot;New site&quot; CTA when org has 0 sites</li>
+<li>fix: empty org layout — catch EmptyOrgError from team check too</li>
+<li>fix: prevent cross-org data leakage for empty organizations</li>
+<li>fix: move health hooks before early returns (React hooks order)</li>
+<li>fix: media always served via admin proxy + disk cache + site health dot</li>
+<li>fix: move search from ActionBar to content area on Interactives + Media</li>
+<li>fix: expand toasts vertically instead of stacking behind each other</li>
+<li>fix: show up to 4 toasts stacked so deploy progress is visible</li>
+<li>fix: F77 rename middleware.ts → proxy.ts for Next.js 16</li>
+<li>fix: update all Instagram links to webhouse.app profile</li>
+<li>fix: add BASE_PATH support to all static site templates</li>
+<li>fix: BASE_PATH support for GitHub Pages — all internal links use prefix</li>
+<li>fix: deploy token resolution for filesystem sites + canAutoDeploy UI</li>
+<li>fix: deploy reads GitHub service token directly as fallback</li>
+<li>fix: deploy settings — hide token for GitHub sites, &quot;Get key ↗&quot; links</li>
+<li>fix: MCP server cards consistent height + no resize on confirm</li>
+<li>fix: remove cryptic npx command text from MCP server cards</li>
+<li>fix: MCP confirm replaces all action buttons — zero layout shift</li>
+<li>fix: MCP server row reserves space for Cancel/Confirm — no resize</li>
+<li>fix: MCP server delete uses Cancel/Confirm style matching API keys</li>
+<li>fix: MCP remove confirm no longer causes layout shift</li>
+<li>fix: MCP copy buttons use same square icon style as other settings</li>
+<li>fix: consistent spacing between settings sections, remove HR lines</li>
+<li>fix: settings tab labels nowrap — all on 1 line</li>
+<li>fix: webhook changes mark settings as dirty for ActionBar Save</li>
+<li>fix: auto-migrate legacy schedulerWebhookUrl → publishWebhooks</li>
+<li>fix: command palette only shows sites from active org</li>
+<li>fix: rename &#39;settings&#39; to &#39;globals&#39; in portfolio-squared (Elina Voss)</li>
+<li>fix: rename &quot;New item&quot; → &quot;New document&quot; on collection pages</li>
+<li>fix: add Backup to command palette navigation</li>
+<li>fix: hooks order in RevalidationSection + wire remaining panels to ActionBar Save</li>
+<li>fix: include backup and link-check events in calendar .ics feed</li>
+<li>fix: agent Save Changes button matches Settings style</li>
+<li>fix: calendar backup/link-check events use local time, not UTC</li>
+<li>fix: browser title shows only site name, no prefix</li>
+<li>fix: preview button re-fetches config on site switch</li>
+<li>fix: tabs use localStorage ONLY, remove all server sync</li>
+<li>fix: root cause — save() synced to server via cookie during switch</li>
+<li>fix: restore saved active tab on site switch, not always Dashboard</li>
+<li>fix: preview button opens tab same as sites page preview button</li>
+<li>fix: preview button always visible, fallback to admin preview page</li>
+<li>fix: bust contaminated localStorage with v2 key</li>
+<li>fix: don&#39;t navigate to old tab paths on site switch</li>
+<li>fix: save current site tabs before switching, restore per-site</li>
+<li>fix: restore per-site tabs from localStorage on switch (synchronous)</li>
+<li>fix: browser title via generateMetadata instead of document.title</li>
+<li>fix: bulletproof tab isolation — clean slate on site switch</li>
+<li>fix: use canonical &quot;Remove? [Yes] [No]&quot; confirm pattern on backup page</li>
+<li>fix: interactive preview iframe collapsed to min-height</li>
+<li>fix: backup fetches content via CMS API instead of local filesystem</li>
+<li>fix: readable backup filenames with site name and date</li>
+<li>fix: navigate to active tab&#39;s path on site switch restore</li>
+<li>fix: remove key-based remount, fix tab duplication on site switch</li>
+<li>fix: tab isolation via explicit cms-site-change event</li>
+<li>fix: tab isolation between sites + preview server auto-restart</li>
+<li>fix: org switch sets site cookie to first site in new org</li>
+<li>fix: persist cleared tabs to localStorage + server on org switch</li>
+<li>fix: clear tabs on org/site switch — no cross-org tab leakage</li>
+<li>fix: dashboard handles EmptyOrgError — redirects to /admin/sites</li>
+<li>fix: logo preference stored on user profile, not cookie or per-site state</li>
+<li>fix: logo preference reads ONLY from cookie, never from per-site user-state</li>
+<li>fix: org sidebar defaults to wordmark logo</li>
+<li>fix: empty org gets full layout with sidebar, just no collections</li>
+<li>fix: add SidebarProvider to empty org minimal layout</li>
+<li>fix: wrap empty org minimal layout in TabsProvider</li>
+<li>fix: redirect loop on empty org — use minimal layout instead of redirect</li>
+<li>fix: empty org shows other org&#39;s data — now properly throws EmptyOrgError</li>
+<li>fix: prevent dropdown close when clicking New Organization</li>
+<li>fix: logo preference persists globally via cookie, survives site switch</li>
+<li>fix: preview tabs show globe icon</li>
+<li>fix: wordmark alignment -0.9rem</li>
+<li>fix: wordmark alignment -1rem</li>
+<li>fix: wordmark alignment -0.8rem</li>
+<li>fix: wordmark alignment -0.6rem</li>
+<li>fix: wordmark alignment -0.35rem</li>
+<li>fix: nudge wordmark left -0.5rem to compensate SVG padding</li>
+<li>fix: wordmark mode uses items-start so logo and AI-native text left-align together</li>
+<li>fix: wordmark alignment -1.1rem</li>
+<li>fix: wordmark alignment -1.75rem</li>
+<li>fix: wordmark alignment -1.55rem</li>
+<li>fix: fine-tune wordmark alignment (-1.65rem) to pixel-match sidebar icons</li>
+<li>fix: increase wordmark left offset to compensate for SVG internal padding</li>
+<li>fix: move wordmark further left to align w with sidebar icons</li>
+<li>fix: only move wordmark left, keep AI-native text in original position</li>
+<li>fix: align wordmark left edge with sidebar menu icons</li>
+<li>fix: restore original wordmark size (h-11), only alignment changed</li>
+<li>fix: wordmark left-aligned flush with AI-native text in sidebar</li>
+<li>fix: sidebar logo — either icon OR wordmark, never both</li>
+<li>fix: convert image-gallery fields to {url,alt} format with descriptive alt text</li>
+<li>fix: image-gallery accepts both { url, alt } objects and plain URL strings</li>
+<li>fix: rename &#39;settings&#39; collection to &#39;globals&#39; (reserved name conflict)</li>
+<li>fix: use {label,value} objects for select options in boutique config</li>
+<li>fix: add urlPrefix &#39;/&#39; to pages collection in all templates</li>
+<li>fix: preview maps slug &quot;home&quot;/&quot;index&quot; with urlPrefix &quot;/&quot; to root path</li>
+<li>fix: double slash in preview URL when urlPrefix is &quot;/&quot;</li>
+<li>fix: Preview opens in new tab via openTab instead of router.push</li>
+<li>fix: restyle Preview as outlined button, separate from status badges</li>
+<li>fix: move Preview button out of dropdown onto site card</li>
+<li>fix: remove HTML from content JSON, use split heading fields for styling</li>
+<li>fix: correct all field types and convert richtext HTML to markdown</li>
+<li>fix: flatten agency template pages to scalar field types</li>
+<li>fix: replace invalid type &#39;json&#39; with &#39;textarea&#39; in agency cms.config.ts</li>
+<li>fix: rename static blog package to avoid duplicate name conflict</li>
+<li>fix: new site creation — org cookie, team access, filesystem default</li>
+<li>fix: link &quot;Built with @webhouse/cms&quot; to webhouse.app in all static templates</li>
+<li>fix: Discord description + F74 status page plan updated</li>
+<li>fix: contact support email → <a href="mailto:cms@webhouse.dk">cms@webhouse.dk</a></li>
+<li>fix: update Discord invite link to webhouse.app community server</li>
+<li>fix: kbd keys use flexbox centering for perfect alignment</li>
+<li>fix: larger keyboard shortcut keys in help drawer</li>
+<li>fix: remove Insert Link (⌘K) from shortcuts — conflicts with command palette</li>
+<li>fix: help drawer uses React portal to render above all stacking contexts</li>
+<li>fix: help drawer z-index 150 to render above tab bar</li>
+<li>fix: all tab icons now match sidebar exactly</li>
+<li>fix: Interactives tab uses Zap icon matching sidebar</li>
+<li>fix: Cockpit tab — rename from AI Cockpit, use Cpu icon matching sidebar</li>
+<li>fix: collection tabs use FolderOpen icon, documents use FileText</li>
+<li>fix: add missing tab titles — Sites, Calendar, Interactives, Account</li>
+<li>fix: command palette closes before executing action (help drawer)</li>
+<li>fix: help drawer tabs now visible with pill-style active state + add Help to command palette</li>
+<li>fix: help drawer uses same fixed positioning as Properties panel</li>
+<li>fix: help drawer — webhouse white + .app gold, fix tab border styling</li>
+<li>fix: style webhouse.app brand in help drawer footer</li>
+<li>fix: help button with circular border matching avatar size</li>
+<li>fix: root / always shows landing page — stop redirecting to /admin</li>
+<li>fix: root / always shows landing page regardless of auth state</li>
+</ul>
+<h3>Other Changes</h3>
+<ul>
+<li>chore: release v0.2.13</li>
+<li>chore: update pnpm-lock.yaml for nextjs-boilerplate workspace</li>
+<li>chore: bump all packages to 0.2.12 — includes map field type</li>
+<li>docs: add &#39;map&#39; to AI guide field types summary</li>
+<li>docs: add F111 External Publishing feature plan</li>
+<li>security: add denyViewers() role check to 57 write endpoints — scanner now 0 findings</li>
+<li>security: fix 11 command injection findings — execSync → execFileSync</li>
+<li>security: protect ALL /api/* routes via middleware — closes 27 unauthed route findings</li>
+<li>security: fix 4 vulnerabilities from security review</li>
+<li>refactor: central model resolver — getModel(&quot;content&quot; | &quot;code&quot; | &quot;premium&quot;)</li>
+<li>test: guard against unescaped backticks in chat system prompt</li>
+<li>debug: log full stack trace for chat init error</li>
+<li>docs: add F107 Chat Integration note to 81 planned feature plans</li>
+<li>docs: update 5 AI guide modules for F44/F103/F106/F108 features</li>
+<li>docs: add TipTap + Next.js SSR note to CLAUDE.md</li>
+<li>chore: remove debug logging from chat-input PDF extraction</li>
+<li>debug: add console.log to trace PDF text extraction flow</li>
+<li>docs: add architecture SVG diagram</li>
+<li>refactor: centralize all org/site switching into switch-context.ts</li>
+<li>debug: log doc state cache on mount + setDoc to diagnose content loss</li>
+<li>debug: add console.log to RTE sync to diagnose content loss</li>
+<li>perf: render both modes with CSS display toggle — instant switching</li>
+<li>docs: AI guide — imgUrl() helper for image paths (common mistake #11)</li>
+<li>chore: sync all pending changes — deploys, content, docs, assets</li>
+<li>revert: remove Playwright thumbnail API, back to iframe previews</li>
+<li>test: F87 swap test — 3 deploy scenarios (site/org/both) all verified</li>
+<li>docs: AI guide — never remove fields from cms.config.ts</li>
+<li>test: F87 e2e test — org token inheritance + Fly.io deploy</li>
+<li>docs: add deploy credentials to F87 Org-Level Settings plan</li>
+<li>docs: add early implementation note to F99 for org-site-switch test</li>
+<li>ci: pre-commit hook + GitHub Actions for builtin blocks tests</li>
+<li>test: snapshot + contract tests for builtin blocks — prevents regression</li>
+<li>docs: AI guide — strongly recommend blocks over flat text/textarea</li>
+<li>docs: roadmap — F89, F91, F75 shipped (35 milestones done)</li>
+<li>docs: F03 — add site creation step + maurseth.dk test case</li>
+<li>docs: major update to F03 — merge content + design extraction</li>
+<li>docs: update roadmap + features — F77/F86 done, F12/F27 progress</li>
+<li>docs: create Marketing Content Bank</li>
+<li>docs: update roadmap — F77 done, F12/F27/F86 in progress</li>
+<li>docs: add CNAME setup instructions to custom domain field</li>
+<li>refactor: move deploy config from Automation to Deploy tab</li>
+<li>docs: move F86 Action Bar to Tier 1</li>
+<li>docs: major update to F14 Newsletter Engine</li>
+<li>docs: add exact inline confirm pattern to CLAUDE.md</li>
+<li>docs: roadmap update — F76 Create Organization + F78 Preview Server done</li>
+<li>docs: update /feature skill with downstream dependents requirement</li>
+<li>docs: F84 — expand Impact Analysis with 17 downstream dependents</li>
+<li>docs: add Impact Analysis to F79-F83 feature plans</li>
+<li>docs: add Impact Analysis section to all existing feature plans</li>
+<li>docs: add Phase 4 Dependency Graph &amp; Blast Radius to F67 Security Gate</li>
+<li>docs: add image-gallery data format requirement to CLAUDE.md</li>
+<li>docs: add site-builder-errors.md with lessons learned from template builds</li>
+<li>docs: expand F79 with CMS knowledge rules + repair wizard</li>
+<li>refactor: all 5 static templates now read ALL content from JSON files</li>
+<li>docs: add mandatory content file requirements to AI builder guide</li>
+<li>docs: clean up CLAUDE.md — add missing field types, remove admin UI content</li>
+<li>chore: gitignore test results, build artifacts, and next-env.d.ts</li>
+</ul>
+
+  </div>
+</article>
+    </div>
+  </main>
+  <footer>
+    <div class="container">
+      <p>Built with @webhouse/cms</p>
+    </div>
+  </footer>
+</body>
+</html>

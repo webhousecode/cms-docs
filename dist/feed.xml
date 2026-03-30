@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Site</title>
+    <link>https://docs.webhouse.app</link>
+    <description>Latest content from Site</description>
+    <language>en</language>
+    <lastBuildDate>Mon, 30 Mar 2026 14:01:20 GMT</lastBuildDate>
+    <atom:link href="https://docs.webhouse.app/feed.xml" rel="self" type="application/rss+xml"/>
+    <generator>@webhouse/cms</generator>
+    <item>
+      <title>Docker-udrulning</title>
+      <link>https://docs.webhouse.app/docs/docker-deployment-da/</link>
+      <description>Deploy @webhouse/cms med Docker — kombineret eller opdelt arkitektur, Docker Hub, GitHub Container Registry og Fly.io.</description>
+      <pubDate>Mon, 30 Mar 2026 12:31:03 GMT</pubDate>
+      <guid isPermaLink="true">https://docs.webhouse.app/docs/docker-deployment-da/</guid>
+    </item>
+    <item>
+      <title>Docker Deployment</title>
+      <link>https://docs.webhouse.app/docs/docker-deployment/</link>
+      <description>Deploy @webhouse/cms with Docker — combined or split architecture, Docker Hub, GitHub Container Registry, and Fly.io.</description>
+      <pubDate>Mon, 30 Mar 2026 12:31:03 GMT</pubDate>
+      <guid isPermaLink="true">https://docs.webhouse.app/docs/docker-deployment/</guid>
+    </item>
+    <item>
+      <title>Guide til build.ts — Statisk site-generering</title>
+      <link>https://docs.webhouse.app/docs/build-guide-da/</link>
+      <description>Trin-for-trin guide til at bygge den perfekte build.ts til et statisk HTML-site drevet af @webhouse/cms.</description>
+      <pubDate>Mon, 30 Mar 2026 12:14:24 GMT</pubDate>
+      <guid isPermaLink="true">https://docs.webhouse.app/docs/build-guide-da/</guid>
+    </item>
+    <item>
+      <title>Next.js integrationsguide</title>
+      <link>https://docs.webhouse.app/docs/nextjs-guide-da/</link>
+      <description>Komplet guide til at bygge en Next.js App Router-site med @webhouse/cms — fra indholdsindlæsning til deployment.</description>
+      <pubDate>Mon, 30 Mar 2026 12:14:24 GMT</pubDate>
+      <guid isPermaLink="true">https://docs.webhouse.app/docs/nextjs-guide-da/</guid>
+    </item>
+    <item>
+      <title>Next.js Integration Guide</title>
+      <link>https://docs.webhouse.app/docs/nextjs-guide/</link>
+      <description>Complete guide to building a Next.js App Router site with @webhouse/cms — from content reading to deployment.</description>
+      <pubDate>Mon, 30 Mar 2026 12:14:24 GMT</pubDate>
+      <guid isPermaLink="true">https://docs.webhouse.app/docs/nextjs-guide/</guid>
+    </item>
+    <item>
+      <title>Guide to build.ts — Static Site Generation</title>
+      <link>https://docs.webhouse.app/docs/build-guide/</link>
+      <description>Step-by-step guide to building the perfect build.ts for a static HTML site powered by @webhouse/cms.</description>
+      <pubDate>Mon, 30 Mar 2026 12:14:24 GMT</pubDate>
+      <guid isPermaLink="true">https://docs.webhouse.app/docs/build-guide/</guid>
+    </item>
+    <item>
+      <title>Delte Snippets — Genbrugelige kodeblokke</title>
+      <link>https://docs.webhouse.app/docs/shared-snippets-da/</link>
+      <description>Sådan byggede vi et delt snippet-system til docs.webhouse.app med vores eget CMS — og hvordan du kan gøre det samme.</description>
+      <pubDate>Mon, 30 Mar 2026 12:14:24 GMT</pubDate>
+      <guid isPermaLink="true">https://docs.webhouse.app/docs/shared-snippets-da/</guid>
+    </item>
+    <item>
+      <title>Shared Snippets — Reusable Code Blocks</title>
+      <link>https://docs.webhouse.app/docs/shared-snippets/</link>
+      <description>How we built a shared snippets system for docs.webhouse.app using our own CMS — and how you can do the same.</description>
+      <pubDate>Mon, 30 Mar 2026 12:14:24 GMT</pubDate>
+      <guid isPermaLink="true">https://docs.webhouse.app/docs/shared-snippets/</guid>
+    </item>
+    <item>
+      <title>Konfigurationsreference</title>
+      <link>https://docs.webhouse.app/docs/config-reference-da/</link>
+      <description>Komplet reference for cms.config.ts — collections, felter, lagring, build og API-indstillinger.</description>
+      <pubDate>Mon, 30 Mar 2026 12:04:35 GMT</pubDate>
+      <guid isPermaLink="true">https://docs.webhouse.app/docs/config-reference-da/</guid>
+    </item>
+    <item>
+      <title>Configuration Reference</title>
+      <link>https://docs.webhouse.app/docs/config-reference/</link>
+      <description>Complete reference for cms.config.ts — collections, fields, storage, build, and API settings.</description>
+      <pubDate>Mon, 30 Mar 2026 12:04:35 GMT</pubDate>
+      <guid isPermaLink="true">https://docs.webhouse.app/docs/config-reference/</guid>
+    </item>
+    <item>
+      <title>Next.js-mønstre</title>
+      <link>https://docs.webhouse.app/docs/nextjs-patterns-da/</link>
+      <description>Sådan læser du CMS-indhold i Next.js — loader-funktioner, sider, statisk generering og metadata.</description>
+      <pubDate>Mon, 30 Mar 2026 12:04:35 GMT</pubDate>
+      <guid isPermaLink="true">https://docs.webhouse.app/docs/nextjs-patterns-da/</guid>
+    </item>
+    <item>
+      <title>Next.js Patterns</title>
+      <link>https://docs.webhouse.app/docs/nextjs-patterns/</link>
+      <description>How to read CMS content in Next.js — loader functions, pages, static generation, and metadata.</description>
+      <pubDate>Mon, 30 Mar 2026 12:04:35 GMT</pubDate>
+      <guid isPermaLink="true">https://docs.webhouse.app/docs/nextjs-patterns/</guid>
+    </item>
+    <item>
+      <title>Hurtig start</title>
+      <link>https://docs.webhouse.app/docs/quick-start-da/</link>
+      <description>Opret et nyt projekt og hav en CMS-drevet side kørende på under 5 minutter.</description>
+      <pubDate>Mon, 30 Mar 2026 12:04:35 GMT</pubDate>
+      <guid isPermaLink="true">https://docs.webhouse.app/docs/quick-start-da/</guid>
+    </item>
+    <item>
+      <title>Quick Start</title>
+      <link>https://docs.webhouse.app/docs/quick-start/</link>
+      <description>Scaffold a new project and have a CMS-powered site running in under 5 minutes.</description>
+      <pubDate>Mon, 30 Mar 2026 12:04:35 GMT</pubDate>
+      <guid isPermaLink="true">https://docs.webhouse.app/docs/quick-start/</guid>
+    </item>
+    <item>
+      <title>AI content generation</title>
+      <link>https://docs.webhouse.app/snippets/ai-generate/</link>
+      <description>Generate and translate content with AI CLI</description>
+      <pubDate>Mon, 30 Mar 2026 12:04:35 GMT</pubDate>
+      <guid isPermaLink="true">https://docs.webhouse.app/snippets/ai-generate/</guid>
+    </item>
+    <item>
+      <title>Block renderer</title>
+      <link>https://docs.webhouse.app/snippets/block-renderer/</link>
+      <description>Render CMS blocks in Next.js</description>
+      <pubDate>Mon, 30 Mar 2026 12:04:35 GMT</pubDate>
+      <guid isPermaLink="true">https://docs.webhouse.app/snippets/block-renderer/</guid>
+    </item>
+    <item>
+      <title>Fly.io deployment</title>
+      <link>https://docs.webhouse.app/snippets/deploy-fly/</link>
+      <description>Dockerfile and fly.toml for Fly.io</description>
+      <pubDate>Mon, 30 Mar 2026 12:04:35 GMT</pubDate>
+      <guid isPermaLink="true">https://docs.webhouse.app/snippets/deploy-fly/</guid>
+    </item>
+    <item>
+      <title>i18n configuration</title>
+      <link>https://docs.webhouse.app/snippets/i18n-config/</link>
+      <description>Multi-language collection config</description>
+      <pubDate>Mon, 30 Mar 2026 12:04:35 GMT</pubDate>
+      <guid isPermaLink="true">https://docs.webhouse.app/snippets/i18n-config/</guid>
+    </item>
+    <item>
+      <title>Next.js blog listing page</title>
+      <link>https://docs.webhouse.app/snippets/nextjs-blog-page/</link>
+      <description>Blog listing with generateStaticParams</description>
+      <pubDate>Mon, 30 Mar 2026 12:04:35 GMT</pubDate>
+      <guid isPermaLink="true">https://docs.webhouse.app/snippets/nextjs-blog-page/</guid>
+    </item>
+    <item>
+      <title>Next.js blog post page</title>
+      <link>https://docs.webhouse.app/snippets/nextjs-post-page/</link>
+      <description>Dynamic post page with SEO metadata</description>
+      <pubDate>Mon, 30 Mar 2026 12:04:35 GMT</pubDate>
+      <guid isPermaLink="true">https://docs.webhouse.app/snippets/nextjs-post-page/</guid>
+    </item>
+    <item>
+      <title>Richtext renderer</title>
+      <link>https://docs.webhouse.app/snippets/richtext-renderer/</link>
+      <description>Render CMS richtext with react-markdown</description>
+      <pubDate>Mon, 30 Mar 2026 12:04:35 GMT</pubDate>
+      <guid isPermaLink="true">https://docs.webhouse.app/snippets/richtext-renderer/</guid>
+    </item>
+    <item>
+      <title>SEO metadata in Next.js</title>
+      <link>https://docs.webhouse.app/snippets/seo-metadata/</link>
+      <description>Generate SEO metadata from CMS _seo fields</description>
+      <pubDate>Mon, 30 Mar 2026 12:04:35 GMT</pubDate>
+      <guid isPermaLink="true">https://docs.webhouse.app/snippets/seo-metadata/</guid>
+    </item>
+    <item>
+      <title>Content loader functions</title>
+      <link>https://docs.webhouse.app/snippets/content-loader/</link>
+      <description>Read CMS content in Next.js with fs</description>
+      <pubDate>Mon, 30 Mar 2026 12:04:35 GMT</pubDate>
+      <guid isPermaLink="true">https://docs.webhouse.app/snippets/content-loader/</guid>
+    </item>
+    <item>
+      <title>Define a collection</title>
+      <link>https://docs.webhouse.app/snippets/define-collection/</link>
+      <description>Basic collection definition in cms.config.ts</description>
+      <pubDate>Mon, 30 Mar 2026 12:04:35 GMT</pubDate>
+      <guid isPermaLink="true">https://docs.webhouse.app/snippets/define-collection/</guid>
+    </item>
+    <item>
+      <title>Dev server and build</title>
+      <link>https://docs.webhouse.app/snippets/dev-and-build/</link>
+      <description>Start dev server and build for production</description>
+      <pubDate>Mon, 30 Mar 2026 12:04:35 GMT</pubDate>
+      <guid isPermaLink="true">https://docs.webhouse.app/snippets/dev-and-build/</guid>
+    </item>
+    <item>
+      <title>Document JSON format</title>
+      <link>https://docs.webhouse.app/snippets/document-json/</link>
+      <description>Standard document structure in content/</description>
+      <pubDate>Mon, 30 Mar 2026 12:04:35 GMT</pubDate>
+      <guid isPermaLink="true">https://docs.webhouse.app/snippets/document-json/</guid>
+    </item>
+    <item>
+      <title>Filesystem storage config</title>
+      <link>https://docs.webhouse.app/snippets/storage-filesystem/</link>
+      <description>Configure filesystem storage adapter</description>
+      <pubDate>Mon, 30 Mar 2026 12:04:35 GMT</pubDate>
+      <guid isPermaLink="true">https://docs.webhouse.app/snippets/storage-filesystem/</guid>
+    </item>
+    <item>
+      <title>GitHub storage config</title>
+      <link>https://docs.webhouse.app/snippets/storage-github/</link>
+      <description>Configure GitHub storage adapter</description>
+      <pubDate>Mon, 30 Mar 2026 12:04:35 GMT</pubDate>
+      <guid isPermaLink="true">https://docs.webhouse.app/snippets/storage-github/</guid>
+    </item>
+    <item>
+      <title>Create a new project</title>
+      <link>https://docs.webhouse.app/snippets/create-project/</link>
+      <description>Scaffold a new @webhouse/cms project</description>
+      <pubDate>Mon, 30 Mar 2026 12:04:35 GMT</pubDate>
+      <guid isPermaLink="true">https://docs.webhouse.app/snippets/create-project/</guid>
+    </item>
+    <item>
+      <title>Skabeloner &amp; Boilerplates</title>
+      <link>https://docs.webhouse.app/docs/templates-da/</link>
+      <description>Tre klar-til-brug boilerplates og otte eksempelsites til at komme hurtigt i gang.</description>
+      <pubDate>Mon, 30 Mar 2026 12:01:00 GMT</pubDate>
+      <guid isPermaLink="true">https://docs.webhouse.app/docs/templates-da/</guid>
+    </item>
+    <item>
+      <title>Templates &amp; Boilerplates</title>
+      <link>https://docs.webhouse.app/docs/templates/</link>
+      <description>Three ready-to-use boilerplates and eight example sites to jump-start your project.</description>
+      <pubDate>Mon, 30 Mar 2026 12:01:00 GMT</pubDate>
+      <guid isPermaLink="true">https://docs.webhouse.app/docs/templates/</guid>
+    </item>
+    <item>
+      <title>AI Builder Guide</title>
+      <link>https://docs.webhouse.app/docs/ai-builder-guide-da/</link>
+      <description>20 modulære dokumentationsmoduler der følger med npm-pakken — designet til AI-agenter der bygger sites.</description>
+      <pubDate>Mon, 30 Mar 2026 11:04:41 GMT</pubDate>
+      <guid isPermaLink="true">https://docs.webhouse.app/docs/ai-builder-guide-da/</guid>
+    </item>
+    <item>
+      <title>AI Builder Guide</title>
+      <link>https://docs.webhouse.app/docs/ai-builder-guide/</link>
+      <description>20 modular documentation modules that ship with the npm package — designed for AI agents building sites.</description>
+      <pubDate>Mon, 30 Mar 2026 11:04:41 GMT</pubDate>
+      <guid isPermaLink="true">https://docs.webhouse.app/docs/ai-builder-guide/</guid>
+    </item>
+    <item>
+      <title>Unreleased</title>
+      <link>https://docs.webhouse.app/changelog/unreleased/</link>
+      <description>Release notes for @webhouse/cms next</description>
+      <pubDate>Sun, 29 Mar 2026 22:35:18 GMT</pubDate>
+      <guid isPermaLink="true">https://docs.webhouse.app/changelog/unreleased/</guid>
+    </item>
+    <item>
+      <title>Release v0.2.13</title>
+      <link>https://docs.webhouse.app/changelog/v0-2-13/</link>
+      <description>Release notes for @webhouse/cms 0.2.13</description>
+      <pubDate>Sun, 29 Mar 2026 22:35:17 GMT</pubDate>
+      <guid isPermaLink="true">https://docs.webhouse.app/changelog/v0-2-13/</guid>
+    </item>
+    <item>
+      <title>Release v0.2.11</title>
+      <link>https://docs.webhouse.app/changelog/v0-2-11/</link>
+      <description>Release notes for @webhouse/cms 0.2.11</description>
+      <pubDate>Sun, 29 Mar 2026 22:35:17 GMT</pubDate>
+      <guid isPermaLink="true">https://docs.webhouse.app/changelog/v0-2-11/</guid>
+    </item>
+    <item>
+      <title>Release v0.2.9</title>
+      <link>https://docs.webhouse.app/changelog/v0-2-9/</link>
+      <description>Release notes for @webhouse/cms 0.2.9</description>
+      <pubDate>Sun, 29 Mar 2026 22:35:17 GMT</pubDate>
+      <guid isPermaLink="true">https://docs.webhouse.app/changelog/v0-2-9/</guid>
+    </item>
+    <item>
+      <title>Release v0.2.8</title>
+      <link>https://docs.webhouse.app/changelog/v0-2-8/</link>
+      <description>Release notes for @webhouse/cms 0.2.8</description>
+      <pubDate>Sun, 29 Mar 2026 22:35:17 GMT</pubDate>
+      <guid isPermaLink="true">https://docs.webhouse.app/changelog/v0-2-8/</guid>
+    </item>
+    <item>
+      <title>Release v0.2.6</title>
+      <link>https://docs.webhouse.app/changelog/v0-2-6/</link>
+      <description>Release notes for @webhouse/cms 0.2.6</description>
+      <pubDate>Sun, 29 Mar 2026 22:35:17 GMT</pubDate>
+      <guid isPermaLink="true">https://docs.webhouse.app/changelog/v0-2-6/</guid>
+    </item>
+    <item>
+      <title>Release v0.2.5</title>
+      <link>https://docs.webhouse.app/changelog/v0-2-5/</link>
+      <description>Release notes for @webhouse/cms 0.2.5</description>
+      <pubDate>Sun, 29 Mar 2026 22:35:17 GMT</pubDate>
+      <guid isPermaLink="true">https://docs.webhouse.app/changelog/v0-2-5/</guid>
+    </item>
+    <item>
+      <title>Release v0.2.4</title>
+      <link>https://docs.webhouse.app/changelog/v0-2-4/</link>
+      <description>Release notes for @webhouse/cms 0.2.4</description>
+      <pubDate>Sun, 29 Mar 2026 22:35:17 GMT</pubDate>
+      <guid isPermaLink="true">https://docs.webhouse.app/changelog/v0-2-4/</guid>
+    </item>
+    <item>
+      <title>Release v0.2.3</title>
+      <link>https://docs.webhouse.app/changelog/v0-2-3/</link>
+      <description>Release notes for @webhouse/cms 0.2.3</description>
+      <pubDate>Sun, 29 Mar 2026 22:35:17 GMT</pubDate>
+      <guid isPermaLink="true">https://docs.webhouse.app/changelog/v0-2-3/</guid>
+    </item>
+    <item>
+      <title>Release v0.2.2</title>
+      <link>https://docs.webhouse.app/changelog/v0-2-2/</link>
+      <description>Release notes for @webhouse/cms 0.2.2</description>
+      <pubDate>Sun, 29 Mar 2026 22:35:17 GMT</pubDate>
+      <guid isPermaLink="true">https://docs.webhouse.app/changelog/v0-2-2/</guid>
+    </item>
+    <item>
+      <title>Release v0.2.1</title>
+      <link>https://docs.webhouse.app/changelog/v0-2-1/</link>
+      <description>Release notes for @webhouse/cms 0.2.1</description>
+      <pubDate>Sun, 29 Mar 2026 22:35:17 GMT</pubDate>
+      <guid isPermaLink="true">https://docs.webhouse.app/changelog/v0-2-1/</guid>
+    </item>
+    <item>
+      <title>Release v0.2.0</title>
+      <link>https://docs.webhouse.app/changelog/v0-2-0/</link>
+      <description>Release notes for @webhouse/cms 0.2.0</description>
+      <pubDate>Sun, 29 Mar 2026 22:35:17 GMT</pubDate>
+      <guid isPermaLink="true">https://docs.webhouse.app/changelog/v0-2-0/</guid>
+    </item>
+    <item>
+      <title>Foundation — Initial Development</title>
+      <link>https://docs.webhouse.app/changelog/v0-0-1-foundation/</link>
+      <description>Release notes for @webhouse/cms 0.0.1</description>
+      <pubDate>Sun, 29 Mar 2026 22:35:17 GMT</pubDate>
+      <guid isPermaLink="true">https://docs.webhouse.app/changelog/v0-0-1-foundation/</guid>
+    </item>
+    <item>
+      <title>Fejlfinding</title>
+      <link>https://docs.webhouse.app/docs/troubleshooting-da/</link>
+      <description>Almindelige problemer og løsninger — GitHub-adapter, indhold vises ikke, portkonflikter, billeder og mere.</description>
+      <pubDate>Sun, 29 Mar 2026 22:24:50 GMT</pubDate>
+      <guid isPermaLink="true">https://docs.webhouse.app/docs/troubleshooting-da/</guid>
+    </item>
+    <item>
+      <title>Indholdsrelationer</title>
+      <link>https://docs.webhouse.app/docs/relationships-da/</link>
+      <description>Forbind dokumenter på tværs af collections med relationsfelter — single, multi og reverse lookups.</description>
+      <pubDate>Sun, 29 Mar 2026 22:24:50 GMT</pubDate>
+      <guid isPermaLink="true">https://docs.webhouse.app/docs/relationships-da/</guid>
+    </item>
+    <item>
+      <title>Richtext-editor</title>
+      <link>https://docs.webhouse.app/docs/richtext-da/</link>
+      <description>TipTap-baseret richtext-editor med indlejret medier, callouts, tabeller, kodeblokke og AI-funktioner.</description>
+      <pubDate>Sun, 29 Mar 2026 22:24:50 GMT</pubDate>
+      <guid isPermaLink="true">https://docs.webhouse.app/docs/richtext-da/</guid>
+    </item>
+    <item>
+      <title>Interaktive elementer</title>
+      <link>https://docs.webhouse.app/docs/interactives-da/</link>
+      <description>Datadrevet interaktivt indhold — diagrammer, beregnere, demoer med CMS-styret data.</description>
+      <pubDate>Sun, 29 Mar 2026 22:24:50 GMT</pubDate>
+      <guid isPermaLink="true">https://docs.webhouse.app/docs/interactives-da/</guid>
+    </item>
+  </channel>
+</rss>

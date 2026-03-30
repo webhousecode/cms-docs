@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unreleased — webhouse.app Changelog — My Site</title>
+  <meta name="description" content="Release notes for @webhouse/cms next">
+  <meta property="og:title" content="Unreleased — webhouse.app Changelog — My Site">
+  <meta property="og:description" content="Release notes for @webhouse/cms next">
+  <meta property="og:type" content="website">
+  
+  <link rel="canonical" href="https://docs.webhouse.app/changelog/unreleased/">
+  
+  
+  <style>
+    :root {
+      --color-bg: #ffffff;
+      --color-fg: #111827;
+      --color-primary: #2563eb;
+      --color-muted: #6b7280;
+      --color-border: #e5e7eb;
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-mono: 'Courier New', monospace;
+      --font-size-base: 1rem;
+      --line-height-base: 1.7;
+      --spacing-base: 1rem;
+      --spacing-section: clamp(2rem, 5vw, 4rem);
+      --max-width: 72rem;
+      --radius: 0.5rem;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font-sans); background: var(--color-bg); color: var(--color-fg); font-size: var(--font-size-base); line-height: var(--line-height-base); }
+    a { color: var(--color-primary); }
+    img { max-width: 100%; height: auto; }
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 var(--spacing-base); }
+    header { border-bottom: 1px solid var(--color-border); padding: 1rem 0; margin-bottom: 2rem; }
+    header nav { display: flex; align-items: center; flex-wrap: wrap; position: relative; }
+    header .site-title { font-weight: 700; font-size: 1.25rem; text-decoration: none; color: var(--color-fg); flex: 1; }
+    .nav-toggle { display: none; }
+    .nav-burger { display: flex; flex-direction: column; gap: 4px; cursor: pointer; padding: 0.5rem; margin: -0.5rem; }
+    .nav-burger span { display: block; width: 20px; height: 2px; background: var(--color-fg); transition: transform 0.2s, opacity 0.2s; }
+    .nav-links { display: none; width: 100%; flex-direction: column; gap: 0; padding-top: 0.75rem; }
+    .nav-toggle:checked ~ .nav-links { display: flex; }
+    .nav-toggle:checked ~ .nav-burger span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
+    .nav-toggle:checked ~ .nav-burger span:nth-child(2) { opacity: 0; }
+    .nav-toggle:checked ~ .nav-burger span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4px); }
+    header nav a.nav-link { text-decoration: none; color: var(--color-muted); font-size: 0.9375rem; transition: color 0.15s; padding: 0.75rem 0; display: block; }
+    header nav a.nav-link:hover { color: var(--color-fg); }
+    @media (min-width: 768px) {
+      .nav-burger { display: none; }
+      .nav-links { display: flex; width: auto; flex-direction: row; gap: 2rem; padding-top: 0; margin-left: 2rem; }
+      header nav a.nav-link { padding: 0; display: inline; }
+    }
+    main { padding: var(--spacing-section) 0; }
+    footer { border-top: 1px solid var(--color-border); padding: 1.5rem 0; margin-top: var(--spacing-section); color: var(--color-muted); font-size: 0.875rem; }
+    .prose h1 { font-size: clamp(1.75rem, 4vw, 2.25rem); font-weight: 800; line-height: 1.2; margin-bottom: 1rem; }
+    .prose h2 { font-size: clamp(1.25rem, 3vw, 1.5rem); font-weight: 700; margin: 2rem 0 0.75rem; }
+    .prose h3 { font-size: clamp(1.1rem, 2.5vw, 1.25rem); font-weight: 600; margin: 1.5rem 0 0.5rem; }
+    .prose p { margin-bottom: 1.25rem; }
+    .prose pre { background: #1e293b; color: #e2e8f0; padding: 1rem; border-radius: var(--radius); overflow-x: auto; margin-bottom: 1.25rem; font-family: var(--font-mono); font-size: clamp(0.75rem, 1.5vw, 0.875rem); }
+    .prose code { background: #f1f5f9; padding: 0.125rem 0.375rem; border-radius: 0.25rem; font-family: var(--font-mono); font-size: 0.875em; }
+    .prose pre code { background: none; padding: 0; }
+    .prose ul, .prose ol { padding-left: 1.5rem; margin-bottom: 1.25rem; }
+    .prose li { margin-bottom: 0.375rem; }
+    .prose blockquote { border-left: 4px solid var(--color-primary); padding-left: 1rem; margin: 1.5rem 0; color: var(--color-muted); }
+    .prose img { border-radius: var(--radius); margin: 1.5rem 0; }
+    .card-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
+    @media (min-width: 640px) {
+      .card-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+    }
+    .card { border: 1px solid var(--color-border); border-radius: var(--radius); padding: 1.5rem; transition: box-shadow 0.2s; }
+    .card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+    .card h2 { font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .card h2 a { text-decoration: none; color: var(--color-fg); }
+    .card h2 a:hover { color: var(--color-primary); }
+    .card .meta { color: var(--color-muted); font-size: 0.875rem; margin-bottom: 0.75rem; }
+    .card .excerpt { color: var(--color-muted); font-size: 0.9375rem; }
+    .hero { padding: var(--spacing-section) 0; text-align: center; }
+    .hero h1 { font-size: clamp(2rem, 6vw, 3rem); font-weight: 800; margin-bottom: 1rem; }
+    .hero p { font-size: clamp(1rem, 2.5vw, 1.25rem); color: var(--color-muted); max-width: 42rem; margin: 0 auto 2rem; }
+    .btn { display: inline-block; padding: 0.75rem 1.5rem; background: var(--color-primary); color: #fff; border-radius: var(--radius); text-decoration: none; font-weight: 600; }
+    .btn:hover { opacity: 0.9; }
+    .post-header { margin-bottom: 2rem; }
+    .post-header h1 { font-size: clamp(1.75rem, 5vw, 2.5rem); font-weight: 800; line-height: 1.2; margin-bottom: 0.5rem; }
+    .post-meta { color: var(--color-muted); font-size: 0.875rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <a href="/" class="site-title">My Site</a>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
+        <label for="nav-toggle" class="nav-burger" aria-label="Menu"><span></span><span></span><span></span></label>
+        <div class="nav-links">
+          <a href="/docs/" class="nav-link">Documentation</a>
+<a href="/changelog/" class="nav-link">Changelog</a>
+<a href="/snippets/" class="nav-link">Shared Snippets</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      
+<article>
+  <header class="post-header">
+    <h1>Unreleased</h1>
+    <p class="post-meta">March 29, 2026</p>
+    
+  </header>
+  <div class="prose">
+    <h2>Unreleased Changes</h2>
+<p><strong>207 changes</strong> since v0.2.13</p>
+<h3>Features</h3>
+<ul>
+<li>feat: wire HelpCard learnMorePath links to docs.webhouse.app</li>
+<li>feat: F109 Inline Proofreading + tab isolation fix</li>
+<li>feat: add F117 MCP ↔ Chat Tool Parity to roadmap (Tier 2)</li>
+<li>feat: F114 master memory — immutable product identity in every chat</li>
+<li>feat: Visibility card on Dashboard with combined SEO + GEO score</li>
+<li>feat: import preview with merge confirmation + timestamps in memory export</li>
+<li>feat: F114 full chat export/import — portable ZIP archive</li>
+<li>feat: F114 Phase 4 — memory import/export + conversation search</li>
+<li>feat: F116 Contextual Help — HelpCard framework with 10 articles</li>
+<li>feat: F114 Chat Memory — cross-conversation intelligence</li>
+<li>feat: add F116 Contextual Help (HelpCard Framework) to feature roadmap</li>
+<li>feat: F112 G05 — Visibility dashboard (SEO + GEO combined)</li>
+<li>feat: F48 session — previewable flag, chat fixes, link translations tool</li>
+<li>feat: rename Performance → AI Analytics, add Visibility page placeholder</li>
+<li>feat: previewable flag on collections + Copy ID in chat history</li>
+<li>feat: add F115 CMS Help Chat — product knowledge base for chat</li>
+<li>feat: RSS feed generator — /feed.xml with configurable collections</li>
+<li>feat: content search covers ALL data fields (tags, author, category, etc.)</li>
+<li>feat: search_content now searches ALL content including media tags</li>
+<li>feat: F112 G08 — GEO settings panel (robots.txt strategy, organization, API keys)</li>
+<li>feat: Link translations tool in Properties + fix chat hydration error</li>
+<li>feat: show thinking toggle in chat input area</li>
+<li>feat: F112 G07 — GEO Optimizer agent for AI citation-friendly content</li>
+<li>feat: F112 G04 — 5 new JSON-LD templates (HowTo, Service, Software, Breadcrumb, WebSite)</li>
+<li>feat: F112 G02 UI — dual SEO + GEO score in panel and dashboard API</li>
+<li>feat: F112 G02 — GEO score with 8 AI visibility rules + combined Visibility Score</li>
+<li>feat: add F114 Chat Memory &amp; Cross-Conversation Intelligence</li>
+<li>feat: collection list — Preview in context menu + menu on grid cards</li>
+<li>feat: create_document accepts locale parameter from chat AI</li>
+<li>feat: F112 G03 — llms-full.txt + per-page .md markdown endpoints</li>
+<li>feat: F112 G01 — smart robots.txt generator with 4 AI crawler strategies</li>
+<li>feat: F48 final locale coverage — AI routes, SEO score, JSON-LD</li>
+<li>feat: chat avatars use Gravatar + larger matching size</li>
+<li>feat: side-by-side tabs for 3+ locales</li>
+<li>feat: search_media returns locale-specific alt-text and captions</li>
+<li>feat: force-change locale in Properties drawer + No locale indicator</li>
+<li>feat: F48 chat i18n — auto-translate toggle + locale-aware chat</li>
+<li>feat: chat create_document auto-translates to all configured locales</li>
+<li>feat: thumbnail size control (S/M/L) in media action bar</li>
+<li>feat: rotate images from media lightbox toolbar</li>
+<li>feat: extend F104 with Fase 6 — Frontend Media UI Performance</li>
+<li>feat: F63 audit as Sharp PNG billboard — 25 components, Illustrator-ready</li>
+<li>feat: F63 audit SVG with 25 precise element screenshots via data-testid</li>
+<li>feat: interactive translate auto-flips direction when language detected</li>
+<li>feat: F80 selector-map.json + Playwright helpers + roadmap update</li>
+<li>feat: F80 Admin Selector Map — 65 data-testid attributes across 17 files</li>
+<li>feat: interactive translate detects actual language from HTML lang attr</li>
+<li>feat: side-by-side for interactives — preview sibling alongside editor</li>
+<li>feat: F63 component audit — Playwright screenshots + Sharp crops + SVG visual reference</li>
+<li>feat: translate endpoint swaps interactive IDs to locale versions</li>
+<li>feat: side-by-side always available — equal partners, no source concept</li>
+<li>feat: restore stale banner as info-only (no re-translate button)</li>
+<li>feat: showStaleTranslations site config toggle — OFF by default</li>
+<li>feat: F48 translationGroup — bidirectional ID-based translation partners</li>
+<li>feat: F27 backup includes cms.config.ts + feature markers for i18n compatibility</li>
+<li>feat: interactives list view matches collection-list pattern exactly</li>
+<li>feat: interactives list view uses table layout matching collections</li>
+<li>feat: Interactive editor — locale switcher + download in menu</li>
+<li>feat: F48 i18n — Interactive translation as first-class feature</li>
+<li>feat: F48 i18n — Interactive translation</li>
+<li>feat: F48 i18n — complete remaining features</li>
+<li>feat: F13 Notification Channels — shared webhook dispatcher + wire all automations</li>
+<li>feat: F48 i18n — upload auto-analyzes for all site locales</li>
+<li>feat: F48 i18n — translate endpoint replaces image alt-text per locale</li>
+<li>feat: F48 i18n — lightbox AI panel with per-locale caption/alt pills</li>
+<li>feat: F48 i18n — per-locale media metadata + SEO translation</li>
+<li>feat: F48 i18n — build.ts with DA/EN locale support + flag toggle</li>
+<li>feat: F48 i18n — AI-generated translated slugs</li>
+<li>feat: F48 i18n — locale switcher navigation + new document locale picker</li>
+<li>feat: F48 i18n — localeStrategy setting + bulk locale on existing docs</li>
+<li>feat: F48 i18n Phase 6 — SEO locale filter, header locale indicator</li>
+<li>feat: F48 i18n Phase 5 — hreflang sitemap, locale URL prefixes, JSON-LD inLanguage</li>
+<li>feat: F48 i18n Phase 4 — auto-translate on publish, bulk translate, chat tools</li>
+<li>feat: F48 i18n Phase 3 — translate API, AI translation dialog, stale detection</li>
+<li>feat: F48 i18n — Playwright E2E tests + dev-token auth fixes</li>
+<li>feat: chat renders Edit/View pills on document references</li>
+<li>feat: add build_site tool to chat — auto-build after content changes</li>
+<li>feat: F48 i18n — collection list locale filter + translation badges</li>
+<li>feat: chat thinking toggle + elapsed timer</li>
+<li>feat: F48 i18n Phase 1+2 — locale foundation + AI locale-awareness</li>
+<li>feat: F99 Phase A — test infrastructure framework</li>
+<li>feat: rewrite F99 — test infrastructure framework + continuous coverage</li>
+<li>feat: rewrite F48 i18n plan — full AI auto-translation, 6 phases, 18 files</li>
+<li>feat: rename site from Sites dashboard dropdown menu</li>
+<li>feat(F12): mark One-Click Publish as Done</li>
+<li>feat(F42): mark Framework Boilerplates as Done</li>
+</ul>
+<h3>Bug Fixes</h3>
+<ul>
+<li>fix: MCP site-scoped key resolution — API key determines site, not cookies</li>
+<li>fix: zoom controls larger — 28px buttons, 0.75rem percentage, text ±</li>
+<li>fix: editor zoom tool uses CSS zoom instead of fontSize</li>
+<li>fix: MCP session persistence — globalThis survives Next.js HMR</li>
+<li>fix: rename Conversations → Chats, server-side chat search</li>
+<li>fix: F116 HelpCard — always visible, collapsible instead of dismissible</li>
+<li>fix: Edit pill uses SPA navigation — preserves chat session</li>
+<li>fix: Edit pill navigates to doc with ?mode=admin to exit chat mode</li>
+<li>fix: DocPill View uses correct endpoints + schema returns urlPrefix</li>
+<li>fix: search_media includes user tags in results (was only showing AI tags)</li>
+<li>fix: click outside Properties drawer to close it</li>
+<li>fix: link famous/bekannte ski posts with shared translationGroup</li>
+<li>fix: chat View pill resolves exact preview URL with locale + category</li>
+<li>fix: document editor preview URL includes locale prefix</li>
+<li>fix: chat preview base uses previewSiteUrl first, sirv as fallback</li>
+<li>fix: grid context menu in title bar + preview available on all collections</li>
+<li>fix: resolve preview base URL in both grid and list views</li>
+<li>fix: collection status filter persisted in localStorage per collection</li>
+<li>fix: build.ts reads locales from site config + chat preview uses locale prefix</li>
+<li>fix: chat system prompt — NEVER create_document twice for translations</li>
+<li>fix: chat avatar uses sessionStorage cache instead of fetching /api/auth/me</li>
+<li>fix: chat user avatar reads from d.user.gravatarUrl (not d.gravatarUrl)</li>
+<li>fix: chat avatar vertically centered with first tool call card</li>
+<li>fix: chat page path includes category segment when collection has category field</li>
+<li>fix: chat get_document resolves hierarchical URLs (categories in path)</li>
+<li>fix: chat preview card respects previewSiteUrl — same fix as preview page</li>
+<li>fix: preview respects previewSiteUrl — never overrides with sirv</li>
+<li>fix: translate button spinner + flushSync error in richtext editor</li>
+<li>fix: locale dropdown shows only locale code, interactives get locale on upload</li>
+<li>fix: link traening/training ski pages with shared translationGroup</li>
+<li>fix: ALL document creation paths always set locale</li>
+<li>fix: chat SEO generation uses document locale, not site default</li>
+<li>fix: translate endpoint stamps locale on source doc if missing</li>
+<li>fix: chat create_document sets locale on creation for multi-locale sites</li>
+<li>fix: rotate buttons grouped with border for visibility</li>
+<li>fix: media grid uses ⋮ dropdown menu + rotate buttons show for all images</li>
+<li>fix: pass thumbMinWidth to GridView + robust rotate button check</li>
+<li>fix: auto-correct locale before rejection check</li>
+<li>fix: interactive translate shows error toast + reloads on locale correction</li>
+<li>fix: EN ski post uses EN interactive (ski-vinter-slideshow-en)</li>
+<li>fix: use xlink:href for SVG images — Adobe Illustrator compatibility</li>
+<li>fix: richtext editor skips onChange when content didn&#39;t actually change</li>
+<li>fix: side-by-side button matches sibling link style exactly</li>
+<li>fix: TipTap onCreate dispatch no longer triggers dirty flag</li>
+<li>fix: key={doc.id} on DocumentEditor — fresh state on doc navigation</li>
+<li>fix: side-by-side reads localStorage after hydration to avoid dirty flag</li>
+<li>fix: side-by-side button always says &#39;Side-by-side&#39;, yellow when active</li>
+<li>fix: side-by-side persists across navigation via localStorage</li>
+<li>fix: side-by-side button matches sibling link height exactly</li>
+<li>fix: move side-by-side button to translations bar, compact size</li>
+<li>fix: Language section toggles now trigger settings dirty state</li>
+<li>fix: side-by-side shows default-locale source on translation docs</li>
+<li>fix: remove all stale translation code, auto-translate only with toggle</li>
+<li>fix: auto-translate only on first publish, remove stale triangles</li>
+<li>fix: remove stale banner, preserve status on re-translate</li>
+<li>fix: stale banner — only on non-default-locale docs + persistent dismiss</li>
+<li>fix: stale banner only shows when a sibling is actually newer</li>
+<li>fix: re-translate uses correct targetLocale fallback + better error messages</li>
+<li>fix: stale banner — dismiss button + no page refresh on re-translate</li>
+<li>fix: Re-translate button calls translate API directly instead of opening dialog</li>
+<li>fix: interactives remembers grid/list view in localStorage</li>
+<li>fix: interactives page uses same 2rem padding as collection pages</li>
+<li>fix: interactives context menu uses same style as sites cards</li>
+<li>fix: Interactive grid — context menu always visible in info bar</li>
+<li>fix: Interactive i18n — match document editor design + locale badges</li>
+<li>fix: Interactive code editor was permanently read-only</li>
+<li>fix: side-by-side uses FieldEditor with locked=true for identical rendering</li>
+<li>fix: side-by-side — inline heading/code/link styles without prose class</li>
+<li>fix: side-by-side — proper heading rendering + field alignment spacing</li>
+<li>fix: side-by-side parses TipTap image title for float/width styling</li>
+<li>fix: side-by-side renders markdown content with mini converter</li>
+<li>fix: side-by-side source pane styling — prose class, better field types</li>
+<li>fix: side-by-side uses server-provided source data instead of API fetch</li>
+<li>fix: move side-by-side button to action bar for visibility</li>
+<li>fix: upload AI analysis — log errors instead of silently swallowing</li>
+<li>fix: AI metadata popover captures per-locale fields after re-analyze</li>
+<li>fix: EN pages use canonical paths (/en/about/ not /en/about-en/)</li>
+<li>fix: add gap between EXIF labels and values</li>
+<li>fix: AI panel shows Analyze button when no AI data exists + reverse geocoding</li>
+<li>fix: remove CopyField reference — use inline click-to-copy on ID</li>
+<li>fix: copy button on ID in Properties panel + translation chain guard</li>
+<li>fix: only source documents can create translations + copyable doc ID</li>
+<li>fix: create_document strips reserved doc-level fields from data</li>
+<li>fix: locale badge is read-only, not a dropdown selector</li>
+<li>fix: hide &quot;+ Add translation&quot; when all locales are covered</li>
+<li>fix: CreateTranslationDialog only shows available locales</li>
+<li>fix: editor reads locales from siteConfig instead of cms.config.ts</li>
+<li>fix: create_document validates and remaps field names to schema</li>
+<li>fix: Edit pill opens in admin mode, not chat mode</li>
+<li>fix: chat history saves complete conversation including AI response</li>
+<li>fix: AI prompts use field names instead of labels for JSON keys</li>
+<li>fix: show Live button for sites with previewUrl — fallback when no deployProductionUrl</li>
+<li>fix: allow iframe embedding in Next.js boilerplates</li>
+<li>fix: persist GitHub OAuth token as service token on site creation</li>
+<li>fix: link webhouse.app in footer across all 3 boilerplates</li>
+</ul>
+<h3>Other Changes</h3>
+<ul>
+<li>docs: mark F109 Inline Proofreading as done (milestone #36)</li>
+<li>docs: F31 session prompt — build docs.webhouse.app dogfooded on CMS</li>
+<li>docs: complete rewrite of F31 Documentation Site plan</li>
+<li>docs: mark F48 i18n as Done in roadmap</li>
+<li>docs: MCP setup guide + tool parity analysis (MCP vs Chat)</li>
+<li>chore: update pnpm-lock.yaml for minisearch dependency</li>
+<li>chore: add pnpm clean to root package.json</li>
+<li>chore: add clean script to cms-admin</li>
+<li>docs: mark F112 GEO as Done in roadmap</li>
+<li>docs: absorb G06 Index Checker into G05 Visibility Monitor</li>
+<li>docs: update F112 GEO plan with all shipped features (RSS, llms-full, robots, GEO score, agents, settings)</li>
+<li>docs: F48 i18n — mark as DONE with implementation summary</li>
+<li>docs: update F112 GEO progress — 5 of 8 phases complete</li>
+<li>docs: F114 — add token budget section, bump default aiChatMaxTokens to 16384</li>
+<li>docs: mark F13 Notification Channels as done in roadmap</li>
+<li>docs: mark F84 Move Site to Org as done</li>
+<li>docs: comprehensive roadmap audit — mark 7 more features as done</li>
+<li>docs: mark F42, F67, F79, F96, F97, F99 as done in roadmap</li>
+<li>docs: mark F48 i18n as Done</li>
+<li>docs: add F48 i18n requirements to 56 content-facing feature plans</li>
+<li>content: add 10 ski vacation posts + fix scenario test doc field names</li>
+<li>docs: add F99 testing requirements to F96 + exclude .md from NEXT_PUBLIC check</li>
+<li>docs: add F99 testing requirements to all 107 feature plans</li>
+<li>docs: move F83 Vibe Site Builder to Tier 2 top priority</li>
+<li>docs(F93): add Phase 2 — OAuth provider integration for Vercel/Netlify</li>
+<li>docs: mark F89 Post-Build Enrichment as Done</li>
+</ul>
+
+  </div>
+</article>
+    </div>
+  </main>
+  <footer>
+    <div class="container">
+      <p>Built with @webhouse/cms</p>
+    </div>
+  </footer>
+</body>
+</html>

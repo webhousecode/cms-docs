@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API Endpoints Reference — webhouse.app Docs — My Site</title>
+  <meta name="description" content="Complete reference of all 136 REST API endpoints in the CMS admin.">
+  <meta property="og:title" content="API Endpoints Reference — webhouse.app Docs — My Site">
+  <meta property="og:description" content="Complete reference of all 136 REST API endpoints in the CMS admin.">
+  <meta property="og:type" content="website">
+  
+  <link rel="canonical" href="https://docs.webhouse.app/docs/api-endpoints/">
+  
+  
+  <style>
+    :root {
+      --color-bg: #ffffff;
+      --color-fg: #111827;
+      --color-primary: #2563eb;
+      --color-muted: #6b7280;
+      --color-border: #e5e7eb;
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-mono: 'Courier New', monospace;
+      --font-size-base: 1rem;
+      --line-height-base: 1.7;
+      --spacing-base: 1rem;
+      --spacing-section: clamp(2rem, 5vw, 4rem);
+      --max-width: 72rem;
+      --radius: 0.5rem;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font-sans); background: var(--color-bg); color: var(--color-fg); font-size: var(--font-size-base); line-height: var(--line-height-base); }
+    a { color: var(--color-primary); }
+    img { max-width: 100%; height: auto; }
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 var(--spacing-base); }
+    header { border-bottom: 1px solid var(--color-border); padding: 1rem 0; margin-bottom: 2rem; }
+    header nav { display: flex; align-items: center; flex-wrap: wrap; position: relative; }
+    header .site-title { font-weight: 700; font-size: 1.25rem; text-decoration: none; color: var(--color-fg); flex: 1; }
+    .nav-toggle { display: none; }
+    .nav-burger { display: flex; flex-direction: column; gap: 4px; cursor: pointer; padding: 0.5rem; margin: -0.5rem; }
+    .nav-burger span { display: block; width: 20px; height: 2px; background: var(--color-fg); transition: transform 0.2s, opacity 0.2s; }
+    .nav-links { display: none; width: 100%; flex-direction: column; gap: 0; padding-top: 0.75rem; }
+    .nav-toggle:checked ~ .nav-links { display: flex; }
+    .nav-toggle:checked ~ .nav-burger span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
+    .nav-toggle:checked ~ .nav-burger span:nth-child(2) { opacity: 0; }
+    .nav-toggle:checked ~ .nav-burger span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4px); }
+    header nav a.nav-link { text-decoration: none; color: var(--color-muted); font-size: 0.9375rem; transition: color 0.15s; padding: 0.75rem 0; display: block; }
+    header nav a.nav-link:hover { color: var(--color-fg); }
+    @media (min-width: 768px) {
+      .nav-burger { display: none; }
+      .nav-links { display: flex; width: auto; flex-direction: row; gap: 2rem; padding-top: 0; margin-left: 2rem; }
+      header nav a.nav-link { padding: 0; display: inline; }
+    }
+    main { padding: var(--spacing-section) 0; }
+    footer { border-top: 1px solid var(--color-border); padding: 1.5rem 0; margin-top: var(--spacing-section); color: var(--color-muted); font-size: 0.875rem; }
+    .prose h1 { font-size: clamp(1.75rem, 4vw, 2.25rem); font-weight: 800; line-height: 1.2; margin-bottom: 1rem; }
+    .prose h2 { font-size: clamp(1.25rem, 3vw, 1.5rem); font-weight: 700; margin: 2rem 0 0.75rem; }
+    .prose h3 { font-size: clamp(1.1rem, 2.5vw, 1.25rem); font-weight: 600; margin: 1.5rem 0 0.5rem; }
+    .prose p { margin-bottom: 1.25rem; }
+    .prose pre { background: #1e293b; color: #e2e8f0; padding: 1rem; border-radius: var(--radius); overflow-x: auto; margin-bottom: 1.25rem; font-family: var(--font-mono); font-size: clamp(0.75rem, 1.5vw, 0.875rem); }
+    .prose code { background: #f1f5f9; padding: 0.125rem 0.375rem; border-radius: 0.25rem; font-family: var(--font-mono); font-size: 0.875em; }
+    .prose pre code { background: none; padding: 0; }
+    .prose ul, .prose ol { padding-left: 1.5rem; margin-bottom: 1.25rem; }
+    .prose li { margin-bottom: 0.375rem; }
+    .prose blockquote { border-left: 4px solid var(--color-primary); padding-left: 1rem; margin: 1.5rem 0; color: var(--color-muted); }
+    .prose img { border-radius: var(--radius); margin: 1.5rem 0; }
+    .card-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
+    @media (min-width: 640px) {
+      .card-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+    }
+    .card { border: 1px solid var(--color-border); border-radius: var(--radius); padding: 1.5rem; transition: box-shadow 0.2s; }
+    .card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+    .card h2 { font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .card h2 a { text-decoration: none; color: var(--color-fg); }
+    .card h2 a:hover { color: var(--color-primary); }
+    .card .meta { color: var(--color-muted); font-size: 0.875rem; margin-bottom: 0.75rem; }
+    .card .excerpt { color: var(--color-muted); font-size: 0.9375rem; }
+    .hero { padding: var(--spacing-section) 0; text-align: center; }
+    .hero h1 { font-size: clamp(2rem, 6vw, 3rem); font-weight: 800; margin-bottom: 1rem; }
+    .hero p { font-size: clamp(1rem, 2.5vw, 1.25rem); color: var(--color-muted); max-width: 42rem; margin: 0 auto 2rem; }
+    .btn { display: inline-block; padding: 0.75rem 1.5rem; background: var(--color-primary); color: #fff; border-radius: var(--radius); text-decoration: none; font-weight: 600; }
+    .btn:hover { opacity: 0.9; }
+    .post-header { margin-bottom: 2rem; }
+    .post-header h1 { font-size: clamp(1.75rem, 5vw, 2.5rem); font-weight: 800; line-height: 1.2; margin-bottom: 0.5rem; }
+    .post-meta { color: var(--color-muted); font-size: 0.875rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <a href="/" class="site-title">My Site</a>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
+        <label for="nav-toggle" class="nav-burger" aria-label="Menu"><span></span><span></span><span></span></label>
+        <div class="nav-links">
+          <a href="/docs/" class="nav-link">Documentation</a>
+<a href="/changelog/" class="nav-link">Changelog</a>
+<a href="/snippets/" class="nav-link">Shared Snippets</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      
+<article>
+  <header class="post-header">
+    <h1>API Endpoints Reference</h1>
+    <p class="post-meta">March 29, 2026</p>
+    
+  </header>
+  <div class="prose">
+    <h2>Overview</h2>
+<p>The CMS admin exposes <strong>136 API endpoints</strong> across 4 categories. All endpoints under <code>/api/cms/</code>, <code>/api/admin/</code>, and <code>/api/media/</code> require authentication via session cookie or API key.</p>
+<h2>Admin API</h2>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET, POST</td>
+<td><code>/api/admin/ai-config</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET, POST</td>
+<td><code>/api/admin/analytics</code></td>
+<td>GET /api/admin/analytics</td>
+</tr>
+<tr>
+<td>GET, POST</td>
+<td><code>/api/admin/backups</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET, POST, DELETE</td>
+<td><code>/api/admin/backups/:id</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET, POST</td>
+<td><code>/api/admin/deploy</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/admin/deploy/can-deploy</code></td>
+<td></td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/admin/email-test</code></td>
+<td></td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/admin/github-service-token</code></td>
+<td>POST /api/admin/github-service-token</td>
+</tr>
+<tr>
+<td>GET, POST</td>
+<td><code>/api/admin/invitations</code></td>
+<td></td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td><code>/api/admin/invitations/:id</code></td>
+<td></td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/admin/invitations/accept</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/admin/invitations/validate</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET, POST</td>
+<td><code>/api/admin/mcp-config</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/admin/my-sites</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET, POST</td>
+<td><code>/api/admin/org-settings</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/admin/probe-url</code></td>
+<td>GET /api/admin/probe-url?url=<encoded-url></td>
+</tr>
+<tr>
+<td>GET, POST</td>
+<td><code>/api/admin/profile</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/admin/scheduler-events</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/admin/scheduler-stream</code></td>
+<td></td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/admin/scheduler-test</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/admin/seo</code></td>
+<td>GET /api/admin/seo</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/admin/seo/export</code></td>
+<td>GET /api/admin/seo/export?format=csv</td>
+</tr>
+<tr>
+<td>GET, POST</td>
+<td><code>/api/admin/seo/keywords</code></td>
+<td>GET /api/admin/seo/keywords</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/admin/seo/og-image</code></td>
+<td>POST /api/admin/seo/og-image</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/admin/seo/optimize-bulk</code></td>
+<td>POST /api/admin/seo/optimize-bulk</td>
+</tr>
+<tr>
+<td>GET, POST, PATCH</td>
+<td><code>/api/admin/site-config</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/admin/site-health</code></td>
+<td></td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/admin/translate-bulk</code></td>
+<td>POST /api/admin/translate-bulk</td>
+</tr>
+<tr>
+<td>GET, POST, PATCH</td>
+<td><code>/api/admin/user-state</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/admin/users</code></td>
+<td></td>
+</tr>
+<tr>
+<td>PATCH, DELETE</td>
+<td><code>/api/admin/users/:id</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/admin/users/available</code></td>
+<td>GET /api/admin/users/available</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/mcp/admin/message</code></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2>Authentication</h2>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td><code>/api/auth/github</code></td>
+<td>GET /api/auth/github — Redirect to GitHub OAuth authorize page.</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/auth/github/callback</code></td>
+<td>GET /api/auth/github/callback — Exchange OAuth code for access token.</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/auth/login</code></td>
+<td></td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/auth/logout</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/auth/me</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET, POST</td>
+<td><code>/api/auth/setup</code></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2>Content API</h2>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET, POST</td>
+<td><code>/api/check-links</code></td>
+<td>POST /api/check-links</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/check-links/apply-fix</code></td>
+<td></td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/check-links/fix</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/check-links/last</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET, POST</td>
+<td><code>/api/cms/:collection</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET, POST, PATCH, DELETE</td>
+<td><code>/api/cms/:collection/:slug</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/cms/:collection/:slug/revisions</code></td>
+<td></td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/cms/:collection/:slug/revisions/:index</code></td>
+<td>POST /api/cms/{collection}/{slug}/revisions/{index}/restore</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/cms/:collection/:slug/translate</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET, POST</td>
+<td><code>/api/cms/agents</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET, PUT, DELETE</td>
+<td><code>/api/cms/agents/:id</code></td>
+<td></td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/cms/agents/:id/clone</code></td>
+<td></td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/cms/agents/:id/run</code></td>
+<td></td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/cms/agents/create-from-description</code></td>
+<td></td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/cms/agents/generate-prompt</code></td>
+<td></td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/cms/ai/chat</code></td>
+<td></td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/cms/ai/generate</code></td>
+<td></td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/cms/ai/htmldoc</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET, PUT</td>
+<td><code>/api/cms/ai/prompts</code></td>
+<td></td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/cms/ai/proofread</code></td>
+<td></td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/cms/ai/rewrite</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET, POST</td>
+<td><code>/api/cms/brand-voice</code></td>
+<td></td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/cms/brand-voice/chat</code></td>
+<td></td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/cms/brand-voice/translate</code></td>
+<td></td>
+</tr>
+<tr>
+<td>PATCH</td>
+<td><code>/api/cms/brand-voice/versions/:id</code></td>
+<td></td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/cms/chat</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET, POST</td>
+<td><code>/api/cms/chat/conversations</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET, DELETE</td>
+<td><code>/api/cms/chat/conversations/:id</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/cms/chat/export</code></td>
+<td></td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/cms/chat/import</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET, POST</td>
+<td><code>/api/cms/chat/memory</code></td>
+<td></td>
+</tr>
+<tr>
+<td>PATCH, DELETE</td>
+<td><code>/api/cms/chat/memory/:id</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/cms/chat/memory/export</code></td>
+<td></td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/cms/chat/memory/extract</code></td>
+<td></td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/cms/chat/memory/import</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/cms/chat/memory/search</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/cms/collections</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/cms/collections/:name/schema</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET, POST</td>
+<td><code>/api/cms/command</code></td>
+<td></td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/cms/command/sync</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/cms/curation</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET, PATCH</td>
+<td><code>/api/cms/curation/:id</code></td>
+<td></td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/cms/curation/:id/approve</code></td>
+<td></td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/cms/curation/:id/reject</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET, POST</td>
+<td><code>/api/cms/folder-picker</code></td>
+<td>POST /api/cms/folder-picker</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/cms/heartbeat</code></td>
+<td>GET /api/cms/heartbeat</td>
+</tr>
+<tr>
+<td>GET, POST, PUT, DELETE</td>
+<td><code>/api/cms/mcp-servers</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET, POST, PUT, DELETE</td>
+<td><code>/api/cms/registry</code></td>
+<td></td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/cms/registry/import</code></td>
+<td>POST /api/cms/registry/import</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/cms/registry/move-site</code></td>
+<td></td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/cms/registry/rename</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/cms/registry/stats</code></td>
+<td></td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/cms/registry/validate</code></td>
+<td>POST /api/cms/registry/validate</td>
+</tr>
+<tr>
+<td>GET, POST</td>
+<td><code>/api/cms/revalidation</code></td>
+<td>GET /api/cms/revalidation — get revalidation settings + recent log for active site</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/cms/scheduled</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/cms/scheduled/calendar.ics</code></td>
+<td>GET /api/cms/scheduled/calendar.ics?token=<hmac>&amp;org=<orgId>&amp;site=<siteId></td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/cms/schema-drift</code></td>
+<td>GET /api/cms/schema-drift</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/cms/schema-drift/fix</code></td>
+<td>POST /api/cms/schema-drift/fix</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/extract-text</code></td>
+<td>POST /api/extract-text</td>
+</tr>
+<tr>
+<td>GET, POST, DELETE</td>
+<td><code>/api/github</code></td>
+<td>GET /api/github?action=status</td>
+</tr>
+<tr>
+<td>GET, POST</td>
+<td><code>/api/interactives</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET, PUT, DELETE</td>
+<td><code>/api/interactives/:id</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/interactives/:id/preview</code></td>
+<td></td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/interactives/:id/translate</code></td>
+<td>POST /api/interactives/[id]/translate</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/internal-links</code></td>
+<td>GET /api/internal-links?q=query</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/mcp</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/mcp/admin</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/mcp/info</code></td>
+<td></td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/mcp/message</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/media</code></td>
+<td></td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/preview-build</code></td>
+<td>POST /api/preview-build</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/preview-serve</code></td>
+<td>Starts (or reuses) a lightweight static file server for the active site&#39;s dist/ directory.</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/preview-site-root</code></td>
+<td>Serve dist/index.html for the root path of the preview site.</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/preview-site/:...path</code></td>
+<td>Serve static files from the active site&#39;s dist/ directory.</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/publish-scheduled</code></td>
+<td>POST /api/publish-scheduled</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/schema</code></td>
+<td></td>
+</tr>
+<tr>
+<td>PUT, DELETE</td>
+<td><code>/api/schema/:collection</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET, POST</td>
+<td><code>/api/schema/collections</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/search</code></td>
+<td>GET /api/search?q=query</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/site-file/:...path</code></td>
+<td>Serve static files from the site&#39;s public/ directory or proxy from previewUrl.</td>
+</tr>
+<tr>
+<td>GET, DELETE</td>
+<td><code>/api/trash</code></td>
+<td></td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/upload</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/uploads/:...path</code></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2>Media API</h2>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td><code>/api/cms/media/usage</code></td>
+<td>GET /api/cms/media/usage</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td><code>/api/media/:...path</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/media/ai-analyzed</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/media/ai-meta</code></td>
+<td></td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/media/analyze</code></td>
+<td></td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/media/analyze-batch</code></td>
+<td></td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/media/analyze-test</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/media/exif</code></td>
+<td>GET /api/media/exif?file=/uploads/IMG_0051.jpeg</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/media/optimize-batch</code></td>
+<td>POST /api/media/optimize-batch — Generate WebP variants for all images in uploads/</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/media/rename</code></td>
+<td>POST /api/media/rename</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/media/restore</code></td>
+<td></td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/media/rotate</code></td>
+<td>POST /api/media/rotate</td>
+</tr>
+<tr>
+<td>GET, PATCH</td>
+<td><code>/api/media/tags</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/media/video-thumb</code></td>
+<td>GET /api/media/video-thumb?file=/uploads/VIDEO.MOV</td>
+</tr>
+</tbody></table>
+<h2>Authentication</h2>
+<p>All protected endpoints require one of:</p>
+<ul>
+<li><strong>Session cookie</strong> — set after login via <code>POST /api/auth/login</code></li>
+<li><strong>API key</strong> — passed in <code>Authorization: Bearer &lt;key&gt;</code> header</li>
+</ul>
+<p>Public endpoints: <code>/api/auth/login</code>, <code>/api/auth/setup</code>, <code>/api/auth/me</code></p>
+<h2>Rate Limits</h2>
+<p>No rate limits are enforced in the self-hosted CMS admin. The API is designed for single-tenant use.</p>
+<h2>Content Push Webhook</h2>
+<p>When content is saved, the CMS can push updates to your site via webhook:</p>
+<pre><code class="language-json">{
+  &quot;event&quot;: &quot;content.revalidate&quot;,
+  &quot;collection&quot;: &quot;posts&quot;,
+  &quot;slug&quot;: &quot;hello-world&quot;,
+  &quot;action&quot;: &quot;published&quot;,
+  &quot;document&quot;: { &quot;id&quot;: &quot;...&quot;, &quot;slug&quot;: &quot;...&quot;, &quot;data&quot;: { ... } },
+  &quot;paths&quot;: [&quot;/blog/hello-world&quot;, &quot;/blog&quot;]
+}
+</code></pre>
+<p>Header <code>X-CMS-Signature: sha256=&lt;hmac&gt;</code> is computed using your shared secret.</p>
+
+  </div>
+</article>
+    </div>
+  </main>
+  <footer>
+    <div class="container">
+      <p>Built with @webhouse/cms</p>
+    </div>
+  </footer>
+</body>
+</html>

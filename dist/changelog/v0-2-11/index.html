@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Release v0.2.11 — webhouse.app Changelog — My Site</title>
+  <meta name="description" content="Release notes for @webhouse/cms 0.2.11">
+  <meta property="og:title" content="Release v0.2.11 — webhouse.app Changelog — My Site">
+  <meta property="og:description" content="Release notes for @webhouse/cms 0.2.11">
+  <meta property="og:type" content="website">
+  
+  <link rel="canonical" href="https://docs.webhouse.app/changelog/v0-2-11/">
+  
+  
+  <style>
+    :root {
+      --color-bg: #ffffff;
+      --color-fg: #111827;
+      --color-primary: #2563eb;
+      --color-muted: #6b7280;
+      --color-border: #e5e7eb;
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-mono: 'Courier New', monospace;
+      --font-size-base: 1rem;
+      --line-height-base: 1.7;
+      --spacing-base: 1rem;
+      --spacing-section: clamp(2rem, 5vw, 4rem);
+      --max-width: 72rem;
+      --radius: 0.5rem;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font-sans); background: var(--color-bg); color: var(--color-fg); font-size: var(--font-size-base); line-height: var(--line-height-base); }
+    a { color: var(--color-primary); }
+    img { max-width: 100%; height: auto; }
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 var(--spacing-base); }
+    header { border-bottom: 1px solid var(--color-border); padding: 1rem 0; margin-bottom: 2rem; }
+    header nav { display: flex; align-items: center; flex-wrap: wrap; position: relative; }
+    header .site-title { font-weight: 700; font-size: 1.25rem; text-decoration: none; color: var(--color-fg); flex: 1; }
+    .nav-toggle { display: none; }
+    .nav-burger { display: flex; flex-direction: column; gap: 4px; cursor: pointer; padding: 0.5rem; margin: -0.5rem; }
+    .nav-burger span { display: block; width: 20px; height: 2px; background: var(--color-fg); transition: transform 0.2s, opacity 0.2s; }
+    .nav-links { display: none; width: 100%; flex-direction: column; gap: 0; padding-top: 0.75rem; }
+    .nav-toggle:checked ~ .nav-links { display: flex; }
+    .nav-toggle:checked ~ .nav-burger span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
+    .nav-toggle:checked ~ .nav-burger span:nth-child(2) { opacity: 0; }
+    .nav-toggle:checked ~ .nav-burger span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4px); }
+    header nav a.nav-link { text-decoration: none; color: var(--color-muted); font-size: 0.9375rem; transition: color 0.15s; padding: 0.75rem 0; display: block; }
+    header nav a.nav-link:hover { color: var(--color-fg); }
+    @media (min-width: 768px) {
+      .nav-burger { display: none; }
+      .nav-links { display: flex; width: auto; flex-direction: row; gap: 2rem; padding-top: 0; margin-left: 2rem; }
+      header nav a.nav-link { padding: 0; display: inline; }
+    }
+    main { padding: var(--spacing-section) 0; }
+    footer { border-top: 1px solid var(--color-border); padding: 1.5rem 0; margin-top: var(--spacing-section); color: var(--color-muted); font-size: 0.875rem; }
+    .prose h1 { font-size: clamp(1.75rem, 4vw, 2.25rem); font-weight: 800; line-height: 1.2; margin-bottom: 1rem; }
+    .prose h2 { font-size: clamp(1.25rem, 3vw, 1.5rem); font-weight: 700; margin: 2rem 0 0.75rem; }
+    .prose h3 { font-size: clamp(1.1rem, 2.5vw, 1.25rem); font-weight: 600; margin: 1.5rem 0 0.5rem; }
+    .prose p { margin-bottom: 1.25rem; }
+    .prose pre { background: #1e293b; color: #e2e8f0; padding: 1rem; border-radius: var(--radius); overflow-x: auto; margin-bottom: 1.25rem; font-family: var(--font-mono); font-size: clamp(0.75rem, 1.5vw, 0.875rem); }
+    .prose code { background: #f1f5f9; padding: 0.125rem 0.375rem; border-radius: 0.25rem; font-family: var(--font-mono); font-size: 0.875em; }
+    .prose pre code { background: none; padding: 0; }
+    .prose ul, .prose ol { padding-left: 1.5rem; margin-bottom: 1.25rem; }
+    .prose li { margin-bottom: 0.375rem; }
+    .prose blockquote { border-left: 4px solid var(--color-primary); padding-left: 1rem; margin: 1.5rem 0; color: var(--color-muted); }
+    .prose img { border-radius: var(--radius); margin: 1.5rem 0; }
+    .card-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
+    @media (min-width: 640px) {
+      .card-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+    }
+    .card { border: 1px solid var(--color-border); border-radius: var(--radius); padding: 1.5rem; transition: box-shadow 0.2s; }
+    .card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+    .card h2 { font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .card h2 a { text-decoration: none; color: var(--color-fg); }
+    .card h2 a:hover { color: var(--color-primary); }
+    .card .meta { color: var(--color-muted); font-size: 0.875rem; margin-bottom: 0.75rem; }
+    .card .excerpt { color: var(--color-muted); font-size: 0.9375rem; }
+    .hero { padding: var(--spacing-section) 0; text-align: center; }
+    .hero h1 { font-size: clamp(2rem, 6vw, 3rem); font-weight: 800; margin-bottom: 1rem; }
+    .hero p { font-size: clamp(1rem, 2.5vw, 1.25rem); color: var(--color-muted); max-width: 42rem; margin: 0 auto 2rem; }
+    .btn { display: inline-block; padding: 0.75rem 1.5rem; background: var(--color-primary); color: #fff; border-radius: var(--radius); text-decoration: none; font-weight: 600; }
+    .btn:hover { opacity: 0.9; }
+    .post-header { margin-bottom: 2rem; }
+    .post-header h1 { font-size: clamp(1.75rem, 5vw, 2.5rem); font-weight: 800; line-height: 1.2; margin-bottom: 0.5rem; }
+    .post-meta { color: var(--color-muted); font-size: 0.875rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <a href="/" class="site-title">My Site</a>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
+        <label for="nav-toggle" class="nav-burger" aria-label="Menu"><span></span><span></span><span></span></label>
+        <div class="nav-links">
+          <a href="/docs/" class="nav-link">Documentation</a>
+<a href="/changelog/" class="nav-link">Changelog</a>
+<a href="/snippets/" class="nav-link">Shared Snippets</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      
+<article>
+  <header class="post-header">
+    <h1>Release v0.2.11</h1>
+    <p class="post-meta">March 18, 2026</p>
+    
+  </header>
+  <div class="prose">
+    <h2>What&#39;s New in v0.2.11</h2>
+<p><strong>281 changes</strong> released on 2026-03-18</p>
+<h3>Features</h3>
+<ul>
+<li>feat: add F67 Security Gate to roadmap (Tier 1)</li>
+<li>feat: Supabase-style default view + Switch Site/Org actions</li>
+<li>feat: add keyboard shortcuts — Cmd+S save, Cmd+Shift+Arrow tab switch, n/g collection actions</li>
+<li>feat: add dynamic collections to command palette</li>
+<li>feat: Spotlight-style command palette with navigation, settings, and actions</li>
+<li>feat: add F66 Search Index feature plan</li>
+<li>feat: styled Checkbox and Radio components replacing native inputs</li>
+<li>feat: add F65 Agent Pipeline E2E Tests to roadmap (Tier 1)</li>
+<li>feat: add F64 Toast Notifications System to feature roadmap</li>
+<li>feat: toast notifications across all CMS admin actions</li>
+<li>feat: add scheduler toast test endpoint</li>
+<li>feat: custom toast design + notification sounds</li>
+<li>feat: show red &#39;expired&#39; badge in document editor</li>
+<li>feat: add &#39;expired&#39; document status with red indicators</li>
+<li>feat: red tab dot for expired/unpublished documents</li>
+<li>feat: replace polling with SSE for instant scheduler notifications</li>
+<li>feat: live scheduler notifications with toast + tab status updates</li>
+<li>feat: add F63 Shared Component Library &amp; Design Tokens to roadmap</li>
+<li>feat: Default Views section in Account General — all view preferences</li>
+<li>feat: Account Preferences tab — default calendar view + agents view</li>
+<li>feat: Calendar page H1 title section matching all other pages</li>
+<li>feat: calendar — PageHeader, persisted view pref, scrollbar fix</li>
+<li>feat: F43 persist last active site on user record</li>
+<li>feat: week view scrolls full 24h in 11-hour viewport</li>
+<li>feat: week view with hourly time grid, NOW marker, weekend shading</li>
+<li>feat: add F62 Directory Sync (AD / SCIM / External User Sources) to roadmap</li>
+<li>feat: add F61 Activity Log to feature roadmap</li>
+<li>feat: dashboard cards for Media Library and Interactives with counts</li>
+<li>feat: F43 persist remaining prefs — agents view, curation tab, logo icon</li>
+<li>feat: F43 Persist User State — tabs + sidebar survive cookie clear</li>
+<li>feat: calendar layout matches Apple Calendar — Day/Week/Month/Year</li>
+<li>feat: scheduler webhook notifications — Discord, Slack, generic</li>
+<li>feat: add F60 Reliable Scheduled Tasks to feature roadmap</li>
+<li>feat: F47 final — expiry icon, snapshot cron, calendar sidebar legend</li>
+<li>feat: per-user HMAC tokens for calendar feed authentication</li>
+<li>feat: calendar event tooltips with excerpt and metadata</li>
+<li>feat: add document URL to iCal events</li>
+<li>feat: full calendar UI with month/week/day views</li>
+<li>feat: iCalendar subscription feed for scheduled content</li>
+<li>feat: add F59 Passwordless Auth (Passkeys + QR Code Login) to roadmap</li>
+<li>feat: F47 Calendar page + dashboard scheduled card + sidebar nav</li>
+<li>feat: F47 Content Scheduling — unpublishAt expiry + scheduler daemon</li>
+<li>feat: add F58 Interactive Islands to feature roadmap</li>
+<li>feat: add signup page with two-step onboarding form</li>
+<li>feat: sites dashboard filtered to user&#39;s team memberships</li>
+<li>feat: viewer read-only guards on all admin pages</li>
+<li>feat: viewer role is fully read-only — all write UI hidden, fields locked</li>
+<li>feat: one-click accept for logged-in users — skip name/password form</li>
+<li>feat: autocomplete existing CMS users in invite form</li>
+<li>feat: track editor identity — _lastEditedBy in documents + Git author attribution</li>
+<li>feat: GitHub service token — editors access GitHub sites without GitHub account</li>
+<li>feat: proper gate screens for team access, GitHub connect, and no-access</li>
+<li>feat: API-level role enforcement on content and settings routes</li>
+<li>feat: site-switcher filters to only sites user has team access to</li>
+<li>feat: role-based UI enforcement — hide Settings/Trash/New site for non-admins</li>
+<li>feat: Resend email integration for team invitations</li>
+<li>feat: add F57 Extranet (Protected Site Pages) to feature roadmap</li>
+<li>feat: F01 Invite Users — site-scoped team management with invite links</li>
+<li>feat: block Properties as shadcn Sheet drawer from right side</li>
+<li>feat: block Properties panel — ⚙️ button in header, property fields in separate panel</li>
+<li>feat: add internal label to Columns block — shown in block header</li>
+<li>feat: add fullscreenLabel text field to interactive block</li>
+<li>feat: add F56 GitHub Live Content to feature roadmap</li>
+<li>feat: fullscreen button on interactive blocks + inline compact fields</li>
+<li>feat: add viewport scaling to interactive block (viewportWidth/Height/scale)</li>
+<li>feat: combine Visual/Code/AI into single Edit dropdown on INT toolbar</li>
+<li>feat: add Sonnet 4.6, Opus 4, Opus 4.6 to AI model options</li>
+<li>feat: add F55 Enhance Prompt to feature roadmap</li>
+<li>feat: toggle sidebar logo icon in account preferences</li>
+<li>feat: add F54 Local AI Tunnel to feature roadmap</li>
+<li>feat: editable AI model defaults + prompts in Site Settings</li>
+<li>feat: complete F39 Interactives Engine — AI generation, data docs, standalone rendering</li>
+<li>feat: add F53 Drag &amp; Drop Blocks Between Columns to feature roadmap</li>
+<li>feat: click-to-focus BlocksEditor + &#39;A&#39; shortcut scoped to focused instance</li>
+<li>feat: keyboard shortcuts for block picker + gold glow on badges</li>
+<li>feat: gold glow flash + auto-scroll on every new block insert</li>
+<li>feat: add F52 Custom Column Presets to feature roadmap</li>
+<li>feat: interactive as builtin block + clone block button</li>
+<li>feat: add Copy button to AI prompts — copies prompt text to clipboard</li>
+<li>feat: webhouse.app deployment to Fly.io with CI/CD</li>
+<li>feat: schema save works for GitHub-backed sites via GitHub API</li>
+<li>feat: file attachment as builtin block with Upload + Browse</li>
+<li>feat: add Browse + Upload buttons to audio field editor</li>
+<li>feat: add video and audio as builtin blocks</li>
+<li>feat: collapsible richtext fields with TEXT badge, fix layout alignment</li>
+<li>feat: Open all / Close all for column blocks</li>
+<li>feat: Open all / Close all buttons for blocks editor</li>
+<li>feat: persist block expanded/collapsed state in localStorage</li>
+<li>feat: column focus overlay — expand block editor over other columns</li>
+<li>feat: add columns block layout system — CSS grid multi-column blocks</li>
+<li>feat: media file rename + tooltip on action buttons</li>
+<li>feat: combine Image/Video/Audio/File/Interactive into single Media dropdown</li>
+<li>feat: Int embed alignment/resize, filter trashed from picker</li>
+<li>feat: add F51 Admin AI Assistant to feature roadmap</li>
+<li>feat: add F50 Sign In Providers to feature roadmap</li>
+<li>feat: F39 AI Edit mode for Interactives</li>
+</ul>
+<h3>Bug Fixes</h3>
+<ul>
+<li>fix: graceful GitHub error gate instead of crashing entire UI</li>
+<li>fix: cache GitHub config for 2min in dev to avoid API rate limiting</li>
+<li>fix: search keyboard navigation highlight was hidden by inline style</li>
+<li>fix: remove UI zoom feature + fix logo icon persistence</li>
+<li>fix: apply zoom on html element instead of body for proper layout</li>
+<li>fix: styled checkbox for scheduler notifications + inline delete confirm for field defaults</li>
+<li>fix: storage adapters now properly delete publishAt/unpublishAt on null</li>
+<li>fix: prevent scheduler publish/unpublish infinite loop</li>
+<li>fix: SSE stream — fix variable scoping error in ReadableStream</li>
+<li>fix: sidebar counts deduplicate docs with both publish+expiry events</li>
+<li>fix: center time text in NOW pill</li>
+<li>fix: revert calendar events to publish/expiry colors (green/red)</li>
+<li>fix: calendar events use collection colors + scheduler notifications in Card</li>
+<li>fix: calendar sidebar compares with current time, not just date</li>
+<li>fix: calendar sidebar counts unique documents, not events</li>
+<li>fix: calendar sidebar — only count future events, fix count alignment</li>
+<li>fix: calendar sidebar — bring collection count closer to name</li>
+<li>fix: section headings white in dark mode for better readability</li>
+<li>fix: harmonize Scheduler Notifications heading to SectionHeading</li>
+<li>fix: harmonize section heading styles across all Settings and Account tabs</li>
+<li>fix: move preferences into Account General tab, remove separate tab</li>
+<li>fix: calendar title spacing -17px</li>
+<li>fix: calendar title spacing -mb-3</li>
+<li>fix: calendar title spacing -mb-1</li>
+<li>fix: calendar title spacing mb-1</li>
+<li>fix: tighter spacing between title and selector mb-3</li>
+<li>fix: view selector centered below title, not in header row</li>
+<li>fix: calendar title spacing mb-5</li>
+<li>fix: reduce gap between Calendar title and March label</li>
+<li>fix: calendar header layout — title+controls in one row, fix JSX tags</li>
+<li>fix: calendar scrollbar completely hidden — scroll via trackpad/wheel</li>
+<li>fix: NOW dot 8px on left edge of today column</li>
+<li>fix: NOW dot centered on day column border line</li>
+<li>fix: NOW line 2px height, color #342122</li>
+<li>fix: NOW line 1px thin + pill touches line edge</li>
+<li>fix: NOW pill vertically centered on red line</li>
+<li>fix: remove JSX comments after closing tags — Turbopack parse error</li>
+<li>fix: NOW pill rendered outside scroll container — never clipped</li>
+<li>fix: NOW pill z-index 50 — always on top of calendar grid</li>
+<li>fix: NOW pill extends 15px left — container has left margin for space</li>
+<li>fix: NOW pill fully rounded inside container + scrollbar only on hover</li>
+<li>fix: NOW pill nudged left over the edge like Apple Calendar</li>
+<li>fix: calendar scrollbar hidden until hover + NOW pill fully rounded</li>
+<li>fix: NOW label is a red pill badge like Apple Calendar</li>
+<li>fix: NOW time label has background — no overlap with hour labels</li>
+<li>fix: F43 user state is global per CMS installation, not per site</li>
+<li>fix: Today button scrolls week view to center NOW</li>
+<li>fix: week view — header inside scroll container, no gap/hack at top</li>
+<li>fix: week view shows 07:00-18:00 without scroll</li>
+<li>fix: scheduler webhook uses site-specific config for each site</li>
+<li>fix: scheduler iterates ALL registered sites, not just default</li>
+<li>fix: GitHub media adapter uses service-token fallback after cookie clear</li>
+<li>fix: GitHub service token fallback scans all site cache dirs</li>
+<li>fix: F43 flush pending tab sync on page unload/visibility change</li>
+<li>fix: dashboard scheduled card shows max 2 upcoming items</li>
+<li>fix: site-config API accepts PATCH — scheduler settings now persist</li>
+<li>fix: calendar feed reads from snapshot — works for GitHub-backed sites</li>
+<li>fix: hydration mismatch — move localhost detection to onClick handler</li>
+<li>fix: calendar feed works without cookies — site context via query params</li>
+<li>fix: persist calendarSecret on first use — tokens now stable across requests</li>
+<li>fix: calendar subscribe — copy URL on localhost, webcal:// in production</li>
+<li>fix: calendar subscribe — webcal:// for production, download for localhost</li>
+<li>fix: allow unauthenticated access to calendar.ics feed</li>
+<li>fix: calendar subscribe uses onClick with webcal:// protocol</li>
+<li>fix: use webcal:// protocol for calendar subscribe link</li>
+<li>fix: schedule times stored and displayed as-is — no UTC conversion</li>
+<li>fix: schedule datetime picker shows UTC instead of local time</li>
+<li>fix: GitHub adapter missing publishAt/unpublishAt/locale/translationOf</li>
+<li>fix: auto-save schedule/expiry immediately on Set click</li>
+<li>fix: schedule buttons — icon only, no text label</li>
+<li>fix: content overflow on smaller screens (laptop viewport)</li>
+<li>fix: hide write actions from viewers in collection list and agents list</li>
+<li>fix: readOnly defaults to true while loading — safe by default</li>
+<li>fix: fieldset disabled on all admin pages for viewers + guard media actions</li>
+<li>fix: tabs are now per-user-per-site — switching sites starts with clean tabs</li>
+<li>fix: add mobile hamburger menu to landing page</li>
+<li>fix: replace all &quot;Sure?&quot; confirmations with &quot;OK&quot; / Cancel pattern</li>
+<li>fix: remove AdminHeader from fallback layouts (useTabs outside TabsProvider)</li>
+<li>fix: layout redirects to accessible site when user has no team access</li>
+<li>fix: invite sets site cookies, layout handles missing GitHub token</li>
+<li>fix: auto-bootstrap adds oldest CMS user as admin, not current user</li>
+<li>fix: per-user tab storage + server-side admin guard on Settings page</li>
+<li>fix: add favicon to landing page</li>
+<li>fix: invite token validation searches all sites (cookie-less support)</li>
+<li>fix: email branding (webhouse bold white, .app bold gold) + fix settings panel API path</li>
+<li>fix: truncate block header label to single line with ellipsis</li>
+<li>fix: lighten field input backgrounds in dark mode for better visibility</li>
+<li>fix: block remove confirm — hide ↑↓ Clone buttons to make room for Remove? Yes/No</li>
+<li>fix: AI panel wider (430px), taller textarea (4 rows), clear of inspect button</li>
+<li>fix: add dollar sign preservation rule to AI interactive prompts</li>
+<li>fix: wrong Sonnet model ID — claude-sonnet-4-5 → claude-sonnet-4</li>
+<li>fix: users.json lookup always uses primary CMS data dir</li>
+<li>fix: hydration mismatch on logo toggle + &quot;User not found&quot; on save</li>
+<li>fix: Network error in Edit with AI — fallback prompt + maxDuration</li>
+<li>fix: profile save crashing — add try/catch to API route</li>
+<li>fix: save buttons stuck on &quot;Saving…&quot; when fetch throws</li>
+<li>fix: AI truncation — upgrade interactive AI to Sonnet + 16K tokens + truncation guard</li>
+<li>fix: show &quot;No sites yet&quot; empty state instead of infinite loading</li>
+<li>fix: delete all documents when deleting a collection</li>
+<li>fix: replace window.confirm with safe delete dialog for collection deletion</li>
+<li>fix: match Edit schema button size to Generate and New item buttons</li>
+<li>fix: hide htmldoc fields from collection list + add missing field types to schema editor</li>
+<li>fix: hydration mismatch — load localStorage state after mount</li>
+<li>fix: use route groups to isolate login/setup from workspace layout</li>
+<li>fix: remove red delete button from image thumbnail</li>
+<li>fix: prevent RSC prefetch redirect loop on login page</li>
+<li>fix: focus targets individual column, not parent sections</li>
+<li>fix: remove global &#39;A&#39; shortcut — opened all pickers simultaneously</li>
+<li>fix: block picker uses position:fixed — escapes overflow:hidden containers</li>
+<li>fix: block picker closes on outside click and Escape</li>
+<li>fix: block picker auto-detects direction — opens up or down based on space</li>
+<li>fix: block picker opens upward — no longer clipped at bottom of page</li>
+<li>fix: Add block button matches Upload/Browse button size (0.7rem, smaller padding)</li>
+<li>fix: Add block hover — dark green bg #1F3024, green text, stronger glow</li>
+<li>fix: Add block hover — green bg + white text via inline style override</li>
+<li>fix: Add block hover — green filled background with white text + glow</li>
+<li>fix: verify cookie is stored before navigating after login</li>
+<li>fix: image Upload/Browse matches audio/file/interactive layout + green Add block glow</li>
+<li>fix: deduplicate block names in picker — prevents React key warnings</li>
+<li>fix: clone flash is much more visible — gold glow + auto-scroll</li>
+<li>fix: revalidation Copy checkmark uses green #4ade80 — standard for all copy actions</li>
+<li>fix: add /login → /admin/login redirect in next.config</li>
+<li>fix: AI prompt Copy uses green #4ade80 checkmark — matches media library</li>
+<li>fix: build packages before typecheck in CI</li>
+<li>fix: resolve all TypeScript errors for CI typecheck</li>
+<li>fix: AI prompt Reset uses inline confirmation — Reset? [Yes] [No]</li>
+<li>fix: schema editor back arrow respects origin — settings or collection</li>
+<li>fix: schema editor back arrow goes to collection, not settings</li>
+<li>fix: schema save navigates to collection instead of settings</li>
+<li>fix: ensure trailing comma after blocks section in config writer</li>
+<li>fix: schema save error handling — wrap entire PUT handler in try/catch</li>
+<li>fix: schema save preserves blocks section from original config</li>
+<li>fix: add file and column-slots to schema validator fieldType enum</li>
+<li>fix: force equal column widths with min-width:0 + overflow:hidden</li>
+<li>fix: audio + file fields use identical layout — URL on own line, dashed buttons below</li>
+<li>fix: replace all Sure? with Remove?/Yes/No pattern everywhere</li>
+<li>fix: Sure? uses red badge style everywhere — blocks and structured arrays</li>
+<li>fix: prevent nested columns — only add builtins present in blocksConfig</li>
+<li>fix: block picker badges match inserted block header badge size</li>
+<li>fix: block delete uses standard Sure? pattern — matches structured-array</li>
+<li>fix: show richtext content preview in collapsed block headers</li>
+<li>fix: persist column block expanded state in localStorage</li>
+<li>fix: share block expanded state between grid and focus view in columns</li>
+<li>fix: warn before removing columns with content when changing layout</li>
+<li>fix: block delete uses Remove?/Yes/No pattern, column focus replaces grid</li>
+<li>fix: always include columns in block picker — builtin block</li>
+<li>fix: site-file proxy — try local public/ then previewUrl for GitHub sites</li>
+<li>fix: image preview in blocks — serve from site&#39;s public/ directory</li>
+<li>fix: sticky toolbar default offset 132px — sticks below page header</li>
+<li>fix: toolbar sticky top:0 — works for any editor position on page</li>
+<li>fix: add border-radius to block header instead of overflow:hidden on container</li>
+<li>fix: remove overflow:hidden from block container — clips TipTap cursor</li>
+<li>fix: switch embeds from <div> to custom elements for ProseMirror compat</li>
+<li>fix: Int roundtrip fallback, remove debug logs, Int alignment</li>
+<li>fix: embed roundtrip, delete in footer, ESC resize, callout icon</li>
+<li>fix: ensret embed toolbars — 2-state delete, lucide icons, AI apply</li>
+<li>fix: Int embed — remove float, add height resize, inline delete in footer</li>
+<li>fix: Interactive embed roundtrip — parse align/width from token</li>
+<li>fix: Int context toolbar like image, remove Int from media dropdown</li>
+<li>fix: AI Edit HTML extraction, trash parallelization, drag-drop upload</li>
+</ul>
+<h3>Other Changes</h3>
+<ul>
+<li>chore: release v0.2.11</li>
+<li>chore: bump all packages to 0.2.10</li>
+<li>perf: parallelize search across collections</li>
+<li>refactor: move Interface settings from Site Settings to Account Preferences</li>
+<li>docs: F63 — add section-heading.tsx as reference example</li>
+<li>revert: user state back to per-site — tabs are site-specific</li>
+<li>debug: add logging to user-state sync and restore</li>
+<li>docs: mark F47 Content Scheduling + F43 Persist User State as done</li>
+<li>docs: F60 add Tier 2b — webhouse.app cron service integration</li>
+<li>perf: Calendar page — server component data fetch, no client API call</li>
+<li>docs: mark F01 Invite Users as done</li>
+<li>docs: mark F39 Interactives Engine as done, add viewer RBAC milestone</li>
+<li>test: Playwright viewer RBAC test suite — 7 passing</li>
+<li>docs: mark F39 interactive picker as done — all phases complete</li>
+<li>revert: Properties back to inline panel — Sheet was too far away</li>
+<li>docs: F56 — add external trigger section (webhook + direct pull API)</li>
+<li>chore: add pricing calculator example interactive</li>
+<li>simplify: interactive block — drop viewportWidth/Height, keep only scale %</li>
+<li>test: add login flow Playwright test + fix timeouts</li>
+<li>debug: add middleware logging for login redirect investigation</li>
+<li>chore: rename File Attachment → File in builtin blocks</li>
+<li>docs: update F05 Podcast Engine with Podcastfy reference + Podcast Agent</li>
+<li>debug: add storage verification + alignment fix</li>
+<li>debug: add console.log to Interactive/File updateDOM to trace roundtrip</li>
+<li>docs: update F39 checklist — AI Edit done, block type done</li>
+</ul>
+
+  </div>
+</article>
+    </div>
+  </main>
+  <footer>
+    <div class="container">
+      <p>Built with @webhouse/cms</p>
+    </div>
+  </footer>
+</body>
+</html>

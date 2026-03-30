@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Builder Guide — webhouse.app Docs — My Site</title>
+  <meta name="description" content="20 modular documentation modules that ship with the npm package — designed for AI agents building sites.">
+  <meta property="og:title" content="AI Builder Guide — webhouse.app Docs — My Site">
+  <meta property="og:description" content="20 modular documentation modules that ship with the npm package — designed for AI agents building sites.">
+  <meta property="og:type" content="website">
+  
+  <link rel="canonical" href="https://docs.webhouse.app/docs/ai-builder-guide/">
+  
+  
+  <style>
+    :root {
+      --color-bg: #ffffff;
+      --color-fg: #111827;
+      --color-primary: #2563eb;
+      --color-muted: #6b7280;
+      --color-border: #e5e7eb;
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-mono: 'Courier New', monospace;
+      --font-size-base: 1rem;
+      --line-height-base: 1.7;
+      --spacing-base: 1rem;
+      --spacing-section: clamp(2rem, 5vw, 4rem);
+      --max-width: 72rem;
+      --radius: 0.5rem;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font-sans); background: var(--color-bg); color: var(--color-fg); font-size: var(--font-size-base); line-height: var(--line-height-base); }
+    a { color: var(--color-primary); }
+    img { max-width: 100%; height: auto; }
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 var(--spacing-base); }
+    header { border-bottom: 1px solid var(--color-border); padding: 1rem 0; margin-bottom: 2rem; }
+    header nav { display: flex; align-items: center; flex-wrap: wrap; position: relative; }
+    header .site-title { font-weight: 700; font-size: 1.25rem; text-decoration: none; color: var(--color-fg); flex: 1; }
+    .nav-toggle { display: none; }
+    .nav-burger { display: flex; flex-direction: column; gap: 4px; cursor: pointer; padding: 0.5rem; margin: -0.5rem; }
+    .nav-burger span { display: block; width: 20px; height: 2px; background: var(--color-fg); transition: transform 0.2s, opacity 0.2s; }
+    .nav-links { display: none; width: 100%; flex-direction: column; gap: 0; padding-top: 0.75rem; }
+    .nav-toggle:checked ~ .nav-links { display: flex; }
+    .nav-toggle:checked ~ .nav-burger span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
+    .nav-toggle:checked ~ .nav-burger span:nth-child(2) { opacity: 0; }
+    .nav-toggle:checked ~ .nav-burger span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4px); }
+    header nav a.nav-link { text-decoration: none; color: var(--color-muted); font-size: 0.9375rem; transition: color 0.15s; padding: 0.75rem 0; display: block; }
+    header nav a.nav-link:hover { color: var(--color-fg); }
+    @media (min-width: 768px) {
+      .nav-burger { display: none; }
+      .nav-links { display: flex; width: auto; flex-direction: row; gap: 2rem; padding-top: 0; margin-left: 2rem; }
+      header nav a.nav-link { padding: 0; display: inline; }
+    }
+    main { padding: var(--spacing-section) 0; }
+    footer { border-top: 1px solid var(--color-border); padding: 1.5rem 0; margin-top: var(--spacing-section); color: var(--color-muted); font-size: 0.875rem; }
+    .prose h1 { font-size: clamp(1.75rem, 4vw, 2.25rem); font-weight: 800; line-height: 1.2; margin-bottom: 1rem; }
+    .prose h2 { font-size: clamp(1.25rem, 3vw, 1.5rem); font-weight: 700; margin: 2rem 0 0.75rem; }
+    .prose h3 { font-size: clamp(1.1rem, 2.5vw, 1.25rem); font-weight: 600; margin: 1.5rem 0 0.5rem; }
+    .prose p { margin-bottom: 1.25rem; }
+    .prose pre { background: #1e293b; color: #e2e8f0; padding: 1rem; border-radius: var(--radius); overflow-x: auto; margin-bottom: 1.25rem; font-family: var(--font-mono); font-size: clamp(0.75rem, 1.5vw, 0.875rem); }
+    .prose code { background: #f1f5f9; padding: 0.125rem 0.375rem; border-radius: 0.25rem; font-family: var(--font-mono); font-size: 0.875em; }
+    .prose pre code { background: none; padding: 0; }
+    .prose ul, .prose ol { padding-left: 1.5rem; margin-bottom: 1.25rem; }
+    .prose li { margin-bottom: 0.375rem; }
+    .prose blockquote { border-left: 4px solid var(--color-primary); padding-left: 1rem; margin: 1.5rem 0; color: var(--color-muted); }
+    .prose img { border-radius: var(--radius); margin: 1.5rem 0; }
+    .card-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
+    @media (min-width: 640px) {
+      .card-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+    }
+    .card { border: 1px solid var(--color-border); border-radius: var(--radius); padding: 1.5rem; transition: box-shadow 0.2s; }
+    .card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+    .card h2 { font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .card h2 a { text-decoration: none; color: var(--color-fg); }
+    .card h2 a:hover { color: var(--color-primary); }
+    .card .meta { color: var(--color-muted); font-size: 0.875rem; margin-bottom: 0.75rem; }
+    .card .excerpt { color: var(--color-muted); font-size: 0.9375rem; }
+    .hero { padding: var(--spacing-section) 0; text-align: center; }
+    .hero h1 { font-size: clamp(2rem, 6vw, 3rem); font-weight: 800; margin-bottom: 1rem; }
+    .hero p { font-size: clamp(1rem, 2.5vw, 1.25rem); color: var(--color-muted); max-width: 42rem; margin: 0 auto 2rem; }
+    .btn { display: inline-block; padding: 0.75rem 1.5rem; background: var(--color-primary); color: #fff; border-radius: var(--radius); text-decoration: none; font-weight: 600; }
+    .btn:hover { opacity: 0.9; }
+    .post-header { margin-bottom: 2rem; }
+    .post-header h1 { font-size: clamp(1.75rem, 5vw, 2.5rem); font-weight: 800; line-height: 1.2; margin-bottom: 0.5rem; }
+    .post-meta { color: var(--color-muted); font-size: 0.875rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <a href="/" class="site-title">My Site</a>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
+        <label for="nav-toggle" class="nav-burger" aria-label="Menu"><span></span><span></span><span></span></label>
+        <div class="nav-links">
+          <a href="/docs/" class="nav-link">Documentation</a>
+<a href="/changelog/" class="nav-link">Changelog</a>
+<a href="/snippets/" class="nav-link">Shared Snippets</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      
+<article>
+  <header class="post-header">
+    <h1>AI Builder Guide</h1>
+    <p class="post-meta">March 30, 2026</p>
+    
+  </header>
+  <div class="prose">
+    <h2>What is the AI Builder Guide?</h2>
+<p>Every <code>@webhouse/cms</code> npm package ships with a comprehensive AI builder guide at <code>packages/cms/CLAUDE.md</code>. This is a modular documentation system designed specifically for AI coding assistants (Claude Code, Cursor, GitHub Copilot) to read when building sites.</p>
+<p>When you scaffold a new project, the guide is referenced in your project&#39;s <code>CLAUDE.md</code> file, giving AI assistants immediate context about how to work with the CMS.</p>
+<h2>How it works</h2>
+<p>The guide is split into <strong>20 focused modules</strong>, each covering one topic. AI assistants load modules on-demand rather than reading everything at once. This keeps context windows efficient.</p>
+<pre><code>docs/ai-guide/
+  index.md              → Navigation + quick decision matrix
+  01-getting-started.md → Scaffolding + first run
+  02-config-reference.md → cms.config.ts reference
+  03-field-types.md     → All 22 field types
+  04-blocks.md          → Block system
+  05-richtext.md        → TipTap editor, features, markdown storage
+  06-storage-adapters.md → Filesystem, GitHub, SQLite, Supabase
+  07-content-structure.md → Document JSON format
+  08-nextjs-patterns.md → Loader functions, pages, ISR
+  09-cli-reference.md   → All CLI commands
+  10-config-example.md  → Complete real-world config
+  11-api-reference.md   → ContentService API
+  12-admin-ui.md        → Admin architecture
+  13-site-building.md   → Critical patterns + common mistakes
+  14-relationships.md   → Relations, resolving, reverse lookups
+  15-seo.md             → Meta, JSON-LD, sitemap, robots.txt
+  16-images.md          → WebP, responsive, next/image
+  17-i18n.md            → Locales, translation, hreflang
+  18-deployment.md      → Vercel, Fly.io, Docker
+  19-troubleshooting.md → Common errors + fixes
+  20-interactives.md    → Data-driven embeds
+</code></pre>
+<h2>The Quick Reference</h2>
+<p>The index module includes a <strong>quick reference card</strong> that AI assistants can read in seconds:</p>
+<ul>
+<li><strong>Document JSON format</strong> — slug, status, data, id, _fieldMeta</li>
+<li><strong>All field types</strong> — one-line summary of each</li>
+<li><strong>Collection definition template</strong> — copy-paste starter</li>
+<li><strong>5 critical rules:</strong><ol>
+<li>Always specify storage adapter (defaults to SQLite, not filesystem)</li>
+<li>image-gallery values must be <code>{ url, alt }[]</code> objects</li>
+<li>Always filter by <code>status === &quot;published&quot;</code></li>
+<li>Use <code>BASE</code> variable for all internal links</li>
+<li>Slug in JSON must match filename</li>
+</ol>
+</li>
+</ul>
+<h2>Fetching modules</h2>
+<p>Modules can be fetched from GitHub at build time or runtime:</p>
+<pre><code class="language-typescript">const MODULE_BASE = &quot;https://raw.githubusercontent.com/webhousecode/cms/main/docs/ai-guide&quot;;
+
+async function loadGuide(module: string) {
+  const res = await fetch(`${MODULE_BASE}/${module}`);
+  return res.text();
+}
+
+// Load specific modules
+const config = await loadGuide(&quot;02-config-reference.md&quot;);
+const fields = await loadGuide(&quot;03-field-types.md&quot;);
+</code></pre>
+<h2>Module overview</h2>
+<h3>Core Setup (Modules 1-2)</h3>
+<p>How to scaffold, install, and configure. The <code>cms.config.ts</code> file is the single source of truth for your content schema.</p>
+<h3>Content Modeling (Modules 3-7)</h3>
+<p>Field types, blocks, richtext editor capabilities, storage backends, and the JSON document format. Everything about how content is structured and stored.</p>
+<h3>Framework Integration (Modules 8-11)</h3>
+<p>Next.js patterns (loader functions, <code>generateStaticParams</code>, <code>generateMetadata</code>), CLI commands, a complete real-world config example, and the programmatic ContentService API.</p>
+<h3>Admin &amp; Building (Modules 12-13)</h3>
+<p>Admin UI architecture and the critical site-building patterns that prevent common mistakes (wrong storage adapter, missing status filter, broken image paths).</p>
+<h3>Advanced Topics (Modules 14-20)</h3>
+<p>Relations between documents, SEO optimization, image processing, internationalization, deployment to various platforms, troubleshooting, and interactive embeds.</p>
+<h2>Using the guide in your project</h2>
+<p>When you create a new site, the scaffolder generates a <code>CLAUDE.md</code> that references the guide:</p>
+<pre><code class="language-markdown"># My Site — AI Builder Instructions
+
+This is a Next.js site built with webhouse.app CMS.
+Content is stored as JSON files.
+
+Read the full AI builder guide:
+https://raw.githubusercontent.com/webhousecode/cms/main/packages/cms/CLAUDE.md
+</code></pre>
+<p>AI assistants that read this file get immediate context about your CMS setup, field types, and patterns — no manual onboarding needed.</p>
+<h2>Why this matters</h2>
+<p>Traditional CMS documentation is written for humans. The AI builder guide is written for <strong>AI agents that generate code</strong>:</p>
+<ul>
+<li><strong>Structured for machine parsing</strong> — consistent markdown, code blocks with language tags</li>
+<li><strong>Copy-paste ready</strong> — every pattern includes runnable code</li>
+<li><strong>Error-prevention focused</strong> — critical rules highlighted, common mistakes documented</li>
+<li><strong>Modular loading</strong> — agents read only what they need, saving context window space</li>
+</ul>
+
+  </div>
+</article>
+    </div>
+  </main>
+  <footer>
+    <div class="container">
+      <p>Built with @webhouse/cms</p>
+    </div>
+  </footer>
+</body>
+</html>
