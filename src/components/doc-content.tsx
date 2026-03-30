@@ -130,6 +130,13 @@ async function markdownToHtml(md: string): Promise<string> {
     }
   );
 
+  // Images (block-level)
+  html = html.replace(
+    /^!\[([^\]]*)\]\(([^)]+)\)$/gm,
+    (_m, alt, src) =>
+      `<img src="${src}" alt="${alt}" style="max-width:100%;border-radius:8px;margin:1rem 0" loading="lazy" />`
+  );
+
   // Horizontal rules
   html = html.replace(/^---$/gm, "<hr />");
 
@@ -161,6 +168,12 @@ function inlineMarkdown(text: string): string {
   s = s.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
   // Italic
   s = s.replace(/\*(.+?)\*/g, "<em>$1</em>");
+  // Inline images (before links to avoid conflict)
+  s = s.replace(
+    /!\[([^\]]*)\]\(([^)]+)\)/g,
+    (_m, alt, src) =>
+      `<img src="${src}" alt="${alt}" style="max-width:100%;border-radius:8px" loading="lazy" />`
+  );
   // Links
   s = s.replace(
     /\[([^\]]+)\]\(([^)]+)\)/g,
