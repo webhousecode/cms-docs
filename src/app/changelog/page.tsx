@@ -3,7 +3,7 @@ export const dynamic = "force-static";
 import type { Metadata } from "next";
 import { getCollection } from "@/lib/content";
 import { Tag, GitBranch, AlertTriangle, Package } from "lucide-react";
-import { DocContent } from "@/components/doc-content";
+import { SimpleMarkdown } from "@/components/simple-markdown";
 
 export const metadata: Metadata = {
   title: "Changelog",
@@ -219,7 +219,7 @@ export default function ChangelogPage() {
                     fontSize: "0.85rem",
                   }}
                 >
-                  <DocContent content={entry.data.content} />
+                  <SimpleMarkdown content={entry.data.content} />
                 </div>
               )}
             </article>
