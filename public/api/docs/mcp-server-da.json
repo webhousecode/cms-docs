@@ -1,0 +1,18 @@
+{
+  "slug": "mcp-server-da",
+  "title": "MCP Server — Autentificeret indholdsproduktion",
+  "description": "Fuld læse+skrive CMS-adgang fra Claude, Cursor eller enhver MCP-klient — 43 værktøjer med scope-baseret adgangskontrol.",
+  "category": "api-reference",
+  "order": 3,
+  "locale": "da",
+  "translationGroup": "0001612a-3680-4e44-a796-df9cf028f1b3",
+  "helpCardId": null,
+  "content": "## Hvad er MCP Server?\n\n`@webhouse/cms-mcp-server` er en **autentificeret MCP-server** til indholdsproduktion. Den giver AI-værktøjer som Claude Desktop, Cursor og Claude Code fuld læse+skrive-adgang til dit CMS — med scope-baseret adgangskontrol.\n\nI modsætning til den offentlige MCP-klient (6 læse-værktøjer) eksponerer serveren **43 værktøjer** der dækker enhver CMS-operation.\n\n## 43 Værktøjer efter kategori\n\n### Læsning (6) — `read` scope\nAlle offentlige værktøjer: `get_site_summary`, `list_collection`, `search_content`, `get_page`, `get_schema`, `export_all`\n\n### Indhold CRUD (8) — `write` scope\n`create_document`, `update_document`, `trash_document`, `clone_document`, `restore_from_trash`, `empty_trash`, `publish_document`, `unpublish_document`\n\n### AI-generering (4) — `write`+`ai` scopes\n`generate_with_ai`, `rewrite_field`, `generate_content`, `generate_interactive`\n\n### Oversættelse (2) — `write`+`ai` scopes\n`translate_document`, `translate_site`\n\n### Build & Deploy (3) — `deploy` scope\n`trigger_build`, `trigger_deploy`, `list_deploy_history`\n\n### Masseoperationer (2) — `write` scope\n`bulk_publish`, `bulk_update`\n\n### Agenter & kuratering (6) — `read`/`write`+`ai` scopes\n`list_agents`, `create_agent`, `run_agent`, `list_curation_queue`, `approve_queue_item`, `reject_queue_item`\n\n## Scope-baseret adgangskontrol\n\n| Scope | Tillader |\n|-------|----------|\n| `read` | Vis indhold, søg, list, eksportér |\n| `write` | Opret, opdatér, slet, backup |\n| `publish` | Publicér, afpublicér, planlæg |\n| `deploy` | Byg, deploy |\n| `ai` | AI-generering, oversættelse, agenter |\n\nGenerér nøgler:\n\n```bash\nnpx cms mcp keygen --label \"Min App\" --scopes \"read,write,publish\"\n```\n\n## Opsætning for Claude Desktop\n\n```json\n{\n  \"mcpServers\": {\n    \"my-site-admin\": {\n      \"command\": \"npx\",\n      \"args\": [\"@webhouse/cms-cli\", \"mcp\", \"--admin\", \"--key\", \"din-api-nøgle\"]\n    }\n  }\n}\n```\n\n## Klient vs server\n\n| | MCP Client | MCP Server |\n|-|-----------|------------|\n| **Auth** | Ingen (offentlig) | API-nøgle + scopes |\n| **Værktøjer** | 6 læse-kun | 43 læse+skrive+AI |\n| **Brug** | AI-platforme citerer dit indhold | Indholdsproduktion fra AI-værktøjer |\n| **Audit** | Nej | Ja |",
+  "excerpt": "Hvad er MCP Server?\n\n@webhouse/cms-mcp-server er en autentificeret MCP-server til indholdsproduktion. Den giver AI-værktøjer som Claude Desktop, Cursor og Claude Code fuld læse+skrive-adgang til dit CMS — med scope-baseret adgangskontrol.\n\nI modsætning til den offentlige MCP-klient (6 læse-værktøjer",
+  "seo": {
+    "metaTitle": "MCP Server — Autentificeret indholdsproduktion — webhouse.app Docs",
+    "metaDescription": "Fuld læse+skrive CMS-adgang fra Claude, Cursor eller enhver MCP-klient — 43 værktøjer med scope-baseret adgangskontrol."
+  },
+  "createdAt": "2026-03-30T19:29:52.746Z",
+  "updatedAt": "2026-03-30T19:29:52.746Z"
+}

@@ -1,5 +1,5 @@
 {
-  "count": 57,
+  "count": 63,
   "docs": [
     {
       "slug": "ai-agents-da",
@@ -44,6 +44,28 @@
       "translationGroup": "7634eb7c-76c4-4515-a4a3-9e50ec8df096",
       "helpCardId": null,
       "updatedAt": "2026-03-30T11:04:41.760Z"
+    },
+    {
+      "slug": "ai-lock-da",
+      "title": "AI Lock — Feltbaseret indholdsbeskyttelse",
+      "description": "Hvordan AI Lock forhindrer AI-agenter i at overskrive menneskelige redigeringer — feltbaseret beskyttelse håndhævet på motorniveau.",
+      "category": "concepts",
+      "order": 4,
+      "locale": "da",
+      "translationGroup": "8f7534a3-e648-4862-a040-dcd9021a44d9",
+      "helpCardId": null,
+      "updatedAt": "2026-03-30T19:25:39.858Z"
+    },
+    {
+      "slug": "ai-lock",
+      "title": "AI Lock — Field-Level Content Protection",
+      "description": "How AI Lock prevents AI agents from overwriting human edits — field-level protection enforced at the engine level.",
+      "category": "concepts",
+      "order": 4,
+      "locale": "en",
+      "translationGroup": "8f7534a3-e648-4862-a040-dcd9021a44d9",
+      "helpCardId": null,
+      "updatedAt": "2026-03-30T19:25:39.858Z"
     },
     {
       "slug": "api-endpoints",
@@ -363,6 +385,50 @@
       "translationGroup": "367d914a-4aa5-44e3-a876-1858b869b309",
       "helpCardId": null,
       "updatedAt": "2026-03-29T21:41:59.067Z"
+    },
+    {
+      "slug": "mcp-client-da",
+      "title": "MCP Client — Offentlig læseadgang",
+      "description": "Hvert site får en offentlig MCP-server som AI-platforme kan forespørge — ingen API-nøgler, ingen konfiguration.",
+      "category": "api-reference",
+      "order": 2,
+      "locale": "da",
+      "translationGroup": "bb20cf7c-c6bd-497e-836b-f1811df13582",
+      "helpCardId": null,
+      "updatedAt": "2026-03-30T19:29:52.746Z"
+    },
+    {
+      "slug": "mcp-client",
+      "title": "MCP Client — Public Read-Only Access",
+      "description": "Every site gets a public MCP server that AI platforms can query — no API keys, no configuration needed.",
+      "category": "api-reference",
+      "order": 2,
+      "locale": "en",
+      "translationGroup": "bb20cf7c-c6bd-497e-836b-f1811df13582",
+      "helpCardId": null,
+      "updatedAt": "2026-03-30T19:29:52.745Z"
+    },
+    {
+      "slug": "mcp-server-da",
+      "title": "MCP Server — Autentificeret indholdsproduktion",
+      "description": "Fuld læse+skrive CMS-adgang fra Claude, Cursor eller enhver MCP-klient — 43 værktøjer med scope-baseret adgangskontrol.",
+      "category": "api-reference",
+      "order": 3,
+      "locale": "da",
+      "translationGroup": "0001612a-3680-4e44-a796-df9cf028f1b3",
+      "helpCardId": null,
+      "updatedAt": "2026-03-30T19:29:52.746Z"
+    },
+    {
+      "slug": "mcp-server",
+      "title": "MCP Server — Authenticated Content Production",
+      "description": "Full read+write CMS access from Claude, Cursor, or any MCP client — 43 tools with scope-based access control.",
+      "category": "api-reference",
+      "order": 3,
+      "locale": "en",
+      "translationGroup": "0001612a-3680-4e44-a796-df9cf028f1b3",
+      "helpCardId": null,
+      "updatedAt": "2026-03-30T19:29:52.746Z"
     },
     {
       "slug": "media-da",

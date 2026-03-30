@@ -1,0 +1,18 @@
+{
+  "slug": "ai-lock-da",
+  "title": "AI Lock — Feltbaseret indholdsbeskyttelse",
+  "description": "Hvordan AI Lock forhindrer AI-agenter i at overskrive menneskelige redigeringer — feltbaseret beskyttelse håndhævet på motorniveau.",
+  "category": "concepts",
+  "order": 4,
+  "locale": "da",
+  "translationGroup": "8f7534a3-e648-4862-a040-dcd9021a44d9",
+  "helpCardId": null,
+  "content": "## Problemet\n\nDu redigerer omhyggeligt en blogindlæg-titel. En AI-agent kører natten over og overskriver den med en genereret version. Dit arbejde er væk.\n\n## Sådan fungerer AI Lock\n\n@webhouse/cms sporer **hvem der sidst redigerede hvert felt** — menneske eller AI. Når et menneske redigerer et felt, bliver det **låst**. AI-agenter kan aldrig overskrive et låst felt. Kun et menneske kan låse det op.\n\n### _fieldMeta-systemet\n\nHvert dokument har et `_fieldMeta`-objekt der sporer låsestatus pr. felt:\n\n```json\n{\n  \"data\": {\n    \"title\": \"Min omhyggeligt skrevne titel\",\n    \"content\": \"AI-genereret indhold...\"\n  },\n  \"_fieldMeta\": {\n    \"title\": {\n      \"lockedBy\": \"user\",\n      \"lockedAt\": \"2026-03-30T10:00:00Z\"\n    },\n    \"content\": {\n      \"lockedBy\": null,\n      \"lastEditedBy\": \"ai:content-writer\"\n    }\n  }\n}\n```\n\n- **title** er låst — et menneske redigerede det. Ingen AI kan røre det.\n- **content** er ulåst — AI genererede det. AI kan opdatere frit.\n\n### Hvad sker der når AI prøver at skrive et låst felt\n\n1. AI-agent kalder `update_document` med nye data\n2. CMS-motoren læser `_fieldMeta` for hvert felt\n3. Låste felter **springes stille over** — AI-data ignoreres\n4. Ulåste felter opdateres normalt\n5. Ingen fejl kastes — agenten behøver ikke vide om låse\n\n## Konfiguration\n\n```typescript\n{\n  name: 'title',\n  type: 'text',\n  aiLock: {\n    autoLockOnEdit: true,    // Lås ved menneskelig redigering\n    lockable: true,          // Om feltet kan låses\n    requireApproval: false,  // Kræv godkendelse før AI skriver\n  }\n}\n```\n\n### Oplåsning af et felt\n\nI editoren viser hvert felt et låseikon:\n- 🔒 **Låst** — menneske-redigeret, AI kan ikke ændre\n- 🔓 **Ulåst** — AI kan opdatere frit\n\nKlik på ikonet for at skifte. Kun mennesker kan låse op.\n\n## Brugscases\n\n### Content Writer-agent\n- AI genererer blogindlæg → alle felter ulåst\n- Menneske redigerer titlen → titel låser\n- AI kører SEO → opdaterer alt **undtagen titel**\n\n### Oversætteragent\n- AI oversætter alle felter\n- Menneske retter en specifik sætning → det felt låser\n- AI genoversætter → springer det rettede felt over\n\n## Hvorfor dette er anderledes\n\nAndre CMS'er med AI enten:\n- Lader AI overskrive alt (farligt)\n- Kræver manuel \"godkend hver ændring\" (langsomt)\n- Har intet koncept om feltejerskab (groft)\n\n@webhouse/cms AI Lock er:\n- **Automatisk** — låser ved menneskelig redigering\n- **Granulært** — pr. felt, ikke pr. dokument\n- **Ikke-blokerende** — AI kører frit, låste felter springes over\n- **Transparent** — låsestatus synlig i editor og `_fieldMeta`\n- **Motorniveau** — håndhævet i enhver skrivesti",
+  "excerpt": "Problemet\n\nDu redigerer omhyggeligt en blogindlæg-titel. En AI-agent kører natten over og overskriver den med en genereret version. Dit arbejde er væk.\n\n Sådan fungerer AI Lock\n\n@webhouse/cms sporer hvem der sidst redigerede hvert felt — menneske eller AI. Når et menneske redigerer et felt, bliver d",
+  "seo": {
+    "metaTitle": "AI Lock — Feltbaseret indholdsbeskyttelse — webhouse.app Docs",
+    "metaDescription": "Hvordan AI Lock forhindrer AI-agenter i at overskrive menneskelige redigeringer — feltbaseret beskyttelse håndhævet på motorniveau."
+  },
+  "createdAt": "2026-03-30T19:25:39.858Z",
+  "updatedAt": "2026-03-30T19:25:39.858Z"
+}
