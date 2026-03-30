@@ -1,0 +1,14 @@
+{
+  "id": "57d69bd8-b8fb-410d-9220-b08cd5fc3cef",
+  "slug": "block-renderer",
+  "status": "published",
+  "data": {
+    "title": "Block renderer",
+    "description": "Render CMS blocks in Next.js",
+    "code": "function BlockRenderer({ block }: { block: any }) {\n  switch (block._block) {\n    case 'hero':\n      return (\n        <section>\n          <h1>{block.tagline}</h1>\n          <p>{block.description}</p>\n        </section>\n      );\n    case 'features':\n      return (\n        <section>\n          <h2>{block.title}</h2>\n          <div className=\"grid grid-cols-3 gap-4\">\n            {block.items?.map((item: any, i: number) => (\n              <div key={i}>\n                <h3>{item.title}</h3>\n                <p>{item.description}</p>\n              </div>\n            ))}\n          </div>\n        </section>\n      );\n    default:\n      return null;\n  }\n}",
+    "lang": "typescript"
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-30T12:04:35.753Z",
+  "updatedAt": "2026-03-30T12:04:35.753Z"
+}

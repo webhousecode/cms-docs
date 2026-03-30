@@ -1,0 +1,14 @@
+{
+  "id": "a4db867c-da4b-4644-91aa-8642a20510cd",
+  "slug": "create-project",
+  "status": "published",
+  "data": {
+    "title": "Create a new project",
+    "description": "Scaffold a new @webhouse/cms project",
+    "code": "# Scaffold a new project\nnpm create @webhouse/cms my-site\n\n# Or with npx\nnpx create-@webhouse/cms my-site\n\n# With a specific template\nnpm create @webhouse/cms my-site -- --template nextjs",
+    "lang": "bash"
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-30T12:04:35.751Z",
+  "updatedAt": "2026-03-30T12:04:35.752Z"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "ef71a6db-a8f3-4b94-9268-1af6970019d7",
+  "slug": "nextjs-blog-page",
+  "status": "published",
+  "data": {
+    "title": "Next.js blog listing page",
+    "description": "Blog listing with generateStaticParams",
+    "code": "// app/blog/page.tsx\nimport { getCollection } from '@/lib/content';\n\nexport default function BlogPage() {\n  const posts = getCollection('posts')\n    .sort((a, b) => (b.data.date ?? '').localeCompare(a.data.date ?? ''));\n\n  return (\n    <div>\n      <h1>Blog</h1>\n      {posts.map(post => (\n        <a key={post.slug} href={`/blog/${post.slug}`}>\n          <h2>{post.data.title}</h2>\n          <p>{post.data.excerpt}</p>\n        </a>\n      ))}\n    </div>\n  );\n}",
+    "lang": "typescript"
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-30T12:04:35.753Z",
+  "updatedAt": "2026-03-30T12:04:35.753Z"
+}

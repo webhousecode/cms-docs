@@ -1,0 +1,14 @@
+{
+  "id": "1136c1b2-5e9d-4156-bb2e-c2e2473b2523",
+  "slug": "dev-and-build",
+  "status": "published",
+  "data": {
+    "title": "Dev server and build",
+    "description": "Start dev server and build for production",
+    "code": "cd my-site\nnpm install\nnpx cms dev       # Start dev server + admin UI\nnpx cms build     # Build static site\nnpx cms serve     # Preview the build",
+    "lang": "bash"
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-30T12:04:35.752Z",
+  "updatedAt": "2026-03-30T12:04:35.752Z"
+}

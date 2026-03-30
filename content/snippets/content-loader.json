@@ -1,0 +1,14 @@
+{
+  "id": "ad9fd92d-d0a1-4b99-b90c-8c37f1588b01",
+  "slug": "content-loader",
+  "status": "published",
+  "data": {
+    "title": "Content loader functions",
+    "description": "Read CMS content in Next.js with fs",
+    "code": "import { readFileSync, readdirSync, existsSync } from 'fs';\nimport { join } from 'path';\n\nconst CONTENT = join(process.cwd(), 'content');\n\nexport function getCollection(name: string) {\n  const dir = join(CONTENT, name);\n  if (!existsSync(dir)) return [];\n  return readdirSync(dir)\n    .filter(f => f.endsWith('.json'))\n    .map(f => JSON.parse(readFileSync(join(dir, f), 'utf-8')))\n    .filter(d => d.status === 'published');\n}\n\nexport function getDocument(collection: string, slug: string) {\n  const file = join(CONTENT, collection, `${slug}.json`);\n  if (!existsSync(file)) return null;\n  return JSON.parse(readFileSync(file, 'utf-8'));\n}",
+    "lang": "typescript"
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-30T12:04:35.752Z",
+  "updatedAt": "2026-03-30T12:04:35.752Z"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "1f9c2fa0-6923-43aa-9ff5-3236aab5f159",
+  "slug": "seo-metadata",
+  "status": "published",
+  "data": {
+    "title": "SEO metadata in Next.js",
+    "description": "Generate SEO metadata from CMS _seo fields",
+    "code": "export async function generateMetadata({ params }) {\n  const doc = getDocument('posts', (await params).slug);\n  const seo = doc?.data._seo ?? {};\n  return {\n    title: seo.metaTitle ?? doc?.data.title,\n    description: seo.metaDescription ?? doc?.data.excerpt,\n    openGraph: {\n      title: seo.metaTitle ?? doc?.data.title,\n      description: seo.metaDescription,\n      images: seo.ogImage ? [seo.ogImage] : [],\n    },\n  };\n}",
+    "lang": "typescript"
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-30T12:04:35.753Z",
+  "updatedAt": "2026-03-30T12:04:35.753Z"
+}

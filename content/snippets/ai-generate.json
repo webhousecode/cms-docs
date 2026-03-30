@@ -1,0 +1,14 @@
+{
+  "id": "4a5d9914-20f6-42be-b728-33e57b361a5d",
+  "slug": "ai-generate",
+  "status": "published",
+  "data": {
+    "title": "AI content generation",
+    "description": "Generate and translate content with AI CLI",
+    "code": "# Generate a blog post\nnpx cms ai generate posts \"Write a guide to TypeScript generics\"\n\n# Rewrite with instructions\nnpx cms ai rewrite posts/hello-world \"Make it more concise\"\n\n# SEO optimization across all content\nnpx cms ai seo",
+    "lang": "bash"
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-30T12:04:35.753Z",
+  "updatedAt": "2026-03-30T12:04:35.753Z"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "afd053e4-24f4-475e-ac26-ea2af7488e56",
+  "slug": "define-collection",
+  "status": "published",
+  "data": {
+    "title": "Define a collection",
+    "description": "Basic collection definition in cms.config.ts",
+    "code": "import { defineConfig, defineCollection } from '@webhouse/cms';\n\nexport default defineConfig({\n  collections: [\n    defineCollection({\n      name: 'posts',\n      label: 'Blog Posts',\n      urlPrefix: '/blog',\n      fields: [\n        { name: 'title', type: 'text', required: true },\n        { name: 'excerpt', type: 'textarea' },\n        { name: 'content', type: 'richtext' },\n        { name: 'date', type: 'date' },\n        { name: 'tags', type: 'tags' },\n      ],\n    }),\n  ],\n  storage: {\n    adapter: 'filesystem',\n    filesystem: { contentDir: 'content' },\n  },\n});",
+    "lang": "typescript"
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-30T12:04:35.752Z",
+  "updatedAt": "2026-03-30T12:04:35.752Z"
+}

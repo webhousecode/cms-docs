@@ -1,0 +1,14 @@
+{
+  "id": "c4986424-d75c-467d-a220-87d00d9d8d59",
+  "slug": "deploy-fly",
+  "status": "published",
+  "data": {
+    "title": "Fly.io deployment",
+    "description": "Dockerfile and fly.toml for Fly.io",
+    "code": "FROM node:22-alpine AS builder\nWORKDIR /app\nCOPY . .\nRUN npm ci && npm run build\n\nFROM node:22-alpine\nWORKDIR /app\nCOPY --from=builder /app/.next/standalone ./\nCOPY --from=builder /app/.next/static ./.next/static\nCOPY --from=builder /app/public ./public\nCOPY --from=builder /app/content ./content\nCMD [\"node\", \"server.js\"]",
+    "lang": "dockerfile"
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-30T12:04:35.753Z",
+  "updatedAt": "2026-03-30T12:04:35.753Z"
+}

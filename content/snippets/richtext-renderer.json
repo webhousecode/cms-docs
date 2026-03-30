@@ -1,0 +1,14 @@
+{
+  "id": "dc5bc6c0-2aa6-4cba-820b-76feb4ca2a4e",
+  "slug": "richtext-renderer",
+  "status": "published",
+  "data": {
+    "title": "Richtext renderer",
+    "description": "Render CMS richtext with react-markdown",
+    "code": "import ReactMarkdown from 'react-markdown';\nimport remarkGfm from 'remark-gfm';\n\nfunction ArticleBody({ content }: { content: string }) {\n  return (\n    <ReactMarkdown remarkPlugins={[remarkGfm]}>\n      {content}\n    </ReactMarkdown>\n  );\n}",
+    "lang": "typescript"
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-30T12:04:35.753Z",
+  "updatedAt": "2026-03-30T12:04:35.753Z"
+}

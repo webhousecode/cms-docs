@@ -1,0 +1,14 @@
+{
+  "id": "7141a21e-102f-47a8-a2bd-757f2c11d5c1",
+  "slug": "i18n-config",
+  "status": "published",
+  "data": {
+    "title": "i18n configuration",
+    "description": "Multi-language collection config",
+    "code": "export default defineConfig({\n  defaultLocale: 'en',\n  locales: ['en', 'da'],\n  collections: [\n    defineCollection({\n      name: 'posts',\n      sourceLocale: 'en',\n      locales: ['en', 'da'],\n      translatable: true,\n      fields: [\n        { name: 'title', type: 'text', required: true },\n        { name: 'content', type: 'richtext' },\n      ],\n    }),\n  ],\n});",
+    "lang": "typescript"
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-30T12:04:35.753Z",
+  "updatedAt": "2026-03-30T12:04:35.753Z"
+}

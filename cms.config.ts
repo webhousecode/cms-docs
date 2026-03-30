@@ -39,6 +39,17 @@ export default defineConfig({
         { name: "breaking", type: "boolean" },
       ],
     }),
+    defineCollection({
+      name: "snippets",
+      label: "Shared Snippets",
+      urlPrefix: "/snippets",
+      fields: [
+        { name: "title", type: "text", required: true },
+        { name: "description", type: "textarea" },
+        { name: "code", type: "textarea", required: true },
+        { name: "lang", type: "text" },
+      ],
+    }),
   ],
   storage: {
     adapter: "filesystem",

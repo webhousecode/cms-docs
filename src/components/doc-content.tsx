@@ -1,12 +1,32 @@
 import { codeToHtml } from "shiki";
 import { CopyButtonClient } from "./copy-button-client";
+import { readFileSync, existsSync } from "fs";
+import { join } from "path";
+
+const SNIPPETS_DIR = join(process.cwd(), "content", "snippets");
+
+/**
+ * Resolve {{snippet:slug}} tokens to actual code blocks from the snippets collection.
+ */
+function resolveSnippets(content: string): string {
+  return content.replace(/\{\{snippet:([a-z0-9-]+)\}\}/g, (_match, slug) => {
+    const file = join(SNIPPETS_DIR, `${slug}.json`);
+    if (!existsSync(file)) return `<!-- snippet not found: ${slug} -->`;
+    const snippet = JSON.parse(readFileSync(file, "utf-8"));
+    const lang = snippet.data.lang || "text";
+    const code = snippet.data.code || "";
+    return "```" + lang + "\n" + code + "\n```";
+  });
+}
 
 /**
  * Renders markdown doc content with Shiki syntax highlighting.
- * Pre-processes all code blocks server-side, then renders as HTML.
+ * Pre-processes snippets and code blocks server-side, then renders as HTML.
  */
 export async function DocContent({ content }: { content: string }) {
-  const html = await markdownToHtml(content);
+  // Step 0: Resolve shared snippets
+  const resolved = resolveSnippets(content);
+  const html = await markdownToHtml(resolved);
 
   return (
     <div className="doc-content" dangerouslySetInnerHTML={{ __html: html }} />

@@ -1,0 +1,14 @@
+{
+  "id": "9301af40-ebba-41ea-a7fc-7941acab8743",
+  "slug": "nextjs-post-page",
+  "status": "published",
+  "data": {
+    "title": "Next.js blog post page",
+    "description": "Dynamic post page with SEO metadata",
+    "code": "// app/blog/[slug]/page.tsx\nimport { getCollection, getDocument } from '@/lib/content';\nimport { notFound } from 'next/navigation';\n\nexport function generateStaticParams() {\n  return getCollection('posts').map(d => ({ slug: d.slug }));\n}\n\nexport async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {\n  const { slug } = await params;\n  const doc = getDocument('posts', slug);\n  if (!doc) return {};\n  return {\n    title: doc.data._seo?.metaTitle ?? doc.data.title,\n    description: doc.data._seo?.metaDescription ?? doc.data.excerpt,\n  };\n}\n\nexport default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {\n  const { slug } = await params;\n  const doc = getDocument('posts', slug);\n  if (!doc) notFound();\n\n  return (\n    <article>\n      <h1>{doc.data.title}</h1>\n      {/* Render doc.data.content with react-markdown */}\n    </article>\n  );\n}",
+    "lang": "typescript"
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-30T12:04:35.753Z",
+  "updatedAt": "2026-03-30T12:04:35.753Z"
+}

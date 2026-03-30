@@ -1,0 +1,14 @@
+{
+  "id": "21614330-d809-4167-bb48-e1f8717a0426",
+  "slug": "storage-filesystem",
+  "status": "published",
+  "data": {
+    "title": "Filesystem storage config",
+    "description": "Configure filesystem storage adapter",
+    "code": "// ALWAYS specify storage — defaults to SQLite if omitted!\nstorage: {\n  adapter: 'filesystem',\n  filesystem: { contentDir: 'content' },\n}",
+    "lang": "typescript"
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-30T12:04:35.752Z",
+  "updatedAt": "2026-03-30T12:04:35.752Z"
+}
