@@ -25,6 +25,7 @@ const FEATURES = [
     description:
       "Provider-agnostic agents for content generation, rewriting, translation, and SEO optimization. Swap between Anthropic, OpenAI, or local models.",
     tag: "@webhouse/cms-ai",
+    href: "/docs/ai-agents",
   },
   {
     icon: FileText,
@@ -32,6 +33,7 @@ const FEATURES = [
     description:
       "22 field types. Collections and blocks defined in TypeScript. Every piece of content is typed, validated, and introspectable.",
     tag: "cms.config.ts",
+    href: "/docs/field-types",
   },
   {
     icon: Zap,
@@ -39,6 +41,7 @@ const FEATURES = [
     description:
       "9-phase build pipeline: HTML, sitemap, robots.txt, RSS, llms.txt, per-page markdown. Zero runtime JS unless you opt in.",
     tag: "npx cms build",
+    href: "/docs/build-guide",
   },
   {
     icon: Plug,
@@ -46,6 +49,7 @@ const FEATURES = [
     description:
       "First-class Next.js integration (App Router, Server Components, ISR). Also works with Astro, plain Node.js, or any static host.",
     tag: "Next.js · Astro · Node",
+    href: "/docs/nextjs-guide",
   },
   {
     icon: Image,
@@ -53,6 +57,7 @@ const FEATURES = [
     description:
       "Sharp-based image processing with AI-generated captions and alt text. WebP conversion, responsive variants, EXIF extraction.",
     tag: "Sharp · AI Analysis",
+    href: "/docs/media",
   },
   {
     icon: Shield,
@@ -60,6 +65,7 @@ const FEATURES = [
     description:
       "Field-level protection. AI agents can never overwrite human edits. WriteContext actor threading through all CRUD operations.",
     tag: "AI Lock",
+    href: "/docs/ai-lock",
   },
   {
     icon: Globe,
@@ -67,6 +73,7 @@ const FEATURES = [
     description:
       "Translation groups link documents across locales. AI auto-translates. Hreflang, locale routing, and language switcher built in.",
     tag: "F48 i18n",
+    href: "/docs/i18n",
   },
   {
     icon: Search,
@@ -74,6 +81,7 @@ const FEATURES = [
     description:
       "Dual scoring: 13 SEO rules for search engines + 8 GEO rules for AI citation. Combined Visibility dashboard in admin.",
     tag: "F112 GEO",
+    href: "/docs/seo",
   },
   {
     icon: Bot,
@@ -81,6 +89,7 @@ const FEATURES = [
     description:
       "Built-in AI chat that knows your content, schema, and configuration. Ask questions, get answers with citations from your own docs.",
     tag: "F107 Chat",
+    href: "/docs/chat",
   },
 ];
 
@@ -373,14 +382,19 @@ export default function HomePage() {
         >
           {FEATURES.map((f) => {
             const Icon = f.icon;
+            const Wrapper = f.href ? Link : "div";
             return (
-              <div
+              <Wrapper
                 key={f.title}
+                href={f.href ?? ""}
                 style={{
                   padding: "1.25rem",
                   borderRadius: 10,
                   border: "1px solid var(--border)",
                   background: "var(--bg-secondary)",
+                  textDecoration: "none",
+                  color: "inherit",
+                  transition: "border-color 0.15s",
                 }}
               >
                 <div
@@ -423,7 +437,7 @@ export default function HomePage() {
                 >
                   {f.description}
                 </p>
-              </div>
+              </Wrapper>
             );
           })}
         </div>
