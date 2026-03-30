@@ -1,0 +1,21 @@
+{
+  "id": "09095694-2868-4020-9ad6-3142a45eba53",
+  "slug": "unreleased",
+  "status": "published",
+  "locale": "en",
+  "translationGroup": "cbbe2268-3986-4614-aeef-bacaa283f801",
+  "data": {
+    "title": "Unreleased",
+    "version": "next",
+    "date": "2026-03-30",
+    "content": "## Unreleased Changes\n\n**15 changes** since v0.2.15\n\n### Features\n\n- feat: deploy modal with progress gauge and step-by-step status\n- feat: sites page grid/list view toggle\n- feat: reserved collection name guardrail + i18n preview redirects\n- feat: add cmsdemo bilingual marketing site example\n- feat: add F121 Snippet Embeds to feature roadmap\n- feat: post-commit hook reminds to run /update-docs\n- feat: /update-docs skill — sync docs.webhouse.app with CMS changes\n- feat: Instant Content Deployment — skip full deploy when revalidation works\n\n### Bug Fixes\n\n- fix: handle GitHub Pages API 500 when Pages already enabled\n- fix: ICD only skips full deploy when revalidation actually succeeds\n- fix: F122 Beam includes chat history, memories, and user state\n- fix: use \"Get key\" link pattern on pCloud access token field\n\n### Other Changes\n\n- docs: README.md + screenshots for all 13 example sites\n- docs: add Instant Content Deployment (ICD) to AI guides\n- refactor: F95 pCloud — switch from REST API to WebDAV (email+password)\n\n",
+    "breaking": false,
+    "_seo": {
+      "metaTitle": "Unreleased — webhouse.app Changelog",
+      "metaDescription": "Release notes for @webhouse/cms next"
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-30T22:59:09.869Z",
+  "updatedAt": "2026-03-30T22:59:09.869Z"
+}
