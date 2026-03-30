@@ -1,0 +1,21 @@
+{
+  "id": "6016c61d-28a4-4f3e-9ce2-af084547d186",
+  "slug": "build-guide-da",
+  "status": "published",
+  "locale": "da",
+  "translationGroup": "af8f1055-a4bf-43f9-9183-25f1430fb5a9",
+  "data": {
+    "title": "Guide til build.ts — Statisk site-generering",
+    "description": "Trin-for-trin guide til at bygge den perfekte build.ts til et statisk HTML-site drevet af @webhouse/cms.",
+    "category": "guides",
+    "order": 10,
+    "content": "## Hvad er build.ts?\n\n`build.ts` er en custom statisk site-generator der læser dit CMS-indhold (JSON-filer) og outputter ren HTML. Intet framework, intet runtime-JavaScript — bare HTML + CSS der virker overalt.\n\n```bash\nnpx tsx build.ts    # Generér dist/\n```\n\n## Lektion 1: Indlæs indhold\n\nFundamentet — læs JSON-filer fra `content/`:\n\n{{snippet:content-loader}}\n\n## Lektion 2: Rendér markdown\n\nKonvertér richtext-indhold til HTML:\n\n```typescript\nimport { marked } from 'marked';\n\nfunction renderMarkdown(content: string): string {\n  return marked.parse(content, { async: false }) as string;\n}\n```\n\n## Lektion 3: HTML-skabelon\n\nWrap indhold i et komplet HTML-dokument:\n\n```typescript\nfunction htmlPage(title: string, body: string, css: string): string {\n  return `<!DOCTYPE html>\n<html lang=\"da\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>${title}</title>\n  <style>${css}</style>\n</head>\n<body>${body}</body>\n</html>`;\n}\n```\n\n## Lektion 4: Byg en side\n\nKombinér indholdsindlæsning, markdown-rendering og HTML-skabelon.\n\n## Lektion 5: Rendér blokke\n\nHvis dine sider bruger blokke (hero, features, CTA), rendér hver bloktype:\n\n{{snippet:block-renderer}}\n\n## Lektion 6: SEO-metadata\n\nUdtrk SEO-felter og generér meta-tags fra `_seo`-feltet.\n\n## Lektion 7: Skriv output\n\nGenerér filer til `dist/` med `writeFileSync` og `mkdirSync`.\n\n## Lektion 8: Sitemap\n\nGenerér `sitemap.xml` til søgemaskiner.\n\n## Lektion 9: Resolve snippets\n\nTilføj snippet-support til dit build — se [Delte Snippets](/docs/shared-snippets-da).\n\n## Lektion 10: Kopiér statiske assets\n\nKopiér uploads og public-filer til dist/.\n\n## Næste skridt\n\n- [Skabeloner](/docs/templates-da) — start fra en fungerende boilerplate\n- [Next.js-mønstre](/docs/nextjs-patterns-da) — hvis du vil have React\n- [Delte Snippets](/docs/shared-snippets-da) — genbrugelige kodeblokke",
+    "_seo": {
+      "metaTitle": "Guide til build.ts — Statisk site-generering — webhouse.app Docs",
+      "metaDescription": "Trin-for-trin guide til at bygge den perfekte build.ts til et statisk HTML-site drevet af @webhouse/cms."
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-30T12:14:24.905Z",
+  "updatedAt": "2026-03-30T12:14:24.905Z"
+}

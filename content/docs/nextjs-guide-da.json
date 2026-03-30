@@ -1,0 +1,21 @@
+{
+  "id": "f917f4d1-743b-40d0-84a4-9d38bd8adae9",
+  "slug": "nextjs-guide-da",
+  "status": "published",
+  "locale": "da",
+  "translationGroup": "09bca7d8-0093-4a0e-b69b-ee0bb8c64519",
+  "data": {
+    "title": "Next.js integrationsguide",
+    "description": "Komplet guide til at bygge en Next.js App Router-site med @webhouse/cms — fra indholdsindlæsning til deployment.",
+    "category": "guides",
+    "order": 11,
+    "content": "## Oversigt\n\nDenne guide gennemgår opbygningen af et komplet Next.js-site med @webhouse/cms. CMS'et håndterer indholdslagring og redigering. Next.js håndterer rendering og routing.\n\n## Trin 1: Projektopsætning\n\n{{snippet:create-project}}\n\nEller start fra Next.js-boilerplaten:\n\n```bash\nnpm create @webhouse/cms my-site -- --template nextjs\n```\n\n## Trin 2: Indholdslag\n\nIndholdslaget læser JSON-filer ved build/request-tid:\n\n{{snippet:content-loader}}\n\n## Trin 3: Root layout\n\nRoot layout læser globale indstillinger og renderer navbar + footer.\n\n## Trin 4: Forside med blokke\n\nForsiden læser `content/pages/home.json` og renderer blokke.\n\n## Trin 5: Blog med statisk generering\n\n{{snippet:nextjs-blog-page}}\n\nIndividuelle indlæg med SEO:\n\n{{snippet:nextjs-post-page}}\n\n## Trin 6: Richtext-rendering\n\n{{snippet:richtext-renderer}}\n\n> **Brug aldrig `dangerouslySetInnerHTML`** med regex-baserede parsere.\n\n## Trin 7: Blok-rendering\n\n{{snippet:block-renderer}}\n\n## Trin 8: SEO-metadata\n\n{{snippet:seo-metadata}}\n\n## Trin 9: i18n (valgfrit)\n\n{{snippet:i18n-config}}\n\n## Trin 10: Deployment\n\n{{snippet:deploy-fly}}\n\n## Vigtige mønstre\n\n1. **Server Components som standard** — al indholdsindlæsning sker server-side\n2. **`\"use client\"` kun hvor nødvendigt** — tema-toggle, søgning, markdown\n3. **`generateStaticParams`** — prægenerér alle sider ved build-tid\n4. **`generateMetadata`** — SEO fra CMS `_seo`-felter med fallbacks\n5. **Hardkod aldrig indhold** — alt fra CMS JSON-filer\n6. **Filtrér på published** — tjek altid `status === \"published\"`",
+    "_seo": {
+      "metaTitle": "Next.js integrationsguide — webhouse.app Docs",
+      "metaDescription": "Komplet guide til at bygge en Next.js App Router-site med @webhouse/cms — fra indholdsindlæsning til deployment."
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-30T12:14:24.905Z",
+  "updatedAt": "2026-03-30T12:14:24.905Z"
+}

@@ -1,0 +1,21 @@
+{
+  "id": "3857fad5-71d6-452e-84d3-fd758573d60c",
+  "slug": "shared-snippets-da",
+  "status": "published",
+  "locale": "da",
+  "translationGroup": "dda91266-cbb4-4ffc-af1d-de6f569eace2",
+  "data": {
+    "title": "Delte Snippets — Genbrugelige kodeblokke",
+    "description": "Sådan byggede vi et delt snippet-system til docs.webhouse.app med vores eget CMS — og hvordan du kan gøre det samme.",
+    "category": "tips",
+    "order": 0,
+    "content": "## Problemet\n\nDokumentationssites gentager de samme kodeeksempler på tværs af flere sider. \"Hurtig start\" viser installationskommandoen. \"Skabeloner\" viser den også. \"CLI-reference\" viser den igen. Når kommandoen ændres, opdaterer du ét sted og glemmer de andre to.\n\n## Løsningen: en snippets-collection\n\nVi tilføjede en `snippets`-collection til vores CMS-konfiguration:\n\n```typescript\ndefineCollection({\n  name: \"snippets\",\n  label: \"Delte Snippets\",\n  fields: [\n    { name: \"title\", type: \"text\", required: true },\n    { name: \"description\", type: \"textarea\" },\n    { name: \"code\", type: \"textarea\", required: true },\n    { name: \"lang\", type: \"text\" },\n  ],\n})\n```\n\n## Brug af snippets i markdown\n\nI enhver doc-sides indholdsfeld, referér en snippet med:\n\n```\n{{snippet:create-project}}\n```\n\nVed render-tid opløses tokenet til den faktiske kodeblok fra snippets-collectionen.\n\n## Implementering i build.ts (statiske sites)\n\nTilføj en snippet-resolver før markdown-rendering:\n\n```typescript\nfunction resolveSnippets(markdown: string): string {\n  return markdown.replace(\n    /\\{\\{snippet:([a-z0-9-]+)\\}\\}/g,\n    (_match, slug) => {\n      const file = join(SNIPPETS_DIR, slug + '.json');\n      if (!existsSync(file)) return '';\n      const snippet = JSON.parse(readFileSync(file, 'utf-8'));\n      return '\\x60\\x60\\x60' + snippet.data.lang + '\\n' +\n        snippet.data.code + '\\n\\x60\\x60\\x60';\n    }\n  );\n}\n```\n\n## Ud over kode: andre brugsmuligheder\n\nSnippets behøver ikke være kode:\n\n- **Ansvarsfraskrivelser** — juridisk tekst der vises på flere sider\n- **Versionsbadges** — aktuelt versionsnummer opdateret ét sted\n- **Funktionsmatricer** — sammenligningstabeller delt på tværs af produktsider\n- **Kontaktinfo** — adresse, telefon, email brugt i footer og kontaktside\n- **Priser** — prispoints refereret i features, prissætning og FAQ-sider\n\n## Hvorfor dette er vigtigt\n\nDette er dogfooding i sin bedste form. Vi byggede docs.webhouse.app med @webhouse/cms, og når vi havde brug for genbrugelige indholdsblokke, brugte vi CMS'ets eget collection-system. Ingen plugins, ingen custom infrastruktur — bare endnu en collection.",
+    "_seo": {
+      "metaTitle": "Delte Snippets — Genbrugelige kodeblokke — webhouse.app Docs",
+      "metaDescription": "Sådan byggede vi et delt snippet-system til docs.webhouse.app med vores eget CMS — og hvordan du kan gøre det samme."
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-30T12:14:24.904Z",
+  "updatedAt": "2026-03-30T12:14:24.904Z"
+}

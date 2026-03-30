@@ -21,6 +21,7 @@ export default defineConfig({
             { label: "Concepts", value: "concepts" },
             { label: "Deployment", value: "deployment" },
             { label: "API Reference", value: "api-reference" },
+            { label: "Tips & Tricks", value: "tips" },
           ],
         },
         { name: "order", type: "number" },

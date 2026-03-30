@@ -64,6 +64,7 @@ const CATEGORY_LABELS: Record<string, Record<string, string>> = {
   "cli": { en: "CLI", da: "CLI" },
   "api-reference": { en: "API Reference", da: "API-reference" },
   "deployment": { en: "Deployment", da: "Udrulning" },
+  "tips": { en: "Tips & Tricks", da: "Tips & Tricks" },
 };
 
 export function getCategories(locale: string = "en"): Category[] {
@@ -75,6 +76,7 @@ export function getCategories(locale: string = "en"): Category[] {
     { slug: "cli", label: CATEGORY_LABELS["cli"][locale] ?? "CLI", order: 4 },
     { slug: "api-reference", label: CATEGORY_LABELS["api-reference"][locale] ?? "API Reference", order: 5 },
     { slug: "deployment", label: CATEGORY_LABELS["deployment"][locale] ?? "Deployment", order: 6 },
+    { slug: "tips", label: CATEGORY_LABELS["tips"][locale] ?? "Tips & Tricks", order: 7 },
   ];
 }
 
