@@ -1,0 +1,18 @@
+{
+  "slug": "collection-naming-da",
+  "title": "Best practices for collection-navngivning",
+  "description": "Reserverede navne du skal undgå, anbefalede navngivningsmønstre, og hvorfor validatoren fanger konflikter.",
+  "category": "tips",
+  "order": 1,
+  "locale": "da",
+  "translationGroup": "ad522ba8-74a6-40b8-b5ed-866414336076",
+  "helpCardId": null,
+  "content": "## Reserverede navne — brug aldrig disse\n\nFølgende navne konflikter med CMS admin's indbyggede UI-paneler. Brug dem **aldrig** som collection-navne eller labels:\n\n| Reserveret navn | Konflikter med |\n|----------------|----------------|\n| `settings` | Site Settings-panelet |\n| `site-settings` | Site Settings-panelet |\n| `config` | Site-konfiguration |\n| `admin` | Admin UI-routes |\n| `media` | Mediebiblioteks-panelet |\n| `interactives` | Interaktive-panelet |\n\n### Hvad sker der hvis du bruger et reserveret navn\n\nHvis du navngiver en collection \"Site Settings\", ser redaktører **to** \"Site Settings\" i sidebaren:\n\n1. Din collection (indholdsdokumenter)\n2. CMS admin's indbyggede indstillingspanel\n\nDet forvirrer alle.\n\n## Anbefalet navngivning\n\n### Til site-brede indstillinger\n\nBrug `globals` eller `global` — ikke \"settings\" eller \"config\":\n\n```typescript\ndefineCollection({\n  name: 'globals',           // ✓ sikkert\n  label: 'Globale indstillinger', // ✓ label kan sige \"indstillinger\"\n  fields: [\n    { name: 'siteTitle', type: 'text' },\n    { name: 'tagline', type: 'textarea' },\n    { name: 'footerText', type: 'text' },\n  ],\n})\n```\n\n### Til indholdscollections\n\nBrug beskrivende, indholdsfokuserede navne:\n\n| Godt | Dårligt |\n|------|---------|\n| `posts` | `blog-settings` |\n| `projects` | `admin-projects` |\n| `team` | `config-team` |\n| `testimonials` | `media-events` |\n\n## Validatoren fanger det\n\n1. Gå til **Site Settings** i sidebaren\n2. Klik **Validate site**\n3. Hvis en collection bruger et reserveret navn, ser du en advarsel med et omdøbningsforslag\n\n### Rette en konflikt\n\n```typescript\n// Før (dårligt)\ndefineCollection({ name: 'settings', ... })\n\n// Efter (godt)\ndefineCollection({ name: 'globals', label: 'Site Settings', ... })\n```\n\nOmdøb også content-mappen:\n\n```bash\nmv content/settings content/globals\n```\n\n## Opsummering\n\n- **`name`** = mappenavn + URL-route → skal undgå reserverede ord\n- **`label`** = visningsnavn i admin → kan være hvad som helst\n- **Brug `globals`** til site-brede indstillinger\n- **Kør validatoren** efter enhver konfigurationsændring",
+  "excerpt": "Reserverede navne — brug aldrig disse\n\nFølgende navne konflikter med CMS admin's indbyggede UI-paneler. Brug dem aldrig som collection-navne eller labels:\n\n| Reserveret navn | Konflikter med |\n|----------------|----------------|\n| settings | Site Settings-panelet |\n| site-settings | Site Settings-pa",
+  "seo": {
+    "metaTitle": "Best practices for collection-navngivning — webhouse.app Docs",
+    "metaDescription": "Reserverede navne du skal undgå, anbefalede navngivningsmønstre, og hvorfor validatoren fanger konflikter."
+  },
+  "createdAt": "2026-03-30T21:48:54.523Z",
+  "updatedAt": "2026-03-30T21:48:54.523Z"
+}

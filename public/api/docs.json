@@ -1,5 +1,5 @@
 {
-  "count": 63,
+  "count": 65,
   "docs": [
     {
       "slug": "ai-agents-da",
@@ -187,6 +187,28 @@
       "translationGroup": "d1cd299f-272e-41c9-90ae-d3a62f43252a",
       "helpCardId": null,
       "updatedAt": "2026-03-29T21:41:59.069Z"
+    },
+    {
+      "slug": "collection-naming-da",
+      "title": "Best practices for collection-navngivning",
+      "description": "Reserverede navne du skal undgå, anbefalede navngivningsmønstre, og hvorfor validatoren fanger konflikter.",
+      "category": "tips",
+      "order": 1,
+      "locale": "da",
+      "translationGroup": "ad522ba8-74a6-40b8-b5ed-866414336076",
+      "helpCardId": null,
+      "updatedAt": "2026-03-30T21:48:54.523Z"
+    },
+    {
+      "slug": "collection-naming",
+      "title": "Collection Naming Best Practices",
+      "description": "Reserved names to avoid, recommended naming patterns, and why the validator catches conflicts.",
+      "category": "tips",
+      "order": 1,
+      "locale": "en",
+      "translationGroup": "ad522ba8-74a6-40b8-b5ed-866414336076",
+      "helpCardId": null,
+      "updatedAt": "2026-03-30T21:48:54.522Z"
     },
     {
       "slug": "config-reference-da",

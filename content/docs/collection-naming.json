@@ -1,0 +1,21 @@
+{
+  "id": "81cd586a-d714-4310-8b71-f19d96b1db45",
+  "slug": "collection-naming",
+  "status": "published",
+  "locale": "en",
+  "translationGroup": "ad522ba8-74a6-40b8-b5ed-866414336076",
+  "data": {
+    "title": "Collection Naming Best Practices",
+    "description": "Reserved names to avoid, recommended naming patterns, and why the validator catches conflicts.",
+    "category": "tips",
+    "order": 1,
+    "content": "## Reserved names — never use these\n\nThe following names conflict with CMS admin's built-in UI panels. **Never** use them as collection names or labels:\n\n| Reserved name | Conflicts with |\n|--------------|----------------|\n| `settings` | Site Settings panel |\n| `site-settings` | Site Settings panel |\n| `config` | Site configuration |\n| `admin` | Admin UI routes |\n| `media` | Media library panel |\n| `interactives` | Interactives panel |\n\n### What happens if you use a reserved name\n\nIf you name a collection \"Site Settings\", editors see **two** \"Site Settings\" entries in the sidebar:\n\n1. Your collection (content documents)\n2. CMS admin's built-in settings panel\n\nThis confuses everyone. Editors click the wrong one, content gets lost, and support tickets pile up.\n\nThe same applies to \"Media\" — editors can't tell if they're opening the media library or your \"Media\" content collection.\n\n## Recommended naming\n\n### For site-wide settings\n\nUse `globals` or `global` — not \"settings\" or \"config\":\n\n```typescript\ndefineCollection({\n  name: 'globals',        // ✓ safe\n  label: 'Global Settings', // ✓ label can say \"settings\"\n  fields: [\n    { name: 'siteTitle', type: 'text' },\n    { name: 'tagline', type: 'textarea' },\n    { name: 'socialLinks', type: 'array', fields: [\n      { name: 'platform', type: 'text' },\n      { name: 'url', type: 'text' },\n    ]},\n    { name: 'footerText', type: 'text' },\n  ],\n})\n```\n\n> **Note:** The `label` can include \"Settings\" — it's the `name` (used for routes and directory names) that must avoid reserved words.\n\n### For content collections\n\nUse descriptive, content-focused names:\n\n| Good | Bad |\n|------|-----|\n| `posts` | `blog-settings` |\n| `projects` | `admin-projects` |\n| `team` | `config-team` |\n| `testimonials` | `settings-testimonials` |\n| `events` | `media-events` |\n| `products` | `interactives-products` |\n| `services` | `site-settings-services` |\n\n## The validator catches it\n\nCMS admin includes a built-in validator that checks for reserved name conflicts.\n\n### How to use it\n\n1. Go to **Site Settings** in the sidebar\n2. Scroll to the **Site** section\n3. Click **Validate site**\n4. If any collection uses a reserved name, you'll see a warning with a rename suggestion\n\n### What the validator checks\n\n- Collection `name` matches a reserved word\n- Collection `label` is identical to a built-in panel name\n- Suggests safe alternatives (e.g. \"settings\" → \"globals\")\n\n### Fixing a conflict\n\nIf the validator flags a collection:\n\n1. Rename the collection in `cms.config.ts`:\n   ```typescript\n   // Before (bad)\n   defineCollection({ name: 'settings', ... })\n\n   // After (good)\n   defineCollection({ name: 'globals', label: 'Site Settings', ... })\n   ```\n\n2. Rename the content directory:\n   ```bash\n   mv content/settings content/globals\n   ```\n\n3. Update slug references in any JSON files that reference the old collection name\n\n## Summary\n\n- **`name`** = directory name + URL route → must avoid reserved words\n- **`label`** = display name in admin → can be anything descriptive\n- **Use `globals`** for site-wide settings, not \"settings\" or \"config\"\n- **Run the validator** after any config change to catch conflicts early",
+    "_seo": {
+      "metaTitle": "Collection Naming Best Practices — webhouse.app Docs",
+      "metaDescription": "Reserved names to avoid, recommended naming patterns, and why the validator catches conflicts."
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-30T21:48:54.521Z",
+  "updatedAt": "2026-03-30T21:48:54.522Z"
+}
