@@ -1,0 +1,51 @@
+{
+  "id": "4680223f-af3e-4b84-8f65-403d7d957d83",
+  "userId": "fb4eda6a-bc5c-4dec-8cb6-c77c9fb74cd9",
+  "title": "How many docs articles does this site have?",
+  "messages": [
+    {
+      "id": "99a39621-fc13-4047-9df8-bfc94eef1cad",
+      "role": "user",
+      "content": "How many docs articles does this site have?",
+      "timestamp": "2026-03-30T19:38:33.684Z"
+    },
+    {
+      "id": "ee98211a-f896-4f47-9720-2d643ceae208",
+      "role": "assistant",
+      "content": "The **Documentation** collection has **63 articles**, all of which are published (no drafts).",
+      "timestamp": "2026-03-30T19:38:33.684Z",
+      "toolCalls": [
+        {
+          "tool": "site_summary",
+          "input": {},
+          "status": "done",
+          "result": "Site: CMS Docs\nAdapter: filesystem\nCollections:\n  - Documentation (docs): 63 total (63 published, 0 drafts)\n  - Changelog (changelog): 13 total (13 published, 0 drafts)\n  - Shared Snippets (snippets): 15 total (15 published, 0 drafts)"
+        }
+      ]
+    },
+    {
+      "id": "5b4e2769-f704-4a5b-a9db-012abb091879",
+      "role": "user",
+      "content": "Please show me an abstract of the one about chat",
+      "timestamp": "2026-03-30T19:38:33.684Z"
+    },
+    {
+      "id": "67e3c9e8-3304-4eea-9d53-856ebc951b5c",
+      "role": "assistant",
+      "content": "",
+      "timestamp": "2026-03-30T19:38:33.684Z",
+      "toolCalls": [
+        {
+          "tool": "search_content",
+          "input": {
+            "query": "chat"
+          },
+          "status": "done",
+          "result": "**Documents:**\n- \"Chat with Your Site\" (Documentation) /docs/chat — Manage your entire CMS through natural language — create content, edit pages, run agents, deploy, and more by just talking to it.\n- \"Chat med dit site\" (Documentation) /docs/chat-da — Administrér hele dit CMS via naturligt sprog — opret indhold, redigér sider, kør agenter, deploy og mere ved bare at tale til det.\n- \"API Endpoints Reference\" (Documentation) /docs/api-endpoints — Complete reference of all 136 REST API endpoints in the CMS admin.\n- \"Content API\" (Documentation) /docs/api-reference — Programmatic API for reading and writing content — ContentService methods and REST endpoints.\n- \"Indholds-API\" (Documentation) /docs/api-reference-da — Programmatisk API til læsning og skrivning af indhold — ContentService-metoder og REST-endpoints.\n- \"MCP Client — Public Read-Only Access\" (Documentation) /docs/mcp-client — Every site gets a public MCP server that AI platforms can query — no API keys, no configuration needed.\n- \"Release v0.2.13\" (Changelog) /changelog/v0-2-13 — ## What's New in v0.2.13 **619 changes** released on 2026-03-28 ### Features - feat(F42): Next.js GitHub boilerplate — webhook revalidation + LiveRefresh - feat…\n- \"Unreleased\" (Changelog) /changelog/unreleased — ## Unreleased Changes **207 changes** since v0.2.13 ### Features - feat: wire HelpCard learnMorePath links to docs.webhouse.app - feat: F109 Inline Proofreading…"
+        }
+      ]
+    }
+  ],
+  "createdAt": "2026-03-30T19:38:33.715Z",
+  "updatedAt": "2026-03-30T19:38:33.715Z"
+}
