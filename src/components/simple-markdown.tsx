@@ -1,6 +1,8 @@
+"use client";
+
 /**
- * Simple markdown renderer without Shiki — avoids hydration mismatch.
- * Used for changelog entries where code highlighting isn't needed.
+ * Simple markdown renderer — client component to avoid hydration mismatch.
+ * Used for changelog entries.
  */
 export function SimpleMarkdown({ content }: { content: string }) {
   let html = content;
