@@ -1,0 +1,24 @@
+{
+  "slug": "ai-agents-da",
+  "title": "AI-agenter",
+  "description": "Indbyggede AI-agenter til indholdsgenerering, SEO-optimering, GEO-optimering og oversættelse.",
+  "category": "concepts",
+  "order": 1,
+  "locale": "da",
+  "translationGroup": "124d6e34-5c63-4298-b0a8-4604a86f3b3f",
+  "helpCardId": "agents-intro",
+  "content": "## Hvad er AI-agenter?\n\nAI-agenter genererer og optimerer indhold baseret på din brandvoice og konfiguration. Hver agent har en specifik rolle:\n\n| Agent | Rolle |\n|-------|-------|\n| **Content Writer** | Opretter nye blogindlæg, sider, beskrivelser |\n| **SEO Optimizer** | Forbedrer metafelter, nøgleord, overskriftsstruktur |\n| **GEO Optimizer** | Omstrukturerer indhold til AI-citering (svar-først, statistik, kilder) |\n| **Translator** | Oversætter indhold til konfigurerede sprog |\n| **Content Refresher** | Opdaterer forældet indhold med aktuel information |\n\n## Sådan fungerer agenter\n\n1. Du konfigurerer agenter i admin (Indstillinger → Agenter)\n2. Hver agent har en systemprompt der definerer dens adfærd\n3. Agenter producerer **kladder** der lander i **Kurateringskøen**\n4. Du gennemgår, godkender eller afviser hver kladde\n5. Godkendt indhold publiceres automatisk\n\n## AI-lås\n\nFelter du har redigeret i hånden er **låst** — agenter overskriver dem ikke. Dette sikrer at menneskelige redigeringer bevares selv når agenter kører masseoperationer.\n\n## Brandvoice\n\nKonfigurér en brandvoice i Indstillinger for at sikre at alt AI-genereret indhold matcher din tone:\n\n- **Tone** — professionel, afslappet, venlig, autoritativ\n- **Målgruppe** — udviklere, marketingfolk, almen offentlighed\n- **Retningslinjer** — specifikke instruktioner som \"Brug altid aktiv stemme\"",
+  "excerpt": "Hvad er AI-agenter?\n\nAI-agenter genererer og optimerer indhold baseret på din brandvoice og konfiguration. Hver agent har en specifik rolle:\n\n| Agent | Rolle |\n|-------|-------|\n| Content Writer | Opretter nye blogindlæg, sider, beskrivelser |\n| SEO Optimizer | Forbedrer metafelter, nøgleord, oversk",
+  "seo": {
+    "metaTitle": "AI-agenter — webhouse.app Docs",
+    "metaDescription": "Indbyggede AI-agenter til indholdsgenerering, SEO-optimering, GEO-optimering og oversættelse.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "dokumentation",
+      "concepts"
+    ]
+  },
+  "createdAt": "2026-03-29T21:57:53.104Z",
+  "updatedAt": "2026-03-29T22:24:50.159Z"
+}

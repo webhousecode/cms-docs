@@ -1,0 +1,24 @@
+{
+  "slug": "i18n-da",
+  "title": "Internationalisering (i18n)",
+  "description": "Flersproget indhold med automatisk AI-oversættelse, locale-routing og hreflang.",
+  "category": "guides",
+  "order": 3,
+  "locale": "da",
+  "translationGroup": "ac48668a-63fd-41de-9fe8-24d33407b531",
+  "helpCardId": null,
+  "content": "## Konfigurér sprog\n\n```typescript\nexport default defineConfig({\n  defaultLocale: 'en',\n  locales: ['en', 'da'],\n  collections: [\n    defineCollection({\n      name: 'posts',\n      sourceLocale: 'en',\n      locales: ['en', 'da'],\n      translatable: true,\n      fields: [\n        { name: 'title', type: 'text', required: true },\n        { name: 'content', type: 'richtext' },\n      ],\n    }),\n  ],\n});\n```\n\n## Sådan fungerer oversættelser\n\nHver oversættelse er et **separat dokument** forbundet via `translationGroup` — et fælles UUID der forbinder alle sprogversioner:\n\n```json\n// content/posts/hello-world.json (engelsk)\n{\n  \"slug\": \"hello-world\",\n  \"locale\": \"en\",\n  \"translationGroup\": \"abc-123\",\n  \"data\": { \"title\": \"Hello, World!\" }\n}\n\n// content/posts/hello-world-da.json (dansk)\n{\n  \"slug\": \"hello-world-da\",\n  \"locale\": \"da\",\n  \"translationGroup\": \"abc-123\",\n  \"data\": { \"title\": \"Hej, Verden!\" }\n}\n```\n\n## Oversættelsesworkflow i admin\n\nI admin-brugerfladen:\n1. Åbn et dokument — se sprogbadget der viser det aktuelle sprog\n2. Klik **\"+ Tilføj oversættelse\"** for at oprette en ny sprogversion\n3. AI-oversætteren oversætter automatisk alle felter\n4. Gennemgå og publicér oversættelsen\n\n## AI-oversættelse\n\n```typescript\nimport { createAi } from '@webhouse/cms-ai';\n\nconst ai = await createAi();\nconst result = await ai.content.translate(\n  sourceDoc.data,\n  'da',\n  { collection: collectionConfig },\n);\n```\n\n## Sprogrutning i Next.js\n\nBrug et `[locale]`-rutesegment med middleware til sprogdetektering.\n\n## Oversættelsesgrupper (translationGroup)\n\nHvert oversat dokument er forbundet til sin kilde via et fælles `translationGroup` UUID. Dette er kernemekanismen der forbinder EN og DA (eller ethvert sprogpar) i CMS'et.\n\n### Sådan fungerer det\n\n1. Når du opretter et dokument, får det et unikt `translationGroup` UUID\n2. Når du opretter en oversættelse, får det nye dokument det **samme** `translationGroup`\n3. CMS admin bruger dette til at vise sprog-badges, sprogskifter og side-by-side redigering\n\n### Dokumentstruktur\n\n```json\n// content/posts/hello-world.json (Engelsk — kilde)\n{\n  \"slug\": \"hello-world\",\n  \"locale\": \"en\",\n  \"translationGroup\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n  \"data\": { \"title\": \"Hello, World!\" }\n}\n\n// content/posts/hello-world-da.json (Dansk — oversættelse)\n{\n  \"slug\": \"hello-world-da\",\n  \"locale\": \"da\",\n  \"translationGroup\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n  \"data\": { \"title\": \"Hej, Verden!\" }\n}\n```\n\nBegge dokumenter deler det samme `translationGroup` UUID. Det er det **eneste** link mellem dem.\n\n### Regler for AI builders og scripts\n\n1. **Sæt altid `locale`** på hvert dokument (`\"en\"`, `\"da\"` osv.)\n2. **Sæt altid `translationGroup`** — brug `crypto.randomUUID()` for nye dokumenter\n3. **Del det samme `translationGroup`** på tværs af alle sprogversioner\n4. **Slug-konvention**: kilde-slug + sprog-suffiks (f.eks. `hello-world` → `hello-world-da`)\n5. **Duplikér aldrig `translationGroup`** på tværs af urelaterede dokumenter\n\n### Site-konfiguration for i18n\n\nI CMS admin Site Settings → Language:\n\n- **Standardsprog**: `en`\n- **Understøttede sprog**: tilføj `da`\n- **Lokaliseringsstrategi**:\n  - `prefix-other` — URL-præfiks for ikke-standard sprog: `/da/blog/slug`\n  - `prefix-all` — URL-præfiks for alle sprog: `/en/blog/slug`\n  - `none` — intet præfiks, sprog i slug: `/blog/slug-da`\n",
+  "excerpt": "Konfigurér sprog\n\ntypescript\nexport default defineConfig({\n  defaultLocale: 'en',\n  locales: ['en', 'da'],\n  collections: [\n    defineCollection({\n      name: 'posts',\n      sourceLocale: 'en',\n      locales: ['en', 'da'],\n      translatable: true,\n      fields: [\n        { name: 'title', type: 'tex",
+  "seo": {
+    "metaTitle": "Internationalisering (i18n) — webhouse.app Docs",
+    "metaDescription": "Flersproget indhold med automatisk AI-oversættelse, locale-routing og hreflang.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "dokumentation",
+      "guides"
+    ]
+  },
+  "createdAt": "2026-03-29T21:57:53.107Z",
+  "updatedAt": "2026-03-30T19:05:26.409Z"
+}

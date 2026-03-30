@@ -1,0 +1,24 @@
+{
+  "slug": "relationships-da",
+  "title": "Indholdsrelationer",
+  "description": "Forbind dokumenter på tværs af collections med relationsfelter — single, multi og reverse lookups.",
+  "category": "guides",
+  "order": 6,
+  "locale": "da",
+  "translationGroup": "88a07cc8-f0b8-4298-be7b-4c97f93779b0",
+  "helpCardId": null,
+  "content": "## Sådan fungerer relationer\n\nRelationer forbinder dokumenter på tværs af collections. Et relationsfelt gemmer en **slug-streng** (enkelt) eller **slug-array** (flere) — aldrig indlejret data.\n\n```typescript\n// Enkelt relation — gemmer én slug, f.eks. \"john-doe\"\n{ name: 'author', type: 'relation', collection: 'team' }\n\n// Multi-relation — gemmer slug-array, f.eks. [\"guide-1\", \"guide-2\"]\n{ name: 'relatedPosts', type: 'relation', collection: 'posts', multiple: true }\n```\n\n## Opløsning af relationer\n\nDa relationer gemmer slugs, opløser du dem med `getDocument()`:\n\n```typescript\nconst author = post.data.author\n  ? getDocument('team', post.data.author)\n  : null;\n```\n\n## Omvendt opslag\n\nFind alle dokumenter der refererer til en given slug:\n\n```typescript\nconst posts = getCollection('posts')\n  .filter(post => post.data.author === authorSlug);\n```\n\n## Hvornår bruges relationer vs. indlejret data?\n\n**Brug relationer** når data deles på tværs af flere dokumenter.\n**Brug indlejret data** (object/array-felter) når data er unik for dokumentet.",
+  "excerpt": "Sådan fungerer relationer\n\nRelationer forbinder dokumenter på tværs af collections. Et relationsfelt gemmer en slug-streng (enkelt) eller slug-array (flere) — aldrig indlejret data.\n\ntypescript\n// Enkelt relation — gemmer én slug, f.eks. \"john-doe\"\n{ name: 'author', type: 'relation', collection: 'te",
+  "seo": {
+    "metaTitle": "Indholdsrelationer — webhouse.app Docs",
+    "metaDescription": "Forbind dokumenter på tværs af collections med relationsfelter — single, multi og reverse lookups.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "dokumentation",
+      "guides"
+    ]
+  },
+  "createdAt": "2026-03-29T21:57:53.109Z",
+  "updatedAt": "2026-03-29T22:24:50.161Z"
+}

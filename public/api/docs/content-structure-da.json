@@ -1,0 +1,24 @@
+{
+  "slug": "content-structure-da",
+  "title": "Indholdsstruktur",
+  "description": "Hvordan dokumenter gemmes som JSON-filer — dokumentformat, mappestruktur og konventioner.",
+  "category": "concepts",
+  "order": 0,
+  "locale": "da",
+  "translationGroup": "358352ed-3a28-414a-aa65-f696925de37a",
+  "helpCardId": null,
+  "content": "## Dokumentformat\n\nHvert dokument er en JSON-fil i `content/{collection}/{slug}.json`:\n\n```json\n{\n  \"id\": \"unikt-uuid\",\n  \"slug\": \"mit-dokument\",\n  \"status\": \"published\",\n  \"locale\": \"da\",\n  \"translationGroup\": \"fælles-uuid\",\n  \"data\": {\n    \"title\": \"Mit dokument\",\n    \"content\": \"Markdown-indhold her...\"\n  },\n  \"_fieldMeta\": {},\n  \"createdAt\": \"2026-01-15T10:30:00Z\",\n  \"updatedAt\": \"2026-03-29T14:00:00Z\"\n}\n```\n\n## Vigtige regler\n\n1. **Slug skal matche filnavn** — `hej-verden.json` skal have `\"slug\": \"hej-verden\"`\n2. **`_fieldMeta` er påkrævet** — kan være tomt `{}`, sporer AI-låsestatus\n3. **Filtrer altid på status** — spring kladder over med `status === \"published\"`\n4. **`data` indeholder alle indholdsfelter** — alt defineret i din collections `fields`-array\n5. **`_seo` er et reserveret felt** — bruges til SEO-metadata\n\n## Mappestruktur\n\n```\ncontent/\n  posts/\n    hello-world.json\n    hello-world-da.json    # Dansk oversættelse\n    typescript-guide.json\n  pages/\n    home.json\n    about.json\n  global/\n    global.json            # Singleton til siteindstillinger\n```\n\n## Status-livscyklus\n\n| Status | Betydning |\n|--------|-----------|\n| `draft` | Under udarbejdelse, ikke synlig på sitet |\n| `published` | Live på sitet |\n| `archived` | Fjernet fra sitet men gemt til reference |\n| `expired` | Auto-sat når `unpublishAt`-datoen passeres |\n\n## Planlagt publicering\n\nDokumenter understøtter automatisk publicering/afpublicering via datofelter:\n\n```json\n{\n  \"status\": \"draft\",\n  \"publishAt\": \"2026-04-01T09:00:00Z\",\n  \"unpublishAt\": \"2026-04-30T23:59:59Z\"\n}\n```",
+  "excerpt": "Dokumentformat\n\nHvert dokument er en JSON-fil i content/{collection}/{slug}.json:\n\njson\n{\n  \"id\": \"unikt-uuid\",\n  \"slug\": \"mit-dokument\",\n  \"status\": \"published\",\n  \"locale\": \"da\",\n  \"translationGroup\": \"fælles-uuid\",\n  \"data\": {\n    \"title\": \"Mit dokument\",\n    \"content\": \"Markdown-indhold her...\"\n",
+  "seo": {
+    "metaTitle": "Indholdsstruktur — webhouse.app Docs",
+    "metaDescription": "Hvordan dokumenter gemmes som JSON-filer — dokumentformat, mappestruktur og konventioner.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "dokumentation",
+      "concepts"
+    ]
+  },
+  "createdAt": "2026-03-29T21:57:53.106Z",
+  "updatedAt": "2026-03-29T22:24:50.159Z"
+}

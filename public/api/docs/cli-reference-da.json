@@ -1,0 +1,24 @@
+{
+  "slug": "cli-reference-da",
+  "title": "CLI-reference",
+  "description": "Alle CMS CLI-kommandoer — init, dev, build, serve, AI generate, AI rewrite, SEO og MCP.",
+  "category": "cli",
+  "order": 0,
+  "locale": "da",
+  "translationGroup": "d1cd299f-272e-41c9-90ae-d3a62f43252a",
+  "helpCardId": null,
+  "content": "## Kommandoer\n\nAlle kommandoer køres via `npx cms <kommando>` (leveret af `@webhouse/cms-cli`).\n\n| Kommando | Beskrivelse |\n|----------|-------------|\n| `cms init [navn]` | Opret et nyt CMS-projekt |\n| `cms dev [--port 3000]` | Start udviklingsserver med hot reload |\n| `cms build [--outDir dist]` | Byg statisk site |\n| `cms serve [--port 5000] [--dir dist]` | Servér det byggede statiske site |\n| `cms ai generate <collection> \"<prompt>\"` | Generér et nyt dokument med AI |\n| `cms ai rewrite <collection>/<slug> \"<instruktion>\"` | Omskriv eksisterende dokument |\n| `cms ai seo [--status published]` | Kør SEO-optimering på alle dokumenter |\n| `cms mcp keygen [--label \"nøgle\"] [--scopes \"read,write\"]` | Generér MCP API-nøgle |\n\n## AI-kommandoer\n\nAI-kommandoer kræver `@webhouse/cms-ai` og en `ANTHROPIC_API_KEY` eller `OPENAI_API_KEY` i `.env`.\n\n```bash\n# Generér et blogindlæg\nnpx cms ai generate posts \"Skriv en guide til TypeScript generics\"\n\n# Omskriv med instruktioner\nnpx cms ai rewrite posts/hello-world \"Gør det mere kortfattet og tilføj kodeeksempler\"\n\n# SEO-optimering på tværs af alt publiceret indhold\nnpx cms ai seo\n```",
+  "excerpt": "Kommandoer\n\nAlle kommandoer køres via npx cms  (leveret af @webhouse/cms-cli).\n\n| Kommando | Beskrivelse |\n|----------|-------------|\n| cms init [navn] | Opret et nyt CMS-projekt |\n| cms dev [--port 3000] | Start udviklingsserver med hot reload |\n| cms build [--outDir dist] | Byg statisk site |\n| cm",
+  "seo": {
+    "metaTitle": "CLI-reference — webhouse.app Docs",
+    "metaDescription": "Alle CMS CLI-kommandoer — init, dev, build, serve, AI generate, AI rewrite, SEO og MCP.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "dokumentation",
+      "cli"
+    ]
+  },
+  "createdAt": "2026-03-29T21:57:53.106Z",
+  "updatedAt": "2026-03-29T22:24:50.158Z"
+}

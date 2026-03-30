@@ -1,0 +1,7 @@
+{
+  "slug": "dev-and-build",
+  "title": "Dev server and build",
+  "description": "Start dev server and build for production",
+  "code": "cd my-site\nnpm install\nnpx cms dev       # Start dev server + admin UI\nnpx cms build     # Build static site\nnpx cms serve     # Preview the build",
+  "lang": "bash"
+}

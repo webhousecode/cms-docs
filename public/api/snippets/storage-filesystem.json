@@ -1,0 +1,7 @@
+{
+  "slug": "storage-filesystem",
+  "title": "Filesystem storage config",
+  "description": "Configure filesystem storage adapter",
+  "code": "// ALWAYS specify storage — defaults to SQLite if omitted!\nstorage: {\n  adapter: 'filesystem',\n  filesystem: { contentDir: 'content' },\n}",
+  "lang": "typescript"
+}

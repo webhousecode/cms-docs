@@ -1,0 +1,24 @@
+{
+  "slug": "quick-start-da",
+  "title": "Hurtig start",
+  "description": "Opret et nyt projekt og hav en CMS-drevet side kørende på under 5 minutter.",
+  "category": "getting-started",
+  "order": 1,
+  "locale": "da",
+  "translationGroup": "f43819ce-5574-4ee3-bbfd-80c3236ea41c",
+  "helpCardId": null,
+  "content": "## Opret et nyt projekt\n\n{{snippet:create-project}}\n\nDette genererer:\n\n```\nmy-site/\n  cms.config.ts          # Collection- og feltdefinitioner\n  package.json           # Afhængigheder\n  .env                   # AI-udbyders nøgler\n  content/\n    posts/\n      hello-world.json   # Eksempeldokument\n```\n\n## Installér og kør\n\n{{snippet:dev-and-build}}\n\nUdviklingsserveren starter på `http://localhost:3000` og admin-brugerfladen åbner automatisk.\n\n## Opret indhold\n\nÅbn admin-brugerfladen og opret dit første dokument. Det gemmes som en JSON-fil i `content/posts/`.\n\nHvert dokument følger denne struktur:\n\n```json\n{\n  \"slug\": \"mit-forste-indlaeg\",\n  \"status\": \"published\",\n  \"data\": {\n    \"title\": \"Mit første indlæg\",\n    \"content\": \"Hej, verden!\"\n  },\n  \"id\": \"unikt-id\",\n  \"_fieldMeta\": {}\n}\n```\n\n## Byg til produktion\n\n```bash\nnpx cms build     # Byg statisk site\nnpx cms serve     # Forhåndsvis bygget lokalt\n```\n\nBuild-pipelinen genererer:\n- HTML-sider for alle publicerede dokumenter\n- `sitemap.xml` til søgemaskiner\n- `robots.txt` med AI-crawler-regler\n- `llms.txt` og `llms-full.txt` til AI-discovery\n- `feed.xml` RSS-feed\n- Per-side `.md`-filer til AI-forbrug\n\n## Næste skridt\n\n- [Konfigurationsreference](/docs/config-reference-da) — definér dine egne collections\n- [Felttyper](/docs/field-types-da) — udforsk alle tilgængelige felttyper\n- [Lagringsadaptere](/docs/storage-adapters-da) — vælg hvor indhold gemmes\n- [Udrulning](/docs/deployment-da) — deploy til Vercel, Fly.io eller Netlify",
+  "excerpt": "Opret et nyt projekt\n\n{{snippet:create-project}}\n\nDette genererer:\n\n\nmy-site/\n  cms.config.ts           Collection- og feltdefinitioner\n  package.json            Afhængigheder\n  .env                    AI-udbyders nøgler\n  content/\n    posts/\n      hello-world.json    Eksempeldokument\n\n\n Installér o",
+  "seo": {
+    "metaTitle": "Hurtig start — webhouse.app Docs",
+    "metaDescription": "Opret et nyt projekt og hav en CMS-drevet side kørende på under 5 minutter.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "dokumentation",
+      "getting-started"
+    ]
+  },
+  "createdAt": "2026-03-29T21:57:53.109Z",
+  "updatedAt": "2026-03-30T12:04:35.754Z"
+}

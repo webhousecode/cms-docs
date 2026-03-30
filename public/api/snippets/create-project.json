@@ -1,0 +1,7 @@
+{
+  "slug": "create-project",
+  "title": "Create a new project",
+  "description": "Scaffold a new @webhouse/cms project",
+  "code": "# Scaffold a new project\nnpm create @webhouse/cms my-site\n\n# Or with npx\nnpx create-@webhouse/cms my-site\n\n# With a specific template\nnpm create @webhouse/cms my-site -- --template nextjs",
+  "lang": "bash"
+}

@@ -1,0 +1,24 @@
+{
+  "slug": "storage-adapters-da",
+  "title": "Lagringsadaptere",
+  "description": "Vælg hvor dit indhold gemmes — filsystem, GitHub, SQLite eller Supabase.",
+  "category": "guides",
+  "order": 0,
+  "locale": "da",
+  "translationGroup": "3caa7ad8-755a-44c0-bc1e-0a2225bd4486",
+  "helpCardId": null,
+  "content": "## Valg af lagringsadapter\n\n@webhouse/cms understøtter fire lagringsbackends. Hver har forskellige afvejninger mht. ydeevne, samarbejde og udrulning.\n\n> **Kritisk:** Du SKAL altid angive `storage` i `cms.config.ts`. Hvis den udelades, bruges SQLite som standard — ikke filsystemet.\n\n## Filsystem (anbefalet)\n\nGemmer dokumenter som JSON-filer i `content/<collection>/<slug>.json`. Bedst til:\n- Statiske sites med `build.ts`\n- Git-baseret versionskontrol\n- Lokal udvikling\n\n```typescript\nstorage: {\n  adapter: 'filesystem',\n  filesystem: { contentDir: 'content' },\n}\n```\n\n## GitHub\n\nLæser og skriver filer via GitHub API. Hver oprettelse/opdatering/sletning er et Git-commit. Bedst til:\n- Samarbejdsredigering uden lokal Git\n- PR-baserede indholdsgennemgangsworkflows\n- Sites hostet på GitHub Pages\n\n```typescript\nstorage: {\n  adapter: 'github',\n  github: {\n    owner: 'din-org',\n    repo: 'dit-repo',\n    branch: 'main',\n    contentDir: 'content',\n    token: process.env.GITHUB_TOKEN!,\n  },\n}\n```\n\n## SQLite\n\nLokal SQLite-database. Bedst til:\n- API-tunge use cases\n- Når du ikke har brug for filbaseret indhold\n- Prototyping\n\n## Supabase\n\nCloud-hostet PostgreSQL med Row Level Security. Bedst til:\n- Flerbruger-miljøer\n- Cloud-native udrulninger\n- Når du har brug for realtids-abonnementer",
+  "excerpt": "Valg af lagringsadapter\n\n@webhouse/cms understøtter fire lagringsbackends. Hver har forskellige afvejninger mht. ydeevne, samarbejde og udrulning.\n\n Kritisk: Du SKAL altid angive storage i cms.config.ts. Hvis den udelades, bruges SQLite som standard — ikke filsystemet.\n\n Filsystem (anbefalet)\n\nGemme",
+  "seo": {
+    "metaTitle": "Lagringsadaptere — webhouse.app Docs",
+    "metaDescription": "Vælg hvor dit indhold gemmes — filsystem, GitHub, SQLite eller Supabase.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "dokumentation",
+      "guides"
+    ]
+  },
+  "createdAt": "2026-03-29T21:57:53.110Z",
+  "updatedAt": "2026-03-29T22:24:50.157Z"
+}

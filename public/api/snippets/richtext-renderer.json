@@ -1,0 +1,7 @@
+{
+  "slug": "richtext-renderer",
+  "title": "Richtext renderer",
+  "description": "Render CMS richtext with react-markdown",
+  "code": "import ReactMarkdown from 'react-markdown';\nimport remarkGfm from 'remark-gfm';\n\nfunction ArticleBody({ content }: { content: string }) {\n  return (\n    <ReactMarkdown remarkPlugins={[remarkGfm]}>\n      {content}\n    </ReactMarkdown>\n  );\n}",
+  "lang": "typescript"
+}

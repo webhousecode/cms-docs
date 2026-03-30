@@ -1,0 +1,24 @@
+{
+  "slug": "api-reference-da",
+  "title": "Indholds-API",
+  "description": "Programmatisk API til læsning og skrivning af indhold — ContentService-metoder og REST-endpoints.",
+  "category": "api-reference",
+  "order": 0,
+  "locale": "da",
+  "translationGroup": "9a89da36-a017-4d4e-97a9-07c34babd305",
+  "helpCardId": null,
+  "content": "## ContentService\n\nCMS-kernemotor eksponerer en `ContentService` til programmatisk indholdsadgang:\n\n```typescript\nimport { createCms } from '@webhouse/cms';\nimport config from './cms.config';\n\nconst cms = await createCms(config);\n\n// Opret\nconst doc = await cms.content.create('posts', {\n  slug: 'nyt-indlaeg',\n  status: 'draft',\n  data: { title: 'Nyt indlæg', content: '...' },\n});\n\n// Læs\nconst post = await cms.content.findBySlug('posts', 'nyt-indlaeg');\nconst alle = await cms.content.findMany('posts', { status: 'published' });\n\n// Opdatér\nawait cms.content.update('posts', doc.id, {\n  data: { title: 'Opdateret titel' },\n});\n\n// Slet\nawait cms.content.delete('posts', doc.id);\n```\n\n## REST API\n\n| Metode | Endpoint | Beskrivelse |\n|--------|----------|-------------|\n| GET | `/api/cms/{collection}` | List dokumenter |\n| GET | `/api/cms/{collection}/{slug}` | Hent dokument efter slug |\n| POST | `/api/cms/{collection}` | Opret dokument |\n| PUT | `/api/cms/{collection}/{id}` | Opdatér dokument |\n| DELETE | `/api/cms/{collection}/{id}` | Slet dokument |\n\n## MCP (Model Context Protocol)\n\nCMS'et eksponerer også indhold via MCP til AI-platformsadgang:\n\n```bash\n# Generér en API-nøgle\nnpx cms mcp keygen --label \"Min App\" --scopes \"read\"\n```\n\nMCP giver AI-platforme som Claude og ChatGPT mulighed for at læse dit indhold direkte.",
+  "excerpt": "ContentService\n\nCMS-kernemotor eksponerer en ContentService til programmatisk indholdsadgang:\n\ntypescript\nimport { createCms } from '@webhouse/cms';\nimport config from './cms.config';\n\nconst cms = await createCms(config);\n\n// Opret\nconst doc = await cms.content.create('posts', {\n  slug: 'nyt-indlaeg",
+  "seo": {
+    "metaTitle": "Indholds-API — webhouse.app Docs",
+    "metaDescription": "Programmatisk API til læsning og skrivning af indhold — ContentService-metoder og REST-endpoints.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "dokumentation",
+      "api-reference"
+    ]
+  },
+  "createdAt": "2026-03-29T21:57:53.105Z",
+  "updatedAt": "2026-03-29T22:24:50.159Z"
+}

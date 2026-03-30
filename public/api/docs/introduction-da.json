@@ -1,0 +1,24 @@
+{
+  "slug": "introduction-da",
+  "title": "Introduktion",
+  "description": "Hvad er @webhouse/cms og hvorfor det eksisterer — et filbaseret, AI-native CMS til TypeScript-projekter.",
+  "category": "getting-started",
+  "order": 0,
+  "locale": "da",
+  "translationGroup": "367d914a-4aa5-44e3-a876-1858b869b309",
+  "helpCardId": null,
+  "content": "## Hvad er @webhouse/cms?\n\n`@webhouse/cms` er en **filbaseret, AI-native CMS-motor** til TypeScript-projekter. Du definerer collections og felter i en `cms.config.ts`-fil, og CMS'et gemmer indhold som flade JSON-filer i en `content/`-mappe — én fil pr. dokument, organiseret efter collection.\n\nDet giver dig:\n\n- **REST API-server** — Hono-baseret API til læsning og skrivning af indhold\n- **Statisk site-builder** — 9-faset build-pipeline der genererer HTML, sitemap, RSS, robots.txt og AI-discovery-filer\n- **AI-indholdsgenerering** — indbyggede agenter til skrivning, SEO-optimering, oversættelse og mere\n- **Visuel admin-brugerflade** — fuld-udstyret editor på [webhouse.app](https://webhouse.app) med rich text, blokke, medier og planlægning\n- **MCP-integration** — Model Context Protocol-server til AI-platformes adgang til dit indhold\n\n## Hvem er det til?\n\n@webhouse/cms er designet til udviklere der bygger indholdsdrevne websites med Next.js. Det fungerer særligt godt når:\n\n- Du vil have **filbaseret indhold** der lever i dit Git-repository\n- Du har brug for **AI-drevne indholdsworkflows** (generering, oversættelse, SEO-optimering)\n- Du foretrækker **TypeScript-first** konfiguration frem for YAML eller markdown frontmatter\n- Du vil have en **visuel admin-brugerflade** uden kompleksiteten af et headless CMS\n\n## Arkitektur\n\n```\ncms.config.ts          → Collection- og feltdefinitioner\ncontent/               → JSON-dokumenter (én pr. fil)\npackages/cms           → Kernemotor (@webhouse/cms)\npackages/cms-admin     → Next.js admin-brugerflade (@webhouse/cms-admin)\npackages/cms-ai        → AI-agenter (@webhouse/cms-ai)\npackages/cms-cli       → CLI-værktøjer (@webhouse/cms-cli)\npackages/cms-mcp-*     → MCP-servere til AI-platformsadgang\n```\n\nKernepakken (`@webhouse/cms`) er framework-agnostisk — den læser og skriver JSON-filer. Admin-brugerfladen (`@webhouse/cms-admin`) er en selvstændig Next.js-applikation der forbinder til kernemotor.\n\n## Næste skridt\n\n- [Hurtig start](/docs/quick-start-da) — opret og kør dit første projekt på under 5 minutter\n- [Konfigurationsreference](/docs/config-reference-da) — lær hvordan du definerer collections og felter\n- [Felttyper](/docs/field-types-da) — udforsk alle 22 felttyper",
+  "excerpt": "Hvad er @webhouse/cms?\n\n@webhouse/cms er en filbaseret, AI-native CMS-motor til TypeScript-projekter. Du definerer collections og felter i en cms.config.ts-fil, og CMS'et gemmer indhold som flade JSON-filer i en content/-mappe — én fil pr. dokument, organiseret efter collection.\n\nDet giver dig:\n\n- R",
+  "seo": {
+    "metaTitle": "Introduktion — webhouse.app Docs",
+    "metaDescription": "Hvad er @webhouse/cms og hvorfor det eksisterer — et filbaseret, AI-native CMS til TypeScript-projekter.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "dokumentation",
+      "getting-started"
+    ]
+  },
+  "createdAt": "2026-03-29T21:57:53.108Z",
+  "updatedAt": "2026-03-29T22:24:50.154Z"
+}

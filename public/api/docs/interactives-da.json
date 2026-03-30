@@ -1,0 +1,24 @@
+{
+  "slug": "interactives-da",
+  "title": "Interaktive elementer",
+  "description": "Datadrevet interaktivt indhold — diagrammer, beregnere, demoer med CMS-styret data.",
+  "category": "guides",
+  "order": 8,
+  "locale": "da",
+  "translationGroup": "152264a2-1746-4be9-93ac-9b628f9d6563",
+  "helpCardId": null,
+  "content": "## Separationsprincippet\n\nNår du bygger interaktivt indhold (diagrammer, animationer, beregnere), **skal al tekst og data gemmes i CMS-collections — aldrig hardkodes.**\n\n| Hvad | Hvor | Redigerbar af |\n|------|------|---------------|\n| Tekstlabels, overskrifter | CMS-tekstfelter | Redaktør i admin |\n| Datapunkter, tal | CMS array/object-felter | Redaktør i admin |\n| Visualisering, animation | Interaktiv komponent | Udvikler |\n\n## Mønster: CMS → Side → Interaktiv\n\n**1. Definér en datacollektion:**\n```typescript\ndefineCollection({\n  name: \"chart-data\",\n  fields: [\n    { name: \"title\", type: \"text\", required: true },\n    { name: \"dataPoints\", type: \"array\", fields: [\n      { name: \"label\", type: \"text\" },\n      { name: \"value\", type: \"number\" },\n    ]},\n  ],\n})\n```\n\n**2. Opret komponenten (klient-side):**\nBrug Chart.js, D3 eller ethvert visualiseringsbibliotek.\n\n**3. Brug på en side (server læser CMS, sender props):**\n```typescript\nimport { getDocument } from \"@/lib/content\";\nimport { Chart } from \"@/components/chart\";\n\nexport default function Page() {\n  const data = getDocument(\"chart-data\", \"monthly-sales\");\n  if (!data) return null;\n  return <Chart title={data.data.title} data={data.data.dataPoints} />;\n}\n```\n\n## Selvstændige HTML-interaktive\n\nCMS'et understøtter også selvstændige HTML-interaktive via Interaktive-manageren. Brug til hurtig prototyping med \"Opret med AI\" i admin.\n\n## Richtext-indlejring\n\nInteraktive kan indlejres i richtext-felter:\n```\n!!INTERACTIVE[chart-id|Diagram Titel|align:center]\n```",
+  "excerpt": "Separationsprincippet\n\nNår du bygger interaktivt indhold (diagrammer, animationer, beregnere), skal al tekst og data gemmes i CMS-collections — aldrig hardkodes.\n\n| Hvad | Hvor | Redigerbar af |\n|------|------|---------------|\n| Tekstlabels, overskrifter | CMS-tekstfelter | Redaktør i admin |\n| Data",
+  "seo": {
+    "metaTitle": "Interaktive elementer — webhouse.app Docs",
+    "metaDescription": "Datadrevet interaktivt indhold — diagrammer, beregnere, demoer med CMS-styret data.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "dokumentation",
+      "guides"
+    ]
+  },
+  "createdAt": "2026-03-29T21:57:53.107Z",
+  "updatedAt": "2026-03-29T22:24:50.161Z"
+}

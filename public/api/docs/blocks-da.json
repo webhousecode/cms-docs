@@ -1,0 +1,24 @@
+{
+  "slug": "blocks-da",
+  "title": "Blokke",
+  "description": "Byg indholdsrige sider med genanvendelige blokkomponenter — hero, features, CTA og brugerdefinerede blokke.",
+  "category": "guides",
+  "order": 1,
+  "locale": "da",
+  "translationGroup": "32325b33-fced-4ff1-9873-c545bf4250ab",
+  "helpCardId": null,
+  "content": "## Hvad er blokke?\n\nBlokke er genanvendelige indholdssektioner som redaktører kan tilføje, fjerne og omorganisere. Hver bloktype har sine egne felter og renderes forskelligt på frontend.\n\n## Definition af blokke\n\n```typescript\nimport { defineConfig, defineBlock, defineCollection } from '@webhouse/cms';\n\nexport default defineConfig({\n  blocks: [\n    defineBlock({\n      name: 'hero',\n      label: 'Hero-sektion',\n      fields: [\n        { name: 'tagline', type: 'text', required: true },\n        { name: 'description', type: 'textarea' },\n        { name: 'image', type: 'image' },\n        { name: 'ctas', type: 'array', fields: [\n          { name: 'label', type: 'text' },\n          { name: 'href', type: 'text' },\n        ]},\n      ],\n    }),\n  ],\n  collections: [\n    defineCollection({\n      name: 'pages',\n      fields: [\n        { name: 'title', type: 'text', required: true },\n        { name: 'sections', type: 'blocks', blocks: ['hero', 'features'] },\n      ],\n    }),\n  ],\n});\n```\n\n## Sådan gemmes blokke\n\nHver blok er et objekt med et `_block`-diskriminatorfelt:\n\n```json\n{\n  \"sections\": [\n    {\n      \"_block\": \"hero\",\n      \"tagline\": \"Byg hurtigere med AI\",\n      \"description\": \"CMS'et der skriver indhold for dig.\"\n    }\n  ]\n}\n```\n\n## Rendering af blokke i Next.js\n\n```typescript\nfunction BlockRenderer({ block }: { block: any }) {\n  switch (block._block) {\n    case 'hero':\n      return (\n        <section>\n          <h1>{block.tagline}</h1>\n          <p>{block.description}</p>\n        </section>\n      );\n    default:\n      return null;\n  }\n}\n```",
+  "excerpt": "Hvad er blokke?\n\nBlokke er genanvendelige indholdssektioner som redaktører kan tilføje, fjerne og omorganisere. Hver bloktype har sine egne felter og renderes forskelligt på frontend.\n\n Definition af blokke\n\ntypescript\nimport { defineConfig, defineBlock, defineCollection } from '@webhouse/cms';\n\nexp",
+  "seo": {
+    "metaTitle": "Blokke — webhouse.app Docs",
+    "metaDescription": "Byg indholdsrige sider med genanvendelige blokkomponenter — hero, features, CTA og brugerdefinerede blokke.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "dokumentation",
+      "guides"
+    ]
+  },
+  "createdAt": "2026-03-29T21:57:53.106Z",
+  "updatedAt": "2026-03-29T22:24:50.157Z"
+}

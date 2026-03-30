@@ -1,0 +1,7 @@
+{
+  "slug": "storage-github",
+  "title": "GitHub storage config",
+  "description": "Configure GitHub storage adapter",
+  "code": "storage: {\n  adapter: 'github',\n  github: {\n    owner: 'your-org',\n    repo: 'your-repo',\n    branch: 'main',\n    contentDir: 'content',\n    token: process.env.GITHUB_TOKEN!,\n  },\n}",
+  "lang": "typescript"
+}

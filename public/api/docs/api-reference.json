@@ -1,0 +1,24 @@
+{
+  "slug": "api-reference",
+  "title": "Content API",
+  "description": "Programmatic API for reading and writing content — ContentService methods and REST endpoints.",
+  "category": "api-reference",
+  "order": 0,
+  "locale": "en",
+  "translationGroup": "9a89da36-a017-4d4e-97a9-07c34babd305",
+  "helpCardId": null,
+  "content": "## ContentService\n\nThe core CMS engine exposes a `ContentService` for programmatic content access:\n\n```typescript\nimport { createCms } from '@webhouse/cms';\nimport config from './cms.config';\n\nconst cms = await createCms(config);\n\n// Create\nconst doc = await cms.content.create('posts', {\n  slug: 'new-post',\n  status: 'draft',\n  data: { title: 'New Post', content: '...' },\n});\n\n// Read\nconst post = await cms.content.findBySlug('posts', 'new-post');\nconst all = await cms.content.findMany('posts', { status: 'published' });\n\n// Update\nawait cms.content.update('posts', doc.id, {\n  data: { title: 'Updated Title' },\n});\n\n// Delete\nawait cms.content.delete('posts', doc.id);\n```\n\n## REST API\n\nThe CMS exposes a Hono-based REST API:\n\n| Method | Endpoint | Description |\n|--------|----------|-------------|\n| GET | `/api/cms/{collection}` | List documents |\n| GET | `/api/cms/{collection}/{slug}` | Get document by slug |\n| POST | `/api/cms/{collection}` | Create document |\n| PUT | `/api/cms/{collection}/{id}` | Update document |\n| DELETE | `/api/cms/{collection}/{id}` | Delete document |\n\n### Query parameters\n\n| Param | Description |\n|-------|-------------|\n| `status` | Filter by status: `published`, `draft`, `all` |\n| `locale` | Filter by locale |\n| `limit` | Maximum results |\n| `offset` | Pagination offset |\n| `tags` | Filter by tags (comma-separated) |\n\n### Example\n\n```bash\n# List published posts\ncurl http://localhost:3000/api/cms/posts?status=published\n\n# Get a specific post\ncurl http://localhost:3000/api/cms/posts/hello-world\n\n# Create a new post\ncurl -X POST http://localhost:3000/api/cms/posts \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"slug\":\"new-post\",\"status\":\"draft\",\"data\":{\"title\":\"New\"}}'\n```\n\n## MCP (Model Context Protocol)\n\nThe CMS also exposes content via MCP for AI platform access:\n\n```bash\n# Generate an API key\nnpx cms mcp keygen --label \"My App\" --scopes \"read\"\n\n# Test the endpoint\nnpx cms mcp test\n```\n\nMCP allows AI platforms like Claude and ChatGPT to read your content directly, enabling them to cite your documentation and articles.",
+  "excerpt": "ContentService\n\nThe core CMS engine exposes a ContentService for programmatic content access:\n\ntypescript\nimport { createCms } from '@webhouse/cms';\nimport config from './cms.config';\n\nconst cms = await createCms(config);\n\n// Create\nconst doc = await cms.content.create('posts', {\n  slug: 'new-post',",
+  "seo": {
+    "metaTitle": "Content API — webhouse.app Docs",
+    "metaDescription": "Programmatic API for reading and writing content — ContentService methods and REST endpoints.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "documentation",
+      "api-reference"
+    ]
+  },
+  "createdAt": "2026-03-29T21:41:59.069Z",
+  "updatedAt": "2026-03-29T21:41:59.069Z"
+}

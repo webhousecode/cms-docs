@@ -1,0 +1,24 @@
+{
+  "slug": "field-types-da",
+  "title": "Felttyper",
+  "description": "Komplet reference for alle 22 felttyper — text, richtext, image, blocks, relation og mere.",
+  "category": "config",
+  "order": 1,
+  "locale": "da",
+  "translationGroup": "c9e67e71-385d-4823-984a-409de33f3205",
+  "helpCardId": null,
+  "content": "## Fælles feltegenskaber\n\nAlle felter understøtter disse egenskaber:\n\n```typescript\n{\n  name: string;          // Påkrævet: feltnøgle i dokumentdata\n  type: FieldType;       // Påkrævet: en af typerne nedenfor\n  label?: string;        // Visningslabel i admin\n  required?: boolean;    // Skal have en værdi\n  defaultValue?: unknown;\n  ai?: {                 // AI-genereringshints\n    hint?: string;       // f.eks. \"Skriv i en venlig tone\"\n    maxLength?: number;\n    tone?: string;\n  };\n}\n```\n\n## Grundlæggende typer\n\n### text\nEnkeltlinje tekstinput.\n```typescript\n{ name: 'title', type: 'text', required: true, maxLength: 120 }\n```\n\n### textarea\nFlerlinjet ren tekst.\n\n### number, boolean, date\nStandardtyper for tal, sand/falsk og datoer.\n\n## Indholdstyper\n\n### richtext\nRich text / Markdown-indhold med blokeditor i admin. Valgfri `features`-array styrer værktøjslinjen.\n\n### htmldoc\nFuld HTML-dokumenteditor (visuel WYSIWYG).\n\n## Medietyper\n\n**image**, **image-gallery**, **video**, **audio**, **file** — til alle medietyper.\n\n> **Vigtigt:** Billedgalleriværdier skal være `{ url, alt }[]`-objekter, ikke plain strings.\n\n## Strukturtyper\n\n**select** — dropdown fra foruddefinerede valgmuligheder.\n**tags** — frie tags gemt som `string[]`.\n**relation** — reference til dokumenter i en anden collection.\n**array** — gentagelige elementer med underfelter.\n**object** — indlejret feltgruppe.\n**blocks** — dynamiske indholdssektioner via bloksystemet.\n\n## Specialtyper\n\n**map** — OpenStreetMap med trækbar pin.\n**interactive** — reference til en Interaktiv komponent.\n**column-slots** — flerkolonne-layout med indlejrede felter.",
+  "excerpt": "Fælles feltegenskaber\n\nAlle felter understøtter disse egenskaber:\n\ntypescript\n{\n  name: string;          // Påkrævet: feltnøgle i dokumentdata\n  type: FieldType;       // Påkrævet: en af typerne nedenfor\n  label?: string;        // Visningslabel i admin\n  required?: boolean;    // Skal have en værdi",
+  "seo": {
+    "metaTitle": "Felttyper — webhouse.app Docs",
+    "metaDescription": "Komplet reference for alle 22 felttyper — text, richtext, image, blocks, relation og mere.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "dokumentation",
+      "config"
+    ]
+  },
+  "createdAt": "2026-03-29T21:57:53.107Z",
+  "updatedAt": "2026-03-29T22:24:50.160Z"
+}

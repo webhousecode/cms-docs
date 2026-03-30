@@ -1,0 +1,24 @@
+{
+  "slug": "seo",
+  "title": "SEO & Visibility",
+  "description": "Meta fields, JSON-LD structured data, sitemap, robots.txt, and AI visibility optimization.",
+  "category": "guides",
+  "order": 4,
+  "locale": "en",
+  "translationGroup": "9cbccbe8-ec90-4388-83e8-6d1cc84b0d93",
+  "helpCardId": "visibility-intro",
+  "content": "## SEO fields\n\nEvery document can have an `_seo` field in its data:\n\n```json\n{\n  \"data\": {\n    \"title\": \"My Post\",\n    \"_seo\": {\n      \"metaTitle\": \"My Post — Best Guide (30-60 chars)\",\n      \"metaDescription\": \"A comprehensive guide to... (120-160 chars)\",\n      \"keywords\": [\"keyword1\", \"keyword2\"],\n      \"ogImage\": \"/uploads/og-image.jpg\",\n      \"jsonLd\": { \"@type\": \"Article\", \"headline\": \"...\" }\n    }\n  }\n}\n```\n\n## Generating metadata in Next.js\n\n```typescript\nexport async function generateMetadata({ params }) {\n  const doc = getDocument('posts', (await params).slug);\n  const seo = doc?.data._seo ?? {};\n  return {\n    title: seo.metaTitle ?? doc?.data.title,\n    description: seo.metaDescription ?? doc?.data.excerpt,\n    openGraph: {\n      title: seo.metaTitle ?? doc?.data.title,\n      description: seo.metaDescription,\n      images: seo.ogImage ? [seo.ogImage] : [],\n    },\n  };\n}\n```\n\n## Visibility scoring\n\nThe CMS admin includes a Visibility dashboard that scores every document on two axes:\n\n**SEO Score** (13 rules) — meta title length, meta description, keywords, heading structure, content length, internal links, image alt text, and more.\n\n**GEO Score** (8 rules) — optimizes content for AI platform citation:\n1. Answer-first structure\n2. Question-format headers\n3. Statistics and data points\n4. External citations\n5. Content freshness (updated within 90 days)\n6. JSON-LD structured data\n7. Named author\n8. Content depth (800+ words)\n\n## Build output\n\nThe CMS build pipeline automatically generates:\n- `sitemap.xml` — all published pages with hreflang\n- `robots.txt` — AI-aware crawler rules (4 strategies)\n- `llms.txt` — AI-friendly site index\n- `llms-full.txt` — complete markdown export\n- `feed.xml` — RSS 2.0 feed\n- Per-page `.md` files for AI consumption",
+  "excerpt": "SEO fields\n\nEvery document can have an seo field in its data:\n\njson\n{\n  \"data\": {\n    \"title\": \"My Post\",\n    \"seo\": {\n      \"metaTitle\": \"My Post — Best Guide (30-60 chars)\",\n      \"metaDescription\": \"A comprehensive guide to... (120-160 chars)\",\n      \"keywords\": [\"keyword1\", \"keyword2\"],\n      \"o",
+  "seo": {
+    "metaTitle": "SEO & Visibility — webhouse.app Docs",
+    "metaDescription": "Meta fields, JSON-LD structured data, sitemap, robots.txt, and AI visibility optimization.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "documentation",
+      "guides"
+    ]
+  },
+  "createdAt": "2026-03-29T21:41:59.068Z",
+  "updatedAt": "2026-03-29T21:41:59.068Z"
+}

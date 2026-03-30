@@ -1,0 +1,7 @@
+{
+  "slug": "i18n-config",
+  "title": "i18n configuration",
+  "description": "Multi-language collection config",
+  "code": "export default defineConfig({\n  defaultLocale: 'en',\n  locales: ['en', 'da'],\n  collections: [\n    defineCollection({\n      name: 'posts',\n      sourceLocale: 'en',\n      locales: ['en', 'da'],\n      translatable: true,\n      fields: [\n        { name: 'title', type: 'text', required: true },\n        { name: 'content', type: 'richtext' },\n      ],\n    }),\n  ],\n});",
+  "lang": "typescript"
+}

@@ -1,0 +1,110 @@
+{
+  "count": 15,
+  "snippets": [
+    {
+      "slug": "ai-generate",
+      "title": "AI content generation",
+      "description": "Generate and translate content with AI CLI",
+      "code": "# Generate a blog post\nnpx cms ai generate posts \"Write a guide to TypeScript generics\"\n\n# Rewrite with instructions\nnpx cms ai rewrite posts/hello-world \"Make it more concise\"\n\n# SEO optimization across all content\nnpx cms ai seo",
+      "lang": "bash"
+    },
+    {
+      "slug": "block-renderer",
+      "title": "Block renderer",
+      "description": "Render CMS blocks in Next.js",
+      "code": "function BlockRenderer({ block }: { block: any }) {\n  switch (block._block) {\n    case 'hero':\n      return (\n        <section>\n          <h1>{block.tagline}</h1>\n          <p>{block.description}</p>\n        </section>\n      );\n    case 'features':\n      return (\n        <section>\n          <h2>{block.title}</h2>\n          <div className=\"grid grid-cols-3 gap-4\">\n            {block.items?.map((item: any, i: number) => (\n              <div key={i}>\n                <h3>{item.title}</h3>\n                <p>{item.description}</p>\n              </div>\n            ))}\n          </div>\n        </section>\n      );\n    default:\n      return null;\n  }\n}",
+      "lang": "typescript"
+    },
+    {
+      "slug": "content-loader",
+      "title": "Content loader functions",
+      "description": "Read CMS content in Next.js with fs",
+      "code": "import { readFileSync, readdirSync, existsSync } from 'fs';\nimport { join } from 'path';\n\nconst CONTENT = join(process.cwd(), 'content');\n\nexport function getCollection(name: string) {\n  const dir = join(CONTENT, name);\n  if (!existsSync(dir)) return [];\n  return readdirSync(dir)\n    .filter(f => f.endsWith('.json'))\n    .map(f => JSON.parse(readFileSync(join(dir, f), 'utf-8')))\n    .filter(d => d.status === 'published');\n}\n\nexport function getDocument(collection: string, slug: string) {\n  const file = join(CONTENT, collection, `${slug}.json`);\n  if (!existsSync(file)) return null;\n  return JSON.parse(readFileSync(file, 'utf-8'));\n}",
+      "lang": "typescript"
+    },
+    {
+      "slug": "create-project",
+      "title": "Create a new project",
+      "description": "Scaffold a new @webhouse/cms project",
+      "code": "# Scaffold a new project\nnpm create @webhouse/cms my-site\n\n# Or with npx\nnpx create-@webhouse/cms my-site\n\n# With a specific template\nnpm create @webhouse/cms my-site -- --template nextjs",
+      "lang": "bash"
+    },
+    {
+      "slug": "define-collection",
+      "title": "Define a collection",
+      "description": "Basic collection definition in cms.config.ts",
+      "code": "import { defineConfig, defineCollection } from '@webhouse/cms';\n\nexport default defineConfig({\n  collections: [\n    defineCollection({\n      name: 'posts',\n      label: 'Blog Posts',\n      urlPrefix: '/blog',\n      fields: [\n        { name: 'title', type: 'text', required: true },\n        { name: 'excerpt', type: 'textarea' },\n        { name: 'content', type: 'richtext' },\n        { name: 'date', type: 'date' },\n        { name: 'tags', type: 'tags' },\n      ],\n    }),\n  ],\n  storage: {\n    adapter: 'filesystem',\n    filesystem: { contentDir: 'content' },\n  },\n});",
+      "lang": "typescript"
+    },
+    {
+      "slug": "deploy-fly",
+      "title": "Fly.io deployment",
+      "description": "Dockerfile and fly.toml for Fly.io",
+      "code": "FROM node:22-alpine AS builder\nWORKDIR /app\nCOPY . .\nRUN npm ci && npm run build\n\nFROM node:22-alpine\nWORKDIR /app\nCOPY --from=builder /app/.next/standalone ./\nCOPY --from=builder /app/.next/static ./.next/static\nCOPY --from=builder /app/public ./public\nCOPY --from=builder /app/content ./content\nCMD [\"node\", \"server.js\"]",
+      "lang": "dockerfile"
+    },
+    {
+      "slug": "dev-and-build",
+      "title": "Dev server and build",
+      "description": "Start dev server and build for production",
+      "code": "cd my-site\nnpm install\nnpx cms dev       # Start dev server + admin UI\nnpx cms build     # Build static site\nnpx cms serve     # Preview the build",
+      "lang": "bash"
+    },
+    {
+      "slug": "document-json",
+      "title": "Document JSON format",
+      "description": "Standard document structure in content/",
+      "code": "{\n  \"id\": \"unique-uuid\",\n  \"slug\": \"my-document\",\n  \"status\": \"published\",\n  \"locale\": \"en\",\n  \"translationGroup\": \"shared-uuid\",\n  \"data\": {\n    \"title\": \"My Document\",\n    \"content\": \"Markdown content...\",\n    \"_seo\": {\n      \"metaTitle\": \"SEO Title (30-60 chars)\",\n      \"metaDescription\": \"Description (120-160 chars)\"\n    }\n  },\n  \"_fieldMeta\": {},\n  \"createdAt\": \"2026-01-15T10:30:00Z\",\n  \"updatedAt\": \"2026-03-29T14:00:00Z\"\n}",
+      "lang": "json"
+    },
+    {
+      "slug": "i18n-config",
+      "title": "i18n configuration",
+      "description": "Multi-language collection config",
+      "code": "export default defineConfig({\n  defaultLocale: 'en',\n  locales: ['en', 'da'],\n  collections: [\n    defineCollection({\n      name: 'posts',\n      sourceLocale: 'en',\n      locales: ['en', 'da'],\n      translatable: true,\n      fields: [\n        { name: 'title', type: 'text', required: true },\n        { name: 'content', type: 'richtext' },\n      ],\n    }),\n  ],\n});",
+      "lang": "typescript"
+    },
+    {
+      "slug": "nextjs-blog-page",
+      "title": "Next.js blog listing page",
+      "description": "Blog listing with generateStaticParams",
+      "code": "// app/blog/page.tsx\nimport { getCollection } from '@/lib/content';\n\nexport default function BlogPage() {\n  const posts = getCollection('posts')\n    .sort((a, b) => (b.data.date ?? '').localeCompare(a.data.date ?? ''));\n\n  return (\n    <div>\n      <h1>Blog</h1>\n      {posts.map(post => (\n        <a key={post.slug} href={`/blog/${post.slug}`}>\n          <h2>{post.data.title}</h2>\n          <p>{post.data.excerpt}</p>\n        </a>\n      ))}\n    </div>\n  );\n}",
+      "lang": "typescript"
+    },
+    {
+      "slug": "nextjs-post-page",
+      "title": "Next.js blog post page",
+      "description": "Dynamic post page with SEO metadata",
+      "code": "// app/blog/[slug]/page.tsx\nimport { getCollection, getDocument } from '@/lib/content';\nimport { notFound } from 'next/navigation';\n\nexport function generateStaticParams() {\n  return getCollection('posts').map(d => ({ slug: d.slug }));\n}\n\nexport async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {\n  const { slug } = await params;\n  const doc = getDocument('posts', slug);\n  if (!doc) return {};\n  return {\n    title: doc.data._seo?.metaTitle ?? doc.data.title,\n    description: doc.data._seo?.metaDescription ?? doc.data.excerpt,\n  };\n}\n\nexport default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {\n  const { slug } = await params;\n  const doc = getDocument('posts', slug);\n  if (!doc) notFound();\n\n  return (\n    <article>\n      <h1>{doc.data.title}</h1>\n      {/* Render doc.data.content with react-markdown */}\n    </article>\n  );\n}",
+      "lang": "typescript"
+    },
+    {
+      "slug": "richtext-renderer",
+      "title": "Richtext renderer",
+      "description": "Render CMS richtext with react-markdown",
+      "code": "import ReactMarkdown from 'react-markdown';\nimport remarkGfm from 'remark-gfm';\n\nfunction ArticleBody({ content }: { content: string }) {\n  return (\n    <ReactMarkdown remarkPlugins={[remarkGfm]}>\n      {content}\n    </ReactMarkdown>\n  );\n}",
+      "lang": "typescript"
+    },
+    {
+      "slug": "seo-metadata",
+      "title": "SEO metadata in Next.js",
+      "description": "Generate SEO metadata from CMS _seo fields",
+      "code": "export async function generateMetadata({ params }) {\n  const doc = getDocument('posts', (await params).slug);\n  const seo = doc?.data._seo ?? {};\n  return {\n    title: seo.metaTitle ?? doc?.data.title,\n    description: seo.metaDescription ?? doc?.data.excerpt,\n    openGraph: {\n      title: seo.metaTitle ?? doc?.data.title,\n      description: seo.metaDescription,\n      images: seo.ogImage ? [seo.ogImage] : [],\n    },\n  };\n}",
+      "lang": "typescript"
+    },
+    {
+      "slug": "storage-filesystem",
+      "title": "Filesystem storage config",
+      "description": "Configure filesystem storage adapter",
+      "code": "// ALWAYS specify storage — defaults to SQLite if omitted!\nstorage: {\n  adapter: 'filesystem',\n  filesystem: { contentDir: 'content' },\n}",
+      "lang": "typescript"
+    },
+    {
+      "slug": "storage-github",
+      "title": "GitHub storage config",
+      "description": "Configure GitHub storage adapter",
+      "code": "storage: {\n  adapter: 'github',\n  github: {\n    owner: 'your-org',\n    repo: 'your-repo',\n    branch: 'main',\n    contentDir: 'content',\n    token: process.env.GITHUB_TOKEN!,\n  },\n}",
+      "lang": "typescript"
+    }
+  ]
+}

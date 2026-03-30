@@ -1,0 +1,24 @@
+{
+  "slug": "introduction",
+  "title": "Introduction",
+  "description": "What is @webhouse/cms and why it exists — a file-based, AI-native CMS for TypeScript projects.",
+  "category": "getting-started",
+  "order": 0,
+  "locale": "en",
+  "translationGroup": "367d914a-4aa5-44e3-a876-1858b869b309",
+  "helpCardId": null,
+  "content": "## What is @webhouse/cms?\n\n`@webhouse/cms` is a **file-based, AI-native CMS engine** for TypeScript projects. You define collections and fields in a `cms.config.ts` file, and the CMS stores content as flat JSON files in a `content/` directory — one file per document, organized by collection.\n\nIt provides:\n\n- **REST API server** — Hono-based API for reading and writing content\n- **Static site builder** — 9-phase build pipeline generating HTML, sitemap, RSS, robots.txt, and AI discovery files\n- **AI content generation** — built-in agents for writing, SEO optimization, translation, and more\n- **Visual admin UI** — full-featured editor at [webhouse.app](https://webhouse.app) with rich text, blocks, media, and scheduling\n- **MCP integration** — Model Context Protocol server for AI platform access to your content\n\n## Who is it for?\n\n@webhouse/cms is designed for developers building content-driven websites with Next.js. It works especially well when:\n\n- You want **file-based content** that lives in your Git repository\n- You need **AI-powered content workflows** (generation, translation, SEO optimization)\n- You prefer **TypeScript-first** configuration over YAML or markdown frontmatter\n- You want a **visual admin UI** without the complexity of a headless CMS\n\n## Architecture\n\n```\ncms.config.ts          → Collection + field definitions\ncontent/               → JSON documents (one per file)\npackages/cms           → Core engine (@webhouse/cms)\npackages/cms-admin     → Next.js admin UI (@webhouse/cms-admin)\npackages/cms-ai        → AI agents (@webhouse/cms-ai)\npackages/cms-cli       → CLI tools (@webhouse/cms-cli)\npackages/cms-mcp-*     → MCP servers for AI platform access\n```\n\nThe core package (`@webhouse/cms`) is framework-agnostic — it reads and writes JSON files. The admin UI (`@webhouse/cms-admin`) is a standalone Next.js application that connects to the core engine.\n\n## Next steps\n\n- [Quick Start](/docs/quick-start) — scaffold and run your first project in under 5 minutes\n- [Configuration Reference](/docs/config-reference) — learn how to define collections and fields\n- [Field Types](/docs/field-types) — explore all 22 field types",
+  "excerpt": "What is @webhouse/cms?\n\n@webhouse/cms is a file-based, AI-native CMS engine for TypeScript projects. You define collections and fields in a cms.config.ts file, and the CMS stores content as flat JSON files in a content/ directory — one file per document, organized by collection.\n\nIt provides:\n\n- RES",
+  "seo": {
+    "metaTitle": "Introduction — webhouse.app Docs",
+    "metaDescription": "What is @webhouse/cms and why it exists — a file-based, AI-native CMS for TypeScript projects.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "documentation",
+      "getting-started"
+    ]
+  },
+  "createdAt": "2026-03-29T21:41:59.066Z",
+  "updatedAt": "2026-03-29T21:41:59.067Z"
+}

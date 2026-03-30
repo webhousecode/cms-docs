@@ -1,0 +1,24 @@
+{
+  "slug": "seo-da",
+  "title": "SEO & Synlighed",
+  "description": "Meta-felter, JSON-LD strukturerede data, sitemap, robots.txt og AI-synlighedsoptimering.",
+  "category": "guides",
+  "order": 4,
+  "locale": "da",
+  "translationGroup": "9cbccbe8-ec90-4388-83e8-6d1cc84b0d93",
+  "helpCardId": "visibility-intro",
+  "content": "## SEO-felter\n\nHvert dokument kan have et `_seo`-felt i sine data:\n\n```json\n{\n  \"data\": {\n    \"title\": \"Mit indlæg\",\n    \"_seo\": {\n      \"metaTitle\": \"Mit indlæg — Bedste guide (30-60 tegn)\",\n      \"metaDescription\": \"En omfattende guide til... (120-160 tegn)\",\n      \"keywords\": [\"nøgleord1\", \"nøgleord2\"],\n      \"ogImage\": \"/uploads/og-billede.jpg\"\n    }\n  }\n}\n```\n\n## Synlighedsscoring\n\nCMS-admin inkluderer et Synlighedsdashboard der scorer hvert dokument på to akser:\n\n**SEO-score** (13 regler) — metatitel-længde, metabeskrivelse, nøgleord, overskriftsstruktur, indholdslængde, interne links, billed-alt-tekst og mere.\n\n**GEO-score** (8 regler) — optimerer indhold til AI-platformcitering:\n1. Svar-først-struktur\n2. Spørgsmålsformat-overskrifter\n3. Statistik og datapunkter\n4. Eksterne citationer\n5. Indholdsfriskhed (opdateret inden for 90 dage)\n6. JSON-LD strukturerede data\n7. Navngiven forfatter\n8. Indholdsdybde (800+ ord)\n\n## Build-output\n\nCMS build-pipelinen genererer automatisk:\n- `sitemap.xml` — alle publicerede sider med hreflang\n- `robots.txt` — AI-bevidste crawler-regler (4 strategier)\n- `llms.txt` — AI-venligt siteindeks\n- `llms-full.txt` — komplet markdown-eksport\n- `feed.xml` — RSS 2.0-feed\n- Per-side `.md`-filer til AI-forbrug",
+  "excerpt": "SEO-felter\n\nHvert dokument kan have et seo-felt i sine data:\n\njson\n{\n  \"data\": {\n    \"title\": \"Mit indlæg\",\n    \"seo\": {\n      \"metaTitle\": \"Mit indlæg — Bedste guide (30-60 tegn)\",\n      \"metaDescription\": \"En omfattende guide til... (120-160 tegn)\",\n      \"keywords\": [\"nøgleord1\", \"nøgleord2\"],\n  ",
+  "seo": {
+    "metaTitle": "SEO & Synlighed — webhouse.app Docs",
+    "metaDescription": "Meta-felter, JSON-LD strukturerede data, sitemap, robots.txt og AI-synlighedsoptimering.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "dokumentation",
+      "guides"
+    ]
+  },
+  "createdAt": "2026-03-29T21:57:53.109Z",
+  "updatedAt": "2026-03-29T22:24:50.158Z"
+}

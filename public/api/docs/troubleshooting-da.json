@@ -1,0 +1,24 @@
+{
+  "slug": "troubleshooting-da",
+  "title": "Fejlfinding",
+  "description": "Almindelige problemer og løsninger — GitHub-adapter, indhold vises ikke, portkonflikter, billeder og mere.",
+  "category": "guides",
+  "order": 7,
+  "locale": "da",
+  "translationGroup": "2442bcd6-bbc3-4b72-93e0-4bdf99647210",
+  "helpCardId": null,
+  "content": "## GitHub-adapter: \"Bad Token\"\n\n**Årsag:** OAuth-token er udløbet eller tilbagekaldt.\n\n**Løsning:** Gå til Sites → Indstillinger → genforbind GitHub. Brug en finkornet PAT med `contents: read/write`.\n\n## \"Collection Not Found\"\n\n**Årsag:** Collection-navn i `cms.config.ts` matcher ikke indholdsmappe.\n\n**Løsning:** Navne skal være identiske:\n```\ncms.config.ts: defineCollection({ name: 'posts' })\nMappe:         content/posts/\n```\n\n## Indhold vises ikke efter gem\n\n**Årsag:** Next.js statisk cache — sider bygget ved deploy-tid genopbygges ikke.\n\n**Løsninger:**\n1. **On-demand revalidering** (anbefalet) — konfigurér webhook\n2. **Tidsbaseret revalidering** — `export const revalidate = 60;`\n3. **Genbyg ved indholdsændring** — Git webhook trigger\n\n## Port allerede i brug\n\n```bash\nlsof -ti:3000          # Find hvad der bruger porten\nnpx cms dev --port 3001 # Brug en anden port\n```\n\n## Billeder indlæses ikke i produktion\n\n**Løsning:** Tilføj billeddomænet til `next.config.ts`:\n```typescript\nimages: {\n  remotePatterns: [\n    { protocol: 'https', hostname: 'dit-domæne.dk', pathname: '/uploads/**' },\n  ],\n}\n```\n\n## Lagringsadapter default til SQLite\n\nHvis du glemmer at angive `storage`, bruges SQLite. Admin-UI skriver til database, `build.ts` læser fra JSON-filer — de to systemer er afkoblet.",
+  "excerpt": "GitHub-adapter: \"Bad Token\"\n\nÅrsag: OAuth-token er udløbet eller tilbagekaldt.\n\nLøsning: Gå til Sites → Indstillinger → genforbind GitHub. Brug en finkornet PAT med contents: read/write.\n\n \"Collection Not Found\"\n\nÅrsag: Collection-navn i cms.config.ts matcher ikke indholdsmappe.\n\nLøsning: Navne skal",
+  "seo": {
+    "metaTitle": "Fejlfinding — webhouse.app Docs",
+    "metaDescription": "Almindelige problemer og løsninger — GitHub-adapter, indhold vises ikke, portkonflikter, billeder og mere.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "dokumentation",
+      "guides"
+    ]
+  },
+  "createdAt": "2026-03-29T21:57:53.110Z",
+  "updatedAt": "2026-03-29T22:24:50.161Z"
+}

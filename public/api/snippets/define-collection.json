@@ -1,0 +1,7 @@
+{
+  "slug": "define-collection",
+  "title": "Define a collection",
+  "description": "Basic collection definition in cms.config.ts",
+  "code": "import { defineConfig, defineCollection } from '@webhouse/cms';\n\nexport default defineConfig({\n  collections: [\n    defineCollection({\n      name: 'posts',\n      label: 'Blog Posts',\n      urlPrefix: '/blog',\n      fields: [\n        { name: 'title', type: 'text', required: true },\n        { name: 'excerpt', type: 'textarea' },\n        { name: 'content', type: 'richtext' },\n        { name: 'date', type: 'date' },\n        { name: 'tags', type: 'tags' },\n      ],\n    }),\n  ],\n  storage: {\n    adapter: 'filesystem',\n    filesystem: { contentDir: 'content' },\n  },\n});",
+  "lang": "typescript"
+}

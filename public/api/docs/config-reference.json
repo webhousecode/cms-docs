@@ -1,0 +1,24 @@
+{
+  "slug": "config-reference",
+  "title": "Configuration Reference",
+  "description": "Complete reference for cms.config.ts — collections, fields, storage, build, and API settings.",
+  "category": "config",
+  "order": 0,
+  "locale": "en",
+  "translationGroup": "e3ba3f15-0a86-478a-8d76-68bd8749d62b",
+  "helpCardId": null,
+  "content": "## cms.config.ts\n\nThe configuration file uses helper functions for type safety:\n\n```typescript\nimport { defineConfig, defineCollection, defineBlock, defineField } from '@webhouse/cms';\n\nexport default defineConfig({\n  collections: [ /* ... */ ],\n  blocks: [ /* ... */ ],\n  defaultLocale: 'en',\n  locales: ['en', 'da'],\n  autolinks: [ /* ... */ ],\n  storage: { /* ... */ },       // REQUIRED\n  build: { outDir: 'dist', baseUrl: '/' },\n  api: { port: 3000 },\n});\n```\n\n> **Important:** You MUST always specify the `storage` adapter. If omitted, it defaults to SQLite — not filesystem. This is the most common configuration mistake.\n\n## Collection config\n\n```typescript\ndefineCollection({\n  name: 'posts',                 // Required: unique identifier\n  label: 'Blog Posts',           // Optional: display name in admin UI\n  slug: 'posts',                 // Optional: URL slug override\n  urlPrefix: '/blog',            // Optional: URL prefix for pages\n  sourceLocale: 'en',            // Optional: primary authoring locale\n  locales: ['en', 'da'],         // Optional: translatable locales\n  translatable: true,            // Optional: enable translation support\n  fields: [ /* ... */ ],         // Required: array of FieldConfig\n  hooks: {                       // Optional: lifecycle hooks\n    beforeCreate: 'path/to/hook.js',\n    afterCreate: 'path/to/hook.js',\n    beforeUpdate: 'path/to/hook.js',\n    afterUpdate: 'path/to/hook.js',\n    beforeDelete: 'path/to/hook.js',\n    afterDelete: 'path/to/hook.js',\n  },\n})\n```\n\n## Build config\n\n```typescript\nbuild: {\n  outDir: 'dist',               // Output directory\n  baseUrl: 'https://example.com', // Site URL for absolute links\n  siteTitle: 'My Site',\n  siteDescription: 'A great site',\n  robots: {\n    strategy: 'maximum',         // 'maximum' | 'balanced' | 'restrictive' | 'custom'\n  },\n  rss: {\n    title: 'My Site RSS',\n    description: 'Latest updates',\n    language: 'en',\n    collections: ['posts'],      // Filter to specific collections\n    maxItems: 50,\n  },\n}\n```\n\n## Storage config\n\n{{snippet:storage-filesystem}}\n\n## API config\n\n```typescript\napi: {\n  port: 3000,                    // Dev server port\n}\n```",
+  "excerpt": "cms.config.ts\n\nThe configuration file uses helper functions for type safety:\n\ntypescript\nimport { defineConfig, defineCollection, defineBlock, defineField } from '@webhouse/cms';\n\nexport default defineConfig({\n  collections: [ / ... / ],\n  blocks: [ / ... / ],\n  defaultLocale: 'en',\n  locales: ['en'",
+  "seo": {
+    "metaTitle": "Configuration Reference — webhouse.app Docs",
+    "metaDescription": "Complete reference for cms.config.ts — collections, fields, storage, build, and API settings.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "documentation",
+      "config"
+    ]
+  },
+  "createdAt": "2026-03-29T21:41:59.068Z",
+  "updatedAt": "2026-03-30T12:04:35.756Z"
+}

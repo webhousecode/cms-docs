@@ -1,0 +1,7 @@
+{
+  "slug": "document-json",
+  "title": "Document JSON format",
+  "description": "Standard document structure in content/",
+  "code": "{\n  \"id\": \"unique-uuid\",\n  \"slug\": \"my-document\",\n  \"status\": \"published\",\n  \"locale\": \"en\",\n  \"translationGroup\": \"shared-uuid\",\n  \"data\": {\n    \"title\": \"My Document\",\n    \"content\": \"Markdown content...\",\n    \"_seo\": {\n      \"metaTitle\": \"SEO Title (30-60 chars)\",\n      \"metaDescription\": \"Description (120-160 chars)\"\n    }\n  },\n  \"_fieldMeta\": {},\n  \"createdAt\": \"2026-01-15T10:30:00Z\",\n  \"updatedAt\": \"2026-03-29T14:00:00Z\"\n}",
+  "lang": "json"
+}

@@ -1,0 +1,24 @@
+{
+  "slug": "config-reference-da",
+  "title": "Konfigurationsreference",
+  "description": "Komplet reference for cms.config.ts — collections, felter, lagring, build og API-indstillinger.",
+  "category": "config",
+  "order": 0,
+  "locale": "da",
+  "translationGroup": "e3ba3f15-0a86-478a-8d76-68bd8749d62b",
+  "helpCardId": null,
+  "content": "## cms.config.ts\n\nKonfigurationsfilen bruger hjælpefunktioner for typesikkerhed:\n\n```typescript\nimport { defineConfig, defineCollection, defineBlock, defineField } from '@webhouse/cms';\n\nexport default defineConfig({\n  collections: [ /* ... */ ],\n  blocks: [ /* ... */ ],\n  defaultLocale: 'en',\n  locales: ['en', 'da'],\n  autolinks: [ /* ... */ ],\n  storage: { /* ... */ },       // PÅKRÆVET\n  build: { outDir: 'dist', baseUrl: '/' },\n  api: { port: 3000 },\n});\n```\n\n> **Vigtigt:** Du SKAL altid angive `storage`-adapteren. Hvis den udelades, bruges SQLite som standard — ikke filsystemet. Dette er den mest almindelige konfigurationsfejl.\n\n## Collection-konfiguration\n\n```typescript\ndefineCollection({\n  name: 'posts',                 // Påkrævet: unik identifikator\n  label: 'Blogindlæg',          // Valgfri: visningsnavn i admin\n  slug: 'posts',                 // Valgfri: URL-slug override\n  urlPrefix: '/blog',            // Valgfri: URL-præfiks for sider\n  sourceLocale: 'en',            // Valgfri: primært forfattersprog\n  locales: ['en', 'da'],         // Valgfri: oversættelige sprog\n  translatable: true,            // Valgfri: aktivér oversættelsesstøtte\n  fields: [ /* ... */ ],         // Påkrævet: array af FieldConfig\n  hooks: {                       // Valgfri: livscyklus-hooks\n    beforeCreate: 'sti/til/hook.js',\n    afterCreate: 'sti/til/hook.js',\n  },\n})\n```\n\n## Build-konfiguration\n\n```typescript\nbuild: {\n  outDir: 'dist',               // Output-mappe\n  baseUrl: 'https://eksempel.dk', // Site-URL til absolutte links\n  siteTitle: 'Mit Site',\n  siteDescription: 'Et fantastisk site',\n  robots: {\n    strategy: 'maximum',         // 'maximum' | 'balanced' | 'restrictive' | 'custom'\n  },\n  rss: {\n    title: 'Mit Site RSS',\n    collections: ['posts'],      // Filtrer til specifikke collections\n    maxItems: 50,\n  },\n}\n```\n\n## Lagringskonfiguration\n\n{{snippet:storage-filesystem}}",
+  "excerpt": "cms.config.ts\n\nKonfigurationsfilen bruger hjælpefunktioner for typesikkerhed:\n\ntypescript\nimport { defineConfig, defineCollection, defineBlock, defineField } from '@webhouse/cms';\n\nexport default defineConfig({\n  collections: [ / ... / ],\n  blocks: [ / ... / ],\n  defaultLocale: 'en',\n  locales: ['en",
+  "seo": {
+    "metaTitle": "Konfigurationsreference — webhouse.app Docs",
+    "metaDescription": "Komplet reference for cms.config.ts — collections, felter, lagring, build og API-indstillinger.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "dokumentation",
+      "config"
+    ]
+  },
+  "createdAt": "2026-03-29T21:57:53.106Z",
+  "updatedAt": "2026-03-30T12:04:35.756Z"
+}

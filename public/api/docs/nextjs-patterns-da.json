@@ -1,0 +1,24 @@
+{
+  "slug": "nextjs-patterns-da",
+  "title": "Next.js-mønstre",
+  "description": "Sådan læser du CMS-indhold i Next.js — loader-funktioner, sider, statisk generering og metadata.",
+  "category": "guides",
+  "order": 2,
+  "locale": "da",
+  "translationGroup": "02c6e9b7-e6d2-43f9-b04e-eb990092d4ea",
+  "helpCardId": null,
+  "content": "## Læsning af indhold\n\nAlt indhold læses server-side med `fs`:\n\n{{snippet:content-loader}}\n\n## Blog-listeside\n\n{{snippet:nextjs-blog-page}}\n\n## Vigtige mønstre\n\n1. **Kun Server Components** — indhold læses ved build/request-tid\n2. **`generateStaticParams`** — prægenerer alle sider ved build-tid\n3. **`generateMetadata`** — SEO-metadata fra CMS `_seo`-felter\n4. **Filtrer altid på published** — `status === 'published'` for at skippe kladder\n5. **Hardkod aldrig indhold** — alt fra CMS JSON-filer",
+  "excerpt": "Læsning af indhold\n\nAlt indhold læses server-side med fs:\n\n{{snippet:content-loader}}\n\n Blog-listeside\n\n{{snippet:nextjs-blog-page}}\n\n Vigtige mønstre\n\n1. Kun Server Components — indhold læses ved build/request-tid\n2. generateStaticParams — prægenerer alle sider ved build-tid\n3. generateMetadata — S",
+  "seo": {
+    "metaTitle": "Next.js-mønstre — webhouse.app Docs",
+    "metaDescription": "Sådan læser du CMS-indhold i Next.js — loader-funktioner, sider, statisk generering og metadata.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "dokumentation",
+      "guides"
+    ]
+  },
+  "createdAt": "2026-03-29T21:57:53.108Z",
+  "updatedAt": "2026-03-30T12:04:35.755Z"
+}

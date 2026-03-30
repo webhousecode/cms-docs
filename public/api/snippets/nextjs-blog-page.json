@@ -1,0 +1,7 @@
+{
+  "slug": "nextjs-blog-page",
+  "title": "Next.js blog listing page",
+  "description": "Blog listing with generateStaticParams",
+  "code": "// app/blog/page.tsx\nimport { getCollection } from '@/lib/content';\n\nexport default function BlogPage() {\n  const posts = getCollection('posts')\n    .sort((a, b) => (b.data.date ?? '').localeCompare(a.data.date ?? ''));\n\n  return (\n    <div>\n      <h1>Blog</h1>\n      {posts.map(post => (\n        <a key={post.slug} href={`/blog/${post.slug}`}>\n          <h2>{post.data.title}</h2>\n          <p>{post.data.excerpt}</p>\n        </a>\n      ))}\n    </div>\n  );\n}",
+  "lang": "typescript"
+}
