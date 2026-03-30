@@ -1,6 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import Script from "next/script";
+import { ThemeInit } from "@/components/theme-init";
 import { Header } from "@/components/header";
 import { DocsSearch } from "@/components/docs-search";
 import { CodeCopyHandler } from "@/components/code-copy-handler";
@@ -27,20 +27,12 @@ export default function RootLayout({
 
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
-      <head>
-        <Script
-          id="theme-init"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `try{const t=localStorage.getItem("docs-theme");if(t==="light")document.documentElement.classList.remove("dark");else document.documentElement.classList.add("dark")}catch{}`,
-          }}
-        />
-      </head>
       <body>
         <Header />
         {children}
         <DocsSearch searchIndex={searchIndex} />
         <CodeCopyHandler />
+        <ThemeInit />
       </body>
     </html>
   );

@@ -1,3 +1,5 @@
+export const dynamic = "force-static";
+
 import type { Metadata } from "next";
 import { getCollection } from "@/lib/content";
 import { Tag, GitBranch, AlertTriangle, Package } from "lucide-react";
