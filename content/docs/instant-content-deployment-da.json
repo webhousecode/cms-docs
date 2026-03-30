@@ -1,0 +1,30 @@
+{
+  "id": "a8e3b1c4-5d9f-4a2e-b7c3-8f1d2e6a4b90",
+  "slug": "instant-content-deployment-da",
+  "status": "published",
+  "locale": "da",
+  "translationGroup": "065bddf1-b958-4e2f-af51-1219c60d8f20",
+  "data": {
+    "title": "Instant Content Deployment (ICD)",
+    "description": "Push indholdsændringer til deployede Next.js-sites på ~2 sekunder via signeret webhook, uden fuld Docker-rebuild.",
+    "content": "## Hvad er ICD?\n\nInstant Content Deployment pusher indholdsændringer fra CMS admin direkte til dit deployede Next.js-site via en signeret webhook. I stedet for at trigge et fuldt Docker-rebuild (~73 sekunder), modtager sitet det opdaterede dokument, skriver det til disk og kalder `revalidatePath()` — alt sammen på ca. **2 sekunder**.\n\n## Hvornår skal ICD bruges?\n\nICD virker med **Next.js SSR-sites der har et skrivbart filsystem**:\n\n- Fly.io med volumes\n- Selvhostet Docker\n- Ethvert miljø hvor content-mappen er skrivbar ved runtime\n\nICD gælder **ikke** for statiske builds (Vercel, Netlify, GitHub Pages) hvor indhold bages ved build-tid.\n\n## Sådan fungerer det\n\n1. Bruger gemmer indhold i CMS admin\n2. CMS sender dokumentets JSON som en HMAC-SHA256-signeret POST til sitets `/api/revalidate`-endpoint\n3. Endpointet verificerer signaturen, skriver dokumentet til disk og kalder `revalidatePath()`\n4. Next.js serverer nyt indhold ved næste request\n5. Fuldt Docker-deploy springes over når revalidation-webhook'en lykkes\n\n## Opsætning\n\n### 1. Tilføj revalidation-endpoint\n\nOpret `app/api/revalidate/route.ts` i dit Next.js-site:\n\n```typescript\nimport { revalidatePath } from \"next/cache\";\nimport { NextRequest, NextResponse } from \"next/server\";\nimport crypto from \"node:crypto\";\nimport { writeFileSync, mkdirSync, unlinkSync, existsSync } from \"node:fs\";\nimport { join, dirname } from \"node:path\";\n\nconst SECRET = process.env.REVALIDATE_SECRET;\nconst CONTENT_DIR = process.env.CONTENT_DIR ?? join(process.cwd(), \"content\");\n\nexport async function POST(request: NextRequest) {\n  const signature = request.headers.get(\"x-cms-signature\");\n  const body = await request.text();\n\n  if (SECRET) {\n    if (!signature) {\n      return NextResponse.json({ error: \"Missing signature\" }, { status: 401 });\n    }\n    const expected =\n      \"sha256=\" +\n      crypto.createHmac(\"sha256\", SECRET).update(body).digest(\"hex\");\n    const sigBuf = Buffer.from(signature);\n    const expBuf = Buffer.from(expected);\n    if (\n      sigBuf.length !== expBuf.length ||\n      !crypto.timingSafeEqual(sigBuf, expBuf)\n    ) {\n      return NextResponse.json({ error: \"Invalid signature\" }, { status: 401 });\n    }\n  }\n\n  const payload = JSON.parse(body);\n\n  if (payload.collection && payload.slug) {\n    const filePath = join(CONTENT_DIR, payload.collection, `${payload.slug}.json`);\n    if (payload.action === \"deleted\") {\n      if (existsSync(filePath)) unlinkSync(filePath);\n    } else if (payload.document) {\n      mkdirSync(dirname(filePath), { recursive: true });\n      writeFileSync(filePath, JSON.stringify(payload.document, null, 2), \"utf-8\");\n    }\n  }\n\n  const paths = payload.paths ?? [\"/\"];\n  for (const p of paths) {\n    revalidatePath(p);\n  }\n\n  return NextResponse.json({ revalidated: true, paths });\n}\n```\n\n### 2. Sæt miljøvariablen\n\nGenerer en hemmelighed og sæt den på dit deployede site:\n\n```bash\n# Generer\nopenssl rand -hex 32\n\n# Fly.io\nfly secrets set REVALIDATE_SECRET=<genereret-hemmelighed>\n```\n\n### 3. Konfigurer CMS admin\n\nI **Site Settings** → site registry:\n\n| Felt | Værdi |\n|---|---|\n| `revalidateUrl` | `https://dit-site.fly.dev/api/revalidate` |\n| `revalidateSecret` | Samme hemmelighed som `REVALIDATE_SECRET` |\n\n## Fallback\n\nHvis webhook'en fejler (site nede, autentificeringsfejl, timeout), falder CMS automatisk tilbage til et fuldt Docker-deploy.\n\n## Sikkerhed\n\n- Hemmeligheden skal genereres med `openssl rand -hex 32` (64 hex-tegn)\n- Hardkod aldrig hemmeligheden i kildekode — brug altid miljøvariabler\n- Endpointet bruger HMAC-SHA256 med timing-safe sammenligning",
+    "category": "deployment",
+    "order": 1,
+    "_seo": {
+      "metaTitle": "Instant Content Deployment (ICD) — webhouse.app Docs",
+      "metaDescription": "Push indholdsændringer til deployede Next.js-sites på ~2 sekunder via signeret webhook, uden fuld Docker-rebuild.",
+      "keywords": [
+        "webhouse",
+        "cms",
+        "instant content deployment",
+        "ICD",
+        "revalidation",
+        "webhook",
+        "deployment"
+      ]
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-30T10:00:00.000Z",
+  "updatedAt": "2026-03-30T10:00:00.000Z"
+}
