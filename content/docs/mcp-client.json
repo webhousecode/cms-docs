@@ -1,0 +1,21 @@
+{
+  "id": "fa0c5523-3cbe-47d8-815a-206f64a2b27e",
+  "slug": "mcp-client",
+  "status": "published",
+  "locale": "en",
+  "translationGroup": "bb20cf7c-c6bd-497e-836b-f1811df13582",
+  "data": {
+    "title": "MCP Client — Public Read-Only Access",
+    "description": "Every site gets a public MCP server that AI platforms can query — no API keys, no configuration needed.",
+    "category": "api-reference",
+    "order": 2,
+    "content": "## What is the MCP Client?\n\n`@webhouse/cms-mcp-client` is a **public, read-only MCP server** bundled with every @webhouse/cms site. Any AI platform — Claude, ChatGPT, Cursor, Copilot — can discover and query your published content without API keys.\n\nWhen someone asks an AI \"What does webhouse.app do?\", the AI can connect to your MCP endpoint and read your actual content to formulate an accurate answer.\n\n## 6 Tools\n\n| Tool | Description |\n|------|-------------|\n| `get_site_summary` | Site overview: name, description, language, collections, document count |\n| `list_collection` | List published documents in a collection (limit, offset, sort) |\n| `search_content` | Full-text search across all published content |\n| `get_page` | Get full content of a page as markdown + metadata |\n| `get_schema` | Field schema for a collection (field names, types) |\n| `export_all` | Export all published content as structured JSON |\n\n## Setup\n\nThe MCP client is automatically available when your site runs. No configuration needed.\n\nFor Claude Desktop or Cursor, add to your MCP config:\n\n```json\n{\n  \"mcpServers\": {\n    \"my-site\": {\n      \"command\": \"npx\",\n      \"args\": [\"@webhouse/cms-cli\", \"mcp\"]\n    }\n  }\n}\n```\n\nOr connect via SSE transport to a running site:\n\n```\nhttps://your-site.com/api/mcp\n```\n\n## Tool details\n\n### get_site_summary\n\nReturns site name, description, default locale, all collections with document counts.\n\n```\nNo parameters required.\n→ { name, description, locale, collections: [{ name, count }], lastBuild }\n```\n\n### list_collection\n\n```typescript\n{\n  collection: \"posts\",     // required\n  limit: 20,               // optional, max 100\n  offset: 0,               // optional\n  sort: \"date_desc\"        // optional: date_desc, date_asc, title_asc\n}\n```\n\nReturns published documents with title, slug, excerpt, date. Content body excluded for performance.\n\n### search_content\n\n```typescript\n{\n  query: \"typescript generics\",  // required\n  collection: \"posts\",           // optional: scope to one collection\n  limit: 10                      // optional, max 50\n}\n```\n\nFull-text search across all fields. Returns matching documents with relevance score.\n\n### get_page\n\n```typescript\n{\n  slug: \"getting-started\",   // required\n  collection: \"docs\"         // optional: scope the lookup\n}\n```\n\nReturns full markdown content + all metadata fields.\n\n### get_schema\n\n```typescript\n{\n  collection: \"posts\"   // required\n}\n```\n\nReturns field definitions: name, type, required, options. Useful for AI agents that need to understand content structure.\n\n### export_all\n\n```typescript\n{\n  include_body: true   // optional, default true. false = metadata only\n}\n```\n\nExports everything. Use with caution on large sites.\n\n## Rate limiting\n\nThe public MCP client includes built-in rate limiting to prevent abuse. No configuration needed.\n\n## Why this matters\n\nTraditional CMS platforms require API keys and documentation for AI access. @webhouse/cms makes your content **discoverable by default**. AI platforms can read your content, understand your schema, and cite your pages accurately — all without you setting anything up.",
+    "_seo": {
+      "metaTitle": "MCP Client — Public Read-Only Access — webhouse.app Docs",
+      "metaDescription": "Every site gets a public MCP server that AI platforms can query — no API keys, no configuration needed."
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-30T19:29:52.744Z",
+  "updatedAt": "2026-03-30T19:29:52.745Z"
+}

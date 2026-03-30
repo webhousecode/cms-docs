@@ -603,7 +603,7 @@ export default function HomePage() {
         </p>
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "1rem" }}>
-          <div style={{ padding: "1.25rem", borderRadius: 10, border: "1px solid var(--border)", background: "var(--bg-secondary)" }}>
+          <Link href="/docs/mcp-client" style={{ padding: "1.25rem", borderRadius: 10, border: "1px solid var(--border)", background: "var(--bg-secondary)", textDecoration: "none", color: "inherit", transition: "border-color 0.15s" }}>
             <span style={{ fontSize: "0.6rem", fontFamily: "var(--font-mono)", color: "#4ade80", textTransform: "uppercase", letterSpacing: "0.05em" }}>
               Public · Read-only
             </span>
@@ -611,8 +611,8 @@ export default function HomePage() {
             <p style={{ fontSize: "0.8rem", color: "var(--fg-muted)", lineHeight: 1.6 }}>
               Bundled with every site. Any AI agent can discover and query published content — no API keys needed.
             </p>
-          </div>
-          <div style={{ padding: "1.25rem", borderRadius: 10, border: "1px solid var(--border)", background: "var(--bg-secondary)" }}>
+          </Link>
+          <Link href="/docs/mcp-server" style={{ padding: "1.25rem", borderRadius: 10, border: "1px solid var(--border)", background: "var(--bg-secondary)", textDecoration: "none", color: "inherit", transition: "border-color 0.15s" }}>
             <span style={{ fontSize: "0.6rem", fontFamily: "var(--font-mono)", color: "var(--color-gold)", textTransform: "uppercase", letterSpacing: "0.05em" }}>
               Authenticated · Read+Write
             </span>
@@ -620,7 +620,7 @@ export default function HomePage() {
             <p style={{ fontSize: "0.8rem", color: "var(--fg-muted)", lineHeight: 1.6 }}>
               Full content production from Claude, Cursor, or any MCP client. Create, edit, publish, generate with AI.
             </p>
-          </div>
+          </Link>
         </div>
       </section>
 

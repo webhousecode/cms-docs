@@ -1,0 +1,21 @@
+{
+  "id": "fe6f4bd9-efac-4e04-b7dc-118b07209bcf",
+  "slug": "mcp-client-da",
+  "status": "published",
+  "locale": "da",
+  "translationGroup": "bb20cf7c-c6bd-497e-836b-f1811df13582",
+  "data": {
+    "title": "MCP Client — Offentlig læseadgang",
+    "description": "Hvert site får en offentlig MCP-server som AI-platforme kan forespørge — ingen API-nøgler, ingen konfiguration.",
+    "category": "api-reference",
+    "order": 2,
+    "content": "## Hvad er MCP Client?\n\n`@webhouse/cms-mcp-client` er en **offentlig, skrivebeskyttet MCP-server** der følger med hvert @webhouse/cms site. Enhver AI-platform kan forespørge dit publicerede indhold uden API-nøgler.\n\n## 6 Værktøjer\n\n| Værktøj | Beskrivelse |\n|---------|-------------|\n| `get_site_summary` | Siteoversigt: navn, beskrivelse, sprog, collections, antal |\n| `list_collection` | List publicerede dokumenter i en collection |\n| `search_content` | Fuldtekstsøgning på tværs af alt indhold |\n| `get_page` | Hent fuld sideindhold som markdown |\n| `get_schema` | Feltskema for en collection |\n| `export_all` | Eksportér alt publiceret indhold som JSON |\n\n## Opsætning\n\nMCP-clienten er automatisk tilgængelig. For Claude Desktop:\n\n```json\n{\n  \"mcpServers\": {\n    \"my-site\": {\n      \"command\": \"npx\",\n      \"args\": [\"@webhouse/cms-cli\", \"mcp\"]\n    }\n  }\n}\n```\n\n## Hvorfor dette er vigtigt\n\nTraditionelle CMS-platforme kræver API-nøgler for AI-adgang. @webhouse/cms gør dit indhold **opdageligt som standard**. AI-platforme kan læse, forstå og citere dine sider — uden at du sætter noget op.",
+    "_seo": {
+      "metaTitle": "MCP Client — Offentlig læseadgang — webhouse.app Docs",
+      "metaDescription": "Hvert site får en offentlig MCP-server som AI-platforme kan forespørge — ingen API-nøgler, ingen konfiguration."
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-30T19:29:52.746Z",
+  "updatedAt": "2026-03-30T19:29:52.746Z"
+}
