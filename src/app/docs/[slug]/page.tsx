@@ -125,6 +125,37 @@ export default async function DocPage(props: {
             next ? { slug: next.slug, title: next.data.title } : null
           }
         />
+
+        {/* API link */}
+        <div
+          style={{
+            marginTop: "1.5rem",
+            paddingTop: "1rem",
+            borderTop: "1px solid var(--border)",
+            display: "flex",
+            gap: "1rem",
+            fontSize: "0.7rem",
+            fontFamily: "var(--font-mono)",
+            color: "var(--fg-muted)",
+          }}
+        >
+          <a
+            href={`/api/docs/${slug}.json`}
+            target="_blank"
+            rel="noopener"
+            style={{ color: "var(--fg-muted)", textDecoration: "none" }}
+          >
+            JSON API →
+          </a>
+          <a
+            href={`https://github.com/webhousecode/cms-docs/blob/main/content/docs/${slug}.json`}
+            target="_blank"
+            rel="noopener"
+            style={{ color: "var(--fg-muted)", textDecoration: "none" }}
+          >
+            Edit on GitHub →
+          </a>
+        </div>
       </main>
 
       <DocsToc items={headings} locale={locale} />

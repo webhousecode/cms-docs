@@ -1,0 +1,64 @@
+name: Update changelog & deploy
+
+on:
+  # Trigger when CMS monorepo pushes a new tag
+  repository_dispatch:
+    types: [cms-release]
+  # Manual trigger
+  workflow_dispatch:
+  # Auto on push to main (content changes)
+  push:
+    branches: [main]
+    paths:
+      - 'content/**'
+      - 'src/**'
+      - 'scripts/**'
+      - 'public/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # full history for changelog generation
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      # Regenerate changelog from CMS repo tags
+      - name: Update changelog
+        run: npx tsx scripts/seed-full-changelog.ts
+        env:
+          CMS_REPO: ${{ github.workspace }}/../cms
+        continue-on-error: true  # don't fail if CMS repo not available
+
+      # Regenerate static API
+      - name: Generate API
+        run: npx tsx scripts/generate-api.ts
+
+      # Commit if anything changed
+      - name: Commit updates
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add content/ public/api/
+          git diff --cached --quiet || git commit -m "chore: auto-update changelog + API [skip ci]"
+          git push || true
+
+      # Build
+      - run: pnpm build
+
+      # Deploy to Fly.io
+      - uses: superfly/flyctl-action/setup-flyctl@master
+      - run: flyctl deploy --remote-only --now
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
