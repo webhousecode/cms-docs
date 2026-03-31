@@ -1,0 +1,26 @@
+{
+  "slug": "calendar",
+  "title": "Calendar",
+  "description": "Schedule content to publish or unpublish at specific dates and times.",
+  "category": "guides",
+  "order": 23,
+  "locale": "en",
+  "translationGroup": "330502bb-69d1-460f-a581-7bea144925b7",
+  "helpCardId": null,
+  "content": "## Overview\n\nThe Calendar gives you a visual timeline of all scheduled content actions. Plan when documents go live or come down without manual intervention.\n\n## Scheduling Actions\n\nTwo types of scheduled events are supported:\n\n- **Scheduled publish** — a draft document goes live at the specified date and time\n- **Scheduled unpublish** — a published document is taken offline automatically\n\n## Calendar View\n\nThe calendar displays events in a monthly view:\n\n- **Green markers** — scheduled publishes\n- **Red markers** — scheduled unpublishes\n- **Click any event** to see details and edit the schedule\n\n## How to Schedule a Document\n\n1. Open any document in the editor\n2. In the sidebar, find the **Schedule** section\n3. Set a publish date, unpublish date, or both\n4. Save the document\n\nThe document will appear on the Calendar automatically.\n\n## Managing Scheduled Content\n\nFrom the Calendar page you can:\n\n- **View all upcoming events** in chronological order\n- **Edit schedules** — change dates or cancel scheduled actions\n- **Filter by collection** — focus on specific content types\n\n## Time Zones\n\nAll scheduled times use the time zone configured in your [Site Settings](/docs/site-settings). Make sure this matches your audience's primary time zone.\n\n## Related\n\n- [Collections](/docs/collections) — where you create and edit documents\n- [Site Settings](/docs/site-settings) — configure time zone and other defaults",
+  "excerpt": "Overview\n\nThe Calendar gives you a visual timeline of all scheduled content actions. Plan when documents go live or come down without manual intervention.\n\n Scheduling Actions\n\nTwo types of scheduled events are supported:\n\n- Scheduled publish — a draft document goes live at the specified date and ti",
+  "seo": {
+    "metaTitle": "Calendar — webhouse.app Docs",
+    "metaDescription": "Use the Calendar to schedule content publishing and unpublishing at specific dates and times.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "calendar",
+      "schedule",
+      "publish",
+      "unpublish"
+    ]
+  },
+  "createdAt": "2026-03-31T00:26:34.000Z",
+  "updatedAt": "2026-03-31T00:26:34.000Z"
+}

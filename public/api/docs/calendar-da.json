@@ -1,0 +1,26 @@
+{
+  "slug": "calendar-da",
+  "title": "Kalender",
+  "description": "Planlæg publicering eller afpublicering af indhold på bestemte datoer og tidspunkter.",
+  "category": "guides",
+  "order": 23,
+  "locale": "da",
+  "translationGroup": "330502bb-69d1-460f-a581-7bea144925b7",
+  "helpCardId": null,
+  "content": "## Overblik\n\nKalenderen giver dig en visuel tidslinje over alle planlagte indholdshandlinger. Planlæg hvornår dokumenter går live eller tages ned uden manuel indgriben.\n\n## Planlagte handlinger\n\nTo typer planlagte events understøttes:\n\n- **Planlagt publicering** — et kladde-dokument går live på det angivne tidspunkt\n- **Planlagt afpublicering** — et publiceret dokument tages offline automatisk\n\n## Kalendervisning\n\nKalenderen viser events i en månedsvisning:\n\n- **Grønne markeringer** — planlagte publiceringer\n- **Røde markeringer** — planlagte afpubliceringer\n- **Klik på et event** for at se detaljer og redigere planen\n\n## Sådan planlægger du et dokument\n\n1. Åbn et dokument i editoren\n2. Find **Planlæg**-sektionen i sidepanelet\n3. Sæt en publiceringsdato, afpubliceringsdato eller begge\n4. Gem dokumentet\n\nDokumentet vises automatisk i Kalenderen.\n\n## Administration af planlagt indhold\n\nFra Kalendersiden kan du:\n\n- **Se alle kommende events** i kronologisk rækkefølge\n- **Rediger planer** — ændr datoer eller annuller planlagte handlinger\n- **Filtrer efter collection** — fokuser på bestemte indholdstyper\n\n## Tidszoner\n\nAlle planlagte tidspunkter bruger den tidszone der er konfigureret i dine [Siteindstillinger](/docs/site-settings-da). Sørg for at denne matcher din målgruppes primære tidszone.\n\n## Relateret\n\n- [Collections](/docs/collections-da) — hvor du opretter og redigerer dokumenter\n- [Siteindstillinger](/docs/site-settings-da) — konfigurer tidszone og andre standarder",
+  "excerpt": "Overblik\n\nKalenderen giver dig en visuel tidslinje over alle planlagte indholdshandlinger. Planlæg hvornår dokumenter går live eller tages ned uden manuel indgriben.\n\n Planlagte handlinger\n\nTo typer planlagte events understøttes:\n\n- Planlagt publicering — et kladde-dokument går live på det angivne t",
+  "seo": {
+    "metaTitle": "Kalender — webhouse.app Docs",
+    "metaDescription": "Brug Kalenderen til at planlægge publicering og afpublicering af indhold på bestemte tidspunkter.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "kalender",
+      "planlæg",
+      "publicer",
+      "afpublicer"
+    ]
+  },
+  "createdAt": "2026-03-31T00:26:34.000Z",
+  "updatedAt": "2026-03-31T00:26:34.000Z"
+}

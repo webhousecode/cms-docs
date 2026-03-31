@@ -1,0 +1,26 @@
+{
+  "slug": "site-settings",
+  "title": "Site Settings",
+  "description": "Configure your site — general settings, locales, preview, deploy, and more.",
+  "category": "guides",
+  "order": 29,
+  "locale": "en",
+  "translationGroup": "93e86271-c11d-476f-8b12-14e99e27c7de",
+  "helpCardId": null,
+  "content": "## Overview\n\nSite Settings is the central configuration hub for your CMS site. It contains multiple tabs covering every aspect of site setup.\n\n## General\n\nBasic site information:\n\n- **Site name** — displayed in the admin header and used in meta tags\n- **Site URL** — your production domain\n- **Description** — brief site description for SEO defaults\n- **Time zone** — used for scheduled publish/unpublish (see [Calendar](/docs/calendar))\n\n## Locales\n\nConfigure multilingual support:\n\n- **Default locale** — the primary language of your site\n- **Additional locales** — languages you translate content into\n- **Locale strategy** — prefix-based (`/en/`, `/da/`) or domain-based routing\n\nSee [Internationalization](/docs/i18n) for the full i18n guide.\n\n## Preview\n\nConfigure how document previews work:\n\n- **Preview site URL** — the base URL for preview links\n- **URL patterns** — how preview URLs are constructed per collection\n\nSee the [Content Structure](/docs/content-structure) guide for URL pattern configuration.\n\n## Deploy\n\nSet up deployment targets:\n\n- **Provider** — GitHub Pages, Fly.io, Vercel, or Netlify\n- **Repository** — for GitHub-backed sites\n- **Build command** — custom build commands\n- **ICD** — enable [Instant Content Deployment](/docs/instant-content-deployment) for sub-second publishes\n\nSee [Deployment](/docs/deployment) for full setup instructions.\n\n## AI\n\nConfigure AI features:\n\n- **API keys** — set up OpenAI or Anthropic credentials\n- **Default model** — which model to use for generation\n- **Brand voice** — global tone and style settings\n\nSee [Cockpit](/docs/cockpit) for the AI command center.\n\n## Storage\n\nChoose and configure your storage adapter:\n\n- **Filesystem** — content stored locally on disk\n- **GitHub** — content stored in a Git repository\n\nSee [Storage Adapters](/docs/storage-adapters) for detailed configuration.\n\n## Related\n\n- [Configuration Reference](/docs/config-reference) — full `cms.config.ts` reference\n- [Deployment](/docs/deployment) — deploy your site",
+  "excerpt": "Overview\n\nSite Settings is the central configuration hub for your CMS site. It contains multiple tabs covering every aspect of site setup.\n\n General\n\nBasic site information:\n\n- Site name — displayed in the admin header and used in meta tags\n- Site URL — your production domain\n- Description — brief s",
+  "seo": {
+    "metaTitle": "Site Settings — webhouse.app Docs",
+    "metaDescription": "Configure all aspects of your CMS site: general settings, locales, preview URLs, deploy targets, and more.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "settings",
+      "configuration",
+      "site",
+      "admin"
+    ]
+  },
+  "createdAt": "2026-03-31T00:26:34.000Z",
+  "updatedAt": "2026-03-31T00:26:34.000Z"
+}

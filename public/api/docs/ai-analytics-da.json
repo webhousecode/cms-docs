@@ -1,0 +1,26 @@
+{
+  "slug": "ai-analytics-da",
+  "title": "AI Analytics",
+  "description": "Spor AI-agentperformance, omkostninger og indholdsgodkendelsesrater.",
+  "category": "guides",
+  "order": 27,
+  "locale": "da",
+  "translationGroup": "c6cec926-ade7-4281-83ec-648256e1acc0",
+  "helpCardId": null,
+  "content": "## Overblik\n\nAI Analytics giver dig detaljeret indsigt i hvordan dine AI-agenter performer. Spor omkostninger, mål kvalitet gennem godkendelsesrater, og identificer hvilke agenter der leverer de bedste resultater.\n\n## Performance-dashboard\n\nHovedvisningen viser nøgletal:\n\n- **Samlede genereringer** — hvor mange dokumenter AI har oprettet i den valgte periode\n- **Godkendelsesrate** — procentdel af genereret indhold godkendt i [Curation Queue](/docs/curation-queue-da)\n- **Afvisningsrate** — procentdel afvist, med typiske afvisningsårsager\n- **Gennemsnitlig genereringstid** — hvor lang tid hver generering tager\n\n## Omkostningssporing\n\nOvervåg dit AI-forbrug:\n\n- **Samlede omkostninger** — aggregerede omkostninger for den valgte periode\n- **Pris per dokument** — gennemsnitlig pris for at generere ét stykke indhold\n- **Pris per agent** — hvilke agenter der er dyrest og billigst\n- **Omkostningstrend** — linjediagram der viser forbrug over tid\n\n## Agentperformance\n\nEn per-agent-opdeling der viser:\n\n- **Genererede dokumenter** — samlet output per agent\n- **Godkendelsesrate** — kvalitetsindikator per agent\n- **Gennemsnitligt ordantal** — indholdslængde per agent\n- **Anvendt model** — hvilken AI-model agenten er konfigureret til at bruge\n\n## Filtrering\n\nOpdel data efter:\n\n- **Datointerval** — sidste 7 dage, 30 dage eller brugerdefineret\n- **Agent** — fokuser på en bestemt agent\n- **Collection** — se analytics for en bestemt indholdstype\n- **Status** — godkendt, afvist eller afventende\n\n## Brug analytics til forbedring\n\n- Lav godkendelsesrate? Gennemgå agentens prompt og [brandvoice-indstillinger](/docs/cockpit-da)\n- Høj pris per dokument? Overvej en anden model eller kortere mållængde\n- Langsom generering? Tjek om agentens prompt er for kompleks\n\n## Relateret\n\n- [Cockpit](/docs/cockpit-da) — konfigurer AI-genereringsparametre\n- [AI-agenter](/docs/ai-agents-da) — administrer individuelle agenter\n- [Curation Queue](/docs/curation-queue-da) — hvor genereret indhold gennemgås",
+  "excerpt": "Overblik\n\nAI Analytics giver dig detaljeret indsigt i hvordan dine AI-agenter performer. Spor omkostninger, mål kvalitet gennem godkendelsesrater, og identificer hvilke agenter der leverer de bedste resultater.\n\n Performance-dashboard\n\nHovedvisningen viser nøgletal:\n\n- Samlede genereringer — hvor ma",
+  "seo": {
+    "metaTitle": "AI Analytics — webhouse.app Docs",
+    "metaDescription": "Overvåg AI-agentperformance, genereringsomkostninger og indholdsgodkendelsesrater.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "ai",
+      "analytics",
+      "performance",
+      "omkostninger"
+    ]
+  },
+  "createdAt": "2026-03-31T00:26:34.000Z",
+  "updatedAt": "2026-03-31T00:26:34.000Z"
+}

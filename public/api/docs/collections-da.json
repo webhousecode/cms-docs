@@ -1,0 +1,26 @@
+{
+  "slug": "collections-da",
+  "title": "Collections",
+  "description": "Gennemse, filtrer, opret og administrer dokumenter i dine indholdscollections.",
+  "category": "guides",
+  "order": 24,
+  "locale": "da",
+  "translationGroup": "47f62ed4-f4bc-4f10-ae5f-bf97827ab996",
+  "helpCardId": null,
+  "content": "## Overblik\n\nCollections er hjertet af dit CMS. Hver collection indeholder dokumenter af en bestemt type — blogindlæg, sider, produkter, teammedlemmer eller hvad dit site har brug for. Collectionssiden lader dig gennemse, oprette og administrere alt dit indhold.\n\n## Visninger\n\nSkift mellem to layouttilstande:\n\n- **Gittervisning** — visuelle kort med titel, billede og status. Godt til mediefyldte collections.\n- **Listevisning** — kompakt tabel med sorterbare kolonner. Bedre til store collections.\n\n## Filtrering og søgning\n\nFind dokumenter hurtigt med:\n\n- **Tekstsøgning** — søger på tværs af titel- og indholdsfelter\n- **Statusfilter** — publiceret, kladde eller planlagt\n- **Sprogfilter** — filtrer efter sprog (for flersprogede sites)\n- **Kategorifilter** — indsnæv efter kategorifelt (hvis konfigureret)\n\n## Oprettelse af dokumenter\n\nKlik **Ny** for at oprette et dokument. Editoren åbner med alle felter defineret i din collection-schema. Se [Indholdsstruktur](/docs/content-structure-da) for hvordan du definerer collections og [Felttyper](/docs/field-types-da) for tilgængelige felttyper.\n\n## AI-generering\n\nKlik **Generer** for at oprette indhold med AI:\n\n- Vælg en [AI-agent](/docs/ai-agents-da) eller brug standardskribenten\n- Angiv et emne eller en kort brief\n- Det genererede dokument lander i [Curation Queue](/docs/curation-queue-da) til review\n\n## Preview\n\nKlik på preview-ikonet på et dokument for at se hvordan det ser ud på dit live site. Preview-URL'er konstrueres ud fra dit sites `previewSiteUrl`-indstilling. Se [Siteindstillinger](/docs/site-settings-da) for konfiguration.\n\n## Massehandlinger\n\nVælg flere dokumenter for at:\n\n- **Publicer** eller **afpublicer** i bulk\n- **Flyt til papirkurv** — kan gendannes fra [Papirkurven](/docs/trash-da)\n- **Eksporter** som JSON\n\n## Relateret\n\n- [Indholdsstruktur](/docs/content-structure-da) — definition af collection-schemas\n- [Felttyper](/docs/field-types-da) — tilgængelige felttyper\n- [Interaktive elementer](/docs/interactives-da) — datadrevne HTML-widgets",
+  "excerpt": "Overblik\n\nCollections er hjertet af dit CMS. Hver collection indeholder dokumenter af en bestemt type — blogindlæg, sider, produkter, teammedlemmer eller hvad dit site har brug for. Collectionssiden lader dig gennemse, oprette og administrere alt dit indhold.\n\n Visninger\n\nSkift mellem to layouttilst",
+  "seo": {
+    "metaTitle": "Collections — webhouse.app Docs",
+    "metaDescription": "Administrer dokumenter i CMS-collections: gitter- og listevisning, filtrering, AI-generering og preview.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "collections",
+      "dokumenter",
+      "indhold",
+      "administration"
+    ]
+  },
+  "createdAt": "2026-03-31T00:26:34.000Z",
+  "updatedAt": "2026-03-31T00:26:34.000Z"
+}

@@ -1,0 +1,26 @@
+{
+  "slug": "site-settings-da",
+  "title": "Siteindstillinger",
+  "description": "Konfigurer dit site — generelle indstillinger, sprog, preview, deploy og mere.",
+  "category": "guides",
+  "order": 29,
+  "locale": "da",
+  "translationGroup": "93e86271-c11d-476f-8b12-14e99e27c7de",
+  "helpCardId": null,
+  "content": "## Overblik\n\nSiteindstillinger er det centrale konfigurationshub for dit CMS-site. Det indeholder flere faneblade der dækker alle aspekter af site-opsætning.\n\n## Generelt\n\nGrundlæggende siteinformation:\n\n- **Sitenavn** — vises i admin-headeren og bruges i metatags\n- **Site-URL** — dit produktionsdomæne\n- **Beskrivelse** — kort sitebeskrivelse til SEO-standarder\n- **Tidszone** — bruges til planlagt publicering/afpublicering (se [Kalender](/docs/calendar-da))\n\n## Sprog\n\nKonfigurer flersproget understøttelse:\n\n- **Standardsprog** — dit sites primære sprog\n- **Yderligere sprog** — sprog du oversætter indhold til\n- **Sprogstrategi** — præfiksbaseret (`/en/`, `/da/`) eller domænebaseret routing\n\nSe [Internationalisering](/docs/i18n-da) for den fulde i18n-guide.\n\n## Preview\n\nKonfigurer hvordan dokumentforhåndsvisning fungerer:\n\n- **Preview site-URL** — basis-URL'en for preview-links\n- **URL-mønstre** — hvordan preview-URL'er konstrueres per collection\n\nSe guiden [Indholdsstruktur](/docs/content-structure-da) for URL-mønsterkonfiguration.\n\n## Deploy\n\nOpsæt deploymål:\n\n- **Udbyder** — GitHub Pages, Fly.io, Vercel eller Netlify\n- **Repository** — for GitHub-backede sites\n- **Build-kommando** — brugerdefinerede build-kommandoer\n- **ICD** — aktivér [Instant Content Deployment](/docs/instant-content-deployment-da) for sub-sekund publiceringer\n\nSe [Deployment](/docs/deployment-da) for fulde opsætningsinstruktioner.\n\n## AI\n\nKonfigurer AI-funktioner:\n\n- **API-nøgler** — opsæt OpenAI- eller Anthropic-legitimationsoplysninger\n- **Standardmodel** — hvilken model der bruges til generering\n- **Brandvoice** — globale tone- og stilindstillinger\n\nSe [Cockpit](/docs/cockpit-da) for AI-kommandocentralen.\n\n## Lagring\n\nVælg og konfigurer din lagringsadapter:\n\n- **Filsystem** — indhold gemt lokalt på disk\n- **GitHub** — indhold gemt i et Git-repository\n\nSe [Lagringsadaptere](/docs/storage-adapters-da) for detaljeret konfiguration.\n\n## Relateret\n\n- [Konfigurationsreference](/docs/config-reference-da) — fuld `cms.config.ts`-reference\n- [Deployment](/docs/deployment-da) — deploy dit site",
+  "excerpt": "Overblik\n\nSiteindstillinger er det centrale konfigurationshub for dit CMS-site. Det indeholder flere faneblade der dækker alle aspekter af site-opsætning.\n\n Generelt\n\nGrundlæggende siteinformation:\n\n- Sitenavn — vises i admin-headeren og bruges i metatags\n- Site-URL — dit produktionsdomæne\n- Beskriv",
+  "seo": {
+    "metaTitle": "Siteindstillinger — webhouse.app Docs",
+    "metaDescription": "Konfigurer alle aspekter af dit CMS-site: generelle indstillinger, sprog, preview-URL'er, deploymål og mere.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "indstillinger",
+      "konfiguration",
+      "site",
+      "admin"
+    ]
+  },
+  "createdAt": "2026-03-31T00:26:34.000Z",
+  "updatedAt": "2026-03-31T00:26:34.000Z"
+}

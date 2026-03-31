@@ -1,0 +1,26 @@
+{
+  "slug": "ai-analytics",
+  "title": "AI Analytics",
+  "description": "Track AI agent performance, costs, and content acceptance rates.",
+  "category": "guides",
+  "order": 27,
+  "locale": "en",
+  "translationGroup": "c6cec926-ade7-4281-83ec-648256e1acc0",
+  "helpCardId": null,
+  "content": "## Overview\n\nAI Analytics gives you detailed insights into how your AI agents perform. Track costs, measure quality through acceptance rates, and identify which agents deliver the best results.\n\n## Performance Dashboard\n\nThe main view shows key metrics:\n\n- **Total generations** — how many documents AI has created in the selected period\n- **Acceptance rate** — percentage of generated content approved in the [Curation Queue](/docs/curation-queue)\n- **Rejection rate** — percentage rejected, with common rejection reasons\n- **Average generation time** — how long each generation takes\n\n## Cost Tracking\n\nMonitor your AI spending:\n\n- **Total cost** — aggregated cost for the selected period\n- **Cost per document** — average cost to generate one piece of content\n- **Cost by agent** — which agents are most and least expensive\n- **Cost trend** — line chart showing spending over time\n\n## Agent Performance\n\nA per-agent breakdown showing:\n\n- **Documents generated** — total output per agent\n- **Acceptance rate** — quality indicator per agent\n- **Average word count** — content length per agent\n- **Model used** — which AI model the agent is configured to use\n\n## Filtering\n\nSlice the data by:\n\n- **Date range** — last 7 days, 30 days, or custom\n- **Agent** — focus on a specific agent\n- **Collection** — see analytics for a specific content type\n- **Status** — approved, rejected, or pending\n\n## Using Analytics to Improve\n\n- Low acceptance rate? Review the agent's prompt and [brand voice settings](/docs/cockpit)\n- High cost per document? Consider a different model or shorter target length\n- Slow generation? Check if the agent's prompt is too complex\n\n## Related\n\n- [Cockpit](/docs/cockpit) — configure AI generation parameters\n- [AI Agents](/docs/ai-agents) — manage individual agents\n- [Curation Queue](/docs/curation-queue) — where generated content is reviewed",
+  "excerpt": "Overview\n\nAI Analytics gives you detailed insights into how your AI agents perform. Track costs, measure quality through acceptance rates, and identify which agents deliver the best results.\n\n Performance Dashboard\n\nThe main view shows key metrics:\n\n- Total generations — how many documents AI has cr",
+  "seo": {
+    "metaTitle": "AI Analytics — webhouse.app Docs",
+    "metaDescription": "Monitor AI agent performance, generation costs, and content acceptance rates.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "ai",
+      "analytics",
+      "performance",
+      "costs"
+    ]
+  },
+  "createdAt": "2026-03-31T00:26:34.000Z",
+  "updatedAt": "2026-03-31T00:26:34.000Z"
+}

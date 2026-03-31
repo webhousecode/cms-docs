@@ -1,0 +1,26 @@
+{
+  "slug": "visibility-da",
+  "title": "Visibility",
+  "description": "Kombineret SEO- og GEO-score der viser hvor synligt dit indhold er.",
+  "category": "guides",
+  "order": 28,
+  "locale": "da",
+  "translationGroup": "0bda0ab4-43d9-4b9b-930a-a6a15e8bebf8",
+  "helpCardId": null,
+  "content": "## Overblik\n\nVisibility kombinerer to scores til én metrik der fortæller dig hvor opdageligt dit indhold er — både af traditionelle søgemaskiner (SEO) og af AI-systemer som ChatGPT og Claude (GEO).\n\n## Visibility-scoren\n\nHvert publiceret dokument får en score fra 0 til 100:\n\n- **SEO-komponent** — baseret på metatags, søgeordsanvendelse, overskrifter, indholdslængde og tekniske faktorer. Se [SEO](/docs/seo-da) for detaljer.\n- **GEO-komponent** — baseret på strukturerede data, faktuel klarhed, kildehenvisning og AI-venlig formatering.\n\nDen kombinerede score vægter begge komponenter for at give ét tal der repræsenterer samlet synlighed.\n\n## Scoreopdeling\n\nKlik på et dokument for at se en detaljeret opdeling:\n\n- **Individuelle regelscores** — hver SEO- og GEO-regel bedømt separat\n- **Forslag** — specifikke forbedringer du kan foretage\n- **Prioritet** — hvilke rettelser der vil have størst effekt\n\n## Sitebredt overblik\n\nVisibility-siden viser aggregerede data:\n\n- **Gennemsnitlig visibility-score** på tværs af alle publicerede dokumenter\n- **Scorefordeling** — hvor mange dokumenter der er fremragende, gode, behøver arbejde eller dårlige\n- **Trend over tid** — om din synlighed forbedres eller falder\n- **Dårligst præsterende** — dokumenter der har mest brug for opmærksomhed\n\n## Forbedr synlighed\n\nSiden fremhæver handlingsrettede forbedringer:\n\n- Manglende metabeskrivelser eller titler\n- Indhold for kort til emnet\n- Manglende strukturerede data (JSON-LD)\n- Manglende kildehenvisninger (skader GEO-score)\n- Dårlig overskriftshierarki\n\n## AI-optimering\n\nBrug knappen **AI Optimer** til automatisk at forbedre et dokuments SEO- og GEO-scores. AI'en foreslår forbedringer som du kan gennemgå og anvende.\n\n## Relateret\n\n- [SEO](/docs/seo-da) — detaljeret SEO-scoring og søgeordssporing\n- [Dashboard](/docs/dashboard-da) — hurtigt visibility-score-resumé\n- [Cockpit](/docs/cockpit-da) — AI-drevet masseoptimering",
+  "excerpt": "Overblik\n\nVisibility kombinerer to scores til én metrik der fortæller dig hvor opdageligt dit indhold er — både af traditionelle søgemaskiner (SEO) og af AI-systemer som ChatGPT og Claude (GEO).\n\n Visibility-scoren\n\nHvert publiceret dokument får en score fra 0 til 100:\n\n- SEO-komponent — baseret på ",
+  "seo": {
+    "metaTitle": "Visibility — webhouse.app Docs",
+    "metaDescription": "Spor dit indholds kombinerede SEO- og GEO-visibility-score for søgemaskiner og AI-systemer.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "visibility",
+      "seo",
+      "geo",
+      "synlighed"
+    ]
+  },
+  "createdAt": "2026-03-31T00:26:34.000Z",
+  "updatedAt": "2026-03-31T00:26:34.000Z"
+}

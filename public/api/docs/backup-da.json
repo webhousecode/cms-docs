@@ -1,0 +1,30 @@
+{
+  "slug": "backup-da",
+  "title": "Backup",
+  "description": "Opret, gendan og synkroniser indholdssnapshots — lokalt eller til cloud-udbydere som pCloud og S3.",
+  "category": "guides",
+  "order": 26,
+  "locale": "da",
+  "translationGroup": "de68858a-9aef-422e-a762-3d3ac21de9af",
+  "helpCardId": null,
+  "content": "## Overblik\n\nBackup-siden lader dig oprette øjebliksbilleder af alt dit siteindhold. Hvis noget går galt — utilsigtede sletninger, fejlagtige masseredigeringer eller beskadigede data — kan du gendanne til en tidligere tilstand.\n\nBackups kan gemmes lokalt eller synkroniseres til cloud-udbydere for ekstern sikkerhed.\n\n## Opret en backup\n\nKlik **Opret Backup** for at tage et snapshot. Backuppen inkluderer:\n\n- Alle dokumenter på tværs af alle collections\n- Mediemetadata (filreferencer og alt-tekst)\n- Dokumentstatusser, planlægninger og oversættelsesgrupper\n- Siteindstillinger og konfiguration\n\nBackups gemmes som komprimerede arkiver ved siden af dit indhold (lokalt) eller uploades til din konfigurerede cloud-udbyder.\n\n## Backupliste\n\nSiden viser alle tilgængelige backups med:\n\n- **Dato og tid** for oprettelse\n- **Størrelse** — samlet arkivstørrelse\n- **Dokumentantal** — antal inkluderede dokumenter\n- **Label** — valgfri beskrivelse du kan tilføje ved oprettelse\n- **Cloud-badge** — viser hvor backuppen er gemt: local, pcloud eller s3\n\n## Cloud backup-udbydere\n\nBackup-destinationer er pluggbare. Konfigurer dem under fanen **Backup** i Indstillinger.\n\n### Lokal (standard)\n\nBackups gemmes på serverens filsystem ved siden af dit indhold. Ingen konfiguration nødvendig.\n\n### pCloud (WebDAV)\n\npCloud tilbyder 10 GB gratis lagring med EU-dataopbevaring. CMS'et forbinder via WebDAV-protokollen.\n\nSådan konfigurerer du:\n1. Gå til **Indstillinger → Backup**\n2. Vælg **pCloud** som backup-udbyder\n3. Indtast dine pCloud WebDAV-loginoplysninger\n4. Klik **Test forbindelse** for at verificere\n\n### S3-kompatibel\n\nEnhver S3-kompatibel lagringsudbyder virker. Anbefalede muligheder:\n\n| Udbyder | Gratis tier |\n|----------|----------|\n| **Cloudflare R2** | 10 GB inkluderet |\n| **Backblaze B2** | 10 GB gratis |\n| **Scaleway** | 75 GB gratis |\n| **Hetzner** | Betal pr. forbrug |\n| **AWS S3** | Betal pr. forbrug |\n\nSådan konfigurerer du:\n1. Gå til **Indstillinger → Backup**\n2. Vælg **S3** som backup-udbyder\n3. Indtast endpoint, bucket, access key og secret key\n4. Klik **Test forbindelse** for at verificere\n\n### Lagerkvote-styring\n\nSæt `backupMaxStorageGB` for automatisk at fjerne de ældste backups, når grænsen er nået. Dette forhindrer cloud-lagring i at vokse ubegrænset.\n\n## Gendan en backup\n\nKlik **Gendan** på en backup for at rulle dit indhold tilbage til det tidspunkt. Denne operation:\n\n1. Erstatter alt nuværende indhold med backuppens indhold\n2. Bevarer den aktuelle backupliste (så du kan fortryde gendannelsen)\n3. Opretter automatisk en pre-restore backup for sikkerhed\n\n**Advarsel:** Gendannelse erstatter ALT nuværende indhold. Ændringer foretaget efter backuppen blev oprettet, vil gå tabt.\n\n### GitHub-backede sites\n\nGendannelse fungerer fuldt ud for GitHub-backede sites. Ved gendannelse:\n\n- Hvert dokument pushes tilbage til GitHub-repositoryet via GitHub Contents API\n- CMS'et henter den aktuelle SHA for eksisterende filer for at håndtere oprettelse vs. opdatering korrekt\n- `_data/`-filer (siteindstillinger mv.) gendannes altid lokalt uanset adapter\n\nDette betyder at en gendannelse på et GitHub-backed site opdaterer både den lokale cache og det eksterne repository.\n\n## Bedste praksis\n\n- Opret en backup før større operationer (masseredigeringer, AI-genereringskørsler, schemaændringer)\n- Giv dine backups beskrivende labels (f.eks. \"Før SEO-omskrivning\" eller \"Pre-launch indholdsfrost\")\n- Brug cloud-udbydere for ekstern sikkerhed — lokale backups går tabt hvis serveren fejler\n- Sæt en lagerkvote for at holde cloud-omkostninger forudsigelige\n\n## Relateret\n\n- [Papirkurv](/docs/trash-da) — gendan individuelle slettede dokumenter\n- [Siteindstillinger](/docs/site-settings-da) — konfigurer backup-opbevaring\n- [Lagringsadaptere](/docs/storage-adapters-da) — filsystem vs. GitHub-lagring",
+  "excerpt": "Overblik\n\nBackup-siden lader dig oprette øjebliksbilleder af alt dit siteindhold. Hvis noget går galt — utilsigtede sletninger, fejlagtige masseredigeringer eller beskadigede data — kan du gendanne til en tidligere tilstand.\n\nBackups kan gemmes lokalt eller synkroniseres til cloud-udbydere for ekste",
+  "seo": {
+    "metaTitle": "Backup — webhouse.app Docs",
+    "metaDescription": "Opret og gendan indholdssnapshots lokalt eller til cloud-udbydere som pCloud og S3.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "backup",
+      "gendan",
+      "snapshot",
+      "databeskyttelse",
+      "cloud",
+      "pcloud",
+      "s3",
+      "github-gendannelse"
+    ]
+  },
+  "createdAt": "2026-03-31T00:26:34.000Z",
+  "updatedAt": "2026-03-31T00:26:34.000Z"
+}

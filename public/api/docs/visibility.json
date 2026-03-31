@@ -1,0 +1,26 @@
+{
+  "slug": "visibility",
+  "title": "Visibility",
+  "description": "Combined SEO and GEO score showing how discoverable your content is.",
+  "category": "guides",
+  "order": 28,
+  "locale": "en",
+  "translationGroup": "0bda0ab4-43d9-4b9b-930a-a6a15e8bebf8",
+  "helpCardId": null,
+  "content": "## Overview\n\nVisibility combines two scores into one metric that tells you how discoverable your content is — both by traditional search engines (SEO) and by AI systems like ChatGPT and Claude (GEO).\n\n## The Visibility Score\n\nEach published document gets a score from 0 to 100:\n\n- **SEO component** — based on meta tags, keyword usage, headings, content length, and technical factors. See [SEO](/docs/seo) for details.\n- **GEO component** — based on structured data, factual clarity, source attribution, and AI-friendly formatting.\n\nThe combined score weights both components to give a single number representing overall discoverability.\n\n## Score Breakdown\n\nClick on any document to see a detailed breakdown:\n\n- **Individual rule scores** — each SEO and GEO rule scored separately\n- **Suggestions** — specific improvements you can make\n- **Priority** — which fixes will have the biggest impact\n\n## Site-Wide View\n\nThe Visibility page shows aggregate data:\n\n- **Average visibility score** across all published documents\n- **Score distribution** — how many documents are excellent, good, needs work, or poor\n- **Trend over time** — whether your visibility is improving or declining\n- **Worst performers** — documents that need the most attention\n\n## Improving Visibility\n\nThe page highlights actionable improvements:\n\n- Missing meta descriptions or titles\n- Content too short for the topic\n- Missing structured data (JSON-LD)\n- Lack of source citations (hurts GEO score)\n- Poor heading hierarchy\n\n## AI Optimization\n\nUse the **AI Optimize** button to automatically improve a document's SEO and GEO scores. The AI will suggest improvements that you can review and apply.\n\n## Related\n\n- [SEO](/docs/seo) — detailed SEO scoring and keyword tracking\n- [Dashboard](/docs/dashboard) — quick visibility score summary\n- [Cockpit](/docs/cockpit) — AI-powered bulk optimization",
+  "excerpt": "Overview\n\nVisibility combines two scores into one metric that tells you how discoverable your content is — both by traditional search engines (SEO) and by AI systems like ChatGPT and Claude (GEO).\n\n The Visibility Score\n\nEach published document gets a score from 0 to 100:\n\n- SEO component — based on",
+  "seo": {
+    "metaTitle": "Visibility — webhouse.app Docs",
+    "metaDescription": "Track your content's combined SEO and GEO visibility score for search engines and AI systems.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "visibility",
+      "seo",
+      "geo",
+      "discoverability"
+    ]
+  },
+  "createdAt": "2026-03-31T00:26:34.000Z",
+  "updatedAt": "2026-03-31T00:26:34.000Z"
+}

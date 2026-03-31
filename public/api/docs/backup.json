@@ -1,0 +1,30 @@
+{
+  "slug": "backup",
+  "title": "Backup",
+  "description": "Create, restore, and sync content snapshots — locally or to cloud providers like pCloud and S3.",
+  "category": "guides",
+  "order": 26,
+  "locale": "en",
+  "translationGroup": "de68858a-9aef-422e-a762-3d3ac21de9af",
+  "helpCardId": null,
+  "content": "## Overview\n\nThe Backup page lets you create point-in-time snapshots of your entire site content. If something goes wrong — accidental deletions, bad bulk edits, or corrupted data — you can restore to a previous state.\n\nBackups can be stored locally or synced to cloud providers for off-site safety.\n\n## Creating a Backup\n\nClick **Create Backup** to take a snapshot. The backup includes:\n\n- All documents across every collection\n- Media metadata (file references and alt text)\n- Document statuses, schedules, and translation groups\n- Site settings and configuration\n\nBackups are stored as compressed archives alongside your content (local) or uploaded to your configured cloud provider.\n\n## Backup List\n\nThe page shows all available backups with:\n\n- **Date and time** of creation\n- **Size** — total archive size\n- **Document count** — number of documents included\n- **Label** — optional description you can add when creating\n- **Cloud badge** — shows where the backup is stored: local, pcloud, or s3\n\n## Cloud Backup Providers\n\nBackup destinations are pluggable. Configure them in the **Backup** tab under Settings.\n\n### Local (default)\n\nBackups are stored on the server filesystem alongside your content. No configuration needed.\n\n### pCloud (WebDAV)\n\npCloud offers 10 GB of free storage with EU data residency. The CMS connects via WebDAV protocol.\n\nTo configure:\n1. Go to **Settings → Backup**\n2. Select **pCloud** as the backup provider\n3. Enter your pCloud WebDAV credentials\n4. Click **Test Connection** to verify\n\n### S3-compatible\n\nAny S3-compatible storage provider works. Recommended options:\n\n| Provider | Free tier |\n|----------|----------|\n| **Cloudflare R2** | 10 GB included |\n| **Backblaze B2** | 10 GB free |\n| **Scaleway** | 75 GB free |\n| **Hetzner** | Pay-per-use |\n| **AWS S3** | Pay-per-use |\n\nTo configure:\n1. Go to **Settings → Backup**\n2. Select **S3** as the backup provider\n3. Enter endpoint, bucket, access key, and secret key\n4. Click **Test Connection** to verify\n\n### Storage Quota Management\n\nSet `backupMaxStorageGB` to automatically prune the oldest backups when the limit is reached. This prevents cloud storage from growing unboundedly.\n\n## Restoring a Backup\n\nClick **Restore** on any backup to roll your content back to that point in time. This operation:\n\n1. Replaces all current content with the backup's content\n2. Preserves the current backup list (so you can undo the restore)\n3. Creates an automatic pre-restore backup for safety\n\n**Warning:** Restoring replaces ALL current content. Any changes made after the backup was created will be lost.\n\n### GitHub-backed Sites\n\nRestore works fully for GitHub-backed sites. When restoring:\n\n- Each document is pushed back to the GitHub repository via the GitHub Contents API\n- The CMS fetches the current SHA for existing files to handle create vs. update correctly\n- `_data/` files (site settings, etc.) are always restored locally regardless of adapter\n\nThis means a restore on a GitHub-backed site updates both the local cache and the remote repository.\n\n## Best Practices\n\n- Create a backup before major operations (bulk edits, AI generation runs, schema changes)\n- Label your backups descriptively (e.g., \"Before SEO rewrite\" or \"Pre-launch content freeze\")\n- Use cloud providers for off-site safety — local backups are lost if the server fails\n- Set a storage quota to keep cloud costs predictable\n\n## Related\n\n- [Trash](/docs/trash) — recover individual deleted documents\n- [Site Settings](/docs/site-settings) — configure backup retention\n- [Storage Adapters](/docs/storage-adapters) — filesystem vs. GitHub storage",
+  "excerpt": "Overview\n\nThe Backup page lets you create point-in-time snapshots of your entire site content. If something goes wrong — accidental deletions, bad bulk edits, or corrupted data — you can restore to a previous state.\n\nBackups can be stored locally or synced to cloud providers for off-site safety.\n\n C",
+  "seo": {
+    "metaTitle": "Backup — webhouse.app Docs",
+    "metaDescription": "Create and restore content snapshots locally or to cloud providers like pCloud and S3.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "backup",
+      "restore",
+      "snapshot",
+      "data-protection",
+      "cloud",
+      "pcloud",
+      "s3",
+      "github-restore"
+    ]
+  },
+  "createdAt": "2026-03-31T00:26:34.000Z",
+  "updatedAt": "2026-03-31T00:26:34.000Z"
+}

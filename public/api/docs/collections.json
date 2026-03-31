@@ -1,0 +1,26 @@
+{
+  "slug": "collections",
+  "title": "Collections",
+  "description": "Browse, filter, create, and manage documents in your content collections.",
+  "category": "guides",
+  "order": 24,
+  "locale": "en",
+  "translationGroup": "47f62ed4-f4bc-4f10-ae5f-bf97827ab996",
+  "helpCardId": null,
+  "content": "## Overview\n\nCollections are the heart of your CMS. Each collection holds documents of a specific type — blog posts, pages, products, team members, or whatever your site needs. The Collections page lets you browse, create, and manage all your content.\n\n## Views\n\nSwitch between two layout modes:\n\n- **Grid view** — visual cards showing title, image, and status. Great for media-heavy collections.\n- **List view** — compact table with sortable columns. Better for large collections.\n\n## Filtering and Search\n\nFind documents quickly with:\n\n- **Text search** — searches across title and content fields\n- **Status filter** — published, draft, or scheduled\n- **Locale filter** — filter by language (for multilingual sites)\n- **Category filter** — narrow down by category field (if configured)\n\n## Creating Documents\n\nClick **New** to create a document. The editor opens with all fields defined in your collection schema. See [Content Structure](/docs/content-structure) for how to define collections and [Field Types](/docs/field-types) for available field types.\n\n## AI Generation\n\nClick **Generate** to create content using AI:\n\n- Choose an [AI Agent](/docs/ai-agents) or use the default writer\n- Provide a topic or brief\n- The generated document enters the [Curation Queue](/docs/curation-queue) for review\n\n## Preview\n\nClick the preview icon on any document to see how it looks on your live site. Preview URLs are constructed from your site's `previewSiteUrl` setting. See [Site Settings](/docs/site-settings) for configuration.\n\n## Bulk Actions\n\nSelect multiple documents to:\n\n- **Publish** or **unpublish** in bulk\n- **Move to trash** — recoverable from the [Trash](/docs/trash)\n- **Export** as JSON\n\n## Related\n\n- [Content Structure](/docs/content-structure) — defining collection schemas\n- [Field Types](/docs/field-types) — available field types\n- [Interactives](/docs/interactives) — data-driven HTML widgets",
+  "excerpt": "Overview\n\nCollections are the heart of your CMS. Each collection holds documents of a specific type — blog posts, pages, products, team members, or whatever your site needs. The Collections page lets you browse, create, and manage all your content.\n\n Views\n\nSwitch between two layout modes:\n\n- Grid v",
+  "seo": {
+    "metaTitle": "Collections — webhouse.app Docs",
+    "metaDescription": "Manage documents in CMS collections: grid and list views, filtering, AI generation, and preview.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "collections",
+      "documents",
+      "content",
+      "management"
+    ]
+  },
+  "createdAt": "2026-03-31T00:26:34.000Z",
+  "updatedAt": "2026-03-31T00:26:34.000Z"
+}

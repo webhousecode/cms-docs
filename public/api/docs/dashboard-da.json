@@ -1,0 +1,25 @@
+{
+  "slug": "dashboard-da",
+  "title": "Dashboard",
+  "description": "Dit indholdsoverblik — statistik, genveje og sitesundhed samlet ét sted.",
+  "category": "guides",
+  "order": 20,
+  "locale": "da",
+  "translationGroup": "4d9ca7c2-f525-4a1e-971b-5677e195471e",
+  "helpCardId": null,
+  "content": "## Overblik\n\nDashboardet er dit udgangspunkt hver gang du åbner CMS-admin. Det giver dig et fugleperspektiv over dit sites indhold og sundhed.\n\n## Indholdsstatistik\n\nØverst ser du nøgletal for dit site:\n\n- **Publicerede dokumenter** — samlet antal på tværs af alle collections\n- **Kladder** — dokumenter der endnu ikke er publiceret\n- **Planlagte** — dokumenter i kø til fremtidig publicering eller afpublicering\n- **Mediefiler** — samlet antal uploadede filer\n\nTallene opdateres i realtid mens du arbejder.\n\n## Genveje\n\nDashboardet giver hurtig adgang til hyppige opgaver:\n\n- **Opret nyt dokument** — spring direkte til editoren for en collection\n- **Seneste ændringer** — en liste over dine sidst redigerede dokumenter\n- **Afventer review** — emner i [Curation Queue](/docs/curation-queue-da) der venter på godkendelse\n\n## Sitesundhed\n\nEt resumépanel viser:\n\n- **Brudte links** — antal problemer fundet af [Link Checker](/docs/link-checker-da)\n- **SEO-score** — gennemsnitlig score på tværs af publicerede sider (se [SEO](/docs/seo-da))\n- **Visibility-score** — kombineret SEO + GEO-performance (se [Visibility](/docs/visibility-da))\n\n## Tips\n\n- Brug Dashboardet som dit daglige tjek — det synliggør problemer før de rammer dine besøgende.\n- Klik på en statistik for at gå i dybden med den relevante side.\n- Dashboardet tilpasser sig dine konfigurerede collections, så du kun ser det relevante.",
+  "excerpt": "Overblik\n\nDashboardet er dit udgangspunkt hver gang du åbner CMS-admin. Det giver dig et fugleperspektiv over dit sites indhold og sundhed.\n\n Indholdsstatistik\n\nØverst ser du nøgletal for dit site:\n\n- Publicerede dokumenter — samlet antal på tværs af alle collections\n- Kladder — dokumenter der endnu",
+  "seo": {
+    "metaTitle": "Dashboard — webhouse.app Docs",
+    "metaDescription": "Overblik over CMS-dashboardet: indholdsstatistik, genveje og sundhedsindikatorer.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "dashboard",
+      "overblik",
+      "admin"
+    ]
+  },
+  "createdAt": "2026-03-31T00:26:34.000Z",
+  "updatedAt": "2026-03-31T00:26:34.000Z"
+}

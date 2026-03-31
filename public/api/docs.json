@@ -1,5 +1,5 @@
 {
-  "count": 65,
+  "count": 89,
   "docs": [
     {
       "slug": "ai-agents-da",
@@ -22,6 +22,28 @@
       "translationGroup": "124d6e34-5c63-4298-b0a8-4604a86f3b3f",
       "helpCardId": "agents-intro",
       "updatedAt": "2026-03-29T21:41:59.069Z"
+    },
+    {
+      "slug": "ai-analytics-da",
+      "title": "AI Analytics",
+      "description": "Spor AI-agentperformance, omkostninger og indholdsgodkendelsesrater.",
+      "category": "guides",
+      "order": 27,
+      "locale": "da",
+      "translationGroup": "c6cec926-ade7-4281-83ec-648256e1acc0",
+      "helpCardId": null,
+      "updatedAt": "2026-03-31T00:26:34.000Z"
+    },
+    {
+      "slug": "ai-analytics",
+      "title": "AI Analytics",
+      "description": "Track AI agent performance, costs, and content acceptance rates.",
+      "category": "guides",
+      "order": 27,
+      "locale": "en",
+      "translationGroup": "c6cec926-ade7-4281-83ec-648256e1acc0",
+      "helpCardId": null,
+      "updatedAt": "2026-03-31T00:26:34.000Z"
     },
     {
       "slug": "ai-builder-guide-da",
@@ -101,6 +123,28 @@
       "updatedAt": "2026-03-29T21:41:59.069Z"
     },
     {
+      "slug": "backup-da",
+      "title": "Backup",
+      "description": "Opret, gendan og synkroniser indholdssnapshots — lokalt eller til cloud-udbydere som pCloud og S3.",
+      "category": "guides",
+      "order": 26,
+      "locale": "da",
+      "translationGroup": "de68858a-9aef-422e-a762-3d3ac21de9af",
+      "helpCardId": null,
+      "updatedAt": "2026-03-31T00:26:34.000Z"
+    },
+    {
+      "slug": "backup",
+      "title": "Backup",
+      "description": "Create, restore, and sync content snapshots — locally or to cloud providers like pCloud and S3.",
+      "category": "guides",
+      "order": 26,
+      "locale": "en",
+      "translationGroup": "de68858a-9aef-422e-a762-3d3ac21de9af",
+      "helpCardId": null,
+      "updatedAt": "2026-03-31T00:26:34.000Z"
+    },
+    {
       "slug": "blocks-da",
       "title": "Blokke",
       "description": "Byg indholdsrige sider med genanvendelige blokkomponenter — hero, features, CTA og brugerdefinerede blokke.",
@@ -143,6 +187,28 @@
       "translationGroup": "607d840a-e643-467b-8bd4-b7f5535bde93",
       "helpCardId": null,
       "updatedAt": "2026-03-30T12:14:24.904Z"
+    },
+    {
+      "slug": "calendar-da",
+      "title": "Kalender",
+      "description": "Planlæg publicering eller afpublicering af indhold på bestemte datoer og tidspunkter.",
+      "category": "guides",
+      "order": 23,
+      "locale": "da",
+      "translationGroup": "330502bb-69d1-460f-a581-7bea144925b7",
+      "helpCardId": null,
+      "updatedAt": "2026-03-31T00:26:34.000Z"
+    },
+    {
+      "slug": "calendar",
+      "title": "Calendar",
+      "description": "Schedule content to publish or unpublish at specific dates and times.",
+      "category": "guides",
+      "order": 23,
+      "locale": "en",
+      "translationGroup": "330502bb-69d1-460f-a581-7bea144925b7",
+      "helpCardId": null,
+      "updatedAt": "2026-03-31T00:26:34.000Z"
     },
     {
       "slug": "chat-da",
@@ -189,6 +255,28 @@
       "updatedAt": "2026-03-29T21:41:59.069Z"
     },
     {
+      "slug": "cockpit-da",
+      "title": "Cockpit",
+      "description": "AI-kommandocentralen — konfigurer genereringsparametre og start AI-opgaver.",
+      "category": "guides",
+      "order": 21,
+      "locale": "da",
+      "translationGroup": "9c8890c5-cb03-4496-be3b-816e949d52d6",
+      "helpCardId": null,
+      "updatedAt": "2026-03-31T00:26:34.000Z"
+    },
+    {
+      "slug": "cockpit",
+      "title": "Cockpit",
+      "description": "The AI command center — configure generation parameters and launch AI tasks.",
+      "category": "guides",
+      "order": 21,
+      "locale": "en",
+      "translationGroup": "9c8890c5-cb03-4496-be3b-816e949d52d6",
+      "helpCardId": null,
+      "updatedAt": "2026-03-31T00:26:34.000Z"
+    },
+    {
       "slug": "collection-naming-da",
       "title": "Best practices for collection-navngivning",
       "description": "Reserverede navne du skal undgå, anbefalede navngivningsmønstre, og hvorfor validatoren fanger konflikter.",
@@ -209,6 +297,28 @@
       "translationGroup": "ad522ba8-74a6-40b8-b5ed-866414336076",
       "helpCardId": null,
       "updatedAt": "2026-03-30T21:48:54.522Z"
+    },
+    {
+      "slug": "collections-da",
+      "title": "Collections",
+      "description": "Gennemse, filtrer, opret og administrer dokumenter i dine indholdscollections.",
+      "category": "guides",
+      "order": 24,
+      "locale": "da",
+      "translationGroup": "47f62ed4-f4bc-4f10-ae5f-bf97827ab996",
+      "helpCardId": null,
+      "updatedAt": "2026-03-31T00:26:34.000Z"
+    },
+    {
+      "slug": "collections",
+      "title": "Collections",
+      "description": "Browse, filter, create, and manage documents in your content collections.",
+      "category": "guides",
+      "order": 24,
+      "locale": "en",
+      "translationGroup": "47f62ed4-f4bc-4f10-ae5f-bf97827ab996",
+      "helpCardId": null,
+      "updatedAt": "2026-03-31T00:26:34.000Z"
     },
     {
       "slug": "config-reference-da",
@@ -253,6 +363,72 @@
       "translationGroup": "358352ed-3a28-414a-aa65-f696925de37a",
       "helpCardId": null,
       "updatedAt": "2026-03-29T21:41:59.069Z"
+    },
+    {
+      "slug": "curation-queue-da",
+      "title": "Curation Queue",
+      "description": "Gennemgå, godkend eller afvis AI-genereret indhold før det går live.",
+      "category": "guides",
+      "order": 22,
+      "locale": "da",
+      "translationGroup": "b9627274-3b7e-4c1b-a6a6-c5caf6298cfc",
+      "helpCardId": null,
+      "updatedAt": "2026-03-31T00:26:34.000Z"
+    },
+    {
+      "slug": "curation-queue",
+      "title": "Curation Queue",
+      "description": "Review, approve, or reject AI-generated content before it goes live.",
+      "category": "guides",
+      "order": 22,
+      "locale": "en",
+      "translationGroup": "b9627274-3b7e-4c1b-a6a6-c5caf6298cfc",
+      "helpCardId": null,
+      "updatedAt": "2026-03-31T00:26:34.000Z"
+    },
+    {
+      "slug": "dashboard-da",
+      "title": "Dashboard",
+      "description": "Dit indholdsoverblik — statistik, genveje og sitesundhed samlet ét sted.",
+      "category": "guides",
+      "order": 20,
+      "locale": "da",
+      "translationGroup": "4d9ca7c2-f525-4a1e-971b-5677e195471e",
+      "helpCardId": null,
+      "updatedAt": "2026-03-31T00:26:34.000Z"
+    },
+    {
+      "slug": "dashboard",
+      "title": "Dashboard",
+      "description": "Your content overview — stats, quick links, and site health at a glance.",
+      "category": "guides",
+      "order": 20,
+      "locale": "en",
+      "translationGroup": "4d9ca7c2-f525-4a1e-971b-5677e195471e",
+      "helpCardId": null,
+      "updatedAt": "2026-03-31T00:26:34.000Z"
+    },
+    {
+      "slug": "deploy-da",
+      "title": "Deploy",
+      "description": "Publicer dit site til hostingudbydere og administrer Instant Content Deployment.",
+      "category": "guides",
+      "order": 31,
+      "locale": "da",
+      "translationGroup": "4e6071b9-cc6d-47b6-ba5e-eb0a301d157c",
+      "helpCardId": null,
+      "updatedAt": "2026-03-31T00:26:34.000Z"
+    },
+    {
+      "slug": "deploy",
+      "title": "Deploy",
+      "description": "Publish your site to hosting providers and manage Instant Content Deployment.",
+      "category": "guides",
+      "order": 31,
+      "locale": "en",
+      "translationGroup": "4e6071b9-cc6d-47b6-ba5e-eb0a301d157c",
+      "helpCardId": null,
+      "updatedAt": "2026-03-31T00:26:34.000Z"
     },
     {
       "slug": "deployment-da",
@@ -329,7 +505,7 @@
       "locale": "da",
       "translationGroup": "ac48668a-63fd-41de-9fe8-24d33407b531",
       "helpCardId": null,
-      "updatedAt": "2026-03-30T19:05:26.409Z"
+      "updatedAt": "2026-03-31T17:11:43.065Z"
     },
     {
       "slug": "i18n",
@@ -340,7 +516,7 @@
       "locale": "en",
       "translationGroup": "ac48668a-63fd-41de-9fe8-24d33407b531",
       "helpCardId": null,
-      "updatedAt": "2026-03-30T19:05:05.979Z"
+      "updatedAt": "2026-03-31T17:11:43.064Z"
     },
     {
       "slug": "instant-content-deployment-da",
@@ -407,6 +583,28 @@
       "translationGroup": "367d914a-4aa5-44e3-a876-1858b869b309",
       "helpCardId": null,
       "updatedAt": "2026-03-29T21:41:59.067Z"
+    },
+    {
+      "slug": "link-checker-da",
+      "title": "Link Checker",
+      "description": "Find og ret brudte links på tværs af dit publicerede indhold.",
+      "category": "guides",
+      "order": 25,
+      "locale": "da",
+      "translationGroup": "8a84fcdc-cd67-46e9-96a0-0005debb2beb",
+      "helpCardId": null,
+      "updatedAt": "2026-03-31T00:26:34.000Z"
+    },
+    {
+      "slug": "link-checker",
+      "title": "Link Checker",
+      "description": "Find and fix broken links across your published content.",
+      "category": "guides",
+      "order": 25,
+      "locale": "en",
+      "translationGroup": "8a84fcdc-cd67-46e9-96a0-0005debb2beb",
+      "helpCardId": null,
+      "updatedAt": "2026-03-31T00:26:34.000Z"
     },
     {
       "slug": "mcp-client-da",
@@ -565,7 +763,7 @@
     {
       "slug": "richtext-da",
       "title": "Richtext-editor",
-      "description": "TipTap-baseret richtext-editor med indlejret medier, callouts, tabeller, kodeblokke og AI-funktioner.",
+      "description": "TipTap-baseret richtext-editor med indlejret medier, callouts, tabeller, kodeblokke, inline AI-korrektur og mere.",
       "category": "guides",
       "order": 5,
       "locale": "da",
@@ -576,13 +774,13 @@
     {
       "slug": "richtext",
       "title": "Richtext Editor",
-      "description": "TipTap-based rich text editor with embedded media, callouts, tables, code blocks, and AI features.",
+      "description": "TipTap-based rich text editor with embedded media, callouts, tables, code blocks, inline AI proofreading, and more.",
       "category": "guides",
       "order": 5,
       "locale": "en",
       "translationGroup": "d38c7b08-bebb-4ac4-92b4-a438813690e3",
       "helpCardId": null,
-      "updatedAt": "2026-03-29T21:56:59.900Z"
+      "updatedAt": "2026-03-29T22:00:00.000Z"
     },
     {
       "slug": "seo-da",
@@ -651,6 +849,28 @@
       "updatedAt": "2026-03-30T19:08:49.345Z"
     },
     {
+      "slug": "site-settings-da",
+      "title": "Siteindstillinger",
+      "description": "Konfigurer dit site — generelle indstillinger, sprog, preview, deploy og mere.",
+      "category": "guides",
+      "order": 29,
+      "locale": "da",
+      "translationGroup": "93e86271-c11d-476f-8b12-14e99e27c7de",
+      "helpCardId": null,
+      "updatedAt": "2026-03-31T00:26:34.000Z"
+    },
+    {
+      "slug": "site-settings",
+      "title": "Site Settings",
+      "description": "Configure your site — general settings, locales, preview, deploy, and more.",
+      "category": "guides",
+      "order": 29,
+      "locale": "en",
+      "translationGroup": "93e86271-c11d-476f-8b12-14e99e27c7de",
+      "helpCardId": null,
+      "updatedAt": "2026-03-31T00:26:34.000Z"
+    },
+    {
       "slug": "storage-adapters-da",
       "title": "Lagringsadaptere",
       "description": "Vælg hvor dit indhold gemmes — filsystem, GitHub, SQLite eller Supabase.",
@@ -695,6 +915,28 @@
       "updatedAt": "2026-03-30T12:01:00.047Z"
     },
     {
+      "slug": "trash-da",
+      "title": "Papirkurv",
+      "description": "Gendan slettede dokumenter eller fjern dem permanent.",
+      "category": "guides",
+      "order": 30,
+      "locale": "da",
+      "translationGroup": "9c908845-6181-4cf2-8b78-8d8d94c3b939",
+      "helpCardId": null,
+      "updatedAt": "2026-03-31T00:26:34.000Z"
+    },
+    {
+      "slug": "trash",
+      "title": "Trash",
+      "description": "Recover deleted documents or permanently remove them.",
+      "category": "guides",
+      "order": 30,
+      "locale": "en",
+      "translationGroup": "9c908845-6181-4cf2-8b78-8d8d94c3b939",
+      "helpCardId": null,
+      "updatedAt": "2026-03-31T00:26:34.000Z"
+    },
+    {
       "slug": "troubleshooting-da",
       "title": "Fejlfinding",
       "description": "Almindelige problemer og løsninger — GitHub-adapter, indhold vises ikke, portkonflikter, billeder og mere.",
@@ -715,6 +957,28 @@
       "translationGroup": "2442bcd6-bbc3-4b72-93e0-4bdf99647210",
       "helpCardId": null,
       "updatedAt": "2026-03-29T21:56:59.903Z"
+    },
+    {
+      "slug": "visibility-da",
+      "title": "Visibility",
+      "description": "Kombineret SEO- og GEO-score der viser hvor synligt dit indhold er.",
+      "category": "guides",
+      "order": 28,
+      "locale": "da",
+      "translationGroup": "0bda0ab4-43d9-4b9b-930a-a6a15e8bebf8",
+      "helpCardId": null,
+      "updatedAt": "2026-03-31T00:26:34.000Z"
+    },
+    {
+      "slug": "visibility",
+      "title": "Visibility",
+      "description": "Combined SEO and GEO score showing how discoverable your content is.",
+      "category": "guides",
+      "order": 28,
+      "locale": "en",
+      "translationGroup": "0bda0ab4-43d9-4b9b-930a-a6a15e8bebf8",
+      "helpCardId": null,
+      "updatedAt": "2026-03-31T00:26:34.000Z"
     }
   ]
 }

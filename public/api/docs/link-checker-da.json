@@ -1,0 +1,26 @@
+{
+  "slug": "link-checker-da",
+  "title": "Link Checker",
+  "description": "Find og ret brudte links på tværs af dit publicerede indhold.",
+  "category": "guides",
+  "order": 25,
+  "locale": "da",
+  "translationGroup": "8a84fcdc-cd67-46e9-96a0-0005debb2beb",
+  "helpCardId": null,
+  "content": "## Overblik\n\nLink Checker scanner alle publicerede dokumenter for brudte links — både interne og eksterne. Brudte links skader din SEO-placering og frustrerer besøgende, så regelmæssig kontrol er vigtig.\n\n## Kør en scanning\n\nKlik **Kør Tjek** for at starte en fuld scanning. Checkeren:\n\n1. Indsamler alle URL'er fra publicerede dokumenter (links i richtext, URL-felter osv.)\n2. Tester hver URL for tilgængelighed\n3. Rapporterer resultater grupperet efter statuskode\n\n## Resultater\n\nHvert resultat viser:\n\n- **URL** — det brudte eller problematiske link\n- **Status** — HTTP-statuskode (404, 500, timeout osv.)\n- **Placering** — hvilket dokument og felt der indeholder linket\n- **Type** — internt link eller eksternt link\n\n## Statuskategorier\n\n- **Brudt (4xx)** — siden eksisterer ikke. Ret eller fjern linket.\n- **Serverfejl (5xx)** — målserveren har et problem. Kan være midlertidigt.\n- **Timeout** — målet svarede ikke i tide. Kan være midlertidigt.\n- **Redirect (3xx)** — linket virker men omdirigerer. Overvej at opdatere til den endelige URL.\n\n## Ret links\n\nKlik på et resultat for at springe direkte til dokumenteditoren hvor det brudte link findes. Ret URL'en og gem.\n\n## Bedste praksis\n\n- Kør Link Checker ugentligt, eller efter store indholdsændringer\n- Fokuser på interne brudte links først — dem kontrollerer du\n- Tjek [Dashboardet](/docs/dashboard-da) for et hurtigt overblik over brudte links\n- Eksterne links kan være midlertidigt nede — dobbelttjek før du fjerner dem\n\n## Relateret\n\n- [SEO](/docs/seo-da) — SEO-scoring og optimering\n- [Richtext-editor](/docs/richtext-da) — hvor de fleste links oprettes",
+  "excerpt": "Overblik\n\nLink Checker scanner alle publicerede dokumenter for brudte links — både interne og eksterne. Brudte links skader din SEO-placering og frustrerer besøgende, så regelmæssig kontrol er vigtig.\n\n Kør en scanning\n\nKlik Kør Tjek for at starte en fuld scanning. Checkeren:\n\n1. Indsamler alle URL'",
+  "seo": {
+    "metaTitle": "Link Checker — webhouse.app Docs",
+    "metaDescription": "Scan dit site for brudte links og ret dem før besøgende støder på fejl.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "link-checker",
+      "brudte-links",
+      "seo",
+      "kvalitet"
+    ]
+  },
+  "createdAt": "2026-03-31T00:26:34.000Z",
+  "updatedAt": "2026-03-31T00:26:34.000Z"
+}
