@@ -11,7 +11,7 @@ export interface SidebarCategory {
   docs: { slug: string; title: string }[];
 }
 
-export function DocsSidebar({ categories }: { categories: SidebarCategory[] }) {
+export function DocsSidebar({ categories, locale = "en" }: { categories: SidebarCategory[]; locale?: string }) {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   // Default: all categories collapsed, except the one containing the active page
@@ -73,7 +73,7 @@ export function DocsSidebar({ categories }: { categories: SidebarCategory[] }) {
           }}
         >
           {allExpanded ? <ChevronsDownUp size={12} /> : <ChevronsUpDown size={12} />}
-          {allExpanded ? "Collapse" : "Expand"}
+          {allExpanded ? (locale === "da" ? "Luk" : "Collapse") : (locale === "da" ? "Åbn" : "Expand")}
         </button>
       </div>
       {categories.map((cat) => {

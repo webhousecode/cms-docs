@@ -81,7 +81,7 @@ export default async function DocPage(props: {
 
   return (
     <div style={{ display: "flex" }}>
-      <DocsSidebar categories={sidebarData} />
+      <DocsSidebar categories={sidebarData} locale={locale} />
 
       <main
         style={{
