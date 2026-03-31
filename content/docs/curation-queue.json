@@ -1,0 +1,30 @@
+{
+  "id": "776231b6-9aae-4257-8297-ac5b88179b78",
+  "slug": "curation-queue",
+  "status": "published",
+  "locale": "en",
+  "translationGroup": "b9627274-3b7e-4c1b-a6a6-c5caf6298cfc",
+  "data": {
+    "title": "Curation Queue",
+    "description": "Review, approve, or reject AI-generated content before it goes live.",
+    "content": "## Overview\n\nThe Curation Queue is where AI-generated content lands before it reaches your site. Every document created or modified by an AI agent goes through this review step, giving you full editorial control.\n\n## How It Works\n\n1. An [AI Agent](/docs/ai-agents) generates or modifies a document\n2. The document appears in the Curation Queue with status \"pending\"\n3. You review the content, make edits if needed\n4. You **approve** (publishes the document) or **reject** (discards it)\n\n## Queue Interface\n\nEach item in the queue shows:\n\n- **Title and collection** — which document and where it belongs\n- **Agent name** — which AI agent created it\n- **Generated date** — when the content was produced\n- **Preview** — click to see the full content before deciding\n\n## Actions\n\n- **Approve** — accepts the content and publishes it (or saves as draft, depending on your workflow)\n- **Reject** — discards the generated content with an optional reason\n- **Edit** — open the document in the editor to make changes before approving\n- **Bulk actions** — approve or reject multiple items at once\n\n## Filtering\n\nFilter the queue by:\n\n- Agent name\n- Collection\n- Date range\n- Status (pending, approved, rejected)\n\n## Best Practices\n\n- Review the queue daily to keep content flowing\n- Use rejection reasons to improve agent prompts over time\n- Check the [AI Analytics](/docs/ai-analytics) page to track acceptance rates per agent\n\n## Related\n\n- [AI Agents](/docs/ai-agents) — configure what content gets generated\n- [Cockpit](/docs/cockpit) — AI command center",
+    "category": "guides",
+    "order": 22,
+    "_seo": {
+      "metaTitle": "Curation Queue — webhouse.app Docs",
+      "metaDescription": "Review and approve AI-generated content in the Curation Queue before publishing.",
+      "keywords": [
+        "webhouse",
+        "cms",
+        "curation",
+        "queue",
+        "review",
+        "ai",
+        "approval"
+      ]
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-31T00:26:34.000Z",
+  "updatedAt": "2026-03-31T00:26:34.000Z"
+}

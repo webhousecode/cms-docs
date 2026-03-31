@@ -1,0 +1,29 @@
+{
+  "id": "cfa5ec0f-59b1-4f17-9f85-07b1e4e1ae1e",
+  "slug": "backup-da",
+  "status": "published",
+  "locale": "da",
+  "translationGroup": "de68858a-9aef-422e-a762-3d3ac21de9af",
+  "data": {
+    "title": "Backup",
+    "description": "Opret og gendan indholdssnapshots for at beskytte mod datatab.",
+    "content": "## Overblik\n\nBackup-siden lader dig oprette øjebliksbilleder af alt dit siteindhold. Hvis noget går galt — utilsigtede sletninger, fejlagtige masseredigeringer eller beskadigede data — kan du gendanne til en tidligere tilstand.\n\n## Opret en backup\n\nKlik **Opret Backup** for at tage et snapshot. Backuppen inkluderer:\n\n- Alle dokumenter på tværs af alle collections\n- Mediemetadata (filreferencer og alt-tekst)\n- Dokumentstatusser, planlægninger og oversættelsesgrupper\n- Siteindstillinger og konfiguration\n\nBackups gemmes som komprimerede arkiver ved siden af dit indhold.\n\n## Backupliste\n\nSiden viser alle tilgængelige backups med:\n\n- **Dato og tid** for oprettelse\n- **Størrelse** — samlet arkivstørrelse\n- **Dokumentantal** — antal inkluderede dokumenter\n- **Label** — valgfri beskrivelse du kan tilføje ved oprettelse\n\n## Gendan en backup\n\nKlik **Gendan** på en backup for at rulle dit indhold tilbage til det tidspunkt. Denne operation:\n\n1. Erstatter alt nuværende indhold med backuppens indhold\n2. Bevarer den aktuelle backupliste (så du kan fortryde gendannelsen)\n3. Opretter automatisk en pre-restore backup for sikkerhed\n\n**Advarsel:** Gendannelse erstatter ALT nuværende indhold. Ændringer foretaget efter backuppen blev oprettet, vil gå tabt.\n\n## Bedste praksis\n\n- Opret en backup før større operationer (masseredigeringer, AI-genereringskørsler, schemaændringer)\n- Giv dine backups beskrivende labels (f.eks. \"Før SEO-omskrivning\" eller \"Pre-launch indholdsfrost\")\n- Download periodisk backups til ekstern opbevaring\n\n## Relateret\n\n- [Papirkurv](/docs/trash-da) — gendan individuelle slettede dokumenter\n- [Siteindstillinger](/docs/site-settings-da) — konfigurer backup-opbevaring",
+    "category": "guides",
+    "order": 26,
+    "_seo": {
+      "metaTitle": "Backup — webhouse.app Docs",
+      "metaDescription": "Opret og gendan indholdssnapshots for at beskytte dit site mod datatab.",
+      "keywords": [
+        "webhouse",
+        "cms",
+        "backup",
+        "gendan",
+        "snapshot",
+        "databeskyttelse"
+      ]
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-31T00:26:34.000Z",
+  "updatedAt": "2026-03-31T00:26:34.000Z"
+}

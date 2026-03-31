@@ -1,0 +1,29 @@
+{
+  "id": "585ffb4f-853d-434e-b8cf-da70c2e429aa",
+  "slug": "cockpit-da",
+  "status": "published",
+  "locale": "da",
+  "translationGroup": "9c8890c5-cb03-4496-be3b-816e949d52d6",
+  "data": {
+    "title": "Cockpit",
+    "description": "AI-kommandocentralen — konfigurer genereringsparametre og start AI-opgaver.",
+    "content": "## Overblik\n\nCockpittet er din AI-kommandocentral. Her konfigurerer du hvordan CMS'et genererer, optimerer og oversætter indhold med AI.\n\n## Genereringsparametre\n\nSæt globale standarder der gælder for alle AI-operationer:\n\n- **Brandvoice** — definer tone, stil og ordforrådsretningslinjer som alle agenter følger\n- **Målgruppe** — beskriv hvem dit indhold er til\n- **Sprogpræferencer** — standardsprog og oversættelsesmål\n- **Indholdslængde** — foretrukne ordantal for forskellige indholdstyper\n\nDisse parametre nedarves af alle [AI-agenter](/docs/ai-agents-da) medmindre de tilsidesættes på agentniveau.\n\n## AI-modelkonfiguration\n\nVælg hvilken AI-model der driver din indholdsgenerering:\n\n- Vælg mellem tilgængelige modeller (GPT-4o, Claude, m.fl.)\n- Indstil temperatur og kreativitetsniveau\n- Konfigurer maksimale tokenlimits\n\n## Hurtige handlinger\n\nStart almindelige AI-opgaver direkte fra Cockpittet:\n\n- **Generer indhold** — opret nye dokumenter med dine agenter\n- **Masseoptimer** — kør SEO-optimering på tværs af flere dokumenter\n- **Oversæt site** — oversæt alt indhold til et nyt sprog\n- **Korrekturlæs** — tjek indhold for grammatik- og stilproblemer\n\n## Omkostningssporing\n\nCockpittet viser et løbende resumé af AI-forbrug og omkostninger. For detaljerede opdelinger, se [AI Analytics](/docs/ai-analytics-da).\n\n## Relateret\n\n- [AI-agenter](/docs/ai-agents-da) — opret og administrer individuelle agenter\n- [Curation Queue](/docs/curation-queue-da) — gennemgå AI-genereret indhold før publicering\n- [AI Analytics](/docs/ai-analytics-da) — detaljeret omkostnings- og performancesporing",
+    "category": "guides",
+    "order": 21,
+    "_seo": {
+      "metaTitle": "Cockpit — webhouse.app Docs",
+      "metaDescription": "AI Cockpit: konfigurer genereringsparametre, håndter brandvoice og start AI-indholdsopgaver.",
+      "keywords": [
+        "webhouse",
+        "cms",
+        "cockpit",
+        "ai",
+        "generering",
+        "parametre"
+      ]
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-31T00:26:34.000Z",
+  "updatedAt": "2026-03-31T00:26:34.000Z"
+}

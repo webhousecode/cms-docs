@@ -1,0 +1,28 @@
+{
+  "id": "e71376b9-2adb-4d51-9e96-8d3d59330b5b",
+  "slug": "dashboard",
+  "status": "published",
+  "locale": "en",
+  "translationGroup": "4d9ca7c2-f525-4a1e-971b-5677e195471e",
+  "data": {
+    "title": "Dashboard",
+    "description": "Your content overview — stats, quick links, and site health at a glance.",
+    "content": "## Overview\n\nThe Dashboard is your starting point every time you open the CMS admin. It gives you a bird's-eye view of your site's content and health.\n\n## Content Statistics\n\nAt the top you'll see key numbers for your site:\n\n- **Published documents** — total count across all collections\n- **Drafts** — documents not yet published\n- **Scheduled** — documents queued for future publish or unpublish\n- **Media files** — total uploaded assets\n\nThese counters update in real time as you work.\n\n## Quick Links\n\nThe Dashboard provides shortcuts to frequent tasks:\n\n- **Create new document** — jump straight to the editor for any collection\n- **Recent edits** — a list of your most recently modified documents\n- **Pending reviews** — items in the [Curation Queue](/docs/curation-queue) waiting for approval\n\n## Site Health\n\nA summary panel shows:\n\n- **Broken links** — number of issues found by the [Link Checker](/docs/link-checker)\n- **SEO score** — average score across published pages (see [SEO](/docs/seo))\n- **Visibility score** — combined SEO + GEO performance (see [Visibility](/docs/visibility))\n\n## Tips\n\n- Use the Dashboard as your daily check-in — it surfaces problems before they reach your visitors.\n- Click any stat to drill down into the relevant page.\n- The Dashboard adapts to your site's configured collections, so you only see what's relevant.",
+    "category": "guides",
+    "order": 20,
+    "_seo": {
+      "metaTitle": "Dashboard — webhouse.app Docs",
+      "metaDescription": "Overview of the CMS dashboard: content stats, quick links, and site health indicators.",
+      "keywords": [
+        "webhouse",
+        "cms",
+        "dashboard",
+        "overview",
+        "admin"
+      ]
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-31T00:26:34.000Z",
+  "updatedAt": "2026-03-31T00:26:34.000Z"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "527276d0-6b61-4cde-a5e1-31143499cec6",
+  "slug": "deploy-da",
+  "status": "published",
+  "locale": "da",
+  "translationGroup": "4e6071b9-cc6d-47b6-ba5e-eb0a301d157c",
+  "data": {
+    "title": "Deploy",
+    "description": "Publicer dit site til hostingudbydere og administrer Instant Content Deployment.",
+    "content": "## Overblik\n\nDeploy-siden i CMS-admin er din ét-klik publiceringsoverflade. Den forbinder til din konfigurerede hostingudbyder og starter builds eller pusher indhold direkte.\n\n## Understøttede udbydere\n\nDeploy-siden fungerer med fire hostingudbydere:\n\n- **GitHub Pages** — statisk eksport pushet til et GitHub-repository\n- **Fly.io** — Docker-baseret deployment med valgfri [ICD](/docs/instant-content-deployment-da)\n- **Vercel** — automatiske builds via Git-integration\n- **Netlify** — automatiske builds via Git-integration\n\nSe [Deployment](/docs/deployment-da) for detaljerede opsætningsinstruktioner for hver udbyder.\n\n## Start en deploy\n\nKlik **Deploy** for at starte en build- og publiceringscyklus. Siden viser:\n\n- **Build-status** — realtids fremgangsindikator\n- **Build-log** — output fra build-processen\n- **Deploy-historik** — liste over tidligere deploys med tidsstempler og status\n\n## Instant Content Deployment (ICD)\n\nFor sites på Fly.io kan du aktivere ICD for næsten øjeblikkelige indholdsopdateringer uden fuld rebuild:\n\n- Indholdsændringer pushes direkte til den kørende instans\n- Ændringer er live på cirka 2 sekunder\n- Ingen Docker-rebuild påkrævet\n\nSe [ICD-guiden](/docs/instant-content-deployment-da) for fuld opsætning.\n\n## Deploy-historik\n\nHistoriktabellen viser:\n\n- **Dato og tid** for hver deploy\n- **Trigger** — manuel, planlagt eller ICD\n- **Status** — succes, fejlet eller i gang\n- **Varighed** — hvor lang tid buildet tog\n\n## Fejlfinding\n\nHvis en deploy fejler:\n\n- Tjek build-loggen for fejlmeddelelser\n- Sørg for at miljøvariabler er sat korrekt\n- Verificer dine hostingudbyder-legitimationsoplysninger i [Siteindstillinger](/docs/site-settings-da)\n- Se [Fejlfinding](/docs/troubleshooting-da) for almindelige problemer\n\n## Relateret\n\n- [Deployment](/docs/deployment-da) — opsætningsguides for udbydere\n- [Instant Content Deployment](/docs/instant-content-deployment-da) — ICD-konfiguration\n- [Siteindstillinger](/docs/site-settings-da) — deploymål-konfiguration",
+    "category": "guides",
+    "order": 31,
+    "_seo": {
+      "metaTitle": "Deploy-side — webhouse.app Docs",
+      "metaDescription": "Brug Deploy-siden til at publicere dit site og administrere Instant Content Deployment (ICD).",
+      "keywords": [
+        "webhouse",
+        "cms",
+        "deploy",
+        "publicer",
+        "hosting",
+        "icd"
+      ]
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-31T00:26:34.000Z",
+  "updatedAt": "2026-03-31T00:26:34.000Z"
+}

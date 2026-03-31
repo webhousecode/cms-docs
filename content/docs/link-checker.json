@@ -1,0 +1,29 @@
+{
+  "id": "5ce1e620-fe01-43c8-96b7-3fca70b1af63",
+  "slug": "link-checker",
+  "status": "published",
+  "locale": "en",
+  "translationGroup": "8a84fcdc-cd67-46e9-96a0-0005debb2beb",
+  "data": {
+    "title": "Link Checker",
+    "description": "Find and fix broken links across your published content.",
+    "content": "## Overview\n\nThe Link Checker scans all published documents for broken links — both internal and external. Broken links hurt your SEO ranking and frustrate visitors, so regular checking is important.\n\n## Running a Scan\n\nClick **Run Check** to start a full scan. The checker:\n\n1. Collects all URLs from published documents (links in richtext, URL fields, etc.)\n2. Tests each URL for availability\n3. Reports results grouped by status code\n\n## Results\n\nEach result shows:\n\n- **URL** — the broken or problematic link\n- **Status** — HTTP status code (404, 500, timeout, etc.)\n- **Location** — which document and field contains the link\n- **Type** — internal link or external link\n\n## Status Categories\n\n- **Broken (4xx)** — the page doesn't exist. Fix or remove the link.\n- **Server error (5xx)** — the target server has a problem. May be temporary.\n- **Timeout** — the target didn't respond in time. May be temporary.\n- **Redirect (3xx)** — the link works but redirects. Consider updating to the final URL.\n\n## Fixing Links\n\nClick on any result to jump directly to the document editor where the broken link lives. Fix the URL and save.\n\n## Best Practices\n\n- Run the Link Checker weekly, or after large content changes\n- Focus on internal broken links first — you control those\n- Check the [Dashboard](/docs/dashboard) for a quick broken-link count\n- External links may be temporarily down — recheck before removing them\n\n## Related\n\n- [SEO](/docs/seo) — SEO scoring and optimization\n- [Richtext Editor](/docs/richtext) — where most links are created",
+    "category": "guides",
+    "order": 25,
+    "_seo": {
+      "metaTitle": "Link Checker — webhouse.app Docs",
+      "metaDescription": "Scan your site for broken links and fix them before visitors encounter errors.",
+      "keywords": [
+        "webhouse",
+        "cms",
+        "link-checker",
+        "broken-links",
+        "seo",
+        "quality"
+      ]
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-31T00:26:34.000Z",
+  "updatedAt": "2026-03-31T00:26:34.000Z"
+}

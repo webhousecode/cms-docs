@@ -1,0 +1,29 @@
+{
+  "id": "3dc1c421-b445-4e27-9e64-f7116514d0b1",
+  "slug": "deploy",
+  "status": "published",
+  "locale": "en",
+  "translationGroup": "4e6071b9-cc6d-47b6-ba5e-eb0a301d157c",
+  "data": {
+    "title": "Deploy",
+    "description": "Publish your site to hosting providers and manage Instant Content Deployment.",
+    "content": "## Overview\n\nThe Deploy page in CMS admin is your one-click publishing interface. It connects to your configured hosting provider and triggers builds or pushes content directly.\n\n## Supported Providers\n\nThe Deploy page works with four hosting providers:\n\n- **GitHub Pages** — static export pushed to a GitHub repository\n- **Fly.io** — Docker-based deployment with optional [ICD](/docs/instant-content-deployment)\n- **Vercel** — automatic builds via Git integration\n- **Netlify** — automatic builds via Git integration\n\nSee [Deployment](/docs/deployment) for detailed setup instructions for each provider.\n\n## Triggering a Deploy\n\nClick **Deploy** to start a build and publish cycle. The page shows:\n\n- **Build status** — real-time progress indicator\n- **Build log** — output from the build process\n- **Deploy history** — list of previous deploys with timestamps and status\n\n## Instant Content Deployment (ICD)\n\nFor sites on Fly.io, you can enable ICD for near-instant content updates without a full rebuild:\n\n- Content changes are pushed directly to the running instance\n- Changes are live in approximately 2 seconds\n- No Docker rebuild required\n\nSee the [ICD guide](/docs/instant-content-deployment) for full setup.\n\n## Deploy History\n\nThe history table shows:\n\n- **Date and time** of each deploy\n- **Trigger** — manual, scheduled, or ICD\n- **Status** — success, failed, or in progress\n- **Duration** — how long the build took\n\n## Troubleshooting\n\nIf a deploy fails:\n\n- Check the build log for error messages\n- Ensure environment variables are set correctly\n- Verify your hosting provider credentials in [Site Settings](/docs/site-settings)\n- See [Troubleshooting](/docs/troubleshooting) for common issues\n\n## Related\n\n- [Deployment](/docs/deployment) — provider setup guides\n- [Instant Content Deployment](/docs/instant-content-deployment) — ICD configuration\n- [Site Settings](/docs/site-settings) — deploy target configuration",
+    "category": "guides",
+    "order": 31,
+    "_seo": {
+      "metaTitle": "Deploy Page — webhouse.app Docs",
+      "metaDescription": "Use the Deploy page to publish your site and manage Instant Content Deployment (ICD).",
+      "keywords": [
+        "webhouse",
+        "cms",
+        "deploy",
+        "publish",
+        "hosting",
+        "icd"
+      ]
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-31T00:26:34.000Z",
+  "updatedAt": "2026-03-31T00:26:34.000Z"
+}

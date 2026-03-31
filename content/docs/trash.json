@@ -1,0 +1,29 @@
+{
+  "id": "e8991730-ac80-455c-aaab-c94675e3bfdc",
+  "slug": "trash",
+  "status": "published",
+  "locale": "en",
+  "translationGroup": "9c908845-6181-4cf2-8b78-8d8d94c3b939",
+  "data": {
+    "title": "Trash",
+    "description": "Recover deleted documents or permanently remove them.",
+    "content": "## Overview\n\nWhen you delete a document in the CMS, it moves to the Trash instead of being permanently removed. This gives you a safety net to recover content that was deleted by mistake.\n\n## Viewing Trashed Documents\n\nThe Trash page lists all deleted documents with:\n\n- **Title** — the document's title at the time of deletion\n- **Collection** — which collection it belonged to\n- **Deleted date** — when it was moved to trash\n- **Deleted by** — who performed the deletion (if user tracking is enabled)\n\n## Restoring Documents\n\nClick **Restore** on any trashed document to bring it back. The document returns to its original collection with its original status (draft or published).\n\nRestored documents retain all their content, metadata, and translation group connections.\n\n## Permanent Deletion\n\nTo permanently remove documents from the Trash:\n\n- **Individual** — click the delete button on a specific trashed document\n- **Empty Trash** — removes all trashed documents at once\n\n**Warning:** Permanent deletion cannot be undone. If you need a safety net, create a [Backup](/docs/backup) first.\n\n## Automatic Cleanup\n\nTrashed documents are retained indefinitely by default. You can configure automatic cleanup in [Site Settings](/docs/site-settings) to permanently delete items after a set number of days.\n\n## Related\n\n- [Collections](/docs/collections) — where documents live before deletion\n- [Backup](/docs/backup) — create full content snapshots for extra safety",
+    "category": "guides",
+    "order": 30,
+    "_seo": {
+      "metaTitle": "Trash — webhouse.app Docs",
+      "metaDescription": "Recover deleted documents from the Trash or permanently remove them.",
+      "keywords": [
+        "webhouse",
+        "cms",
+        "trash",
+        "delete",
+        "recover",
+        "restore"
+      ]
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-31T00:26:34.000Z",
+  "updatedAt": "2026-03-31T00:26:34.000Z"
+}

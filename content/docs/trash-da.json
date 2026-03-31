@@ -1,0 +1,29 @@
+{
+  "id": "c7cd5b2a-e22d-4268-88fb-740a30324614",
+  "slug": "trash-da",
+  "status": "published",
+  "locale": "da",
+  "translationGroup": "9c908845-6181-4cf2-8b78-8d8d94c3b939",
+  "data": {
+    "title": "Papirkurv",
+    "description": "Gendan slettede dokumenter eller fjern dem permanent.",
+    "content": "## Overblik\n\nNår du sletter et dokument i CMS'et, flyttes det til Papirkurven i stedet for at blive fjernet permanent. Det giver dig et sikkerhedsnet til at gendanne indhold der blev slettet ved en fejl.\n\n## Se slettede dokumenter\n\nPapirkurvsiden lister alle slettede dokumenter med:\n\n- **Titel** — dokumentets titel på slettetidspunktet\n- **Collection** — hvilken collection det tilhørte\n- **Slettet dato** — hvornår det blev flyttet til papirkurven\n- **Slettet af** — hvem der udførte sletningen (hvis brugersporing er aktiveret)\n\n## Gendan dokumenter\n\nKlik **Gendan** på et slettet dokument for at bringe det tilbage. Dokumentet vender tilbage til sin oprindelige collection med sin oprindelige status (kladde eller publiceret).\n\nGendannede dokumenter bevarer alt deres indhold, metadata og oversættelsesgrupperelationer.\n\n## Permanent sletning\n\nFor permanent at fjerne dokumenter fra Papirkurven:\n\n- **Individuelt** — klik på sletteknappen på et specifikt slettet dokument\n- **Tøm Papirkurv** — fjerner alle slettede dokumenter på én gang\n\n**Advarsel:** Permanent sletning kan ikke fortrydes. Hvis du har brug for et sikkerhedsnet, opret en [Backup](/docs/backup-da) først.\n\n## Automatisk oprydning\n\nSlettede dokumenter beholdes som standard på ubestemt tid. Du kan konfigurere automatisk oprydning i [Siteindstillinger](/docs/site-settings-da) til permanent at slette elementer efter et bestemt antal dage.\n\n## Relateret\n\n- [Collections](/docs/collections-da) — hvor dokumenter bor før sletning\n- [Backup](/docs/backup-da) — opret fulde indholdssnapshots for ekstra sikkerhed",
+    "category": "guides",
+    "order": 30,
+    "_seo": {
+      "metaTitle": "Papirkurv — webhouse.app Docs",
+      "metaDescription": "Gendan slettede dokumenter fra Papirkurven eller fjern dem permanent.",
+      "keywords": [
+        "webhouse",
+        "cms",
+        "papirkurv",
+        "slet",
+        "gendan",
+        "gendannelse"
+      ]
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-31T00:26:34.000Z",
+  "updatedAt": "2026-03-31T00:26:34.000Z"
+}

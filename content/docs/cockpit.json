@@ -1,0 +1,29 @@
+{
+  "id": "ad5a6a22-e5cb-4e28-adad-d52645235743",
+  "slug": "cockpit",
+  "status": "published",
+  "locale": "en",
+  "translationGroup": "9c8890c5-cb03-4496-be3b-816e949d52d6",
+  "data": {
+    "title": "Cockpit",
+    "description": "The AI command center — configure generation parameters and launch AI tasks.",
+    "content": "## Overview\n\nThe Cockpit is your AI command center. It's where you configure how the CMS generates, optimizes, and translates content using AI.\n\n## Generation Parameters\n\nSet global defaults that apply to all AI operations:\n\n- **Brand voice** — define tone, style, and vocabulary guidelines that every agent follows\n- **Target audience** — describe who your content is for\n- **Language preferences** — default locale and translation targets\n- **Content length** — preferred word counts for different content types\n\nThese parameters are inherited by all [AI Agents](/docs/ai-agents) unless overridden at the agent level.\n\n## AI Model Configuration\n\nChoose which AI model powers your content generation:\n\n- Select from available models (GPT-4o, Claude, etc.)\n- Set temperature and creativity levels\n- Configure maximum token limits\n\n## Quick Actions\n\nLaunch common AI tasks directly from the Cockpit:\n\n- **Generate content** — create new documents using your agents\n- **Bulk optimize** — run SEO optimization across multiple documents\n- **Translate site** — translate all content to a new locale\n- **Proofread** — check content for grammar and style issues\n\n## Cost Tracking\n\nThe Cockpit shows a running summary of AI usage and costs. For detailed breakdowns, see [AI Analytics](/docs/ai-analytics).\n\n## Related\n\n- [AI Agents](/docs/ai-agents) — create and manage individual agents\n- [Curation Queue](/docs/curation-queue) — review AI-generated content before publishing\n- [AI Analytics](/docs/ai-analytics) — detailed cost and performance tracking",
+    "category": "guides",
+    "order": 21,
+    "_seo": {
+      "metaTitle": "Cockpit — webhouse.app Docs",
+      "metaDescription": "The AI Cockpit: configure generation parameters, manage brand voice, and launch AI content tasks.",
+      "keywords": [
+        "webhouse",
+        "cms",
+        "cockpit",
+        "ai",
+        "generation",
+        "parameters"
+      ]
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-31T00:26:34.000Z",
+  "updatedAt": "2026-03-31T00:26:34.000Z"
+}

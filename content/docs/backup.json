@@ -1,0 +1,29 @@
+{
+  "id": "b3966d82-a0fa-4a33-97e9-c77479a95e98",
+  "slug": "backup",
+  "status": "published",
+  "locale": "en",
+  "translationGroup": "de68858a-9aef-422e-a762-3d3ac21de9af",
+  "data": {
+    "title": "Backup",
+    "description": "Create and restore content snapshots to protect against data loss.",
+    "content": "## Overview\n\nThe Backup page lets you create point-in-time snapshots of your entire site content. If something goes wrong — accidental deletions, bad bulk edits, or corrupted data — you can restore to a previous state.\n\n## Creating a Backup\n\nClick **Create Backup** to take a snapshot. The backup includes:\n\n- All documents across every collection\n- Media metadata (file references and alt text)\n- Document statuses, schedules, and translation groups\n- Site settings and configuration\n\nBackups are stored as compressed archives alongside your content.\n\n## Backup List\n\nThe page shows all available backups with:\n\n- **Date and time** of creation\n- **Size** — total archive size\n- **Document count** — number of documents included\n- **Label** — optional description you can add when creating\n\n## Restoring a Backup\n\nClick **Restore** on any backup to roll your content back to that point in time. This operation:\n\n1. Replaces all current content with the backup's content\n2. Preserves the current backup list (so you can undo the restore)\n3. Creates an automatic pre-restore backup for safety\n\n**Warning:** Restoring replaces ALL current content. Any changes made after the backup was created will be lost.\n\n## Best Practices\n\n- Create a backup before major operations (bulk edits, AI generation runs, schema changes)\n- Label your backups descriptively (e.g., \"Before SEO rewrite\" or \"Pre-launch content freeze\")\n- Periodically download backups for off-site storage\n\n## Related\n\n- [Trash](/docs/trash) — recover individual deleted documents\n- [Site Settings](/docs/site-settings) — configure backup retention",
+    "category": "guides",
+    "order": 26,
+    "_seo": {
+      "metaTitle": "Backup — webhouse.app Docs",
+      "metaDescription": "Create and restore content snapshots to safeguard your site against data loss.",
+      "keywords": [
+        "webhouse",
+        "cms",
+        "backup",
+        "restore",
+        "snapshot",
+        "data-protection"
+      ]
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-31T00:26:34.000Z",
+  "updatedAt": "2026-03-31T00:26:34.000Z"
+}

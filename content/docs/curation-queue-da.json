@@ -1,0 +1,30 @@
+{
+  "id": "3755b29d-6727-4f62-800d-3e0b2476042b",
+  "slug": "curation-queue-da",
+  "status": "published",
+  "locale": "da",
+  "translationGroup": "b9627274-3b7e-4c1b-a6a6-c5caf6298cfc",
+  "data": {
+    "title": "Curation Queue",
+    "description": "Gennemgå, godkend eller afvis AI-genereret indhold før det går live.",
+    "content": "## Overblik\n\nCuration Queue er stedet hvor AI-genereret indhold lander før det når dit site. Hvert dokument oprettet eller ændret af en AI-agent går gennem dette review-trin, så du har fuld redaktionel kontrol.\n\n## Sådan fungerer det\n\n1. En [AI-agent](/docs/ai-agents-da) genererer eller ændrer et dokument\n2. Dokumentet vises i Curation Queue med status \"afventende\"\n3. Du gennemgår indholdet og redigerer om nødvendigt\n4. Du **godkender** (publicerer dokumentet) eller **afviser** (kasserer det)\n\n## Køens brugerflade\n\nHvert element i køen viser:\n\n- **Titel og collection** — hvilket dokument og hvor det hører til\n- **Agentnavn** — hvilken AI-agent der oprettede det\n- **Genereringsdato** — hvornår indholdet blev produceret\n- **Forhåndsvisning** — klik for at se det fulde indhold før du beslutter\n\n## Handlinger\n\n- **Godkend** — accepterer indholdet og publicerer det (eller gemmer som kladde, afhængigt af din arbejdsgang)\n- **Afvis** — kasserer det genererede indhold med en valgfri begrundelse\n- **Rediger** — åbn dokumentet i editoren for at foretage ændringer før godkendelse\n- **Massehandlinger** — godkend eller afvis flere elementer på én gang\n\n## Filtrering\n\nFiltrer køen efter:\n\n- Agentnavn\n- Collection\n- Datointerval\n- Status (afventende, godkendt, afvist)\n\n## Bedste praksis\n\n- Gennemgå køen dagligt for at holde indholdet i flow\n- Brug afvisningsårsager til at forbedre agentprompter over tid\n- Tjek [AI Analytics](/docs/ai-analytics-da)-siden for at spore godkendelsesrater per agent\n\n## Relateret\n\n- [AI-agenter](/docs/ai-agents-da) — konfigurer hvilket indhold der genereres\n- [Cockpit](/docs/cockpit-da) — AI-kommandocentralen",
+    "category": "guides",
+    "order": 22,
+    "_seo": {
+      "metaTitle": "Curation Queue — webhouse.app Docs",
+      "metaDescription": "Gennemgå og godkend AI-genereret indhold i Curation Queue før publicering.",
+      "keywords": [
+        "webhouse",
+        "cms",
+        "kuration",
+        "kø",
+        "review",
+        "ai",
+        "godkendelse"
+      ]
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-03-31T00:26:34.000Z",
+  "updatedAt": "2026-03-31T00:26:34.000Z"
+}
