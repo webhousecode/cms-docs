@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 180" fill="none" font-family="system-ui, -apple-system, sans-serif">
+  <!-- Docker Container box -->
+  <rect x="20" y="20" width="240" height="140" rx="8" fill="#1a1a1a" stroke="#2e2e2e" stroke-width="1.5"/>
+  <text x="140" y="52" text-anchor="middle" fill="#fafafa" font-size="14" font-weight="600">Docker Container</text>
+  <text x="140" y="82" text-anchor="middle" fill="#888" font-size="12">.cache/sites/{id}/</text>
+  <text x="140" y="102" text-anchor="middle" fill="#888" font-size="11">(local read cache)</text>
+
+  <!-- GitHub Repo box -->
+  <rect x="360" y="20" width="240" height="140" rx="8" fill="#1a1a1a" stroke="#2e2e2e" stroke-width="1.5"/>
+  <text x="480" y="52" text-anchor="middle" fill="#fafafa" font-size="14" font-weight="600">GitHub Repo</text>
+  <text x="480" y="82" text-anchor="middle" fill="#888" font-size="12">content/</text>
+  <text x="480" y="102" text-anchor="middle" fill="#888" font-size="12">cms.config</text>
+  <text x="480" y="122" text-anchor="middle" fill="#888" font-size="11">(persistent)</text>
+
+  <!-- Arrow -->
+  <defs>
+    <marker id="arrowRight" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="#F7BB2E"/>
+    </marker>
+    <marker id="arrowLeft" markerWidth="8" markerHeight="6" refX="0" refY="3" orient="auto">
+      <path d="M8,0 L0,3 L8,6" fill="#F7BB2E"/>
+    </marker>
+  </defs>
+  <line x1="268" y1="90" x2="352" y2="90" stroke="#F7BB2E" stroke-width="2" marker-start="url(#arrowLeft)" marker-end="url(#arrowRight)"/>
+  <text x="310" y="80" text-anchor="middle" fill="#F7BB2E" font-size="11" font-weight="500">sync</text>
+</svg>
