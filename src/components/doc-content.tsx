@@ -117,7 +117,7 @@ async function markdownToHtml(md: string): Promise<string> {
   html = html.replace(/^# (.+)$/gm, (_m, t) => `<h1>${inlineMarkdown(t)}</h1>`);
 
   // Blockquotes
-  html = html.replace(/^> (.+)$/gm, "<blockquote><p>$1</p></blockquote>");
+  html = html.replace(/^> (.+)$/gm, (_m, text) => `<blockquote><p>${inlineMarkdown(text)}</p></blockquote>`);
   // Merge adjacent blockquotes
   html = html.replace(/<\/blockquote>\n<blockquote>/g, "\n");
 
@@ -190,8 +190,8 @@ async function markdownToHtml(md: string): Promise<string> {
 /** Inline markdown: bold, italic, code, links */
 function inlineMarkdown(text: string): string {
   let s = text;
-  // Code (before bold/italic to avoid conflicts)
-  s = s.replace(/`([^`]+)`/g, "<code>$1</code>");
+  // Code (before bold/italic — escape HTML inside code spans)
+  s = s.replace(/`([^`]+)`/g, (_m, code) => `<code>${esc(code)}</code>`);
   // Bold + italic
   s = s.replace(/\*\*\*(.+?)\*\*\*/g, "<strong><em>$1</em></strong>");
   // Bold
