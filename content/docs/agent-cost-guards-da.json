@@ -1,0 +1,22 @@
+{
+  "id": "a8b24f7f-ce00-4f9f-8096-7b77fc8e05c1",
+  "slug": "agent-cost-guards-da",
+  "status": "published",
+  "locale": "da",
+  "translationGroup": "2604df61-4bf8-4431-b699-0706c01084e8",
+  "data": {
+    "title": "Per-agent budgetkontrol",
+    "description": "Sæt et loft over en agents forbrug pr. dag, uge eller måned. Stopper løbske agenter før de brænder hele budgettet.",
+    "content": "## Hvorfor per-agent budgetter?\n\nCockpit har ét globalt månedligt budget der dækker alle LLM-kald på sitet. Det fungerer fint indtil en agent kommer i et loop eller en kurator har planlagt et dagligt job de har glemt — og hele budgettet forsvinder på én agent mens alt andet sulter.\n\nPer-agent budgetkontrol løser det. Hver agent kan have et valgfrit **dagligt**, **ugentligt** og **månedligt** udgiftsloft. Når agentens faktiske forbrug i den periode når loftet, stopper både manuelle og planlagte kørsler før det næste LLM-kald foretages.\n\n## Sådan sætter du lofterne\n\nÅbn en agents detaljeside og find **Cost guards (USD)** kortet under skema-sektionen. Alle tre felter er valgfrie — efterlad et felt tomt for at betyde \"intet loft for den periode\".\n\n| Felt | Periode | Nulstilles |\n|------|---------|------------|\n| Daily  | Siden 00:00 i dag (lokal tid) | Midnat |\n| Weekly | Rullende 7 dage | Løbende — ældste kørsel falder af efter 7 dage |\n| Monthly | Siden den 1. i indeværende kalendermåned | Den 1. i måneden |\n\nLofterne er **uafhængige**. Hvis du sætter daily=1 og monthly=10, kan agenten bruge $1 om dagen i 10 dage før noget loft trippes. Begge grænser alene er nok til at stoppe en kørsel.\n\n## Sådan virker tjekket\n\nKontrollen kører som et **pre-flight tjek** tre steder:\n\n1. **`runAgent`** (manuelle eller API-kørsler) — tjekker budgettet før LLM-kaldet. Hvis overskredet, kastes en klar fejl med periode og beløb.\n2. **`scheduler`** (planlagte kørsler) — tjekker før hver due agent. Springer kørslen over og logger hvilken periode der trippede, så du kan se det i instrumentation-logs.\n3. **`runWorkflow`** — hver step's agent budget-tjekkes uafhængigt før dens LLM-kald.\n\nDet beløb der bruges er agentens **faktiske analytics-forbrug** for perioden (summeret fra `recordRun`-poster), ikke et estimat. Så loftet afspejler hvad der allerede er brugt, ikke hvad der måske endnu vil blive brugt på den aktuelle kørsel.\n\n## Fejlmeddelelser\n\nNår en manuel kørsel rammer et loft, returnerer API'et 500 med en besked som:\n\n> Agent \"Content Writer\" has reached its daily budget ($1.5234 of $1.50 cap). Increase the cap on the agent's settings page or wait for the period to reset.\n\nScheduleren logger samme besked og springer kørslen over uden at fyre en `agent.failed` webhook — fordi intet rent faktisk fejlede.\n\n## Anbefalede værdier\n\nFornuftige startpunkter:\n\n- **Daily $0.50** — fint til en daglig blogskribent der producerer ét indlæg.\n- **Weekly $5** — dækker et par re-runs eller justeringer i løbet af ugen.\n- **Monthly $20** — generøst månedligt sikkerhedsnet.\n\nHvis du har en agent der genererer billeder, bump det daglige loft med ~$0.04 per billede du forventer pr. kørsel. Nano Banana koster i øjeblikket $0.039 pr. billede.\n\n## Samspil med det globale Cockpit-budget\n\nPer-agent lofter **erstatter ikke** det globale Cockpit månedsbudget — de lægges ovenpå. Scheduleren tjekker begge:\n\n1. Globalt Cockpit budget (95% headroom-regel, legacy)\n2. Per-agent budget (Phase 4)\n\nDet der trippes først stopper kørslen. Så en agent uden per-agent lofter stoppes stadig af det globale loft, og en agent med per-agent lofter kan stoppes tidligt før det globale loft er i nærheden.\n\n## Se også\n\n- [Performance dashboard](/docs/ai-analytics) — historiske omkostninger og kørselsdata pr. agent.\n- [Agent feedback loop](/docs/agent-feedback-loop) — rettelser der reducerer omkostning pr. kørsel over tid.",
+    "category": "concepts",
+    "order": 2,
+    "_seo": {
+      "metaTitle": "Per-agent budgetkontrol — webhouse.app Docs",
+      "metaDescription": "Sæt et loft over en agents daglige, ugentlige eller månedlige LLM-forbrug. Pre-flight tjek blokerer løbske agenter før det næste kald foretages.",
+      "keywords": ["webhouse", "cms", "ai", "budget", "omkostninger", "agenter"]
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-04-08T00:00:00.000Z",
+  "updatedAt": "2026-04-08T00:00:00.000Z"
+}
