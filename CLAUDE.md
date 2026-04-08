@@ -4,6 +4,18 @@ This is the documentation site for webhouse.app, built with @webhouse/cms (dogfo
 
 ## Hard Rules
 
+### ALWAYS create EN + DA twins with shared translationGroup
+
+**Every new docs page MUST be created as a bilingual pair** — one English (`{slug}.json`) and one Danish (`{slug}-da.json`), both sharing the same `translationGroup` UUID. No exceptions unless explicitly requested otherwise.
+
+Required fields on every doc:
+- `locale: "en"` or `locale: "da"`
+- `translationGroup: "<same-uuid-for-both>"`
+- Danish slug MUST end with `-da` suffix
+- All `data.*` fields must be translated (title, description, content, _seo.metaTitle, _seo.metaDescription, _seo.keywords)
+
+When writing a new doc, generate ONE UUID with `crypto.randomUUID()` and use it in both files. This is how side-by-side editing, locale badges, and hreflang work.
+
 ### Preview MUST always work
 
 **EVERY site built with @webhouse/cms MUST have working preview — both locally and on the deployed URL. No exceptions.**

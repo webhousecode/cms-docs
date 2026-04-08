@@ -165,9 +165,9 @@ export default function HomePage() {
             lineHeight: 1.7,
           }}
         >
-          The AI-native content engine for TypeScript projects. File-based
-          content, visual admin UI, AI agents, and a static build pipeline —
-          all configured in{" "}
+          The AI-native content engine. Framework-agnostic file-based JSON
+          content, visual admin UI, AI agents, workflows, and a static build
+          pipeline. Your content as flat JSON — render it with{" "}
           <code
             style={{
               background: "rgba(247,187,46,0.1)",
@@ -178,8 +178,9 @@ export default function HomePage() {
               border: "1px solid rgba(247,187,46,0.15)",
             }}
           >
-            cms.config.ts
+            Next.js, Laravel, Django, C#, Rails
           </code>
+          , or anything that reads files.
         </p>
 
         <div

@@ -1,0 +1,22 @@
+{
+  "id": "doc-consume-rails-da",
+  "slug": "consume-rails-da",
+  "status": "published",
+  "locale": "da",
+  "translationGroup": "281555ed-368b-4908-8796-b8799c5c29f2",
+  "data": {
+    "title": "Forbrug fra Rails (Ruby)",
+    "description": "Læs @webhouse/cms-indhold fra en Ruby on Rails-applikation. Hjælpemodul, controllers, ERB-views.",
+    "content": "## Opsætning\n\n```\nmit-projekt/\n  cms.config.ts\n  content/\n  public/uploads/\n  app/\n    controllers/\n    views/\n    helpers/\n```\n\n## Hjælpemodul\n\nOpret `app/lib/webhouse.rb`:\n\n```ruby\nrequire 'json'\n\nmodule Webhouse\n  CONTENT_DIR = Rails.root.join('content').freeze\n\n  def self.collection(name, locale: nil)\n    folder = CONTENT_DIR.join(name.to_s)\n    return [] unless Dir.exist?(folder)\n\n    Dir.glob(folder.join('*.json'))\n       .map { |f| JSON.parse(File.read(f)) }\n       .select { |d| d['status'] == 'published' }\n       .then { |docs| locale ? docs.select { |d| d['locale'] == locale } : docs }\n       .sort_by { |d| d.dig('data', 'date') || '' }\n       .reverse\n  end\n\n  def self.document(collection, slug)\n    path = CONTENT_DIR.join(collection.to_s, \"#{slug}.json\")\n    return nil unless File.exist?(path)\n    doc = JSON.parse(File.read(path))\n    doc['status'] == 'published' ? doc : nil\n  end\n\n  def self.find_translation(doc, collection)\n    tg = doc['translationGroup']\n    return nil unless tg\n    collection(collection).find do |other|\n      other['translationGroup'] == tg && other['locale'] != doc['locale']\n    end\n  end\nend\n```\n\n## Controller\n\n```ruby\n# app/controllers/blog_controller.rb\nclass BlogController < ApplicationController\n  def index\n    @posts = Webhouse.collection('posts', locale: 'da')\n  end\n\n  def show\n    @post = Webhouse.document('posts', params[:slug])\n    raise ActionController::RoutingError, 'Not Found' unless @post\n  end\nend\n```\n\n## Routes\n\n```ruby\n# config/routes.rb\nRails.application.routes.draw do\n  root 'blog#index'\n  get '/blog/:slug', to: 'blog#show', as: 'post'\nend\n```\n\n## ERB-view\n\n```erb\n<%# app/views/blog/show.html.erb %>\n<article>\n  <h1><%= @post.dig('data', 'title') %></h1>\n  <time><%= @post.dig('data', 'date') %></time>\n  <div class=\"prose\">\n    <%= markdown(@post.dig('data', 'content') || '') %>\n  </div>\n  <% (@post.dig('data', 'tags') || []).each do |tag| %>\n    <%= link_to \"##{tag}\", \"/tags/#{tag}\", class: 'tag' %>\n  <% end %>\n</article>\n```\n\nTilføj en markdown-helper i `app/helpers/application_helper.rb`:\n\n```ruby\nrequire 'redcarpet'\n\nmodule ApplicationHelper\n  def markdown(text)\n    renderer = Redcarpet::Render::HTML.new(hard_wrap: true)\n    Redcarpet::Markdown.new(renderer, fenced_code_blocks: true).render(text).html_safe\n  end\nend\n```\n\nTilføj til `Gemfile`: `gem 'redcarpet'`\n\n## Servering af medier\n\nTilføj `public/uploads/` til Rails public-mappen — det serveres automatisk af Rails i udvikling og af din webserver i produktion.\n\n## i18n\n\n```ruby\npost = Webhouse.document('posts', params[:slug])\ntranslation = Webhouse.find_translation(post, 'posts')\n\n# I view\nif translation\n  link_to \"Læs på #{translation['locale']}\", blog_post_path(translation['slug'])\nend\n```\n\n## Caching\n\n```ruby\ndef self.collection_cached(name, locale: nil)\n  Rails.cache.fetch(\"webhouse:#{name}:#{locale || 'all'}\", expires_in: 1.minute) do\n    collection(name, locale: locale)\n  end\nend\n```\n\n## Jekyll-alternativ\n\nTil statiske Jekyll-sites, læs de samme JSON-filer i en `_plugins/webhouse.rb`-generator:\n\n```ruby\nmodule Jekyll\n  class WebhouseGenerator < Generator\n    def generate(site)\n      Dir.glob('content/posts/*.json').each do |f|\n        doc = JSON.parse(File.read(f))\n        next unless doc['status'] == 'published'\n        # ... opret side\n      end\n    end\n  end\nend\n```\n\n## Næste skridt\n\n- Se [Rails-eksemplet](https://github.com/webhousecode/cms/tree/main/examples/consumers/rails-blog)\n- Læs om [Framework-agnostisk arkitektur](/docs/framework-agnostic)",
+    "category": "consumers",
+    "order": 12,
+    "_seo": {
+      "metaTitle": "Forbrug fra Rails (Ruby) — webhouse.app Docs",
+      "metaDescription": "Læs @webhouse/cms-indhold fra en Ruby on Rails-applikation. Hjælpemodul, controllers, ERB-views.",
+      "keywords": ["webhouse", "cms", "rails", "ruby", "forbruger"]
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-04-08T12:00:00.000Z",
+  "updatedAt": "2026-04-08T12:00:00.000Z"
+}
