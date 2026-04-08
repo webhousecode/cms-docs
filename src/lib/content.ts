@@ -63,6 +63,7 @@ const CATEGORY_LABELS: Record<string, Record<string, string>> = {
   "config": { en: "Configuration", da: "Konfiguration" },
   "cli": { en: "CLI", da: "CLI" },
   "api-reference": { en: "API Reference", da: "API-reference" },
+  "consumers": { en: "Framework Consumers", da: "Framework-forbrugere" },
   "deployment": { en: "Deployment", da: "Udrulning" },
   "tips": { en: "Tips & Tricks", da: "Tips & Tricks" },
 };
@@ -75,8 +76,9 @@ export function getCategories(locale: string = "en"): Category[] {
     { slug: "config", label: CATEGORY_LABELS["config"][locale] ?? "Configuration", order: 3 },
     { slug: "cli", label: CATEGORY_LABELS["cli"][locale] ?? "CLI", order: 4 },
     { slug: "api-reference", label: CATEGORY_LABELS["api-reference"][locale] ?? "API Reference", order: 5 },
-    { slug: "deployment", label: CATEGORY_LABELS["deployment"][locale] ?? "Deployment", order: 6 },
-    { slug: "tips", label: CATEGORY_LABELS["tips"][locale] ?? "Tips & Tricks", order: 7 },
+    { slug: "consumers", label: CATEGORY_LABELS["consumers"][locale] ?? "Framework Consumers", order: 6 },
+    { slug: "deployment", label: CATEGORY_LABELS["deployment"][locale] ?? "Deployment", order: 7 },
+    { slug: "tips", label: CATEGORY_LABELS["tips"][locale] ?? "Tips & Tricks", order: 8 },
   ];
 }
 
