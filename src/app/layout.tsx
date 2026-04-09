@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { ThemeInit } from "@/components/theme-init";
 import { Header } from "@/components/header";
+import { MobileNavDrawer } from "@/components/mobile-nav-drawer";
 import { DocsSearch } from "@/components/docs-search";
 import { CodeCopyHandler } from "@/components/code-copy-handler";
 import { getSearchIndex } from "@/lib/content";
@@ -29,6 +30,7 @@ export default function RootLayout({
     <html lang="en" className="dark" suppressHydrationWarning>
       <body>
         <Header />
+        <MobileNavDrawer />
         {children}
         <DocsSearch searchIndex={searchIndex} />
         <CodeCopyHandler />

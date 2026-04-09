@@ -250,3 +250,114 @@ body {
 .doc-content h4[id]:hover::before {
   opacity: 0.5;
 }
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Mobile responsive overrides
+   ──────────────────────────────────────────────────────────────────────────
+   Everything below this line ONLY applies under 768px so the desktop layout
+   is byte-for-byte identical to before. If you find yourself adding desktop
+   styles here, hoist them above this comment instead.
+   ────────────────────────────────────────────────────────────────────────── */
+
+/* Header — tighten horizontal padding + give every interactive item a real
+   44x44 touch target without changing how it looks at desktop sizes. */
+@media (max-width: 767px) {
+  header {
+    padding: 0 0.6rem !important;
+    gap: 0.25rem;
+  }
+  /* The header's two child flex rows */
+  header > div {
+    gap: 0.25rem !important;
+  }
+  /* Bigger tap target on the burger button */
+  header button[aria-label="Toggle navigation"] {
+    padding: 10px !important;
+    min-width: 44px;
+    min-height: 44px;
+    justify-content: center;
+  }
+  /* All other header buttons get a comfortable tap target */
+  header button {
+    min-height: 38px;
+  }
+  /* Search trigger collapses to icon-only on phones (the "Search docs..."
+     label and ⌘K kbd take up ~180px we don't have at 320px wide) */
+  header button[style*="minWidth: 180"],
+  header > div > button:has(svg + span) {
+    min-width: 38px !important;
+    padding: 8px !important;
+  }
+  header > div > button:has(svg + span) > span,
+  header > div > button:has(svg + span) > kbd {
+    display: none;
+  }
+  /* "docs" wordmark suffix and divider are decorative — hide on phones to
+     buy back space for the actually-interactive items */
+  header a[href="/"] > span {
+    display: none;
+  }
+  /* Logo image stays */
+  header a[href="/"] {
+    gap: 0 !important;
+  }
+}
+
+/* Doc content — tighter horizontal padding so text isn't claustrophobic at
+   320px and code blocks can scroll horizontally without overflowing the
+   viewport. */
+@media (max-width: 767px) {
+  .doc-content {
+    max-width: 100%;
+  }
+  .doc-content h1 {
+    font-size: 1.6rem;
+    word-break: break-word;
+    hyphens: auto;
+  }
+  .doc-content h2 {
+    font-size: 1.25rem;
+    word-break: break-word;
+  }
+  .doc-content h3 {
+    font-size: 1.1rem;
+  }
+  .doc-content p,
+  .doc-content li {
+    hyphens: auto;
+  }
+  .doc-content table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  .doc-content pre {
+    padding: 0.75rem;
+  }
+  .code-block .shiki {
+    padding: 0.75rem 1rem;
+    font-size: 0.78rem;
+  }
+}
+
+/* Doc page main column — drop horizontal padding so prose isn't squished
+   into a 240px column at 320px wide. */
+@media (max-width: 767px) {
+  main[style*="2rem 2.5rem"] {
+    padding: 1.25rem 1rem !important;
+  }
+}
+
+/* Hero / sections on the home page — keep content from kissing the screen
+   edge at 320px without affecting the centered desktop look. */
+@media (max-width: 767px) {
+  section[style*="padding: 5rem 1.5rem 3rem"] {
+    padding: 3rem 1.25rem 2rem !important;
+  }
+  section[style*="padding: 0 1.5rem 5rem"],
+  section[style*="padding: 3rem 1.5rem"] {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+  }
+}
+

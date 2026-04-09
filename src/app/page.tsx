@@ -389,6 +389,7 @@ export default function HomePage() {
                 key={f.title}
                 href={f.href ?? ""}
                 style={{
+                  display: "block", // Next.js Link defaults to inline — without this the card shrinks to content width on mobile
                   padding: "1.25rem",
                   borderRadius: 10,
                   border: "1px solid var(--border)",
@@ -604,7 +605,7 @@ export default function HomePage() {
         </p>
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "1rem" }}>
-          <Link href="/docs/mcp-client" style={{ padding: "1.25rem", borderRadius: 10, border: "1px solid var(--border)", background: "var(--bg-secondary)", textDecoration: "none", color: "inherit", transition: "border-color 0.15s" }}>
+          <Link href="/docs/mcp-client" style={{ display: "block", padding: "1.25rem", borderRadius: 10, border: "1px solid var(--border)", background: "var(--bg-secondary)", textDecoration: "none", color: "inherit", transition: "border-color 0.15s" }}>
             <span style={{ fontSize: "0.6rem", fontFamily: "var(--font-mono)", color: "#4ade80", textTransform: "uppercase", letterSpacing: "0.05em" }}>
               Public · Read-only
             </span>
@@ -613,7 +614,7 @@ export default function HomePage() {
               Bundled with every site. Any AI agent can discover and query published content — no API keys needed.
             </p>
           </Link>
-          <Link href="/docs/mcp-server" style={{ padding: "1.25rem", borderRadius: 10, border: "1px solid var(--border)", background: "var(--bg-secondary)", textDecoration: "none", color: "inherit", transition: "border-color 0.15s" }}>
+          <Link href="/docs/mcp-server" style={{ display: "block", padding: "1.25rem", borderRadius: 10, border: "1px solid var(--border)", background: "var(--bg-secondary)", textDecoration: "none", color: "inherit", transition: "border-color 0.15s" }}>
             <span style={{ fontSize: "0.6rem", fontFamily: "var(--font-mono)", color: "var(--color-gold)", textTransform: "uppercase", letterSpacing: "0.05em" }}>
               Authenticated · Read+Write
             </span>
