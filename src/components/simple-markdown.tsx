@@ -1,10 +1,18 @@
 "use client";
 
+import { useState, useEffect } from "react";
+
 /**
- * Simple markdown renderer — client component to avoid hydration mismatch.
- * Used for changelog entries.
+ * Simple markdown renderer — client-only to avoid hydration mismatch.
+ * Regex transforms run only in the browser, so server HTML is a blank
+ * div and React never compares mismatching innerHTML.
  */
 export function SimpleMarkdown({ content }: { content: string }) {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  if (!mounted) {
+    return <div className="doc-content" style={{ fontSize: "0.85rem", minHeight: "2rem" }} />;
+  }
   let html = content;
 
   // Headings
