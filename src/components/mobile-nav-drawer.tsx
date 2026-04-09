@@ -19,7 +19,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { X } from "lucide-react";
+import { X, Moon, Sun } from "lucide-react";
 
 export function MobileNavDrawer() {
   const pathname = usePathname();
@@ -148,15 +148,46 @@ export function MobileNavDrawer() {
             marginTop: "auto",
             padding: "1rem",
             borderTop: "1px solid var(--border)",
-            fontSize: "0.7rem",
-            color: "var(--fg-muted)",
-            textAlign: "center",
+            display: "flex",
+            flexDirection: "column",
+            gap: "0.75rem",
           }}
         >
-          @webhouse/cms · MIT
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+            <DrawerThemeToggle />
+            <span style={{ fontSize: "0.65rem", color: "var(--fg-muted)" }}>@webhouse/cms · MIT</span>
+          </div>
         </div>
       </aside>
     </>
+  );
+}
+
+function DrawerThemeToggle() {
+  const [dark, setDark] = useState(true);
+  useEffect(() => {
+    setDark(document.documentElement.classList.contains("dark"));
+  }, []);
+  function toggle() {
+    const next = dark ? "light" : "dark";
+    document.documentElement.classList.toggle("dark", next === "dark");
+    try { localStorage.setItem("theme", next); } catch {}
+    setDark(next === "dark");
+  }
+  return (
+    <button
+      onClick={toggle}
+      aria-label="Toggle theme"
+      style={{
+        display: "flex", alignItems: "center", gap: "0.4rem",
+        background: "none", border: "1px solid var(--border)",
+        borderRadius: 6, padding: "6px 10px", cursor: "pointer",
+        color: "var(--fg-muted)", fontSize: "0.75rem",
+      }}
+    >
+      {dark ? <Sun size={16} /> : <Moon size={16} />}
+      {dark ? "Light" : "Dark"}
+    </button>
   );
 }
 

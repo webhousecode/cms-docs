@@ -281,12 +281,16 @@ body {
   header button {
     min-height: 38px;
   }
-  /* Search trigger collapses to icon-only on phones (the "Search docs..."
-     label and ⌘K kbd take up ~180px we don't have at 320px wide) */
-  header button[style*="minWidth: 180"],
+  /* Search trigger collapses to icon-only on phones. Force square button
+     with equal padding so the magnifier icon is visually centered. */
   header > div > button:has(svg + span) {
-    min-width: 38px !important;
-    padding: 8px !important;
+    min-width: 40px !important;
+    width: 40px;
+    height: 40px;
+    padding: 0 !important;
+    justify-content: center;
+    align-items: center;
+    gap: 0 !important;
   }
   header > div > button:has(svg + span) > span,
   header > div > button:has(svg + span) > kbd {

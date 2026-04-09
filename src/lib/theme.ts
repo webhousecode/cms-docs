@@ -1,12 +1,12 @@
 "use client";
 
 export function getInitialTheme(): string {
+  // Dark by default — only respect an explicit user choice from localStorage.
+  // We deliberately ignore OS prefers-color-scheme so the brand looks consistent
+  // for first-time visitors regardless of their system theme.
   if (typeof window === "undefined") return "dark";
   const stored = localStorage.getItem("docs-theme");
-  if (stored) return stored;
-  return window.matchMedia("(prefers-color-scheme: light)").matches
-    ? "light"
-    : "dark";
+  return stored === "light" ? "light" : "dark";
 }
 
 export function setTheme(theme: string) {
