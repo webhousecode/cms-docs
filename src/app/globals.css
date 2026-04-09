@@ -292,14 +292,11 @@ body {
   header > div > button:has(svg + span) > kbd {
     display: none;
   }
-  /* "docs" wordmark suffix and divider are decorative — hide on phones to
-     buy back space for the actually-interactive items */
-  header a[href="/"] > span {
-    display: none;
-  }
-  /* Logo image stays */
+  /* The whole logo link is decorative on phones — hide it entirely so the
+     burger and search trigger have room. The logo also lives at the top
+     of the mobile drawer when the burger is opened. */
   header a[href="/"] {
-    gap: 0 !important;
+    display: none !important;
   }
 }
 
