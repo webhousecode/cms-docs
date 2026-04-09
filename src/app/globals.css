@@ -352,12 +352,27 @@ body {
    edge at 320px without affecting the centered desktop look. */
 @media (max-width: 767px) {
   section[style*="padding: 5rem 1.5rem 3rem"] {
-    padding: 3rem 1.25rem 2rem !important;
+    padding: 3rem 1rem 2rem !important;
   }
   section[style*="padding: 0 1.5rem 5rem"],
   section[style*="padding: 3rem 1.5rem"] {
-    padding-left: 1.25rem !important;
-    padding-right: 1.25rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+}
+
+/* Feature card grids — auto-fit + minmax(270px, 1fr) was supposed to expand
+   the single column to 1fr at mobile widths, but in practice the column
+   collapses to the 270px min and leaves a fat right gutter. Force a single
+   1fr column and make every grid child stretch to 100% explicitly. */
+@media (max-width: 767px) {
+  div[style*="grid-template-columns"][style*="minmax"] {
+    grid-template-columns: 1fr !important;
+  }
+  div[style*="grid-template-columns"][style*="minmax"] > * {
+    width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box;
   }
 }
 
