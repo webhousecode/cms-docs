@@ -1,0 +1,22 @@
+{
+  "id": "b3d0d5e6-03a6-42c1-9851-bd4441947384",
+  "slug": "settings-mcp-da",
+  "status": "published",
+  "locale": "da",
+  "translationGroup": "0a299cd9-b05c-4ccf-874f-a1d9bb9127a7",
+  "data": {
+    "title": "MCP-settings",
+    "description": "Eksponér dit sites indhold til eksterne AI-værktøjer (Claude Desktop, Cursor, custom agenter) via Model Context Protocol. Read-only offentligt endpoint eller autentificeret read/write.",
+    "category": "settings",
+    "order": 11,
+    "content": "## Hvor det er\n\n**Settings → MCP** (`/admin/settings?tab=mcp`).\n\n## Hvad MCP er\n\nModel Context Protocol er en åben standard der lader AI-værktøjer opdage og interagere med dit indhold via et typeret, struktureret API. Hvor REST er til mennesker + scripts, er MCP til AI.\n\nNår du plugger et MCP-endpoint ind i Claude Desktop (eller Cursor, eller en custom agent), ser AI'en en liste af tools den kan kalde — `list_documents`, `get_document`, `create_document`, `search_content` osv. Den bruger de tools under samtale uden at du kopiér-indsætter indhold frem og tilbage.\n\n## To endpoints\n\nCMS'et eksponerer to MCP-endpoints per site:\n\n| Endpoint | Auth | Adgang | Brug til |\n|---|---|---|---|\n| **Public MCP** | Ingen | Read-only | AI-drevet søgning på dit site. Alle kan plugge det ind i deres agent |\n| **Authenticated MCP** | API-nøgle | Fuld read + write | Indholdsproduktion fra AI-værktøjer. Brugt af personale |\n\nDet offentlige endpoint kan opdages via `/ai-plugin.json` i site-roden — AI-platforme der understøtter MCP discovery kan auto-forbinde.\n\n## Konfiguration\n\n### Public MCP\n\nIntet at konfigurere. Den er tændt når GEO-settings tillader crawlers. Sluk den fra denne fane hvis du vil have et lukket site.\n\n### Authenticated MCP\n\n1. Klik **Generate new API key** — gemt som site-secret, aldrig echoet tilbage\n2. Kopiér den genererede nøgle (vist én gang)\n3. Vælg scopes: read / write / admin\n4. Valgfrit pin til en specifik Claude Desktop- eller Cursor-config\n\nFanen viser også den fulde MCP-konfiguration som JSON:\n\n```json\n{\n  \"mcpServers\": {\n    \"my-site\": {\n      \"url\": \"https://my-site.com/api/mcp/authed\",\n      \"headers\": {\n        \"Authorization\": \"Bearer <din-nøgle>\"\n      }\n    }\n  }\n}\n```\n\nIndsæt det i Claude Desktops `config.json` eller Cursors MCP-settings for at forbinde.\n\n## Tilgængelige tools via MCP\n\nDet autentificerede endpoint eksponerer samme 49-tool overflade som in-app chatten, med nogle tilføjelser til filsystems-operationer. Det offentlige endpoint eksponerer en reduceret delmængde (read-only, ingen konfiguration eller destruktive handlinger).\n\nSe [AI Chat tools](/docs/help-and-shortcuts-da) for den fulde liste.\n\n## Nøgle-rotation\n\nKlik **Revoke** på en hvilken som helst API-nøgle for at invalidere den. Generér en ny — værktøjer konfigureret med den gamle nøgle holder op med at virke, omkonfigurér med den nye.\n\nIngen automatisk rotation; sæt en kalender-påmindelse hvis du har brug for 90-dages rotation for compliance.\n\n## Audit\n\nHvert MCP tool-kald logges til event-loggen med: tool-navn, argumenter, timestamp, resultat-opsummering, varighed. Filtrér event-loggen til `source: mcp` for kun at se MCP-aktivitet.\n\n## Relateret\n\n- [MCP-server-koncept](/docs/mcp-server-da) — protokol forklaret\n- [MCP-client](/docs/mcp-client-da) — det read-only offentlige MCP\n- [Help-panel AI Chat-liste](/docs/help-and-shortcuts-da) — tool-katalog\n- [GEO-settings](/docs/settings-geo-da) — hvor offentlig MCP-discovery slåes til",
+    "_seo": {
+      "metaTitle": "MCP-settings — webhouse.app Docs",
+      "metaDescription": "Eksponér dit CMS-indhold til eksterne AI-værktøjer via Model Context Protocol — offentligt read-only endpoint eller autentificeret read/write.",
+      "keywords": ["webhouse", "cms", "settings", "mcp", "model-context-protocol", "claude-desktop", "cursor", "api-nøgle"]
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-04-15T22:12:00.000Z",
+  "updatedAt": "2026-04-15T22:12:00.000Z"
+}

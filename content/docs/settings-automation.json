@@ -1,0 +1,22 @@
+{
+  "id": "ace99f7f-a5d0-46fd-80e2-a05c4510e6f8",
+  "slug": "settings-automation",
+  "status": "published",
+  "locale": "en",
+  "translationGroup": "72bca019-f118-460b-9b51-46197877e716",
+  "data": {
+    "title": "Automation settings",
+    "description": "Scheduled background tasks — link checker, Lighthouse audits, media processing, and webhooks that fire on content events.",
+    "category": "settings",
+    "order": 10,
+    "content": "## Where it is\n\n**Settings → Automation** (`/admin/settings?tab=tools`).\n\nInternally the tab is called `tools`, but the UI label is **Automation**. Both point at the same place.\n\n## What it configures\n\nFour categories of scheduled or event-driven background work:\n\n### Link checker\n\n| Field | Purpose |\n|---|---|\n| **Schedule** | Off, daily, weekly, or a specific day |\n| **Time** | When the checker runs (uses site timezone) |\n| **Internal only** | Skip external URLs (speeds up on large sites, misses third-party rot) |\n| **Alert on failures** | Email the notification list when ≥ N broken links are found |\n\nThe checker walks every published document, extracts links, and HTTP-GETs each one. Results land in `/admin/link-checker` with bulk-fix actions.\n\nSee [Link checker](/docs/link-checker) for result interpretation and common fixes.\n\n### Lighthouse\n\n| Field | Purpose |\n|---|---|\n| **Schedule** | Off, daily, weekly |\n| **Targets** | Which URLs to audit (usually the homepage + top 5 pages) |\n| **Mobile + desktop** | Runs both by default |\n| **Alert threshold** | Score below which an alert fires |\n\nLighthouse runs via Google PageSpeed Insights API — needs a publicly reachable Preview URL (Settings → General). See [Lighthouse](/docs/lighthouse).\n\n### Media processing\n\nDefaults for how uploaded images are transformed:\n\n- **WebP variant widths** — comma-separated list (default `400,800,1200,1600`)\n- **JPEG quality** — 0–100 (default 82)\n- **EXIF handling** — Keep / strip-location / strip-all (default keep, since EXIF powers map views)\n- **AI analysis on upload** — auto-generate captions, alt text, tags. Uses the content model from Settings → AI\n\nChanges apply to future uploads. Batch-reprocess existing media via the **Reprocess all** button.\n\nSee [Media processing](/docs/media).\n\n### Webhooks\n\nOutbound HTTP calls when content events happen. Common use: fire a Discord / Slack notification on publish, or trigger a third-party build pipeline on deploy.\n\n| Field | Purpose |\n|---|---|\n| **URL** | Where the CMS POSTs |\n| **Events** | Which events trigger the webhook (published, deployed, agent-completed, etc.) |\n| **Secret** | Optional — included as `X-CMS-Signature` for verification |\n| **Retry** | Number of retries on non-2xx (default 3) |\n\nPayload is a JSON envelope with `event`, `timestamp`, `siteId`, and event-specific data. The last 50 deliveries are logged per webhook for debugging.\n\n## Common combinations\n\n- **Daily link check + weekly Lighthouse** — the sensible default for a production site\n- **Webhook to Slack on publish** — editors see what went live without checking the admin\n- **Webhook to a CI pipeline on deploy** — trigger a downstream pipeline (tests, cache warmup)\n- **Aggressive media processing** — wide WebP range, AI analysis on for SEO-heavy sites\n\n## Related\n\n- [Link checker](/docs/link-checker) — result interpretation\n- [Lighthouse](/docs/lighthouse) — score breakdown\n- [Media processing](/docs/media) — EXIF, WebP variants, AI analysis\n- [Email settings](/docs/settings-email) — where automation alerts go",
+    "_seo": {
+      "metaTitle": "Automation settings — webhouse.app Docs",
+      "metaDescription": "Configure scheduled link checks, Lighthouse audits, media processing defaults, and outbound webhooks.",
+      "keywords": ["webhouse", "cms", "settings", "automation", "tools", "link-checker", "lighthouse", "webhooks", "media-processing"]
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-04-15T22:10:00.000Z",
+  "updatedAt": "2026-04-15T22:10:00.000Z"
+}

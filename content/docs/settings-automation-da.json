@@ -1,0 +1,22 @@
+{
+  "id": "114c9fe1-5525-435c-85a1-a1020541fc34",
+  "slug": "settings-automation-da",
+  "status": "published",
+  "locale": "da",
+  "translationGroup": "72bca019-f118-460b-9b51-46197877e716",
+  "data": {
+    "title": "Automation-settings",
+    "description": "Scheduled baggrundsopgaver — link checker, Lighthouse-audits, media processing og webhooks der fyrer ved content-events.",
+    "category": "settings",
+    "order": 10,
+    "content": "## Hvor det er\n\n**Settings → Automation** (`/admin/settings?tab=tools`).\n\nInternt hedder fanen `tools`, men UI-labelen er **Automation**. Begge peger på samme sted.\n\n## Hvad den konfigurerer\n\nFire kategorier af scheduled eller event-drevet baggrundsarbejde:\n\n### Link checker\n\n| Felt | Formål |\n|---|---|\n| **Schedule** | Off, dagligt, ugentligt eller en specifik dag |\n| **Tidspunkt** | Hvornår checkeren kører (bruger site-tidszone) |\n| **Kun interne** | Spring eksterne URL'er over (hurtigere på store sites, misser tredjeparts-rådne links) |\n| **Alert ved fejl** | Email notifikationslisten når ≥ N brudte links findes |\n\nCheckeren går gennem hvert publiceret dokument, udtrækker links og HTTP-GET'er hver enkelt. Resultater lander i `/admin/link-checker` med bulk-fix-handlinger.\n\nSe [Link checker](/docs/link-checker-da) for resultat-fortolkning og almindelige fixes.\n\n### Lighthouse\n\n| Felt | Formål |\n|---|---|\n| **Schedule** | Off, dagligt, ugentligt |\n| **Targets** | Hvilke URL'er der auditeres (typisk forsiden + top 5 sider) |\n| **Mobil + desktop** | Kører begge som default |\n| **Alert-tærskel** | Score hvorunder en alert fyrer |\n\nLighthouse kører via Google PageSpeed Insights API — skal have en offentligt tilgængelig Preview-URL (Settings → General). Se [Lighthouse](/docs/lighthouse-da).\n\n### Media processing\n\nDefaults for hvordan uploadede billeder transformeres:\n\n- **WebP variant-bredder** — kommasepareret liste (default `400,800,1200,1600`)\n- **JPEG-kvalitet** — 0–100 (default 82)\n- **EXIF-håndtering** — Behold / strip-lokation / strip-alt (default behold, da EXIF driver kort-visninger)\n- **AI-analyse ved upload** — auto-generér captions, alt-tekst, tags. Bruger content-modellen fra Settings → AI\n\nÆndringer gælder fremtidige uploads. Batch-reprocess eksisterende medier via **Reprocess all**-knappen.\n\nSe [Media processing](/docs/media-da).\n\n### Webhooks\n\nUdgående HTTP-kald når content-events sker. Almindelig brug: fyr en Discord / Slack-notifikation ved publish, eller udløs en tredjeparts build-pipeline ved deploy.\n\n| Felt | Formål |\n|---|---|\n| **URL** | Hvor CMS'et POST'er |\n| **Events** | Hvilke events der udløser webhook'et (published, deployed, agent-completed osv.) |\n| **Secret** | Valgfrit — inkluderet som `X-CMS-Signature` til verifikation |\n| **Retry** | Antal retries ved non-2xx (default 3) |\n\nPayload er en JSON-envelope med `event`, `timestamp`, `siteId` og event-specifik data. De seneste 50 leveringer logges per webhook til debugging.\n\n## Almindelige kombinationer\n\n- **Daglig link check + ugentlig Lighthouse** — den fornuftige default for et produktionssite\n- **Webhook til Slack ved publish** — redaktører ser hvad der gik live uden at tjekke admin\n- **Webhook til en CI-pipeline ved deploy** — udløs en downstream-pipeline (tests, cache warmup)\n- **Aggressiv media processing** — bred WebP-range, AI-analyse on for SEO-tunge sites\n\n## Relateret\n\n- [Link checker](/docs/link-checker-da) — resultat-fortolkning\n- [Lighthouse](/docs/lighthouse-da) — score-breakdown\n- [Media processing](/docs/media-da) — EXIF, WebP-varianter, AI-analyse\n- [Email-settings](/docs/settings-email-da) — hvor automation-alerts går",
+    "_seo": {
+      "metaTitle": "Automation-settings — webhouse.app Docs",
+      "metaDescription": "Konfigurér scheduled link checks, Lighthouse-audits, media processing-defaults og udgående webhooks.",
+      "keywords": ["webhouse", "cms", "settings", "automation", "tools", "link-checker", "lighthouse", "webhooks", "media-processing"]
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-04-15T22:10:00.000Z",
+  "updatedAt": "2026-04-15T22:10:00.000Z"
+}

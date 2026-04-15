@@ -1,0 +1,22 @@
+{
+  "id": "8e974092-7d42-402c-bd58-1202f510e880",
+  "slug": "settings-general",
+  "status": "published",
+  "locale": "en",
+  "translationGroup": "b495f314-6614-41be-a686-4fc701c7fe76",
+  "data": {
+    "title": "General settings",
+    "description": "Site identity — name, preview URL, description, timezone, and the small but important defaults that control how the admin presents your site.",
+    "category": "settings",
+    "order": 0,
+    "content": "## Where it is\n\n**Settings → General** (`/admin/settings?tab=general`) — the default landing tab.\n\n## Fields\n\n| Field | What it controls |\n|---|---|\n| **Site name** | Shown in the admin header, browser tab, and as the `<title>` fallback on pages without a custom meta title |\n| **Site description** | Default `meta description` when a page doesn't specify one. Also used in OG tags and in llms.txt |\n| **Preview URL** | The base URL the admin uses to build preview links. Point it at your production URL once deployed, or at a localhost dev server during development. Preview URLs are constructed as `previewSiteUrl + urlPrefix + / + slug` |\n| **Timezone** | Used for scheduled publishes, backup times, link-check schedules, and Lighthouse cadence displays |\n| **Default locale** | The fallback locale for documents without an explicit `locale` field |\n| **Locales** | Comma-separated list of enabled locales (e.g. `en, da, de`). Adds a locale selector to every document and wires i18n into sitemap hreflang |\n| **Purge trash** | One-click action that permanently deletes all trashed documents regardless of retention period. Used when you need to reclaim disk or hard-delete sensitive content |\n\n## Preview URL — the one you'll change most\n\nThe single field worth checking often. Common values:\n\n- **Local dev**: `http://localhost:3001` (or whichever port your site's dev server uses)\n- **Production Next.js site**: `https://example.com`\n- **Static site on GitHub Pages**: `https://youruser.github.io/repo`\n\nWhen Preview URLs 404, the cause is almost always:\n\n1. Wrong `urlPrefix` on the collection — if the collection is `posts` with `urlPrefix: '/blog'`, a doc with slug `hello` previews at `previewSiteUrl + /blog/hello`, which only works if your frontend serves that path\n2. A collection using a category URL pattern (`urlPattern: '/:category/:slug'`) where the `category` field hasn't been set on the document\n3. i18n locale prefixes — multilingual sites with `/da/`, `/en/` need the build to output redirect HTML at the CMS-expected path (see [i18n docs](/docs/i18n))\n\n## Timezone\n\nStored as an IANA zone identifier (`Europe/Copenhagen`, `America/New_York`, etc.). Affects:\n\n- Scheduled publish/unpublish — set a time, CMS interprets it in this zone\n- Backup cron times (Settings → Backup)\n- Link checker cron times (Settings → Automation)\n- Display of `updatedAt` / `createdAt` timestamps in lists\n\nIf editors in different zones collaborate, pick the site's primary audience zone, not the first editor's.\n\n## Locales\n\nThe locales field unlocks i18n. Set it to a comma-separated list (`en, da, de`). Every collection page then shows a locale switcher and the document editor has a \"Translate to…\" action.\n\nSee [i18n](/docs/i18n) for the full i18n mechanics — this field just turns it on.\n\n## Related\n\n- [Site settings overview](/docs/site-settings) — wider primer\n- [i18n](/docs/i18n) — multi-language setup\n- [Trash](/docs/trash) — 30-day retention and how purge works",
+    "_seo": {
+      "metaTitle": "General settings — webhouse.app Docs",
+      "metaDescription": "Configure site name, preview URL, description, timezone, locales, and trash purge in the General settings tab.",
+      "keywords": ["webhouse", "cms", "settings", "general", "preview-url", "timezone", "locales"]
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-04-15T22:00:00.000Z",
+  "updatedAt": "2026-04-15T22:00:00.000Z"
+}

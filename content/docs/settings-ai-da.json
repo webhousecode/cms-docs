@@ -1,0 +1,22 @@
+{
+  "id": "8269a375-3a49-4d02-8d37-252f7f6000d9",
+  "slug": "settings-ai-da",
+  "status": "published",
+  "locale": "da",
+  "translationGroup": "3941667b-dc7a-439b-8893-60b0fb840d46",
+  "data": {
+    "title": "AI-settings",
+    "description": "API-nøgler og model-defaults til hvert AI-feature i CMS'et — chat, agenter, felt-generering, SEO-optimering, oversættelse, interaktiver.",
+    "category": "settings",
+    "order": 6,
+    "content": "## Hvor det er\n\n**Settings → AI** (`/admin/settings?tab=ai`).\n\nDenne fane har to sektioner: **AI Providers** (API-nøglerne) og **AI Model Defaults** (hvilken model går til hvilket feature).\n\n## AI Providers\n\nParse feature via en API-nøgle fra en udbyder. P.t. understøttet:\n\n| Udbyder | Hvad det bruges til |\n|---|---|\n| **Anthropic** | Claude — bruges som default til alt (chat, agenter, felt-generering, SEO, GEO, translate) |\n| **OpenAI** | GPT — alternativ vej, bruges hvis du foretrækker ikke-Anthropic routing |\n\nNøgler gemmes **per site**, ikke per konto. To sites i samme org kan bruge forskellige nøgler hvis du vil have isoleret billing. Nøgler forlader aldrig serveren — redaktører med editor- eller viewer-roller kan ikke læse dem tilbage.\n\n### Miljø-fallback\n\nHvis en nøgle ikke er sat per-site, falder CMS'et tilbage til `ANTHROPIC_API_KEY` / `OPENAI_API_KEY` fra miljøet. Nyttigt i dev når du ikke vil indsætte nøgler i hvert test-site, men **stol ikke på dette i produktion** — en manglende per-site-nøgle skjuler en glemt konfiguration.\n\n## AI Model Defaults\n\nVælg modellen for hver feature-kategori. Forskellige opgaver ønsker forskellige modeller:\n\n| Slot | Anbefalet | Hvornår der skal afviges |\n|---|---|---|\n| **Content-model** | Haiku eller Sonnet | Brug Opus til premium-sites hvor felt-generering-kvalitet betyder mere end pris |\n| **Chat-model** | Sonnet | Opus til kompleks tool-calling; aldrig Haiku (tool-calling degraderer) |\n| **Premium-model** | Opus | Bruges til Brand Voice-interviews og lang-form generering hvor one-shot kvalitet er kritisk |\n| **Code-model** | Sonnet | Bruges til `generate_interactive`. Haiku producerer upålidelig JavaScript |\n\nOgså konfigurerbart per slot:\n\n- **Max tokens** — maksimalt output per request (typisk: 4096 for felter, 16384 for chat, 8192 for code)\n- **Temperatur** — kreativitets-knap. 0.0 for faktuel (SEO-optimizer), 0.7 for kreativ (indholdsgenerering), 1.0 for brainstorming (aldrig til produktionsindhold)\n- **Max-iterationer** — hvor mange tool-kald chatten kan kæde per tur. Default 25. Hæv til komplekse multi-trin research-flows.\n\n## Per-feature overrides\n\nNogle features kan overrule modellen på feature-niveau:\n\n- **Agenter** — hver agent-config kan pinne en model-override\n- **Prompts** — AI Prompts-fanen kan overrule model per prompt-template\n- **Workflows** — hver workflow-node kan pinne sin egen model\n\nOverrides lader dig bruge Opus til én high-stakes agent, mens ethvert andet feature holdes på Sonnet for omkostningskontrol.\n\n## Rate limits & budgetter\n\nDenne fane enforce'r ikke budgetter direkte — det håndteres af **agent budget**-indstillingen (per agent) og **cockpit** (globale lofter). Se [Cockpit](/docs/cockpit-da) for site-wide AI-omkostningskontrol.\n\n## Relateret\n\n- [AI-agenter](/docs/ai-agents-da) — konfigurér individuelle agenter\n- [Cockpit](/docs/cockpit-da) — global temperatur, token-budget, omkostningslofter\n- [AI Prompts](/docs/settings-prompts-da) — prompt-template-overrides\n- [Brand Voice](/docs/brand-voice-da) — den voice der indsprøjtes i hver AI-prompt",
+    "_seo": {
+      "metaTitle": "AI-settings — webhouse.app Docs",
+      "metaDescription": "Konfigurér Anthropic- og OpenAI-API-nøgler, vælg default-modeller til chat, agenter og indholdsgenerering.",
+      "keywords": ["webhouse", "cms", "settings", "ai", "anthropic", "openai", "api-nøgler", "modeller", "claude"]
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-04-15T22:02:00.000Z",
+  "updatedAt": "2026-04-15T22:02:00.000Z"
+}

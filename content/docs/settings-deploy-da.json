@@ -1,0 +1,22 @@
+{
+  "id": "81050900-bcf7-470b-ae3c-4229b369dd3e",
+  "slug": "settings-deploy-da",
+  "status": "published",
+  "locale": "da",
+  "translationGroup": "2db63eb4-cb05-40fc-be2b-98521dc8fcc2",
+  "data": {
+    "title": "Deploy-settings",
+    "description": "Vælg din hosting-udbyder, sæt repo eller deploy-token og konfigurér Instant Content Deployment til 2-sekunders indholds-push.",
+    "category": "settings",
+    "order": 8,
+    "content": "## Hvor det er\n\n**Settings → Deploy** (`/admin/settings?tab=deploy`).\n\n## Udbyder-valg\n\nFem understøttede targets for Deploy-knappen:\n\n| Udbyder | Hvordan det virker | Hvornår det bruges |\n|---|---|---|\n| **GitHub Pages** | Builder sitet, pusher `dist/` til `gh-pages`-branch | Gratis, SSL inkluderet, kun statisk |\n| **Vercel** | Udløser et Vercel-deploy via token | Hurtigst SSR / edge runtime |\n| **Netlify** | Pusher build til Netlify via auth-token | Gratis tier, preview-deploys per branch |\n| **Fly.io** | Docker build + deploy | EU-region (arn), fuld server-støtte, persistente diske |\n| **Cloudflare Pages** | Direkte upload | Hurtigt CDN, billig egress |\n\nHver udbyder har sit eget token-felt. Tokens er site-level secrets — skjulte efter gem, redaktører kan ikke læse dem tilbage.\n\n## Instant Content Deployment (ICD)\n\nKiller-featuren. I stedet for at udløse et fuldt build hver gang indhold ændres, signerer ICD et webhook og fyrer det til din frontends revalidation-endpoint. Next.js (eller enhver ISR-kapabel frontend) regenererer kun de påvirkede sider. **~2 sekunder i stedet for 5–10 minutter.**\n\nFor at aktivere:\n\n1. Sæt `Revalidation URL` — endpointet på din frontend der accepterer `POST /api/revalidate`\n2. Generér en **signerings-secret** (klik Generate) — bruges til at signere webhook-payloadet\n3. Kopiér secret'en ind i din frontends miljø\n4. Klik **Test revalidation** — fanen sender et dummy-payload for at verificere round-trip\n5. Slå **Deploy on save** til for at fyre ICD ved hvert content-save\n\nSe [ICD + Docker deploy](/docs/icd-and-docker-da) for det fulde flow.\n\n### Hvornår ICD falder tilbage til fuldt deploy\n\nICD håndterer indholdsændringer. Den håndterer IKKE:\n\n- Config-ændringer (`cms.config.ts`)\n- Nye collections\n- Skema-redigeringer\n- Build.ts-ændringer\n\nDe kræver en fuld rebuild, som fanen fyrer automatisk.\n\n## Deploy on save\n\nEn toggle. Når aktiveret, udløser gemning af et dokument ICD (eller fuldt deploy hvis ICD ikke er konfigureret). Fantastisk for hurtige teams med en lille redigeringscadence.\n\n**Fra** når du foretrækker et eksplicit \"Deploy\"-trin — f.eks. en review-workflow hvor flere redigeringer går live sammen.\n\n## Deploy-historik\n\nHøjre-panelet viser de seneste 50 deploys: timestamp, trigger (manuel / gem / schedule), varighed, status og commit-SHA / image-tag. Klik på en entry for fuldt log-output.\n\n## Scheduled deploys\n\nValgfrit cron-felt. Nyttigt for sites der rebuilder natligt (f.eks. for at genopfriske eksterne feeds, genkøre agenter, opdatere statistikker). Bruger sitets tidszone.\n\n## Relateret\n\n- [Deploy feature-oversigt](/docs/deploy-da) — bredere deploy-primer på tværs af udbydere\n- [ICD + Docker one-click](/docs/icd-and-docker-da) — instant-content og one-click Docker-wizarden\n- [Backup-settings](/docs/settings-backup-da) — snapshot før et risikabelt deploy",
+    "_seo": {
+      "metaTitle": "Deploy-settings — webhouse.app Docs",
+      "metaDescription": "Konfigurér dit deploy-target (GitHub Pages, Vercel, Netlify, Fly.io, Cloudflare), revalidation-webhook og deploy-on-save.",
+      "keywords": ["webhouse", "cms", "settings", "deploy", "icd", "revalidation", "github-pages", "vercel", "netlify", "fly.io"]
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-04-15T22:06:00.000Z",
+  "updatedAt": "2026-04-15T22:06:00.000Z"
+}
