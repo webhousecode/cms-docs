@@ -1,0 +1,22 @@
+{
+  "id": "74385850-de4a-4613-ab07-f9aac8829be9",
+  "slug": "settings-beam-da",
+  "status": "published",
+  "locale": "da",
+  "translationGroup": "f4d10a66-8c6c-4532-a559-d45d4049f85c",
+  "data": {
+    "title": "Beam — site-export & import",
+    "description": "Eksportér et komplet site som et portabelt .beam-arkiv og importér det andetsteds. Indhold, settings, skema, agenter, medie-manifester — alt undtagen uploadede binære filer.",
+    "category": "settings",
+    "order": 4,
+    "content": "## Hvor det er\n\n**Settings → Beam** (`/admin/settings?tab=beam`).\n\nEn **beam** er et enkelt-fils arkiv af et komplet @webhouse/cms-site. Tænk på det som en git bundle for CMS-tilstand: portabel, reproducerbar og nyttig til at flytte et site mellem miljøer eller dele en site-template med en medarbejder.\n\n## Hvad en beam indeholder\n\n- **Indhold** — hver dokument JSON-fil (`content/**/*.json`)\n- **Site-config** — `cms.config.ts` (som tekst)\n- **Settings** — `_data/site-config.json`, backup-config, deploy-config (secrets redacted)\n- **Skema** — genereret `webhouse-schema.json`\n- **Agenter** — `_data/agents/` (prompts, budgets, locale-config)\n- **Brand voice** — `_data/brand-voice.json` + locale-caches\n- **Team** — `_data/team.json` (medlemsliste; ikke password-hashes — de ligger på kontoen, ikke sitet)\n- **Event-log** — seneste 500 entries\n- **Medie-manifest** — filnavne + EXIF + AI-analyse for hvert medie-asset\n\n## Hvad en beam IKKE indeholder\n\n- **Uploadede binære filer** — billeder, videoer, PDF'er bliver hvor de er. En beam refererer til dem; den indlejrer dem ikke. Eksportér medier separat hvis du skal flytte et site til en ny host\n- **Node-modules** — target-miljøet har sine egne\n- **Secrets** — API-nøgler, kodeord, webhook-signerings-secrets redactes til `REDACTED_BY_BEAM`. Du genindtaster dem ved import\n- **Genereret build-output** — `dist/`, `.next/`, `public/uploads/*-400w.webp`\n\n## Eksport\n\nKlik **Export site as .beam**. CMS'et genererer et signeret arkiv og streamer det til dig som `{site-id}-{YYYY-MM-DD}-{short-hash}.beam`. Størrelsen er typisk 50 KB – 5 MB afhængigt af indholdet.\n\nBeam'en er signeret så senere imports kan verificere at den ikke er tampered med. Signeringsnøglen er site-specifik; udskift sitet og signaturen brydes, hvilket er det du vil.\n\n## Import\n\nTo entry points:\n\n1. **Denne fane** — importér ind i *dette* site. Overskriver aktuelt indhold, config, settings. Backupper den eksisterende tilstand til en timestamped folder først (sikkerhedsnet).\n2. **`/admin/sites/new → Beam`-fane** — opret et nyt site fra en beam. Lader dig omdøbe sitet, ændre organisation, beholde eller genskabe skemaet.\n\nVed import gør CMS'et:\n\n1. Verificerer arkiv-signaturen\n2. Backupper aktuel tilstand (hvis der importeres ind i et eksisterende site)\n3. Skriver indhold + config + settings til disk\n4. Genregistrerer sitet i registryet\n5. Prompter dig til at indsætte redactede secrets (API-nøgler) før første deploy\n\n## Use cases\n\n- **Migrér fra dev til prod** — eksportér fra dev-maskinen, importér til produktions-host\n- **Template et site** — byg et showcase-site, beam det, del med en kunde til at seede deres eget site\n- **Time-travel** — hold et rullende sæt af beams som en grovkornet backup over fulde snapshots\n- **Medarbejder-overdragelse** — \"her er en beam, start et nyt site fra den\"\n\n## Forhold til backups\n\nBackups (Settings → Backup) gemmer inkrementelle snapshots med cloud-sync. Beams er one-shot, fuld-site portable arkiver beregnet til at blive flyttet.\n\n| Use case | Brug |\n|---|---|\n| Dagligt sikkerhedsnet | Backup |\n| Gendan dette site til en tidligere dato | Backup |\n| Flyt til en ny host / konto | Beam |\n| Overdrag til en medarbejder | Beam |\n| Klon et template-site | Beam |\n\n## Relateret\n\n- [Backup-settings](/docs/backup-da) — scheduled snapshots\n- [WordPress-migration](/docs/wordpress-migration-da) — importér fra eksterne WP-sites\n- [Framework-consumers](/docs/framework-consumers-da) — hvad `webhouse-schema.json` bruges til",
+    "_seo": {
+      "metaTitle": "Beam — site-export & import — webhouse.app Docs",
+      "metaDescription": "Eksportér et komplet @webhouse/cms-site som et portabelt .beam-arkiv: indhold, settings, skema, agenter. Importér ind i et nyt miljø.",
+      "keywords": ["webhouse", "cms", "settings", "beam", "export", "import", "migration", "backup", "arkiv"]
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-04-15T21:46:00.000Z",
+  "updatedAt": "2026-04-15T21:46:00.000Z"
+}

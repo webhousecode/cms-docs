@@ -1,0 +1,22 @@
+{
+  "id": "dc83b394-0878-4167-be13-42b37d82961c",
+  "slug": "settings-team-da",
+  "status": "published",
+  "locale": "da",
+  "translationGroup": "cc7463f5-df60-46a8-9a62-94bd7b1be82e",
+  "data": {
+    "title": "Team-settings",
+    "description": "Invitér folk til dit site og tildel roller. Admin, editor og viewer — per-site, ikke per-konto.",
+    "category": "settings",
+    "order": 1,
+    "content": "## Hvor det er\n\n**Settings → Team** (`/admin/settings?tab=team`).\n\n## Hvad fanen konfigurerer\n\nHvem der kan tilgå dette site og hvad de kan gøre. Team-medlemskab er **per-site** — en person der er admin på ét site kan være viewer på et andet, eller slet ingen adgang have. Det er enheden af adgangskontrol.\n\n## Roller\n\nTre indbyggede roller:\n\n| Rolle | Kan gøre |\n|---|---|\n| **Admin** | Alt — invitere og fjerne medlemmer, ændre enhver indstilling, deploye, slette indhold, installere agenter, redigere skemaet |\n| **Editor** | Oprette, redigere, publicere og trashe dokumenter. Uploade medier. Køre agenter. Kan ikke ændre indstillinger eller invitere andre |\n| **Viewer** | Read-only. Kan preview sider og gennemse indhold, men kan ikke gemme redigeringer |\n\nRoller er bevidst grove. Finere granuleret permissions (per-collection, per-felt) er planlagt men ikke shippet.\n\n## Invitér nogen\n\n1. Klik **Invite member**.\n2. Indtast deres email.\n3. Vælg en rolle.\n4. Send.\n\nDen inviterede får en email med et tilmeldingslink. Hvis de allerede har en webhouse.app-konto, giver invitationen adgang til dette site på deres eksisterende login. Hvis de ikke har, fører linket dem gennem kontooprettelse og derefter direkte ind i dit site.\n\nInvitationer udløber efter 7 dage. Gensend fra pending-listen.\n\n## Ændre eller fjerne en rolle\n\nKlik på rolle-pillen ved siden af et medlems navn og vælg en ny. For at fjerne nogen helt, brug `×`-knappen — bekræfter inline (Remove? Yes / No) før de kickes ud.\n\n**Du kan ikke degradere eller fjerne den sidste admin.** UI'et blokerer det, så et site aldrig kan ende uden admin.\n\n## Konto vs team-medlemskab\n\nÉn webhouse.app-konto kan tilhøre teams på et hvilket som helst antal sites. Kontoen bærer: email, kodeord (eller passkey), 2FA-config. Team-medlemskabet på hvert site bærer: rolle, dato tilføjet, per-site præferencer.\n\nDet betyder at forlade et team ikke sletter din konto, og at slette din konto fjerner dig fra ethvert team automatisk.\n\n## Hvad mobilappen ser\n\nMobilappen bruger samme team-records. Hvis nogen har editor-adgang på et site via web-admin, har de editor-adgang fra telefonen også. Push-notifikations emne-præferencer er bundet til medlemskabet, så brugeren kan opt-out af `deploy_succeeded`-notifikationer på ét site uden at påvirke andre.\n\n## Audit trail\n\nHver invitation, rolleændring og fjernelse logges i audit-loggen (Settings → Event log når du aktiverer den). Nyttigt når du skal bevise hvem der havde adgang hvornår.\n\n## Relateret\n\n- [Passwordless login](/docs/passwordless-login-da) — hvordan konto-auth virker (passkeys, TOTP)\n- [Permissions-system](/docs/permissions-da) — den lavere-niveau permission-model roller mapper til",
+    "_seo": {
+      "metaTitle": "Team-settings — webhouse.app Docs",
+      "metaDescription": "Invitér medlemmer, tildel admin/editor/viewer-roller og administrér per-site team-medlemskab.",
+      "keywords": ["webhouse", "cms", "settings", "team", "medlemmer", "roller", "admin", "editor", "viewer"]
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-04-15T21:40:00.000Z",
+  "updatedAt": "2026-04-15T21:40:00.000Z"
+}

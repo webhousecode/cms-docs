@@ -1,0 +1,22 @@
+{
+  "id": "22759323-b7b5-439d-bf1c-4c1cc3de8497",
+  "slug": "settings-email",
+  "status": "published",
+  "locale": "en",
+  "translationGroup": "120f87a1-47f2-4bf0-9c1d-35a4a3ea5ddc",
+  "data": {
+    "title": "Email settings",
+    "description": "Transactional email — the From address, provider, and notification recipients for invites, form submissions, and alerts.",
+    "category": "settings",
+    "order": 2,
+    "content": "## Where it is\n\n**Settings → Email** (`/admin/settings?tab=email`).\n\n## What the tab configures\n\nHow outgoing email is sent from your site. The CMS sends email for:\n\n- **Team invites** — onboarding new members\n- **Form submissions** — the form engine emails a copy of every submission to the site owner\n- **Agent notifications** — alerts when a long-running agent finishes\n- **Backup alerts** — when a scheduled backup fails\n- **Link checker reports** — when the crawler finds broken links\n- **Lighthouse alerts** — when scores drop below thresholds\n\nWithout this tab filled in, the CMS falls back to environment-level defaults from `.env`. Configuring per-site here overrides those.\n\n## The fields\n\n| Field | Purpose |\n|---|---|\n| **Provider** | Which email service. Currently: Resend |\n| **API key** | Your provider's API key. Stored as a site-level secret — never exposed to editors |\n| **From address** | The `From:` header on outgoing mail. Must be a domain you've verified with the provider |\n| **From name** | Display name on the `From:` header (e.g. \"Acme CMS\") |\n| **Reply-to** | Where replies go. Often an inbox you actually monitor |\n| **Notification recipients** | Comma-separated list of emails that get system alerts (build failures, scheduled backups, link-check reports) |\n\n## Resend setup\n\n1. Create a Resend account and verify your sending domain.\n2. Create an API key scoped to that domain.\n3. Paste the key in this tab.\n4. Send a test email using the **Test** button.\n\nThe test sends a short message to the first notification recipient. If it lands, you're done.\n\n## Deliverability checklist\n\nIf mails land in spam, check in order:\n\n- **SPF** — domain DNS has `v=spf1 include:amazonses.com ~all` (or Resend's equivalent)\n- **DKIM** — Resend's DKIM records are in DNS and verified\n- **DMARC** — at least `v=DMARC1; p=none;` for passive monitoring\n- **From domain matches sending domain** — don't send `@webhouse.dk` mail from a non-webhouse-verified Resend domain\n\nResend's dashboard shows per-mail delivery status and SPF/DKIM verification results.\n\n## Per-form overrides\n\nThe form engine can override the recipient list on a per-form basis via `notifications.email` in `cms.config.ts`:\n\n```typescript\nforms: [\n  {\n    name: 'contact',\n    notifications: {\n      email: ['sales@example.com', 'cc@example.com'],\n    },\n    ...\n  },\n],\n```\n\nWhen set, submissions from that form go to the listed recipients instead of the site's default notification list.\n\n## What happens without a provider\n\nEmail-triggered features degrade cleanly:\n\n- Team invites show the signup URL on screen (copy manually)\n- Form submissions still save to the inbox, just no email\n- Agent and backup alerts log to the event log but don't ping anyone\n\n## Related\n\n- [Forms](/docs/form-engine) — how inbound form submissions work\n- [Notifications & alerts](/docs/notifications) — the full list of system events that can email\n- [Agents](/docs/agents) — agent completion notifications",
+    "_seo": {
+      "metaTitle": "Email settings — webhouse.app Docs",
+      "metaDescription": "Configure transactional email for invites, form submissions, agent alerts, and backup reports via Resend.",
+      "keywords": ["webhouse", "cms", "settings", "email", "resend", "transactional", "spf", "dkim"]
+    }
+  },
+  "_fieldMeta": {},
+  "createdAt": "2026-04-15T21:42:00.000Z",
+  "updatedAt": "2026-04-15T21:42:00.000Z"
+}
