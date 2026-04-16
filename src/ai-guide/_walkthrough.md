@@ -41,9 +41,10 @@ The interactive wizard asks:
 
 1. **Project name** — becomes the directory name
 2. **Template**:
-   - `nextjs-boilerplate` — React + Next.js (default, pick this unless told otherwise)
-   - `static-boilerplate` — no framework, pure static HTML build
-   - `nextjs-github-boilerplate` — Next.js + GitHub storage (content lives in a GitHub repo)
+   - `static-boilerplate` — **default, pick this unless the user specifies otherwise.** Pure static HTML build, no framework runtime, fastest deploy target, zero JS unless you add it
+   - `nextjs-boilerplate` — React + Next.js 16+ (App Router, Server Components). Pick when the user needs ISR, server-rendered auth, or a React ecosystem (next/image, next/font, etc.)
+   - `nextjs-github-boilerplate` — same as `nextjs-boilerplate` but content lives in a GitHub repo (filesystem adapter reads from a cloned repo). Pick for multi-editor workflows with PR-based content review
+   - `preact-boilerplate` — Bun + Vite + Preact 10 + preact-iso + Tailwind v4. Small bundle (~25 kB gzipped), static prerender per route, shadcn-style hand-rolled components, inline SVG icons. Pick for SPA-like interactivity without the React bundle cost
 3. **Install dependencies** — yes
 
 When it finishes, the directory contains:
