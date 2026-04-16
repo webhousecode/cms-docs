@@ -1,0 +1,29 @@
+{
+  "slug": "settings-beam",
+  "title": "Beam — site export & import",
+  "description": "Export a complete site as a portable .beam archive and import it elsewhere. Content, settings, schema, agents, media manifests — everything except uploaded binaries.",
+  "category": "settings",
+  "order": 4,
+  "locale": "en",
+  "translationGroup": "f4d10a66-8c6c-4532-a559-d45d4049f85c",
+  "helpCardId": null,
+  "content": "## Where it is\n\n**Settings → Beam** (`/admin/settings?tab=beam`).\n\nA **beam** is a single-file archive of a complete @webhouse/cms site. Think of it like a git bundle for CMS state: portable, reproducible, and useful for moving a site between environments or sharing a site template with a collaborator.\n\n## What goes in a beam\n\n- **Content** — every document JSON file (`content/**/*.json`)\n- **Site config** — `cms.config.ts` (as text)\n- **Settings** — `_data/site-config.json`, backups config, deploy config (secrets redacted)\n- **Schema** — generated `webhouse-schema.json`\n- **Agents** — `_data/agents/` (prompts, budgets, locale config)\n- **Brand voice** — `_data/brand-voice.json` + locale caches\n- **Team** — `_data/team.json` (member list; not password hashes — those live on the account, not the site)\n- **Event log** — last 500 entries\n- **Media manifest** — filenames + EXIF + AI-analysis for every media asset\n\n## What's NOT in a beam\n\n- **Uploaded binaries** — images, videos, PDFs stay where they are. A beam references them; it doesn't embed them. Export media separately if you need to move a site to a new host\n- **Node modules** — the target environment has its own\n- **Secrets** — API keys, passwords, webhook signing secrets are redacted to `REDACTED_BY_BEAM`. You re-enter them on import\n- **Generated build output** — `dist/`, `.next/`, `public/uploads/*-400w.webp`\n\n## Exporting\n\nClick **Export site as .beam**. The CMS generates a signed archive and streams it to you as `{site-id}-{YYYY-MM-DD}-{short-hash}.beam`. Size is usually 50 KB – 5 MB depending on content.\n\nThe beam is signed so later imports can verify it wasn't tampered with. The signing key is site-specific; swap the site and the signature breaks, which is what you want.\n\n## Importing\n\nTwo entry points:\n\n1. **This tab** — import into *this* site. Overwrites current content, config, settings. Backs up the existing state to a timestamped folder first (safety net).\n2. **`/admin/sites/new → Beam` tab** — create a new site from a beam. Lets you rename the site, change the organization, keep or regenerate the schema.\n\nOn import the CMS:\n\n1. Verifies the archive signature\n2. Backs up the current state (if importing into an existing site)\n3. Writes content + config + settings to disk\n4. Re-registers the site in the registry\n5. Prompts you to paste redacted secrets (API keys) before first deploy\n\n## Use cases\n\n- **Migrate from dev to prod** — export from the dev machine, import to the production host\n- **Template a site** — build a showcase site, beam it, share with a client to seed their own site\n- **Time-travel** — keep a rolling set of beams as a coarse-grained backup over full snapshots\n- **Collaborator handoff** — \"here's a beam, spin up a fresh site from it\"\n\n## Relationship to backups\n\nBackups (Settings → Backup) store incremental snapshots with cloud sync. Beams are one-shot, full-site portable archives meant to be moved.\n\n| Use case | Use |\n|---|---|\n| Daily safety net | Backup |\n| Restore this site to a previous date | Backup |\n| Move to a new host / account | Beam |\n| Hand off to a collaborator | Beam |\n| Clone a template site | Beam |\n\n## Related\n\n- [Backup settings](/docs/backup) — scheduled snapshots\n- [WordPress migration](/docs/wordpress-migration) — import from external WP sites\n- [Framework consumers](/docs/framework-consumers) — what `webhouse-schema.json` is used for",
+  "excerpt": "Where it is\n\nSettings → Beam (/admin/settings?tab=beam).\n\nA beam is a single-file archive of a complete @webhouse/cms site. Think of it like a git bundle for CMS state: portable, reproducible, and useful for moving a site between environments or sharing a site template with a collaborator.\n\n What go",
+  "seo": {
+    "metaTitle": "Beam — site export & import — webhouse.app Docs",
+    "metaDescription": "Export a complete @webhouse/cms site as a portable .beam archive: content, settings, schema, agents. Import into a new environment.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "settings",
+      "beam",
+      "export",
+      "import",
+      "migration",
+      "backup",
+      "archive"
+    ]
+  },
+  "createdAt": "2026-04-15T21:46:00.000Z",
+  "updatedAt": "2026-04-15T21:46:00.000Z"
+}

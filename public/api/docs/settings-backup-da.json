@@ -1,0 +1,29 @@
+{
+  "slug": "settings-backup-da",
+  "title": "Backup-settings",
+  "description": "Scheduled snapshots af indhold, settings og site-config — valgfrit synkroniseret til cloud storage. Gendan med ét klik.",
+  "category": "settings",
+  "order": 9,
+  "locale": "da",
+  "translationGroup": "40af8077-d6d8-44fc-9497-dc37b5c4d72e",
+  "helpCardId": null,
+  "content": "## Hvor det er\n\n**Settings → Backup** (`/admin/settings?tab=backup`).\n\n## Hvad der backuppes\n\n- Alle dokumenter (`content/**/*.json`)\n- Site-config (`cms.config.ts`)\n- Site-settings (`_data/site-config.json`)\n- Agent-configs (`_data/agents/`)\n- Brand voice + lokalitets-caches\n- Team + invitationer (`_data/team.json`)\n- Event-log (seneste 500 entries)\n- Genereret skema (`webhouse-schema.json`)\n\n**Ikke** backuppet (de ligger andetsteds):\n\n- Uploadede medie-binære filer — behandl dem som et separat backup-problem (cloud sync dit uploads/-bibliotek)\n- Secrets — redactet til `REDACTED_BY_BACKUP` og genindtastet ved restore\n- Build-output (`dist/`, `.next/`)\n\n## Schedule\n\n| Felt | Anbefalet |\n|---|---|\n| **Frekvens** | Dagligt |\n| **Tidspunkt** | Uden for arbejdstid for dit team (03:00 lokalt virker godt) |\n| **Retention** | 30 dage — generøst uden at oppuste storage |\n\nScheduleren kører in-process (instrumentation-node.ts); ingen ekstern cron påkrævet. Bruger sitets konfigurerede tidszone.\n\n## Storage\n\nTo muligheder:\n\n**Lokal** (default) — backups ligger i `_data/backups/YYYY-MM-DD/` som zip-arkiver. Simpelt, hurtigt, ingen eksterne afhængigheder. Mist disken og du mister backups.\n\n**Cloud** — vælg én:\n\n- **Cloudflare R2** — S3-kompatibel, billig egress. Sæt endpoint, access-nøgle, secret, bucket\n- **S3-kompatibel** — ethvert S3-kompatibelt object store (AWS, MinIO, Backblaze B2)\n- **pCloud** — via WebDAV. Nyttigt til ikke-tekniske operatører der allerede har pCloud\n\nCloud-backups beholder den lokale kopi OG synkroniserer en kopi til remote. Hvis den lokale disk dør, gendan fra cloud via **Import backup**.\n\n## Manuel backup\n\n**Backup now**-knappen snapshotter øjeblikkeligt. Tager 1–3 sekunder for de fleste sites. Nyttigt før et risikabelt deploy eller en skema-ændring.\n\n## Restore\n\nKlik på en backup i historik-listen → **Restore**. CMS'et:\n\n1. Opretter en sikkerheds-backup af den aktuelle tilstand (tagged `pre-restore`)\n2. Udpakker det valgte arkiv\n3. Skriver content + settings + agents til disk\n4. Prompter dig til at genindtaste redactede secrets\n5. Genindlæser admin\n\nEller brug **Import backup** til at gendanne en backup fra et andet site eller miljø.\n\n## Alerts\n\nNår en scheduled backup fejler, fyrer CMS'et en email-alert til notifikationsmodtagerne (Settings → Email) og pusher `build_failed`-emnet til mobil. Stille fejl ville være slemt, så dette er aktiveret som default.\n\n## Relateret\n\n- [Backup feature-oversigt](/docs/backup-da) — historik og koncepter\n- [Beam](/docs/settings-beam-da) — portabel single-fil arkiv (andet use case)\n- [Email-settings](/docs/settings-email-da) — hvor backup-failure alerts går",
+  "excerpt": "Hvor det er\n\nSettings → Backup (/admin/settings?tab=backup).\n\n Hvad der backuppes\n\n- Alle dokumenter (content//.json)\n- Site-config (cms.config.ts)\n- Site-settings (data/site-config.json)\n- Agent-configs (data/agents/)\n- Brand voice + lokalitets-caches\n- Team + invitationer (data/team.json)\n- Event-",
+  "seo": {
+    "metaTitle": "Backup-settings — webhouse.app Docs",
+    "metaDescription": "Schedulér automatiske backups af indhold, settings og agenter. Sync til Cloudflare R2, S3 eller pCloud. Gendan med ét klik.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "settings",
+      "backup",
+      "schedule",
+      "r2",
+      "s3",
+      "pcloud",
+      "restore"
+    ]
+  },
+  "createdAt": "2026-04-15T22:08:00.000Z",
+  "updatedAt": "2026-04-15T22:08:00.000Z"
+}

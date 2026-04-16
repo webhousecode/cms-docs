@@ -1,0 +1,29 @@
+{
+  "slug": "settings-backup",
+  "title": "Backup settings",
+  "description": "Scheduled snapshots of content, settings, and site config — optionally synced to cloud storage. Restore with one click.",
+  "category": "settings",
+  "order": 9,
+  "locale": "en",
+  "translationGroup": "40af8077-d6d8-44fc-9497-dc37b5c4d72e",
+  "helpCardId": null,
+  "content": "## Where it is\n\n**Settings → Backup** (`/admin/settings?tab=backup`).\n\n## What gets backed up\n\n- All documents (`content/**/*.json`)\n- Site config (`cms.config.ts`)\n- Site settings (`_data/site-config.json`)\n- Agent configs (`_data/agents/`)\n- Brand voice + locale caches\n- Team + invites (`_data/team.json`)\n- Event log (last 500 entries)\n- Generated schema (`webhouse-schema.json`)\n\n**Not** backed up (they live elsewhere):\n\n- Uploaded media binaries — treat these as a separate backup problem (cloud sync your uploads/ dir)\n- Secrets — redacted to `REDACTED_BY_BACKUP` and re-entered on restore\n- Build output (`dist/`, `.next/`)\n\n## Schedule\n\n| Field | Recommended |\n|---|---|\n| **Frequency** | Daily |\n| **Time** | Off-hours for your team (03:00 local works well) |\n| **Retention** | 30 days — generous without bloating storage |\n\nThe scheduler runs in-process (instrumentation-node.ts); no external cron required. Uses the site's configured timezone.\n\n## Storage\n\nTwo options:\n\n**Local** (default) — backups sit in `_data/backups/YYYY-MM-DD/` as zip archives. Simple, fast, no external dependencies. Lose the disk and you lose the backups.\n\n**Cloud** — choose one:\n\n- **Cloudflare R2** — S3-compatible, cheap egress. Set endpoint, access key, secret, bucket\n- **S3-compatible** — any S3-compatible object store (AWS, MinIO, Backblaze B2)\n- **pCloud** — via WebDAV. Useful for non-technical operators who already have pCloud\n\nCloud backups keep the local copy AND sync a copy to the remote. If the local disk dies, restore from the cloud via **Import backup**.\n\n## Manual backup\n\nThe **Backup now** button snapshots immediately. Takes 1–3 seconds for most sites. Useful before a risky deploy or a schema change.\n\n## Restore\n\nClick any backup in the history list → **Restore**. The CMS:\n\n1. Creates a safety backup of the current state (tagged `pre-restore`)\n2. Extracts the chosen archive\n3. Writes content + settings + agents to disk\n4. Prompts you to re-enter redacted secrets\n5. Reloads the admin\n\nOr use **Import backup** to restore a backup from a different site or environment.\n\n## Alerts\n\nWhen a scheduled backup fails, the CMS fires an email alert to the notification recipients (Settings → Email) and pushes the `build_failed` topic to mobile. Silent failures would be bad, so this is on by default.\n\n## Related\n\n- [Backup feature overview](/docs/backup) — history and concepts\n- [Beam](/docs/settings-beam) — portable single-file archive (different use case)\n- [Email settings](/docs/settings-email) — where backup-failure alerts go",
+  "excerpt": "Where it is\n\nSettings → Backup (/admin/settings?tab=backup).\n\n What gets backed up\n\n- All documents (content//.json)\n- Site config (cms.config.ts)\n- Site settings (data/site-config.json)\n- Agent configs (data/agents/)\n- Brand voice + locale caches\n- Team + invites (data/team.json)\n- Event log (last ",
+  "seo": {
+    "metaTitle": "Backup settings — webhouse.app Docs",
+    "metaDescription": "Schedule automatic backups of content, settings, and agents. Sync to Cloudflare R2, S3, or pCloud. Restore with one click.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "settings",
+      "backup",
+      "schedule",
+      "r2",
+      "s3",
+      "pcloud",
+      "restore"
+    ]
+  },
+  "createdAt": "2026-04-15T22:08:00.000Z",
+  "updatedAt": "2026-04-15T22:08:00.000Z"
+}

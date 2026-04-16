@@ -1,0 +1,28 @@
+{
+  "slug": "settings-schema-da",
+  "title": "Schema-settings",
+  "description": "Redigér collections og feltdefinitioner live — samme skema du ville skrive i cms.config.ts, men fra admin-UI'et. Kun synlig når schema-edit er aktiveret.",
+  "category": "settings",
+  "order": 13,
+  "locale": "da",
+  "translationGroup": "9e6d0b55-ec16-4284-86ca-acb19c70c7bc",
+  "helpCardId": null,
+  "content": "## Hvor det er\n\n**Settings → Schema** (`/admin/settings?tab=schema`) — kun synlig når `schemaEditEnabled` er true i site-config. For produktionssites er dette normalt fra; for dev og onboarding er det on.\n\n## Hvad fanen lader dig gøre\n\nTilføj, fjern, omarrangér og ændr typer på felter i collections uden at redigere `cms.config.ts` i hånden. Ændringer træder i kraft øjeblikkeligt — ingen restart, intet build-trin.\n\nFanen lister hver collection med:\n\n- **Navn** (internt id) og **label** (visningsnavn)\n- **Antal felter**\n- **Edit schema**-knap — dykker ind i felt-editoren\n- **+ New collection** — scaffolder en ny collection med dine valgte felter og `kind`\n\n## Redigér en collection\n\nKlik **Edit schema** på en hvilken som helst collection. Editoren viser:\n\n- **Collection-meta** — navn, label, `kind` (page / snippet / data / form / global), beskrivelse, `urlPrefix`, `urlPattern`, `previewable`\n- **Felter** — drag for at omarrangere, klik for at redigere, skraldespand for at fjerne\n- **Add field** — vælg en felttype fra paletten\n- **Blokke** — hvis collectionen bruger `blocks`-felttypen, redigér blok-registryet her\n\nGem for at skrive ændringer. CMS'et opdaterer det in-memory skema, regenererer `webhouse-schema.json` og fyrer save-hook'et til eventuelle downstream consumers.\n\n## Felttyper du kan tilføje\n\n`text`, `textarea`, `richtext`, `number`, `boolean`, `date`, `image`, `image-gallery`, `video`, `audio`, `htmldoc`, `file`, `interactive`, `column-slots`, `map`, `select`, `tags`, `relation`, `array`, `object`, `blocks`.\n\nHvert felt har et standard sæt af options (required, default, description) plus type-specifikke options (`select` har `options[]`, `relation` har `collection`, `array` har `fields[]` osv.).\n\n## Operationer der kræver omhu\n\nNogle skema-ændringer kan stille bryde eksisterende indhold. Fanen advarer før du committer, men vid hvad du laver:\n\n- **Omdøbning af et felt** — eksisterende dokumenter har stadig den gamle nøgle i deres `data`-objekt. Enten omdøb via et migrations-script eller efterlad det gamle felt (CMS'et ignorerer nøgler der ikke er i skemaet — data er stadig der, bare ikke vist i editoren).\n- **Fjernelse af et felt** — data forbliver på disk, editoren skjuler den bare. Tilføj feltet tilbage når som helst for at se data vende tilbage.\n- **Ændring af en felttype** — HØJ RISIKO. Et richtext-felts markdown passer ikke ind i et text-felt; en relation omdannet til tags mister referencerne. Fanen blokerer de mest destruktive type-ændringer; andre viser en advarsel.\n- **Ændring af `kind`** — f.eks. `page` → `data` fjerner URL-generering. Eksisterende URL'er 404 efter næste deploy. Sæt redirects op først.\n- **Fjernelse af en collection** — gør det ikke. Trash dokumenterne først, fjern derefter. Ellers bliver datafilerne liggende orphaned på disken.\n\n## Re-eksportér skemaet til ikke-TS-consumers\n\nHvis dit projekt har ikke-TypeScript consumers (Java, .NET, PHP, Python, Ruby, Go), er `webhouse-schema.json`-filen kontrakten. **Enhver skema-ændring via denne fane re-genererer den fil automatisk og skriver den til projekt-rod.**\n\nCommit både `cms.config.ts` og `webhouse-schema.json` i samme commit. Se [Framework consumers](/docs/framework-consumers-da) for hvorfor det betyder noget.\n\n## Deaktivér schema-edit\n\nFor produktionssites, sæt `SCHEMA_EDIT_ENABLED=false` (eller fjern env var'en). Fanen forsvinder fra sidebaren. Redaktører kan ikke ændre skemaet; kun en udvikler med repo-adgang kan.\n\n## Relateret\n\n- [Collections](/docs/collections-da) — konceptuel oversigt over collections\n- [Field types](/docs/field-types-da) — fuld felttype-reference\n- [Collection-metadata](/docs/collection-metadata-da) — `kind`- og `description`-reglerne\n- [Framework-consumers](/docs/framework-consumers-da) — hvorfor `webhouse-schema.json` skal være i sync",
+  "excerpt": "Hvor det er\n\nSettings → Schema (/admin/settings?tab=schema) — kun synlig når schemaEditEnabled er true i site-config. For produktionssites er dette normalt fra; for dev og onboarding er det on.\n\n Hvad fanen lader dig gøre\n\nTilføj, fjern, omarrangér og ændr typer på felter i collections uden at redig",
+  "seo": {
+    "metaTitle": "Schema-settings — webhouse.app Docs",
+    "metaDescription": "Redigér collection-skemaer live fra admin-UI'et — tilføj, fjern, omarrangér og ændr typer på felter uden at genstarte.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "settings",
+      "schema",
+      "collections",
+      "felter",
+      "kind",
+      "cms.config.ts"
+    ]
+  },
+  "createdAt": "2026-04-15T22:16:00.000Z",
+  "updatedAt": "2026-04-15T22:16:00.000Z"
+}

@@ -1,0 +1,27 @@
+{
+  "slug": "settings-brand-voice-da",
+  "title": "Brand Voice-fanen",
+  "description": "Settings-fanen til at konfigurere dit sites brand voice — det guidede AI-interview, voice-previewet og re-interview-arbejdsgangen.",
+  "category": "settings",
+  "order": 7,
+  "locale": "da",
+  "translationGroup": "1a0fd186-01a6-409a-a40d-cdf1f93ad7f0",
+  "helpCardId": null,
+  "content": "## Hvor det er\n\n**Settings → Brand Voice** (`/admin/settings?tab=brand-voice`).\n\nDenne fane viser den aktuelle brand voice på én gang: persona-opsummering, primær tone, målgruppe, content pillars, SEO-keywords og brand personality-adjektiver. Hvis ingen voice er defineret, beder fanen dig køre det guidede AI-interview.\n\n## Første kørsel: interviewet\n\nKlik **Start interview**. Claude spiller rollen som brand-strateg og stiller 6–8 spørgsmål om:\n\n- Hvad virksomheden laver og hvem den betjener\n- Adjektiver der beskriver brandets personlighed\n- Emner brandet er autoritativ på\n- Emner der skal undgås\n- Eksempel-fraser der lyder som brandet\n- Målgruppens kontekst (industri, ekspertise-niveau, intention)\n\nInterviewet tager 2–3 minutter. Til sidst genererer Claude et komplet `BrandVoice` JSON-payload og viser det til gennemsyn. Klik **Save** for at gemme det som første version.\n\n## Re-interview vs redigér\n\nTo måder at ændre voicen på:\n\n- **Re-interview** — klik denne fra fanens edit-side. Starter et friskt interview. Nyttigt når brandets retning har skiftet (ny målgruppe, nyt produkt-fokus, rebrand).\n- **Redigér felter direkte** — alle felter er redigerbare som strukturerede form-inputs. Nyttigt til små tweaks som at tilføje et keyword eller udskifte et tone-ord.\n\nHvert gem opretter en ny version. Historik-fanen viser tidligere versioner med mulighed for at aktivere en hvilken som helst af dem.\n\n## Hvad fanen IKKE konfigurerer\n\nLokalitets-specifikke voice-varianter genereres on demand af AI-consumers der har brug for dem — de redigeres ikke i denne fane. Når chatten spørger om voicen i en ikke-primær lokalitet, auto-oversætter CMS'et via `/api/cms/brand-voice/translate` og cacher resultatet i `_data/brand-voice-<lokalitet>.json`. Hvis du vil hånd-redigere den danske voice, åbn den JSON-fil direkte eller brug API'et.\n\n## Effekt\n\nBrand voice indsprøjtes i hver AI-prompt CMS'et kører — chat, felt-generering, agenter, SEO-optimering, oversættelse. Når først konfigureret, aligner AI-output med din voice uden at du skal gentage den i hver prompt. Det er den højeste-gearing-indstilling i CMS'et for indholdskvalitet.\n\n## Relateret\n\n- [Brand Voice-koncept](/docs/brand-voice-da) — dybere forklaring på hvordan voice indsprøjtes i prompts\n- [AI Prompts](/docs/settings-prompts-da) — til prompt-niveau overrides når brand voice ikke er nok\n- [AI-settings](/docs/settings-ai-da) — modellen valgt til interviewet (Opus anbefalet)",
+  "excerpt": "Hvor det er\n\nSettings → Brand Voice (/admin/settings?tab=brand-voice).\n\nDenne fane viser den aktuelle brand voice på én gang: persona-opsummering, primær tone, målgruppe, content pillars, SEO-keywords og brand personality-adjektiver. Hvis ingen voice er defineret, beder fanen dig køre det guidede AI",
+  "seo": {
+    "metaTitle": "Brand Voice-fanen — webhouse.app Docs",
+    "metaDescription": "Kør det guidede brand voice-interview, gennemgå den genererede voice og administrér versioner fra Settings → Brand Voice-fanen.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "settings",
+      "brand-voice",
+      "interview",
+      "ai-voice",
+      "tone"
+    ]
+  },
+  "createdAt": "2026-04-15T22:04:00.000Z",
+  "updatedAt": "2026-04-15T22:04:00.000Z"
+}

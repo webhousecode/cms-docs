@@ -1,0 +1,27 @@
+{
+  "slug": "settings-brand-voice",
+  "title": "Brand Voice tab",
+  "description": "The Settings tab for configuring your site's brand voice — the guided AI interview, the voice preview, and the re-interview workflow.",
+  "category": "settings",
+  "order": 7,
+  "locale": "en",
+  "translationGroup": "1a0fd186-01a6-409a-a40d-cdf1f93ad7f0",
+  "helpCardId": null,
+  "content": "## Where it is\n\n**Settings → Brand Voice** (`/admin/settings?tab=brand-voice`).\n\nThis tab shows the current brand voice at a glance: the persona summary, primary tone, target audience, content pillars, SEO keywords, and brand personality adjectives. If no voice is defined, the tab prompts you to run the guided AI interview.\n\n## First-run: the interview\n\nClick **Start interview**. Claude plays the role of a brand strategist and asks 6–8 questions about:\n\n- What the business does and who it serves\n- Adjectives that describe the brand's personality\n- Topics the brand is authoritative on\n- Topics to avoid\n- Sample phrases that sound like the brand\n- The target audience's context (industry, expertise level, intent)\n\nThe interview takes 2–3 minutes. At the end, Claude generates a complete `BrandVoice` JSON payload and shows it for review. Click **Save** to store it as the first version.\n\n## Re-interview vs edit\n\nTwo ways to change the voice:\n\n- **Re-interview** — click this from the tab's edit page. Starts a fresh interview. Useful when the brand's direction has shifted (new audience, new product focus, rebrand).\n- **Edit fields directly** — all fields are editable as structured form inputs. Useful for small tweaks like adding a keyword or swapping a tone word.\n\nEvery save creates a new version. The history tab shows previous versions with the option to activate any of them.\n\n## What the tab does NOT configure\n\nLocale-specific voice variants are generated on demand by the AI consumers that need them — they're not edited in this tab. When the chat asks for the voice in a non-primary locale, the CMS auto-translates via `/api/cms/brand-voice/translate` and caches the result in `_data/brand-voice-<locale>.json`. If you want to hand-edit the Danish voice, open that JSON file directly or use the API.\n\n## Impact\n\nBrand voice is injected into every AI prompt the CMS runs — chat, field generation, agents, SEO optimisation, translation. Once configured, AI output aligns with your voice without you having to restate it in every prompt. This is the highest-leverage setting in the CMS for content quality.\n\n## Related\n\n- [Brand Voice concept](/docs/brand-voice) — deeper explanation of how voice gets injected into prompts\n- [AI Prompts](/docs/settings-prompts) — for prompt-level overrides when brand voice isn't enough\n- [AI settings](/docs/settings-ai) — the model picked for the interview (Opus recommended)",
+  "excerpt": "Where it is\n\nSettings → Brand Voice (/admin/settings?tab=brand-voice).\n\nThis tab shows the current brand voice at a glance: the persona summary, primary tone, target audience, content pillars, SEO keywords, and brand personality adjectives. If no voice is defined, the tab prompts you to run the guid",
+  "seo": {
+    "metaTitle": "Brand Voice tab — webhouse.app Docs",
+    "metaDescription": "Run the guided brand voice interview, review the generated voice, and manage versions from the Settings → Brand Voice tab.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "settings",
+      "brand-voice",
+      "interview",
+      "ai-voice",
+      "tone"
+    ]
+  },
+  "createdAt": "2026-04-15T22:04:00.000Z",
+  "updatedAt": "2026-04-15T22:04:00.000Z"
+}

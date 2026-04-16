@@ -1,0 +1,25 @@
+{
+  "slug": "consume-rails",
+  "title": "Consume from Rails (Ruby)",
+  "description": "Read @webhouse/cms content from a Ruby on Rails application. Helper module, controllers, ERB views.",
+  "category": "consumers",
+  "order": 12,
+  "locale": "en",
+  "translationGroup": "281555ed-368b-4908-8796-b8799c5c29f2",
+  "helpCardId": null,
+  "content": "## Setup\n\n```\nmy-project/\n  cms.config.ts\n  content/\n  public/uploads/\n  app/\n    controllers/\n    views/\n    helpers/\n```\n\n## Helper module\n\nCreate `app/lib/webhouse.rb`:\n\n```ruby\nrequire 'json'\n\nmodule Webhouse\n  CONTENT_DIR = Rails.root.join('content').freeze\n\n  def self.collection(name, locale: nil)\n    folder = CONTENT_DIR.join(name.to_s)\n    return [] unless Dir.exist?(folder)\n\n    Dir.glob(folder.join('*.json'))\n       .map { |f| JSON.parse(File.read(f)) }\n       .select { |d| d['status'] == 'published' }\n       .then { |docs| locale ? docs.select { |d| d['locale'] == locale } : docs }\n       .sort_by { |d| d.dig('data', 'date') || '' }\n       .reverse\n  end\n\n  def self.document(collection, slug)\n    path = CONTENT_DIR.join(collection.to_s, \"#{slug}.json\")\n    return nil unless File.exist?(path)\n    doc = JSON.parse(File.read(path))\n    doc['status'] == 'published' ? doc : nil\n  end\n\n  def self.find_translation(doc, collection)\n    tg = doc['translationGroup']\n    return nil unless tg\n    collection(collection).find do |other|\n      other['translationGroup'] == tg && other['locale'] != doc['locale']\n    end\n  end\nend\n```\n\n## Controller\n\n```ruby\n# app/controllers/blog_controller.rb\nclass BlogController < ApplicationController\n  def index\n    @posts = Webhouse.collection('posts', locale: 'en')\n  end\n\n  def show\n    @post = Webhouse.document('posts', params[:slug])\n    raise ActionController::RoutingError, 'Not Found' unless @post\n  end\nend\n```\n\n## Routes\n\n```ruby\n# config/routes.rb\nRails.application.routes.draw do\n  root 'blog#index'\n  get '/blog/:slug', to: 'blog#show', as: 'post'\nend\n```\n\n## ERB view\n\n```erb\n<%# app/views/blog/show.html.erb %>\n<article>\n  <h1><%= @post.dig('data', 'title') %></h1>\n  <time><%= @post.dig('data', 'date') %></time>\n  <div class=\"prose\">\n    <%= markdown(@post.dig('data', 'content') || '') %>\n  </div>\n  <% (@post.dig('data', 'tags') || []).each do |tag| %>\n    <%= link_to \"##{tag}\", \"/tags/#{tag}\", class: 'tag' %>\n  <% end %>\n</article>\n```\n\nAdd a markdown helper in `app/helpers/application_helper.rb`:\n\n```ruby\nrequire 'redcarpet'\n\nmodule ApplicationHelper\n  def markdown(text)\n    renderer = Redcarpet::Render::HTML.new(hard_wrap: true)\n    Redcarpet::Markdown.new(renderer, fenced_code_blocks: true).render(text).html_safe\n  end\nend\n```\n\nAdd to `Gemfile`: `gem 'redcarpet'`\n\n## Serving media\n\nAdd `public/uploads/` to the Rails public directory — it's served automatically by Rails in development and by your web server in production.\n\n## i18n\n\n```ruby\n# Show a post with a language switcher\npost = Webhouse.document('posts', params[:slug])\ntranslation = Webhouse.find_translation(post, 'posts')\n\n# In the view\nif translation\n  link_to \"Read in #{translation['locale']}\", blog_post_path(translation['slug'])\nend\n```\n\n## Caching\n\n```ruby\ndef self.collection_cached(name, locale: nil)\n  Rails.cache.fetch(\"webhouse:#{name}:#{locale || 'all'}\", expires_in: 1.minute) do\n    collection(name, locale: locale)\n  end\nend\n```\n\n## Jekyll alternative\n\nFor static Jekyll sites, read the same JSON files in a `_plugins/webhouse.rb` generator:\n\n```ruby\nmodule Jekyll\n  class WebhouseGenerator < Generator\n    def generate(site)\n      Dir.glob('content/posts/*.json').each do |f|\n        doc = JSON.parse(File.read(f))\n        next unless doc['status'] == 'published'\n        site.pages << PageWithoutAFile.new(site, site.source, 'blog', \"#{doc['slug']}.html\").tap do |page|\n          page.content = doc.dig('data', 'content')\n          page.data['title'] = doc.dig('data', 'title')\n          page.data['layout'] = 'post'\n        end\n      end\n    end\n  end\nend\n```\n\n## Next steps\n\n- See the [Rails example](https://github.com/webhousecode/cms/tree/main/examples/consumers/rails-blog)\n- Learn about [Framework-Agnostic Architecture](/docs/framework-agnostic)",
+  "excerpt": "Setup\n\n\nmy-project/\n  cms.config.ts\n  content/\n  public/uploads/\n  app/\n    controllers/\n    views/\n    helpers/\n\n\n Helper module\n\nCreate app/lib/webhouse.rb:\n\nruby\nrequire 'json'\n\nmodule Webhouse\n  CONTENTDIR = Rails.root.join('content').freeze\n\n  def self.collection(name, locale: nil)\n    folder =",
+  "seo": {
+    "metaTitle": "Consume from Rails (Ruby) — webhouse.app Docs",
+    "metaDescription": "Read @webhouse/cms content from a Ruby on Rails application. Helper module, controllers, ERB views.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "rails",
+      "ruby",
+      "consumer"
+    ]
+  },
+  "createdAt": "2026-04-08T12:00:00.000Z",
+  "updatedAt": "2026-04-08T12:00:00.000Z"
+}

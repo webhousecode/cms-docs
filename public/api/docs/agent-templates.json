@@ -1,0 +1,26 @@
+{
+  "slug": "agent-templates",
+  "title": "Agent Template Library",
+  "description": "Reusable agent presets — save your own as local templates, or browse the curated marketplace at github.com/webhousecode/cms-agents.",
+  "category": "concepts",
+  "order": 6,
+  "locale": "en",
+  "translationGroup": "77646e87-ebf4-4fcf-8692-94d263241c19",
+  "helpCardId": null,
+  "content": "## Two sources, one picker\n\nThe template library has two tiers, both visible on the **Agents → Templates** tab and on the **Start from a template** section of the new-agent page.\n\n| Tier | Where it lives | Who curates it |\n|------|---------------|----------------|\n| **Local** | `_admin/_data/agent-templates/{orgId}/{tplId}.json` | You — saved from existing agents via \"Save as template\" |\n| **Marketplace** | `github.com/webhousecode/cms-agents` | webhouse.app team — open PRs welcome |\n\nLocal templates are scoped to the **org**, not the site, so a template you save on one site is available on every site under the same org. Marketplace templates are global.\n\n## Saving a local template\n\nOpen any agent's detail page. The action bar has a **Save as template** button next to **Clone**. Click it and the agent's current configuration — name, role, system prompt, behavior sliders, tools, autonomy, target collections, field defaults — is copied into a new template.\n\nWhat's **not** copied: stats, schedule, budgets, locale, active flag. Those belong to a running agent instance, not to a reusable preset. When you instantiate the template later, you set those fields fresh on the new agent.\n\nThe template is stored under the active org and visible to every site in that org's Templates tab and new-agent picker.\n\n## Deleting a local template\n\nThe Templates tab on `/admin/agents` lists all your local templates as cards. Each has a trash icon that opens the standard inline confirm pattern (\"Remove? [Yes] [No]\"). Click Yes and the template file is deleted.\n\nMarketplace templates can't be deleted from the admin — they're read-only mirrors of the GitHub source.\n\n## The marketplace\n\nWhen the admin loads the template list, it tries the marketplace in this order:\n\n1. **Primary**: `https://webhouse.app/api/agent-templates` — the curated API on the main site (5-second timeout).\n2. **Fallback**: `https://raw.githubusercontent.com/webhousecode/cms-agents/main/manifest.json` plus per-template fetches from the same repo.\n3. **Empty**: if both sources fail, the marketplace section shows a soft warning and the picker still works for local templates.\n\nResults are cached for 5 minutes per CMS process so the picker doesn't refetch on every keystroke.\n\n## Creating a new agent from a template\n\nOn the new-agent page, the **Start from a template** section shows two grids: \"Your org\" with your local templates, and \"Marketplace\" with the curated ones. Click any card and the form below is pre-filled with that template's payload. Tweak whatever you like, give the agent a name, save.\n\nThe form is still fully editable after pre-fill — templates are starting points, not constraints.\n\n## Contributing to the marketplace\n\nThe `webhousecode/cms-agents` repo is MIT-licensed and accepts pull requests. To add a template:\n\n1. Add a new JSON file under `templates/` matching the `AgentTemplate` shape.\n2. Add a matching entry to `manifest.json`.\n3. Open a PR with one paragraph on what the template is for and what kind of site you imagined while writing it.\n\nAccepted templates must:\n\n- Have an opinionated voice (no generic \"write a post about X\" prompts)\n- Refuse hype words explicitly in the system prompt\n- Default to `autonomy: \"draft\"` (never publish without curator review)\n- Be honest about cost — mention if `webSearch` or `imageGeneration` is on\n- Work without per-site context\n\nSee the repo's `README.md` for the full template format reference and curation principles.\n\n## See also\n\n- [Agents overview](/docs/ai-agents) — what an agent is.\n- [Workflows](/docs/agent-workflows) — chain templated agents into pipelines.",
+  "excerpt": "Two sources, one picker\n\nThe template library has two tiers, both visible on the Agents → Templates tab and on the Start from a template section of the new-agent page.\n\n| Tier | Where it lives | Who curates it |\n|------|---------------|----------------|\n| Local | admin/data/agent-templates/{orgId}/{",
+  "seo": {
+    "metaTitle": "Agent Template Library — webhouse.app Docs",
+    "metaDescription": "Reusable agent presets. Save your own as local templates, or browse the curated marketplace at github.com/webhousecode/cms-agents.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "ai",
+      "templates",
+      "marketplace",
+      "agents"
+    ]
+  },
+  "createdAt": "2026-04-08T00:00:00.000Z",
+  "updatedAt": "2026-04-08T00:00:00.000Z"
+}

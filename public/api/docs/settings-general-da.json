@@ -1,0 +1,27 @@
+{
+  "slug": "settings-general-da",
+  "title": "General-settings",
+  "description": "Site-identitet — navn, preview-URL, beskrivelse, tidszone og de små men vigtige defaults der styrer hvordan admin præsenterer dit site.",
+  "category": "settings",
+  "order": 0,
+  "locale": "da",
+  "translationGroup": "b495f314-6614-41be-a686-4fc701c7fe76",
+  "helpCardId": null,
+  "content": "## Hvor det er\n\n**Settings → General** (`/admin/settings?tab=general`) — default landing-fanen.\n\n## Felter\n\n| Felt | Hvad det styrer |\n|---|---|\n| **Site-navn** | Vist i admin-header, browser-fane og som `<title>`-fallback på sider uden custom meta-titel |\n| **Site-beskrivelse** | Default `meta description` når en side ikke angiver en. Bruges også i OG-tags og i llms.txt |\n| **Preview URL** | Base-URL'en admin bruger til at bygge preview-links. Peg på produktions-URL når deployet, eller på en localhost dev-server under udvikling. Preview-URL'er bygges som `previewSiteUrl + urlPrefix + / + slug` |\n| **Tidszone** | Bruges til scheduled publishes, backup-tider, link-check schedules og Lighthouse cadence-visninger |\n| **Default lokalitet** | Fallback-lokalitet for dokumenter uden eksplicit `locale`-felt |\n| **Lokaliteter** | Kommasepareret liste af aktiverede lokaliteter (f.eks. `en, da, de`). Tilføjer en locale-vælger til hvert dokument og wirer i18n ind i sitemap hreflang |\n| **Tøm papirkurv** | One-click handling der permanent sletter alle trashed dokumenter uanset retention-periode. Bruges når du skal genvinde disk eller hard-slette følsomt indhold |\n\n## Preview URL — den du ændrer mest\n\nDen ene værdi værd at tjekke ofte. Almindelige værdier:\n\n- **Lokal dev**: `http://localhost:3001` (eller den port dit sites dev-server bruger)\n- **Produktions Next.js-site**: `https://example.com`\n- **Statisk site på GitHub Pages**: `https://brugernavn.github.io/repo`\n\nNår preview-URL'er giver 404, er årsagen næsten altid:\n\n1. Forkert `urlPrefix` på collectionen — hvis collectionen er `posts` med `urlPrefix: '/blog'`, previewer et dok med slug `hello` på `previewSiteUrl + /blog/hello`, hvilket kun virker hvis din frontend serverer den path\n2. En collection der bruger category-URL-pattern (`urlPattern: '/:category/:slug'`) hvor `category`-feltet ikke er sat på dokumentet\n3. i18n locale-prefixes — flersprogede sites med `/da/`, `/en/` har brug for at build'et udsender redirect-HTML på den CMS-forventede path (se [i18n-docs](/docs/i18n-da))\n\n## Tidszone\n\nGemmes som en IANA zone-identifier (`Europe/Copenhagen`, `America/New_York` osv.). Påvirker:\n\n- Scheduled publish/unpublish — sæt en tid, CMS fortolker i denne zone\n- Backup cron-tider (Settings → Backup)\n- Link checker cron-tider (Settings → Automation)\n- Visning af `updatedAt` / `createdAt`-timestamps i lister\n\nHvis redaktører i forskellige zoner samarbejder, vælg sitets primære målgruppezone, ikke den første redaktørs.\n\n## Lokaliteter\n\nLokaliteter-feltet låser i18n op. Sæt det til en kommasepareret liste (`en, da, de`). Hver collection-side viser så en locale-skifter og dokumenteditoren har en \"Translate to…\"-handling.\n\nSe [i18n](/docs/i18n-da) for fulde i18n-mekanikker — dette felt tænder bare for det.\n\n## Relateret\n\n- [Site settings oversigt](/docs/site-settings-da) — bredere primer\n- [i18n](/docs/i18n-da) — flersprogs-opsætning\n- [Papirkurv](/docs/trash-da) — 30-dages retention og hvordan purge virker",
+  "excerpt": "Hvor det er\n\nSettings → General (/admin/settings?tab=general) — default landing-fanen.\n\n Felter\n\n| Felt | Hvad det styrer |\n|---|---|\n| Site-navn | Vist i admin-header, browser-fane og som -fallback på sider uden custom meta-titel |\n| Site-beskrivelse | Default meta description når en side ikke angi",
+  "seo": {
+    "metaTitle": "General-settings — webhouse.app Docs",
+    "metaDescription": "Konfigurér site-navn, preview-URL, beskrivelse, tidszone, lokaliteter og papirkurvs-tømning i General settings-fanen.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "settings",
+      "general",
+      "preview-url",
+      "tidszone",
+      "lokaliteter"
+    ]
+  },
+  "createdAt": "2026-04-15T22:00:00.000Z",
+  "updatedAt": "2026-04-15T22:00:00.000Z"
+}

@@ -1,0 +1,27 @@
+{
+  "slug": "settings-globals-da",
+  "title": "Globals-settings",
+  "description": "Single-record collections til site-wide data — footers, juridisk tekst, kontaktinfo, alt der dukker op på mange sider.",
+  "category": "settings",
+  "order": 12,
+  "locale": "da",
+  "translationGroup": "75f9bdc4-828d-4104-b149-ae5e8a181d25",
+  "helpCardId": null,
+  "content": "## Hvor det er\n\n**Settings → Globals** (`/admin/settings?tab=globals`) — kun synlig når dit site har mindst én collection med `kind: 'global'`.\n\n## Hvad en global er\n\nEn **global** er en collection der holder præcis ét dokument. Brug det til site-wide data der ikke hører hjemme på en selvstændig side:\n\n- **Footer** — links, tagline, copyright, social handles\n- **Juridisk** — privatlivspolitik-reference, GDPR-kontakt, cookie-notice\n- **Kontakt** — email, telefon, adresse, åbningstider\n- **Pris-tiers** — hvis priser dukker op på flere sider, hold dem her\n- **Settings-lignende indhold** — announcement-bannere, holiday-tilstand, A/B-flags\n\nI modsætning til regulære collections har globals ikke `/admin/<collection>/<slug>`-URL'er. De redigeres via denne fane og konsumeres af frontend'en via content-API'et.\n\n## Definér en global i cms.config.ts\n\n```typescript\nimport { defineConfig, defineCollection } from '@webhouse/cms';\n\nexport default defineConfig({\n  collections: [\n    defineCollection({\n      name: 'footer',\n      label: 'Footer',\n      kind: 'global',\n      description: 'Site-wide footer: links, tagline, copyright. Single record, renderet på hver side.',\n      fields: [\n        { name: 'tagline', type: 'text' },\n        { name: 'copyright', type: 'text' },\n        { name: 'links', type: 'array', fields: [\n          { name: 'label', type: 'text' },\n          { name: 'href', type: 'text' },\n        ]},\n      ],\n    }),\n  ],\n});\n```\n\n`kind: 'global'` er switch'en. CMS admin opretter præcis ét dokument, normalt på slug `global`. Du kan ikke tilføje flere.\n\n## Per-fane layout\n\nGlobals-fanen lister hver global collection med en **Edit**-knap. Klik på en og du føres til den regulære dokumenteditor — samme richtext, image og feltstøtte som enhver collection.\n\n## Konsumér globals på din frontend\n\n**I et statisk build (build.ts):**\n\n```typescript\nimport { readFileSync } from 'node:fs';\nimport { join } from 'node:path';\n\nconst footer = JSON.parse(\n  readFileSync(join('content/footer/footer.json'), 'utf-8'),\n).data;\n\n// Brug footer.tagline, footer.links osv. i hver page-render\n```\n\n**I Next.js:**\n\n```typescript\n// app/lib/globals.ts\nexport async function getFooter() {\n  const raw = await fs.readFile('content/footer/footer.json', 'utf-8');\n  return JSON.parse(raw).data;\n}\n```\n\nGlobals caches af content-servicen ved request-tid — at læse dem er effektivt gratis.\n\n## Hvornår der skal bruges en global vs en regulær collection\n\n| Brug en global | Brug en regulær collection |\n|---|---|\n| Footer-tekst | Blogindlæg |\n| Site-metadata | Team-medlemmer |\n| Juridiske disclaimers | Case studies |\n| Single record, ingen URL | Mange records, hver med sin egen URL |\n\nI tvivl, spørg: dukker det op på mange sider? Er der altid præcis én? Hvis begge ja → global.\n\n## Relateret\n\n- [Collections](/docs/collections-da) — grundlaget for at definere collections\n- [Field types](/docs/field-types-da) — hvilke feltyper der er tilladt i globals\n- [Config reference](/docs/config-reference-da) — fuld `kind`-værdireference",
+  "excerpt": "Hvor det er\n\nSettings → Globals (/admin/settings?tab=globals) — kun synlig når dit site har mindst én collection med kind: 'global'.\n\n Hvad en global er\n\nEn global er en collection der holder præcis ét dokument. Brug det til site-wide data der ikke hører hjemme på en selvstændig side:\n\n- Footer — li",
+  "seo": {
+    "metaTitle": "Globals-settings — webhouse.app Docs",
+    "metaDescription": "Single-record collections til site-wide data: footer, juridisk, kontakt, alt delt på tværs af mange sider.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "settings",
+      "globals",
+      "site-wide",
+      "footer",
+      "collection-kind"
+    ]
+  },
+  "createdAt": "2026-04-15T22:14:00.000Z",
+  "updatedAt": "2026-04-15T22:14:00.000Z"
+}

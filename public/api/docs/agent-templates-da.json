@@ -1,0 +1,26 @@
+{
+  "slug": "agent-templates-da",
+  "title": "Agent template-bibliotek",
+  "description": "Genbrugelige agent-presets — gem dine egne som lokale templates, eller browse den kuraterede marketplace på github.com/webhousecode/cms-agents.",
+  "category": "concepts",
+  "order": 6,
+  "locale": "da",
+  "translationGroup": "77646e87-ebf4-4fcf-8692-94d263241c19",
+  "helpCardId": null,
+  "content": "## To kilder, én picker\n\nTemplate-biblioteket har to lag, begge synlige på **Agents → Templates** tab'en og på **Start from a template** sektionen af new-agent siden.\n\n| Lag | Hvor det ligger | Hvem kuraterer det |\n|-----|-----------------|--------------------|\n| **Local** | `_admin/_data/agent-templates/{orgId}/{tplId}.json` | Dig — gemt fra eksisterende agenter via \"Save as template\" |\n| **Marketplace** | `github.com/webhousecode/cms-agents` | webhouse.app teamet — åbne PRs velkomne |\n\nLokale templates er scoped til **orgen**, ikke sitet, så en template du gemmer på ét site er tilgængelig på alle sites under samme org. Marketplace templates er globale.\n\n## Gemme en lokal template\n\nÅbn en agents detaljeside. Action bar'en har en **Save as template** knap ved siden af **Clone**. Klik den og agentens nuværende konfiguration — navn, role, system prompt, behavior sliders, tools, autonomy, target collections, field defaults — kopieres ind i en ny template.\n\nHvad der **ikke** kopieres: stats, schedule, budgets, locale, active flag. Det hører til en kørende agent-instans, ikke til en genbrugelig preset. Når du senere instantierer templaten, sætter du de felter friske på den nye agent.\n\nTemplaten gemmes under den aktive org og er synlig for alle sites i den orgs Templates tab og new-agent picker.\n\n## Slette en lokal template\n\nTemplates-tabben på `/admin/agents` lister alle dine lokale templates som kort. Hver har et trash-ikon der åbner standard inline confirm-mønsteret (\"Remove? [Yes] [No]\"). Klik Yes og template-filen slettes.\n\nMarketplace templates kan ikke slettes fra admin — de er read-only mirrors af GitHub-kilden.\n\n## Marketplace\n\nNår admin loader template-listen, prøver den marketplace i denne rækkefølge:\n\n1. **Primary**: `https://webhouse.app/api/agent-templates` — den kuraterede API på hovedsitet (5-sekund timeout).\n2. **Fallback**: `https://raw.githubusercontent.com/webhousecode/cms-agents/main/manifest.json` plus per-template fetches fra samme repo.\n3. **Empty**: hvis begge kilder fejler, viser marketplace-sektionen en soft warning og picker'en virker stadig for lokale templates.\n\nResultater caches i 5 minutter pr. CMS-proces så picker'en ikke re-fetcher på hver keystroke.\n\n## Oprette en ny agent fra en template\n\nPå new-agent siden viser **Start from a template** sektionen to grids: \"Your org\" med dine lokale templates, og \"Marketplace\" med de kuraterede. Klik et hvilket som helst kort og formen nedenfor pre-fyldes med den templates payload. Tweak hvad du vil, giv agenten et navn, gem.\n\nFormen er stadig fuldt redigerbar efter pre-fill — templates er startpunkter, ikke begrænsninger.\n\n## Bidrage til marketplace\n\nRepo'et `webhousecode/cms-agents` er MIT-licenseret og accepterer pull requests. For at tilføje en template:\n\n1. Tilføj en ny JSON-fil under `templates/` der matcher `AgentTemplate` shape.\n2. Tilføj en matchende entry til `manifest.json`.\n3. Åbn en PR med ét afsnit om hvad templaten er til og hvilket slags site du forestillede dig mens du skrev den.\n\nAccepterede templates skal:\n\n- Have en opinionated voice (ingen generiske \"skriv et indlæg om X\" prompts)\n- Eksplicit afvise hype-ord i systempromp'ten\n- Defaulte til `autonomy: \"draft\"` (publish aldrig uden kurator-review)\n- Være ærlige om pris — nævn hvis `webSearch` eller `imageGeneration` er on\n- Virke uden per-site kontekst\n\nSe repo'ets `README.md` for det fulde template-format-reference og kurateringsprincipper.\n\n## Se også\n\n- [Agents oversigt](/docs/ai-agents) — hvad en agent er.\n- [Workflows](/docs/agent-workflows) — chain templatede agenter ind i pipelines.",
+  "excerpt": "To kilder, én picker\n\nTemplate-biblioteket har to lag, begge synlige på Agents → Templates tab'en og på Start from a template sektionen af new-agent siden.\n\n| Lag | Hvor det ligger | Hvem kuraterer det |\n|-----|-----------------|--------------------|\n| Local | admin/data/agent-templates/{orgId}/{tpl",
+  "seo": {
+    "metaTitle": "Agent template-bibliotek — webhouse.app Docs",
+    "metaDescription": "Genbrugelige agent-presets. Gem dine egne som lokale templates, eller browse den kuraterede marketplace på github.com/webhousecode/cms-agents.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "ai",
+      "templates",
+      "marketplace",
+      "agenter"
+    ]
+  },
+  "createdAt": "2026-04-08T00:00:00.000Z",
+  "updatedAt": "2026-04-08T00:00:00.000Z"
+}

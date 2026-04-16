@@ -1,0 +1,30 @@
+{
+  "slug": "settings-deploy",
+  "title": "Deploy settings",
+  "description": "Pick your hosting provider, set the repo or deploy token, and configure Instant Content Deployment for 2-second content pushes.",
+  "category": "settings",
+  "order": 8,
+  "locale": "en",
+  "translationGroup": "2db63eb4-cb05-40fc-be2b-98521dc8fcc2",
+  "helpCardId": null,
+  "content": "## Where it is\n\n**Settings → Deploy** (`/admin/settings?tab=deploy`).\n\n## Provider selection\n\nFive supported targets for the Deploy button:\n\n| Provider | How it works | When to use |\n|---|---|---|\n| **GitHub Pages** | Builds site, pushes `dist/` to `gh-pages` branch | Free, SSL included, static-only |\n| **Vercel** | Triggers a Vercel deploy via token | Fastest SSR / edge runtime |\n| **Netlify** | Pushes build to Netlify via auth token | Free tier, preview deploys per branch |\n| **Fly.io** | Docker build + deploy | EU region (arn), full server support, persistent disks |\n| **Cloudflare Pages** | Direct upload | Fast CDN, cheap egress |\n\nEach provider has its own token field. Tokens are site-level secrets — hidden after save, editors can't read them back.\n\n## Instant Content Deployment (ICD)\n\nThe killer feature. Instead of triggering a full build every time content changes, ICD signs a webhook and fires it to your frontend's revalidation endpoint. Next.js (or any ISR-capable frontend) regenerates just the affected pages. **~2 seconds instead of 5–10 minutes.**\n\nTo enable:\n\n1. Set `Revalidation URL` — the endpoint on your frontend that accepts `POST /api/revalidate`\n2. Generate a **signing secret** (click Generate) — used to sign the webhook payload\n3. Copy the secret into your frontend's environment\n4. Click **Test revalidation** — the tab sends a dummy payload to verify round-trip\n5. Toggle **Deploy on save** to fire ICD on every content save\n\nSee [ICD + Docker deploy](/docs/icd-and-docker) for the full flow.\n\n### When ICD falls back to full deploy\n\nICD handles content changes. It does NOT handle:\n\n- Config changes (`cms.config.ts`)\n- New collections\n- Schema edits\n- Build.ts changes\n\nThose require a full rebuild, which the tab fires automatically.\n\n## Deploy on save\n\nA toggle. When on, saving any document triggers ICD (or full deploy if ICD isn't configured). Great for fast teams with a small edit cadence.\n\n**Off** when you prefer an explicit \"Deploy\" step — e.g. a review workflow where multiple edits go live together.\n\n## Deploy history\n\nThe right-hand panel shows the last 50 deploys: timestamp, trigger (manual / save / schedule), duration, status, and the commit SHA / image tag. Click any entry for full log output.\n\n## Scheduled deploys\n\nOptional cron field. Useful for sites that rebuild nightly (e.g. to refresh external feeds, re-run agents, update statistics). Uses the site timezone.\n\n## Related\n\n- [Deploy feature overview](/docs/deploy) — wider deploy primer across providers\n- [ICD + Docker one-click](/docs/icd-and-docker) — the instant-content and one-click Docker wizard\n- [Backup settings](/docs/settings-backup) — snapshot before a risky deploy",
+  "excerpt": "Where it is\n\nSettings → Deploy (/admin/settings?tab=deploy).\n\n Provider selection\n\nFive supported targets for the Deploy button:\n\n| Provider | How it works | When to use |\n|---|---|---|\n| GitHub Pages | Builds site, pushes dist/ to gh-pages branch | Free, SSL included, static-only |\n| Vercel | Trigg",
+  "seo": {
+    "metaTitle": "Deploy settings — webhouse.app Docs",
+    "metaDescription": "Configure your deploy target (GitHub Pages, Vercel, Netlify, Fly.io, Cloudflare), revalidation webhook, and deploy-on-save.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "settings",
+      "deploy",
+      "icd",
+      "revalidation",
+      "github-pages",
+      "vercel",
+      "netlify",
+      "fly.io"
+    ]
+  },
+  "createdAt": "2026-04-15T22:06:00.000Z",
+  "updatedAt": "2026-04-15T22:06:00.000Z"
+}

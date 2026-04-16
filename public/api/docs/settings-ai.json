@@ -1,0 +1,29 @@
+{
+  "slug": "settings-ai",
+  "title": "AI settings",
+  "description": "API keys and model defaults for every AI feature in the CMS — chat, agents, field generation, SEO optimisation, translation, interactives.",
+  "category": "settings",
+  "order": 6,
+  "locale": "en",
+  "translationGroup": "3941667b-dc7a-439b-8893-60b0fb840d46",
+  "helpCardId": null,
+  "content": "## Where it is\n\n**Settings → AI** (`/admin/settings?tab=ai`).\n\nThis tab has two sections: **AI Providers** (the API keys) and **AI Model Defaults** (which model goes to which feature).\n\n## AI Providers\n\nParse the feature via an API key from a provider. Currently supported:\n\n| Provider | What for |\n|---|---|\n| **Anthropic** | Claude — used by default for everything (chat, agents, field generation, SEO, GEO, translate) |\n| **OpenAI** | GPT — alternative path, used if you prefer non-Anthropic routing |\n\nKeys are stored **per site**, not per account. Two sites in the same org can use different keys if you want isolated billing. Keys never leave the server — editors with editor or viewer roles cannot read them back.\n\n### Environment fallback\n\nIf a key isn't set per-site, the CMS falls back to `ANTHROPIC_API_KEY` / `OPENAI_API_KEY` from the environment. Useful in dev when you don't want to paste keys into every test site, but **don't rely on this in production** — a missing per-site key hides a forgotten configuration.\n\n## AI Model Defaults\n\nChoose the model for each feature category. Different tasks want different models:\n\n| Slot | Recommended | When to deviate |\n|---|---|---|\n| **Content model** | Haiku or Sonnet | Use Opus for premium sites where field generation quality matters more than cost |\n| **Chat model** | Sonnet | Opus for complex tool-calling; never Haiku (tool-calling degrades) |\n| **Premium model** | Opus | Used for Brand Voice interviews and long-form generation where one-shot quality is critical |\n| **Code model** | Sonnet | Used for `generate_interactive`. Haiku produces unreliable JavaScript |\n\nAlso configurable per slot:\n\n- **Max tokens** — maximum output per request (typical: 4096 for fields, 16384 for chat, 8192 for code)\n- **Temperature** — creativity knob. 0.0 for factual (SEO optimiser), 0.7 for creative (content generation), 1.0 for brainstorming (never for production content)\n- **Max iterations** — how many tool calls the chat can chain per turn. Default 25. Raise for complex multi-step research flows.\n\n## Per-feature overrides\n\nSome features can override the model at the feature level:\n\n- **Agents** — each agent config can pin a model override\n- **Prompts** — the AI Prompts tab can override model per prompt template\n- **Workflows** — each workflow node can pin its own model\n\nOverrides let you use Opus for one high-stakes agent while keeping every other feature on Sonnet for cost control.\n\n## Rate limits & budgets\n\nThis tab doesn't enforce budgets directly — that's handled by the **agent budget** setting (per agent) and **cockpit** (global caps). See [Cockpit](/docs/cockpit) for site-wide AI cost control.\n\n## Related\n\n- [AI agents](/docs/ai-agents) — configure individual agents\n- [Cockpit](/docs/cockpit) — global temperature, token budget, cost ceilings\n- [AI Prompts](/docs/settings-prompts) — prompt template overrides\n- [Brand Voice](/docs/brand-voice) — the voice injected into every AI prompt",
+  "excerpt": "Where it is\n\nSettings → AI (/admin/settings?tab=ai).\n\nThis tab has two sections: AI Providers (the API keys) and AI Model Defaults (which model goes to which feature).\n\n AI Providers\n\nParse the feature via an API key from a provider. Currently supported:\n\n| Provider | What for |\n|---|---|\n| Anthropi",
+  "seo": {
+    "metaTitle": "AI settings — webhouse.app Docs",
+    "metaDescription": "Configure Anthropic and OpenAI API keys, choose default models for chat, agents, and content generation.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "settings",
+      "ai",
+      "anthropic",
+      "openai",
+      "api-keys",
+      "models",
+      "claude"
+    ]
+  },
+  "createdAt": "2026-04-15T22:02:00.000Z",
+  "updatedAt": "2026-04-15T22:02:00.000Z"
+}

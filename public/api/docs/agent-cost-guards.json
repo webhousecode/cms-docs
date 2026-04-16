@@ -1,0 +1,26 @@
+{
+  "slug": "agent-cost-guards",
+  "title": "Per-Agent Cost Guards",
+  "description": "Cap an agent's spend per day, week, or month. Stops runaway agents before they burn the global budget.",
+  "category": "concepts",
+  "order": 2,
+  "locale": "en",
+  "translationGroup": "2604df61-4bf8-4431-b699-0706c01084e8",
+  "helpCardId": null,
+  "content": "## Why per-agent budgets?\n\nThe Cockpit has a single global monthly budget that covers every LLM call across the site. That works fine until one agent gets stuck in a loop or a curator schedules a daily job they forget about — and the entire budget evaporates on a single agent while everything else starves.\n\nPer-agent cost guards solve this. Each agent can have an optional **daily**, **weekly**, and **monthly** spending cap. When the agent's actual spend in that period reaches the cap, both manual runs and scheduled runs bail out before another LLM call is made.\n\n## Setting the caps\n\nOpen any agent's detail page and find the **Cost guards (USD)** card under the schedule section. All three fields are optional — leave a field blank to mean \"no cap for that period\".\n\n| Field | Period | Resets |\n|-------|--------|--------|\n| Daily  | Since 00:00 today (local time) | Midnight |\n| Weekly | Rolling 7 days | Continuously — the oldest run drops off after 7 days |\n| Monthly | Since the 1st of the current calendar month | First of the month |\n\nThe caps are **independent**. If you set daily=1 and monthly=10, the agent can spend $1 per day for 10 days before any cap trips. Either limit alone is enough to stop a run.\n\n## How the check works\n\nThe guard runs as a **pre-flight check** in three places:\n\n1. **`runAgent`** (manual or API runs) — checks the budget before the LLM call. If exceeded, throws a clear error with the period and amount.\n2. **`scheduler`** (scheduled runs) — checks before each due agent. Skips the run and logs which period tripped, so you can see the skip in instrumentation logs.\n3. **`runWorkflow`** — each step's agent is independently budget-checked before its LLM call.\n\nThe cost number used is the agent's **actual analytics spend** for the period (summed from `recordRun` entries), not an estimate. So the cap reflects what's already been spent, not what might still be spent on the current run.\n\n## Error messages\n\nWhen a manual run hits a cap, the API returns a 500 with a message like:\n\n> Agent \"Content Writer\" has reached its daily budget ($1.5234 of $1.50 cap). Increase the cap on the agent's settings page or wait for the period to reset.\n\nThe scheduler logs the same message and skips the run silently — it does not fire a `agent.failed` webhook for budget-skip cases, because nothing actually failed.\n\n## Recommended values\n\nSensible starting points:\n\n- **Daily $0.50** — fine for a once-a-day blog writer producing one post.\n- **Weekly $5** — covers a few re-runs or tweaks during the week.\n- **Monthly $20** — generous monthly safety net.\n\nIf you have an image-generating agent, bump the daily cap by ~$0.04 per image you expect per run. Nano Banana is currently $0.039 per image.\n\n## Interaction with the global Cockpit budget\n\nPer-agent caps **do not replace** the global Cockpit monthly budget — they layer on top. The scheduler checks both:\n\n1. Global Cockpit budget (95% headroom rule, legacy)\n2. Per-agent budget (Phase 4)\n\nWhichever trips first stops the run. So an agent without per-agent caps still gets stopped by the global cap, and an agent with per-agent caps can be stopped early before the global cap is anywhere near.\n\n## See also\n\n- [Performance dashboard](/docs/ai-analytics) — historical cost and run data per agent.\n- [Agent feedback loop](/docs/agent-feedback-loop) — corrections that reduce per-run cost over time.",
+  "excerpt": "Why per-agent budgets?\n\nThe Cockpit has a single global monthly budget that covers every LLM call across the site. That works fine until one agent gets stuck in a loop or a curator schedules a daily job they forget about — and the entire budget evaporates on a single agent while everything else star",
+  "seo": {
+    "metaTitle": "Per-Agent Cost Guards — webhouse.app Docs",
+    "metaDescription": "Cap an agent's daily, weekly or monthly LLM spend. Pre-flight checks block runaway agents before another call is made.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "ai",
+      "budget",
+      "cost",
+      "agents"
+    ]
+  },
+  "createdAt": "2026-04-08T00:00:00.000Z",
+  "updatedAt": "2026-04-08T00:00:00.000Z"
+}

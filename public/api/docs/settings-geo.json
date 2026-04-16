@@ -1,0 +1,29 @@
+{
+  "slug": "settings-geo",
+  "title": "GEO settings",
+  "description": "AI visibility controls — which AI crawlers can index your site, what the robots.txt strategy is, and how your content surfaces in ChatGPT / Claude / Perplexity answers.",
+  "category": "settings",
+  "order": 3,
+  "locale": "en",
+  "translationGroup": "70b3be8e-31f6-4064-b5e9-c8628bee2730",
+  "helpCardId": null,
+  "content": "## Where it is\n\n**Settings → GEO** (`/admin/settings?tab=geo`).\n\n**GEO** (Generative Engine Optimization) is about making your content discoverable and citable by AI platforms like ChatGPT, Claude, and Perplexity — similar to how SEO is for Google. This tab controls which crawlers can access your content and how the discovery files are generated.\n\n## Robots.txt strategy\n\nThe core control. Pick one of four strategies:\n\n| Strategy | What it does |\n|---|---|\n| **Maximum** | All bots allowed, including training bots. Best for maximum visibility. *Default* |\n| **Balanced** | Search bots allowed (ChatGPT-User, Claude-SearchBot, PerplexityBot). Training bots blocked (GPTBot, ClaudeBot, Google-Extended). Your content powers AI answers but isn't used for model training |\n| **Restrictive** | All AI bots blocked. Only traditional search engines allowed. Use if legally required |\n| **Custom** | Define your own rules line by line. The tab exposes the generated `robots.txt` for review |\n\nThe generated `robots.txt` also disallows `/admin/`, `/api/`, and preview paths on every strategy.\n\n## Generated discovery files\n\nEvery build writes these files at the site root (they're what crawlers and AI platforms look for):\n\n- **`robots.txt`** — crawler policy based on your strategy\n- **`sitemap.xml`** — all indexable pages, with `<xhtml:link rel=\"alternate\" hreflang>` for multi-locale sites\n- **`llms.txt`** — AI-friendly index of your site structure + MCP endpoint pointer\n- **`llms-full.txt`** — full markdown dump of every published document, for retrieval-augmented AI use\n- **`feed.xml`** — RSS feed of your posts\n- **`ai-plugin.json`** — MCP plugin manifest so AI platforms can discover your live content API\n- **Per-page `.md` files** — every HTML page has a markdown sibling at the same URL + `.md` (e.g. `/blog/post.html` → `/blog/post.md`)\n\nAll of this is automatic once the deploy runs. The GEO tab lets you configure *what* goes in each, not the build mechanics.\n\n## Country / region restrictions\n\nOptional. Most sites leave this blank. Set here if your content is geographically restricted (legal, regional licensing). The value feeds into:\n\n- `<meta name=\"geo.region\">` in every page\n- The `llms.txt` preamble\n- Structured data (`areaServed`) in JSON-LD for businesses\n\n## AI citation tuning\n\nGEO scoring (shown in the dashboard) measures how well your content is structured for AI citation. This tab surfaces the rules and lets you override some:\n\n- **Answer-first** — lead paragraphs answer the H1 question directly\n- **Question headers** — H2s match how people actually ask\n- **Statistics** — include numbers, percentages, data points\n- **Citations** — link to authoritative external sources\n- **Freshness** — content updated within 90 days\n- **JSON-LD** — structured data for articles, FAQs, HowTo\n- **Named author** — E-E-A-T trust signals\n- **Depth** — 800+ words for comprehensive coverage\n\nThe tab shows which rules your site currently passes + the Optimize All button to run all of them against every published doc.\n\n## The mcp-plugin endpoint\n\nWhen GEO is enabled, the CMS exposes a public MCP endpoint at `/api/mcp/public`. AI platforms that support MCP (Claude Desktop, Cursor, custom agents) can plug it in and get live, structured access to your content — not just the scraped HTML.\n\nThis is the canonical way to make your site AI-native. See [MCP settings](/docs/settings-mcp) for the auth'd version with write access.\n\n## Related\n\n- [SEO](/docs/seo) — search-engine optimization (sister feature)\n- [Visibility dashboard](/docs/visibility) — combined SEO + GEO score\n- [MCP server](/docs/mcp-server) — full MCP protocol docs\n- [llms.txt spec](https://llmstxt.org/) — the standard this implements",
+  "excerpt": "Where it is\n\nSettings → GEO (/admin/settings?tab=geo).\n\nGEO (Generative Engine Optimization) is about making your content discoverable and citable by AI platforms like ChatGPT, Claude, and Perplexity — similar to how SEO is for Google. This tab controls which crawlers can access your content and how",
+  "seo": {
+    "metaTitle": "GEO settings — webhouse.app Docs",
+    "metaDescription": "Configure AI crawler policy, robots.txt strategy, and discovery files so ChatGPT, Claude, and Perplexity can find and cite your content.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "settings",
+      "geo",
+      "ai",
+      "llms.txt",
+      "robots.txt",
+      "mcp",
+      "generative-engine-optimization"
+    ]
+  },
+  "createdAt": "2026-04-15T21:44:00.000Z",
+  "updatedAt": "2026-04-15T21:44:00.000Z"
+}

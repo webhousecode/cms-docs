@@ -1,0 +1,29 @@
+{
+  "slug": "settings-geo-da",
+  "title": "GEO-settings",
+  "description": "AI-synlighedskontrol — hvilke AI-crawlers der kan indeksere dit site, hvad robots.txt-strategien er, og hvordan dit indhold dukker op i ChatGPT / Claude / Perplexity-svar.",
+  "category": "settings",
+  "order": 3,
+  "locale": "da",
+  "translationGroup": "70b3be8e-31f6-4064-b5e9-c8628bee2730",
+  "helpCardId": null,
+  "content": "## Hvor det er\n\n**Settings → GEO** (`/admin/settings?tab=geo`).\n\n**GEO** (Generative Engine Optimization) handler om at gøre dit indhold findbart og citerbart af AI-platforme som ChatGPT, Claude og Perplexity — svarende til hvad SEO er for Google. Denne fane kontrollerer hvilke crawlers der kan tilgå dit indhold, og hvordan discovery-filer genereres.\n\n## Robots.txt-strategi\n\nKernekontrollen. Vælg en af fire strategier:\n\n| Strategi | Hvad den gør |\n|---|---|\n| **Maximum** | Alle bots tilladt, inkl. training-bots. Bedst til maksimal synlighed. *Default* |\n| **Balanced** | Search-bots tilladt (ChatGPT-User, Claude-SearchBot, PerplexityBot). Training-bots blokeret (GPTBot, ClaudeBot, Google-Extended). Dit indhold driver AI-svar, men bruges ikke til model-træning |\n| **Restrictive** | Alle AI-bots blokeret. Kun traditionelle søgemaskiner tilladt. Brug hvis juridisk påkrævet |\n| **Custom** | Definér dine egne regler linje for linje. Fanen viser den genererede `robots.txt` til gennemsyn |\n\nDen genererede `robots.txt` disallower også `/admin/`, `/api/` og preview-paths i alle strategier.\n\n## Genererede discovery-filer\n\nHvert build skriver disse filer til site-roden (det er dem crawlers og AI-platforme leder efter):\n\n- **`robots.txt`** — crawler-politik baseret på din strategi\n- **`sitemap.xml`** — alle indekserbare sider, med `<xhtml:link rel=\"alternate\" hreflang>` til multi-locale sites\n- **`llms.txt`** — AI-venligt indeks af din site-struktur + MCP endpoint-pointer\n- **`llms-full.txt`** — fuldt markdown-dump af hvert publiceret dokument, til retrieval-augmented AI-brug\n- **`feed.xml`** — RSS-feed af dine indlæg\n- **`ai-plugin.json`** — MCP plugin-manifest så AI-platforme kan finde dit live content-API\n- **Per-side `.md`-filer** — hver HTML-side har en markdown-sibling på samme URL + `.md` (f.eks. `/blog/post.html` → `/blog/post.md`)\n\nAlt dette er automatisk når først deploy kører. GEO-fanen lader dig konfigurere *hvad* der går i hver, ikke build-mekanikken.\n\n## Land / region-restriktioner\n\nValgfrit. De fleste sites efterlader dette blankt. Sæt her hvis dit indhold er geografisk begrænset (juridisk, regional licensering). Værdien feeder ind i:\n\n- `<meta name=\"geo.region\">` på hver side\n- `llms.txt`-præamblen\n- Structured data (`areaServed`) i JSON-LD for virksomheder\n\n## AI-citations-tuning\n\nGEO-scoring (vist i dashboardet) måler hvor godt dit indhold er struktureret til AI-citation. Denne fane fremhæver reglerne og lader dig overrule nogle:\n\n- **Answer-first** — lead-paragrafer besvarer H1-spørgsmålet direkte\n- **Spørgsmåls-headere** — H2'er matcher hvordan folk faktisk spørger\n- **Statistik** — inkludér tal, procenter, datapunkter\n- **Citations** — link til autoritative eksterne kilder\n- **Freshness** — indhold opdateret inden for 90 dage\n- **JSON-LD** — structured data til artikler, FAQ'er, HowTo\n- **Navngivet forfatter** — E-E-A-T trust-signaler\n- **Dybde** — 800+ ord til omfattende dækning\n\nFanen viser hvilke regler dit site pt. består + Optimize All-knappen til at køre alle dem mod hvert publiceret dokument.\n\n## mcp-plugin-endpointet\n\nNår GEO er aktiveret, eksponerer CMS'et et offentligt MCP-endpoint på `/api/mcp/public`. AI-platforme der understøtter MCP (Claude Desktop, Cursor, custom agents) kan plugge det ind og få live, struktureret adgang til dit indhold — ikke bare den scrapede HTML.\n\nDet er den kanoniske måde at gøre dit site AI-nativt på. Se [MCP-settings](/docs/settings-mcp-da) for den autentificerede version med skrivadgang.\n\n## Relateret\n\n- [SEO](/docs/seo-da) — søgemaskineoptimering (søster-feature)\n- [Visibility-dashboard](/docs/visibility-da) — kombineret SEO + GEO-score\n- [MCP-server](/docs/mcp-server-da) — fulde MCP protokol-docs\n- [llms.txt-specifikation](https://llmstxt.org/) — standarden dette implementerer",
+  "excerpt": "Hvor det er\n\nSettings → GEO (/admin/settings?tab=geo).\n\nGEO (Generative Engine Optimization) handler om at gøre dit indhold findbart og citerbart af AI-platforme som ChatGPT, Claude og Perplexity — svarende til hvad SEO er for Google. Denne fane kontrollerer hvilke crawlers der kan tilgå dit indhold",
+  "seo": {
+    "metaTitle": "GEO-settings — webhouse.app Docs",
+    "metaDescription": "Konfigurér AI-crawler-politik, robots.txt-strategi og discovery-filer så ChatGPT, Claude og Perplexity kan finde og citere dit indhold.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "settings",
+      "geo",
+      "ai",
+      "llms.txt",
+      "robots.txt",
+      "mcp",
+      "generative-engine-optimization"
+    ]
+  },
+  "createdAt": "2026-04-15T21:44:00.000Z",
+  "updatedAt": "2026-04-15T21:44:00.000Z"
+}

@@ -1,0 +1,29 @@
+{
+  "slug": "settings-team",
+  "title": "Team settings",
+  "description": "Invite people to your site and assign roles. Admin, editor, and viewer — per-site, not per-account.",
+  "category": "settings",
+  "order": 1,
+  "locale": "en",
+  "translationGroup": "cc7463f5-df60-46a8-9a62-94bd7b1be82e",
+  "helpCardId": null,
+  "content": "## Where it is\n\n**Settings → Team** (`/admin/settings?tab=team`).\n\n## What the tab configures\n\nWho can access this site and what they can do. Team membership is **per-site** — a person who's an admin on one site can be a viewer on another, or have no access at all. That's the unit of access control.\n\n## Roles\n\nThree built-in roles:\n\n| Role | Can do |\n|---|---|\n| **Admin** | Everything — invite and remove members, change any setting, deploy, delete content, install agents, edit the schema |\n| **Editor** | Create, edit, publish, and trash documents. Upload media. Run agents. Cannot change settings or invite others |\n| **Viewer** | Read-only. Can preview pages and browse content but cannot save edits |\n\nRoles are intentionally coarse. Finer-grained permissions (per-collection, per-field) are planned but not shipped.\n\n## Inviting someone\n\n1. Click **Invite member**.\n2. Enter their email.\n3. Pick a role.\n4. Send.\n\nThe invitee gets an email with a signup link. If they already have a webhouse.app account, the invite grants access to this site on their existing login. If they don't, the link takes them through account creation, then straight into your site.\n\nInvites expire after 7 days. Resend from the pending list.\n\n## Changing or removing a role\n\nClick the role pill next to a member's name and pick a new one. To remove someone entirely, use the `×` button — confirms inline (Remove? Yes / No) before kicking them out.\n\n**You can't demote or remove the last admin.** The UI blocks it so a site can never end up admin-less.\n\n## Account vs team membership\n\nOne webhouse.app account can belong to teams on any number of sites. The account carries: email, password (or passkey), 2FA config. The team membership on each site carries: role, date added, per-site preferences.\n\nThis means leaving a team doesn't delete your account, and deleting your account removes you from every team automatically.\n\n## What the mobile app sees\n\nThe mobile app uses the same team records. If someone has editor access on a site via the web admin, they have editor access from the phone too. Push-notification topic preferences are tied to the membership, so the user can opt out of `deploy_succeeded` notifications on one site without affecting others.\n\n## Audit trail\n\nEvery invite, role change, and removal is logged in the audit log (Settings → Event log once you enable it). Useful when you need to prove who had access when.\n\n## Related\n\n- [Passwordless login](/docs/passwordless-login) — how account auth works (passkeys, TOTP)\n- [Permissions system](/docs/permissions) — the lower-level permission model that roles map to",
+  "excerpt": "Where it is\n\nSettings → Team (/admin/settings?tab=team).\n\n What the tab configures\n\nWho can access this site and what they can do. Team membership is per-site — a person who's an admin on one site can be a viewer on another, or have no access at all. That's the unit of access control.\n\n Roles\n\nThree",
+  "seo": {
+    "metaTitle": "Team settings — webhouse.app Docs",
+    "metaDescription": "Invite members, assign admin/editor/viewer roles, and manage per-site team membership.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "settings",
+      "team",
+      "members",
+      "roles",
+      "admin",
+      "editor",
+      "viewer"
+    ]
+  },
+  "createdAt": "2026-04-15T21:40:00.000Z",
+  "updatedAt": "2026-04-15T21:40:00.000Z"
+}

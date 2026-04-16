@@ -1,6 +1,138 @@
 {
-  "count": 89,
+  "count": 171,
   "docs": [
+    {
+      "slug": "agent-cost-guards-da",
+      "title": "Per-agent budgetkontrol",
+      "description": "Sæt et loft over en agents forbrug pr. dag, uge eller måned. Stopper løbske agenter før de brænder hele budgettet.",
+      "category": "concepts",
+      "order": 2,
+      "locale": "da",
+      "translationGroup": "2604df61-4bf8-4431-b699-0706c01084e8",
+      "helpCardId": null,
+      "updatedAt": "2026-04-08T00:00:00.000Z"
+    },
+    {
+      "slug": "agent-cost-guards",
+      "title": "Per-Agent Cost Guards",
+      "description": "Cap an agent's spend per day, week, or month. Stops runaway agents before they burn the global budget.",
+      "category": "concepts",
+      "order": 2,
+      "locale": "en",
+      "translationGroup": "2604df61-4bf8-4431-b699-0706c01084e8",
+      "helpCardId": null,
+      "updatedAt": "2026-04-08T00:00:00.000Z"
+    },
+    {
+      "slug": "agent-feedback-loop-da",
+      "title": "Agent feedback-loop",
+      "description": "Kuratorrettelser og afvisningsnoter gemmes pr. agent og injectes i næste kørsel som few-shot eksempler — agenter lærer automatisk af rettelser.",
+      "category": "concepts",
+      "order": 3,
+      "locale": "da",
+      "translationGroup": "410a9b4a-67e6-4f48-bb75-28bee7aa5640",
+      "helpCardId": null,
+      "updatedAt": "2026-04-08T00:00:00.000Z"
+    },
+    {
+      "slug": "agent-feedback-loop",
+      "title": "Agent Feedback Loop",
+      "description": "Curator edits and rejection notes are saved per agent and injected into the next run as few-shot examples — agents learn from corrections automatically.",
+      "category": "concepts",
+      "order": 3,
+      "locale": "en",
+      "translationGroup": "410a9b4a-67e6-4f48-bb75-28bee7aa5640",
+      "helpCardId": null,
+      "updatedAt": "2026-04-08T00:00:00.000Z"
+    },
+    {
+      "slug": "agent-image-generation-da",
+      "title": "Billedgenerering",
+      "description": "Agenter kan generere billeder via Google Gemini 3 Pro Image. Output går gennem samme media pipeline som user uploads — varianter, EXIF, AI alt-tekst — og hvert billede markeres som AI-genereret.",
+      "category": "concepts",
+      "order": 4,
+      "locale": "da",
+      "translationGroup": "5cd1bc3e-2f54-4f7d-a48f-11f8ec3bea22",
+      "helpCardId": null,
+      "updatedAt": "2026-04-08T00:00:00.000Z"
+    },
+    {
+      "slug": "agent-image-generation",
+      "title": "Image Generation",
+      "description": "Agents can generate images via Google Gemini 3 Pro Image. Output goes through the same media pipeline as user uploads — variants, EXIF, AI alt-text — and every image is tagged as AI-generated.",
+      "category": "concepts",
+      "order": 4,
+      "locale": "en",
+      "translationGroup": "5cd1bc3e-2f54-4f7d-a48f-11f8ec3bea22",
+      "helpCardId": null,
+      "updatedAt": "2026-04-08T00:00:00.000Z"
+    },
+    {
+      "slug": "agent-multi-locale-da",
+      "title": "Multi-locale agenter",
+      "description": "Vælg hvilket sprog hver agent skriver på, og lad auto-translate udfylde de andre når en default-locale kladde godkendes.",
+      "category": "concepts",
+      "order": 5,
+      "locale": "da",
+      "translationGroup": "6b70ecac-c3ff-45ee-b8de-38706a45d234",
+      "helpCardId": null,
+      "updatedAt": "2026-04-08T00:00:00.000Z"
+    },
+    {
+      "slug": "agent-multi-locale",
+      "title": "Multi-Locale Agents",
+      "description": "Pick the language each agent writes in, and let auto-translate fill in the others when a default-locale draft is approved.",
+      "category": "concepts",
+      "order": 5,
+      "locale": "en",
+      "translationGroup": "6b70ecac-c3ff-45ee-b8de-38706a45d234",
+      "helpCardId": null,
+      "updatedAt": "2026-04-08T00:00:00.000Z"
+    },
+    {
+      "slug": "agent-templates-da",
+      "title": "Agent template-bibliotek",
+      "description": "Genbrugelige agent-presets — gem dine egne som lokale templates, eller browse den kuraterede marketplace på github.com/webhousecode/cms-agents.",
+      "category": "concepts",
+      "order": 6,
+      "locale": "da",
+      "translationGroup": "77646e87-ebf4-4fcf-8692-94d263241c19",
+      "helpCardId": null,
+      "updatedAt": "2026-04-08T00:00:00.000Z"
+    },
+    {
+      "slug": "agent-templates",
+      "title": "Agent Template Library",
+      "description": "Reusable agent presets — save your own as local templates, or browse the curated marketplace at github.com/webhousecode/cms-agents.",
+      "category": "concepts",
+      "order": 6,
+      "locale": "en",
+      "translationGroup": "77646e87-ebf4-4fcf-8692-94d263241c19",
+      "helpCardId": null,
+      "updatedAt": "2026-04-08T00:00:00.000Z"
+    },
+    {
+      "slug": "agent-workflows-da",
+      "title": "Agent workflows",
+      "description": "Chain flere agenter ind i en enkelt pipeline. Én prompt ind, ét kurateringskø-item ud — selv om flere agenter rørte det.",
+      "category": "concepts",
+      "order": 7,
+      "locale": "da",
+      "translationGroup": "91eab3a1-176b-4b51-9465-e9076e0be813",
+      "helpCardId": null,
+      "updatedAt": "2026-04-08T00:00:00.000Z"
+    },
+    {
+      "slug": "agent-workflows",
+      "title": "Agent Workflows",
+      "description": "Chain multiple agents into a single pipeline. One prompt in, one curation queue item out — even though several agents touched it.",
+      "category": "concepts",
+      "order": 7,
+      "locale": "en",
+      "translationGroup": "91eab3a1-176b-4b51-9465-e9076e0be813",
+      "helpCardId": null,
+      "updatedAt": "2026-04-08T00:00:00.000Z"
+    },
     {
       "slug": "ai-agents-da",
       "title": "AI-agenter",
@@ -48,24 +180,24 @@
     {
       "slug": "ai-builder-guide-da",
       "title": "AI Builder Guide",
-      "description": "20 modulære dokumentationsmoduler der følger med npm-pakken — designet til AI-agenter der bygger sites.",
+      "description": "Et dedikeret site på ai.webhouse.app plus 21 modulære docs — enhver AI-kodningsassistent får én URL til at bygge med @webhouse/cms.",
       "category": "concepts",
       "order": 3,
       "locale": "da",
       "translationGroup": "7634eb7c-76c4-4515-a4a3-9e50ec8df096",
       "helpCardId": null,
-      "updatedAt": "2026-03-30T11:04:41.760Z"
+      "updatedAt": "2026-04-16T00:00:00.000Z"
     },
     {
       "slug": "ai-builder-guide",
       "title": "AI Builder Guide",
-      "description": "20 modular documentation modules that ship with the npm package — designed for AI agents building sites.",
+      "description": "A dedicated site at ai.webhouse.app plus 21 modular docs — every AI coding assistant gets one URL to build with @webhouse/cms.",
       "category": "concepts",
       "order": 3,
       "locale": "en",
       "translationGroup": "7634eb7c-76c4-4515-a4a3-9e50ec8df096",
       "helpCardId": null,
-      "updatedAt": "2026-03-30T11:04:41.760Z"
+      "updatedAt": "2026-04-16T00:00:00.000Z"
     },
     {
       "slug": "ai-lock-da",
@@ -167,6 +299,28 @@
       "updatedAt": "2026-03-29T21:41:59.068Z"
     },
     {
+      "slug": "brand-voice-da",
+      "title": "Brand Voice",
+      "description": "Per-site, locale-aware brand voice-konfiguration der indsprøjtes i enhver AI-prompt — chat, agenter, generering, SEO.",
+      "category": "guides",
+      "order": 16,
+      "locale": "da",
+      "translationGroup": "64d32254-5897-402b-993e-2f71316248f2",
+      "helpCardId": null,
+      "updatedAt": "2026-04-15T20:30:00.000Z"
+    },
+    {
+      "slug": "brand-voice",
+      "title": "Brand Voice",
+      "description": "Per-site, locale-aware brand voice configuration that gets injected into every AI prompt — chat, agents, generation, SEO.",
+      "category": "guides",
+      "order": 16,
+      "locale": "en",
+      "translationGroup": "64d32254-5897-402b-993e-2f71316248f2",
+      "helpCardId": null,
+      "updatedAt": "2026-04-15T20:30:00.000Z"
+    },
+    {
       "slug": "build-guide-da",
       "title": "Guide til build.ts — Statisk site-generering",
       "description": "Trin-for-trin guide til at bygge den perfekte build.ts til et statisk HTML-site drevet af @webhouse/cms.",
@@ -215,7 +369,7 @@
       "title": "Chat med dit site",
       "description": "Administrér hele dit CMS via naturligt sprog — opret indhold, redigér sider, kør agenter, deploy og mere ved bare at tale til det.",
       "category": "guides",
-      "order": 13,
+      "order": 14,
       "locale": "da",
       "translationGroup": "852967ba-135b-4aea-8a41-a3992c3b1480",
       "helpCardId": null,
@@ -226,7 +380,7 @@
       "title": "Chat with Your Site",
       "description": "Manage your entire CMS through natural language — create content, edit pages, run agents, deploy, and more by just talking to it.",
       "category": "guides",
-      "order": 13,
+      "order": 14,
       "locale": "en",
       "translationGroup": "852967ba-135b-4aea-8a41-a3992c3b1480",
       "helpCardId": null,
@@ -275,6 +429,17 @@
       "translationGroup": "9c8890c5-cb03-4496-be3b-816e949d52d6",
       "helpCardId": null,
       "updatedAt": "2026-03-31T00:26:34.000Z"
+    },
+    {
+      "slug": "collection-metadata",
+      "title": "Collection Metadata (kind & description)",
+      "description": "Tell AI tools what each collection is FOR with `kind` and `description` fields.",
+      "category": "reference",
+      "order": 27,
+      "locale": "en",
+      "translationGroup": "f127-collection-metadata-group",
+      "helpCardId": null,
+      "updatedAt": "2026-04-08T00:00:00.000Z"
     },
     {
       "slug": "collection-naming-da",
@@ -343,6 +508,138 @@
       "updatedAt": "2026-03-30T12:04:35.756Z"
     },
     {
+      "slug": "consume-django-da",
+      "title": "Forbrug fra Django (Python)",
+      "description": "Læs @webhouse/cms-indhold fra en Django-applikation. Hjælpemodul, views, skabeloner.",
+      "category": "consumers",
+      "order": 11,
+      "locale": "da",
+      "translationGroup": "31912827-1e38-4bf1-a2a1-e66e443b1b81",
+      "helpCardId": null,
+      "updatedAt": "2026-04-08T12:00:00.000Z"
+    },
+    {
+      "slug": "consume-django",
+      "title": "Consume from Django (Python)",
+      "description": "Read @webhouse/cms content from a Django application. Helper module, views, templates.",
+      "category": "consumers",
+      "order": 11,
+      "locale": "en",
+      "translationGroup": "31912827-1e38-4bf1-a2a1-e66e443b1b81",
+      "helpCardId": null,
+      "updatedAt": "2026-04-08T12:00:00.000Z"
+    },
+    {
+      "slug": "consume-dotnet-da",
+      "title": "Forbrug fra C# / .NET",
+      "description": "Læs @webhouse/cms-indhold fra ASP.NET Core — Razor Pages, MVC eller minimal APIs.",
+      "category": "consumers",
+      "order": 14,
+      "locale": "da",
+      "translationGroup": "dd70c376-cb4c-47ae-8274-6cf50571d565",
+      "helpCardId": null,
+      "updatedAt": "2026-04-08T12:00:00.000Z"
+    },
+    {
+      "slug": "consume-dotnet",
+      "title": "Consume from C# / .NET",
+      "description": "Read @webhouse/cms content from ASP.NET Core — Razor Pages, MVC, or minimal APIs.",
+      "category": "consumers",
+      "order": 14,
+      "locale": "en",
+      "translationGroup": "dd70c376-cb4c-47ae-8274-6cf50571d565",
+      "helpCardId": null,
+      "updatedAt": "2026-04-08T12:00:00.000Z"
+    },
+    {
+      "slug": "consume-go-da",
+      "title": "Forbrug fra Go",
+      "description": "Læs @webhouse/cms-indhold fra Go — Hugo-temaer, Gin-handlers og standard bibliotek fil I/O.",
+      "category": "consumers",
+      "order": 13,
+      "locale": "da",
+      "translationGroup": "61fe1f5f-06d8-4a05-9d72-573c00be5405",
+      "helpCardId": null,
+      "updatedAt": "2026-04-08T12:00:00.000Z"
+    },
+    {
+      "slug": "consume-go",
+      "title": "Consume from Go",
+      "description": "Read @webhouse/cms content from Go — Hugo themes, Gin handlers, and standard library file I/O.",
+      "category": "consumers",
+      "order": 13,
+      "locale": "en",
+      "translationGroup": "61fe1f5f-06d8-4a05-9d72-573c00be5405",
+      "helpCardId": null,
+      "updatedAt": "2026-04-08T12:00:00.000Z"
+    },
+    {
+      "slug": "consume-java-da",
+      "title": "Forbrug fra Java (Spring Boot)",
+      "description": "Læs @webhouse/cms-indhold fra en Spring Boot-applikation. Reader-klasse, controllers, Thymeleaf-skabeloner.",
+      "category": "consumers",
+      "order": 9,
+      "locale": "da",
+      "translationGroup": "0637c1f3-3604-480d-9cf8-b097e833c3b3",
+      "helpCardId": null,
+      "updatedAt": "2026-04-08T12:00:00.000Z"
+    },
+    {
+      "slug": "consume-java",
+      "title": "Consume from Java (Spring Boot)",
+      "description": "Read @webhouse/cms content from a Spring Boot application. Reader class, controllers, Thymeleaf templates.",
+      "category": "consumers",
+      "order": 9,
+      "locale": "en",
+      "translationGroup": "0637c1f3-3604-480d-9cf8-b097e833c3b3",
+      "helpCardId": null,
+      "updatedAt": "2026-04-08T12:00:00.000Z"
+    },
+    {
+      "slug": "consume-laravel-da",
+      "title": "Forbrug fra Laravel (PHP)",
+      "description": "Læs @webhouse/cms-indhold fra en Laravel-applikation. Hjælpeklasse, routes, Blade-skabeloner.",
+      "category": "consumers",
+      "order": 10,
+      "locale": "da",
+      "translationGroup": "a77b58cf-ebf1-4e7d-a9c3-67c1f5639f37",
+      "helpCardId": null,
+      "updatedAt": "2026-04-08T12:00:00.000Z"
+    },
+    {
+      "slug": "consume-laravel",
+      "title": "Consume from Laravel (PHP)",
+      "description": "Read @webhouse/cms content from a Laravel application. Helper class, routes, Blade templates.",
+      "category": "consumers",
+      "order": 10,
+      "locale": "en",
+      "translationGroup": "a77b58cf-ebf1-4e7d-a9c3-67c1f5639f37",
+      "helpCardId": null,
+      "updatedAt": "2026-04-08T12:00:00.000Z"
+    },
+    {
+      "slug": "consume-rails-da",
+      "title": "Forbrug fra Rails (Ruby)",
+      "description": "Læs @webhouse/cms-indhold fra en Ruby on Rails-applikation. Hjælpemodul, controllers, ERB-views.",
+      "category": "consumers",
+      "order": 12,
+      "locale": "da",
+      "translationGroup": "281555ed-368b-4908-8796-b8799c5c29f2",
+      "helpCardId": null,
+      "updatedAt": "2026-04-08T12:00:00.000Z"
+    },
+    {
+      "slug": "consume-rails",
+      "title": "Consume from Rails (Ruby)",
+      "description": "Read @webhouse/cms content from a Ruby on Rails application. Helper module, controllers, ERB views.",
+      "category": "consumers",
+      "order": 12,
+      "locale": "en",
+      "translationGroup": "281555ed-368b-4908-8796-b8799c5c29f2",
+      "helpCardId": null,
+      "updatedAt": "2026-04-08T12:00:00.000Z"
+    },
+    {
       "slug": "content-structure-da",
       "title": "Indholdsstruktur",
       "description": "Hvordan dokumenter gemmes som JSON-filer — dokumentformat, mappestruktur og konventioner.",
@@ -409,6 +706,28 @@
       "updatedAt": "2026-03-31T00:26:34.000Z"
     },
     {
+      "slug": "deploy-cloudflare-pages-da",
+      "title": "Cloudflare Pages — globalt edge, gratis",
+      "description": "Direkte Cloudflare Pages API-upload. 300+ edge-PoPs, gratis tier dækker de fleste sites. Hurtigste vej til rent statisk indhold globalt.",
+      "category": "deployment",
+      "order": 4,
+      "locale": "da",
+      "translationGroup": "e4055d5c-3e42-491d-a74c-63899fcc5cda",
+      "helpCardId": null,
+      "updatedAt": "2026-04-16T12:00:00.000Z"
+    },
+    {
+      "slug": "deploy-cloudflare-pages",
+      "title": "Cloudflare Pages — global edge, free",
+      "description": "Direct Cloudflare Pages API upload. 300+ edge PoPs, free tier covers most sites. The fastest path for pure-static content worldwide.",
+      "category": "deployment",
+      "order": 4,
+      "locale": "en",
+      "translationGroup": "e4055d5c-3e42-491d-a74c-63899fcc5cda",
+      "helpCardId": null,
+      "updatedAt": "2026-04-16T12:00:00.000Z"
+    },
+    {
       "slug": "deploy-da",
       "title": "Deploy",
       "description": "Publicer dit site til hostingudbydere og administrer Instant Content Deployment.",
@@ -418,6 +737,28 @@
       "translationGroup": "4e6071b9-cc6d-47b6-ba5e-eb0a301d157c",
       "helpCardId": null,
       "updatedAt": "2026-03-31T00:26:34.000Z"
+    },
+    {
+      "slug": "deploy-fly-live-da",
+      "title": "Fly.io Live — øjeblikkelige content-deploys",
+      "description": "Volume-baseret Fly.io-deploy. Første push opretter infrastrukturen; hver rettelse derefter synkroniserer kun ændrede filer på ~200 ms–1 s.",
+      "category": "deployment",
+      "order": 3,
+      "locale": "da",
+      "translationGroup": "547a6341-484a-4698-95d6-a30e4a7d3d79",
+      "helpCardId": null,
+      "updatedAt": "2026-04-16T12:00:00.000Z"
+    },
+    {
+      "slug": "deploy-fly-live",
+      "title": "Fly.io Live — instant content deploys",
+      "description": "Volume-backed Fly.io deploys. First push creates the infrastructure; every edit after that syncs only changed files in ~200 ms–1 s.",
+      "category": "deployment",
+      "order": 3,
+      "locale": "en",
+      "translationGroup": "547a6341-484a-4698-95d6-a30e4a7d3d79",
+      "helpCardId": null,
+      "updatedAt": "2026-04-16T12:00:00.000Z"
     },
     {
       "slug": "deploy",
@@ -455,24 +796,24 @@
     {
       "slug": "docker-deployment-da",
       "title": "Docker-udrulning",
-      "description": "Deploy @webhouse/cms med Docker — kombineret eller opdelt arkitektur, Docker Hub, GitHub Container Registry og Fly.io.",
+      "description": "Deploy @webhouse/cms med Docker — to muligheder: færdigbygget image fra GHCR, eller custom Dockerfile til dit site.",
       "category": "deployment",
       "order": 1,
       "locale": "da",
       "translationGroup": "c71102e1-e175-454f-a9d5-7171cde71cf8",
       "helpCardId": null,
-      "updatedAt": "2026-03-30T12:31:03.310Z"
+      "updatedAt": "2026-03-31T21:00:00.000Z"
     },
     {
       "slug": "docker-deployment",
       "title": "Docker Deployment",
-      "description": "Deploy @webhouse/cms with Docker — combined or split architecture, Docker Hub, GitHub Container Registry, and Fly.io.",
+      "description": "Deploy @webhouse/cms with Docker — two options: pre-built image from GHCR, or custom Dockerfile for your site.",
       "category": "deployment",
       "order": 1,
       "locale": "en",
       "translationGroup": "c71102e1-e175-454f-a9d5-7171cde71cf8",
       "helpCardId": null,
-      "updatedAt": "2026-03-30T12:31:03.309Z"
+      "updatedAt": "2026-03-31T21:00:00.000Z"
     },
     {
       "slug": "field-types-da",
@@ -497,6 +838,72 @@
       "updatedAt": "2026-03-29T21:41:59.068Z"
     },
     {
+      "slug": "form-embedding",
+      "title": "Three Ways to Embed Forms",
+      "description": "Embed CMS forms in your pages using a richtext shortcode, a content block, or a dedicated field type.",
+      "category": "guides",
+      "order": 6,
+      "locale": "en",
+      "translationGroup": null,
+      "helpCardId": null,
+      "updatedAt": "2026-04-09T00:00:00.000Z"
+    },
+    {
+      "slug": "form-engine",
+      "title": "Form Engine",
+      "description": "Collect form submissions with zero third-party dependencies. Define forms in config, render at build time, receive submissions in the admin inbox.",
+      "category": "guides",
+      "order": 5,
+      "locale": "en",
+      "translationGroup": null,
+      "helpCardId": null,
+      "updatedAt": "2026-04-09T00:00:00.000Z"
+    },
+    {
+      "slug": "framework-agnostic-da",
+      "title": "Framework-agnostisk arkitektur",
+      "description": "Dit indhold som flade JSON-filer. Render det med ethvert sprog, enhver framework, enhver runtime.",
+      "category": "consumers",
+      "order": 1,
+      "locale": "da",
+      "translationGroup": "3103a635-8d32-4f30-adc7-45e82abff87a",
+      "helpCardId": null,
+      "updatedAt": "2026-04-08T12:00:00.000Z"
+    },
+    {
+      "slug": "framework-agnostic",
+      "title": "Framework-Agnostic Architecture",
+      "description": "Your content as flat JSON files. Render it with any language, any framework, any runtime.",
+      "category": "consumers",
+      "order": 1,
+      "locale": "en",
+      "translationGroup": "3103a635-8d32-4f30-adc7-45e82abff87a",
+      "helpCardId": null,
+      "updatedAt": "2026-04-08T12:00:00.000Z"
+    },
+    {
+      "slug": "help-and-shortcuts-da",
+      "title": "Hjælp-panel, genveje & AI Chat-værktøjer",
+      "description": "In-app Help & Support-drawer — dokumentationslinks, tastaturgenveje og en quick reference for alle værktøjer AI Chat kan kalde.",
+      "category": "reference",
+      "order": 1,
+      "locale": "da",
+      "translationGroup": "69786a7c-399e-454e-b1ce-702f72f97ecd",
+      "helpCardId": null,
+      "updatedAt": "2026-04-15T21:30:00.000Z"
+    },
+    {
+      "slug": "help-and-shortcuts",
+      "title": "Help panel, shortcuts & AI Chat tools",
+      "description": "In-app Help & Support drawer — documentation links, keyboard shortcuts, and a quick reference for every tool the AI Chat can call.",
+      "category": "reference",
+      "order": 1,
+      "locale": "en",
+      "translationGroup": "69786a7c-399e-454e-b1ce-702f72f97ecd",
+      "helpCardId": null,
+      "updatedAt": "2026-04-15T21:30:00.000Z"
+    },
+    {
       "slug": "i18n-da",
       "title": "Internationalisering (i18n)",
       "description": "Flersproget indhold med automatisk AI-oversættelse, locale-routing og hreflang.",
@@ -517,6 +924,28 @@
       "translationGroup": "ac48668a-63fd-41de-9fe8-24d33407b531",
       "helpCardId": null,
       "updatedAt": "2026-03-31T17:11:43.064Z"
+    },
+    {
+      "slug": "icd-and-docker-da",
+      "title": "Instant Content Deployment & Docker Deploy (F126)",
+      "description": "To deploy-veje: ICD til 2-sekunders indholds-push via ISR-revalidation, og one-click Docker-deploys til Fly.io fra template.",
+      "category": "guides",
+      "order": 20,
+      "locale": "da",
+      "translationGroup": "e9e13705-bb0c-4559-a6e5-3b93a0530c8f",
+      "helpCardId": null,
+      "updatedAt": "2026-04-15T20:55:00.000Z"
+    },
+    {
+      "slug": "icd-and-docker",
+      "title": "Instant Content Deployment & Docker Deploy (F126)",
+      "description": "Two deploy paths: ICD for 2-second content pushes via ISR revalidation, and one-click Docker deploys to Fly.io from template.",
+      "category": "guides",
+      "order": 20,
+      "locale": "en",
+      "translationGroup": "e9e13705-bb0c-4559-a6e5-3b93a0530c8f",
+      "helpCardId": null,
+      "updatedAt": "2026-04-15T20:55:00.000Z"
     },
     {
       "slug": "instant-content-deployment-da",
@@ -583,6 +1012,28 @@
       "translationGroup": "367d914a-4aa5-44e3-a876-1858b869b309",
       "helpCardId": null,
       "updatedAt": "2026-03-29T21:41:59.067Z"
+    },
+    {
+      "slug": "lighthouse-da",
+      "title": "Lighthouse ydeevneaudit",
+      "description": "Overvåg dit sites ydeevne, tilgængelighed, SEO og best practices med integreret Google PageSpeed Insights scanning.",
+      "category": "guides",
+      "order": 32,
+      "locale": "da",
+      "translationGroup": "9a6cd872-3d17-48c0-ad2b-7837cf4bb8a5",
+      "helpCardId": null,
+      "updatedAt": "2026-04-09T18:00:00.000Z"
+    },
+    {
+      "slug": "lighthouse",
+      "title": "Lighthouse Performance Audit",
+      "description": "Monitor your site's performance, accessibility, SEO, and best practices with integrated Google PageSpeed Insights scanning.",
+      "category": "guides",
+      "order": 32,
+      "locale": "en",
+      "translationGroup": "9a6cd872-3d17-48c0-ad2b-7837cf4bb8a5",
+      "helpCardId": null,
+      "updatedAt": "2026-04-09T18:00:00.000Z"
     },
     {
       "slug": "link-checker-da",
@@ -673,6 +1124,28 @@
       "updatedAt": "2026-03-29T21:41:59.069Z"
     },
     {
+      "slug": "mobile-app-da",
+      "title": "Mobilapp (F07)",
+      "description": "Native iOS & Android app der redigerer ethvert @webhouse/cms server. Capacitor shell, React 19, JWT-auth, QR-pairing, push-notifikationer.",
+      "category": "guides",
+      "order": 18,
+      "locale": "da",
+      "translationGroup": "d574cead-8047-452f-aa38-72a3940935d8",
+      "helpCardId": null,
+      "updatedAt": "2026-04-15T20:45:00.000Z"
+    },
+    {
+      "slug": "mobile-app",
+      "title": "Mobile app (F07)",
+      "description": "Native iOS & Android app that edits any @webhouse/cms server. Capacitor shell, React 19, JWT auth, QR pairing, push notifications.",
+      "category": "guides",
+      "order": 18,
+      "locale": "en",
+      "translationGroup": "d574cead-8047-452f-aa38-72a3940935d8",
+      "helpCardId": null,
+      "updatedAt": "2026-04-15T20:45:00.000Z"
+    },
+    {
       "slug": "nextjs-guide-da",
       "title": "Next.js integrationsguide",
       "description": "Komplet guide til at bygge en Next.js App Router-site med @webhouse/cms — fra indholdsindlæsning til deployment.",
@@ -695,6 +1168,28 @@
       "updatedAt": "2026-03-30T12:14:24.905Z"
     },
     {
+      "slug": "nextjs-helpers-da",
+      "title": "Next.js SEO-hjælpere",
+      "description": "Drop-in sitemap, robots.txt, llms.txt, metadata, JSON-LD, RSS feed og statiske params — alt auto-genereret fra CMS-indhold via @webhouse/cms/next.",
+      "category": "guides",
+      "order": 12,
+      "locale": "da",
+      "translationGroup": "73f85c7e-afac-4aa9-9c58-c3cb8801e489",
+      "helpCardId": null,
+      "updatedAt": "2026-04-01T10:00:00.000Z"
+    },
+    {
+      "slug": "nextjs-helpers",
+      "title": "Next.js SEO Helpers",
+      "description": "Drop-in sitemap, robots.txt, llms.txt, metadata, JSON-LD, RSS feed, and static params — all auto-generated from CMS content via @webhouse/cms/next.",
+      "category": "guides",
+      "order": 12,
+      "locale": "en",
+      "translationGroup": "73f85c7e-afac-4aa9-9c58-c3cb8801e489",
+      "helpCardId": null,
+      "updatedAt": "2026-04-01T10:00:00.000Z"
+    },
+    {
       "slug": "nextjs-patterns-da",
       "title": "Next.js-mønstre",
       "description": "Sådan læser du CMS-indhold i Next.js — loader-funktioner, sider, statisk generering og metadata.",
@@ -715,6 +1210,17 @@
       "translationGroup": "02c6e9b7-e6d2-43f9-b04e-eb990092d4ea",
       "helpCardId": null,
       "updatedAt": "2026-03-30T12:04:35.755Z"
+    },
+    {
+      "slug": "passwordless-login",
+      "title": "Passkeys & Two-Factor Login",
+      "description": "Sign in to the CMS without a password using FaceID, TouchID, Windows Hello, or a hardware security key — and add an authenticator-app code on top for two-factor protection.",
+      "category": "guides",
+      "order": 4,
+      "locale": "en",
+      "translationGroup": null,
+      "helpCardId": null,
+      "updatedAt": "2026-04-08T20:00:00.000Z"
     },
     {
       "slug": "quick-start-da",
@@ -783,6 +1289,28 @@
       "updatedAt": "2026-03-29T22:00:00.000Z"
     },
     {
+      "slug": "schema-export-da",
+      "title": "Schema-eksport — webhouse-schema.json",
+      "description": "Generér et JSON Schema-dokument fra cms.config.ts så PHP-, Python-, Ruby-, Go-, Java- og .NET-reader-biblioteker kan introspektere din indholdsmodel.",
+      "category": "consumers",
+      "order": 8,
+      "locale": "da",
+      "translationGroup": "79d92164-3d1d-4fd3-9b4a-9c08ded76384",
+      "helpCardId": null,
+      "updatedAt": "2026-04-09T00:00:00.000Z"
+    },
+    {
+      "slug": "schema-export",
+      "title": "Schema Export — webhouse-schema.json",
+      "description": "Generate a JSON Schema document from cms.config.ts so PHP, Python, Ruby, Go, Java, and .NET reader libraries can introspect your content model.",
+      "category": "consumers",
+      "order": 8,
+      "locale": "en",
+      "translationGroup": "79d92164-3d1d-4fd3-9b4a-9c08ded76384",
+      "helpCardId": null,
+      "updatedAt": "2026-04-09T00:00:00.000Z"
+    },
+    {
       "slug": "seo-da",
       "title": "SEO & Synlighed",
       "description": "Meta-felter, JSON-LD strukturerede data, sitemap, robots.txt og AI-synlighedsoptimering.",
@@ -803,6 +1331,314 @@
       "translationGroup": "9cbccbe8-ec90-4388-83e8-6d1cc84b0d93",
       "helpCardId": "visibility-intro",
       "updatedAt": "2026-03-29T21:41:59.068Z"
+    },
+    {
+      "slug": "settings-ai-da",
+      "title": "AI-settings",
+      "description": "API-nøgler og model-defaults til hvert AI-feature i CMS'et — chat, agenter, felt-generering, SEO-optimering, oversættelse, interaktiver.",
+      "category": "settings",
+      "order": 6,
+      "locale": "da",
+      "translationGroup": "3941667b-dc7a-439b-8893-60b0fb840d46",
+      "helpCardId": null,
+      "updatedAt": "2026-04-15T22:02:00.000Z"
+    },
+    {
+      "slug": "settings-ai",
+      "title": "AI settings",
+      "description": "API keys and model defaults for every AI feature in the CMS — chat, agents, field generation, SEO optimisation, translation, interactives.",
+      "category": "settings",
+      "order": 6,
+      "locale": "en",
+      "translationGroup": "3941667b-dc7a-439b-8893-60b0fb840d46",
+      "helpCardId": null,
+      "updatedAt": "2026-04-15T22:02:00.000Z"
+    },
+    {
+      "slug": "settings-automation-da",
+      "title": "Automation-settings",
+      "description": "Scheduled baggrundsopgaver — link checker, Lighthouse-audits, media processing og webhooks der fyrer ved content-events.",
+      "category": "settings",
+      "order": 10,
+      "locale": "da",
+      "translationGroup": "72bca019-f118-460b-9b51-46197877e716",
+      "helpCardId": null,
+      "updatedAt": "2026-04-15T22:10:00.000Z"
+    },
+    {
+      "slug": "settings-automation",
+      "title": "Automation settings",
+      "description": "Scheduled background tasks — link checker, Lighthouse audits, media processing, and webhooks that fire on content events.",
+      "category": "settings",
+      "order": 10,
+      "locale": "en",
+      "translationGroup": "72bca019-f118-460b-9b51-46197877e716",
+      "helpCardId": null,
+      "updatedAt": "2026-04-15T22:10:00.000Z"
+    },
+    {
+      "slug": "settings-backup-da",
+      "title": "Backup-settings",
+      "description": "Scheduled snapshots af indhold, settings og site-config — valgfrit synkroniseret til cloud storage. Gendan med ét klik.",
+      "category": "settings",
+      "order": 9,
+      "locale": "da",
+      "translationGroup": "40af8077-d6d8-44fc-9497-dc37b5c4d72e",
+      "helpCardId": null,
+      "updatedAt": "2026-04-15T22:08:00.000Z"
+    },
+    {
+      "slug": "settings-backup",
+      "title": "Backup settings",
+      "description": "Scheduled snapshots of content, settings, and site config — optionally synced to cloud storage. Restore with one click.",
+      "category": "settings",
+      "order": 9,
+      "locale": "en",
+      "translationGroup": "40af8077-d6d8-44fc-9497-dc37b5c4d72e",
+      "helpCardId": null,
+      "updatedAt": "2026-04-15T22:08:00.000Z"
+    },
+    {
+      "slug": "settings-beam-da",
+      "title": "Beam — site-export & import",
+      "description": "Eksportér et komplet site som et portabelt .beam-arkiv og importér det andetsteds. Indhold, settings, skema, agenter, medie-manifester — alt undtagen uploadede binære filer.",
+      "category": "settings",
+      "order": 4,
+      "locale": "da",
+      "translationGroup": "f4d10a66-8c6c-4532-a559-d45d4049f85c",
+      "helpCardId": null,
+      "updatedAt": "2026-04-15T21:46:00.000Z"
+    },
+    {
+      "slug": "settings-beam",
+      "title": "Beam — site export & import",
+      "description": "Export a complete site as a portable .beam archive and import it elsewhere. Content, settings, schema, agents, media manifests — everything except uploaded binaries.",
+      "category": "settings",
+      "order": 4,
+      "locale": "en",
+      "translationGroup": "f4d10a66-8c6c-4532-a559-d45d4049f85c",
+      "helpCardId": null,
+      "updatedAt": "2026-04-15T21:46:00.000Z"
+    },
+    {
+      "slug": "settings-brand-voice-da",
+      "title": "Brand Voice-fanen",
+      "description": "Settings-fanen til at konfigurere dit sites brand voice — det guidede AI-interview, voice-previewet og re-interview-arbejdsgangen.",
+      "category": "settings",
+      "order": 7,
+      "locale": "da",
+      "translationGroup": "1a0fd186-01a6-409a-a40d-cdf1f93ad7f0",
+      "helpCardId": null,
+      "updatedAt": "2026-04-15T22:04:00.000Z"
+    },
+    {
+      "slug": "settings-brand-voice",
+      "title": "Brand Voice tab",
+      "description": "The Settings tab for configuring your site's brand voice — the guided AI interview, the voice preview, and the re-interview workflow.",
+      "category": "settings",
+      "order": 7,
+      "locale": "en",
+      "translationGroup": "1a0fd186-01a6-409a-a40d-cdf1f93ad7f0",
+      "helpCardId": null,
+      "updatedAt": "2026-04-15T22:04:00.000Z"
+    },
+    {
+      "slug": "settings-deploy-da",
+      "title": "Deploy-settings",
+      "description": "Vælg din hosting-udbyder, sæt repo eller deploy-token og konfigurér Instant Content Deployment til 2-sekunders indholds-push.",
+      "category": "settings",
+      "order": 8,
+      "locale": "da",
+      "translationGroup": "2db63eb4-cb05-40fc-be2b-98521dc8fcc2",
+      "helpCardId": null,
+      "updatedAt": "2026-04-15T22:06:00.000Z"
+    },
+    {
+      "slug": "settings-deploy",
+      "title": "Deploy settings",
+      "description": "Pick your hosting provider, set the repo or deploy token, and configure Instant Content Deployment for 2-second content pushes.",
+      "category": "settings",
+      "order": 8,
+      "locale": "en",
+      "translationGroup": "2db63eb4-cb05-40fc-be2b-98521dc8fcc2",
+      "helpCardId": null,
+      "updatedAt": "2026-04-15T22:06:00.000Z"
+    },
+    {
+      "slug": "settings-email-da",
+      "title": "Email-settings",
+      "description": "Transaktionsmail — From-adressen, udbyderen og notifikationsmodtagere til invitationer, formular-indsendelser og alerts.",
+      "category": "settings",
+      "order": 2,
+      "locale": "da",
+      "translationGroup": "120f87a1-47f2-4bf0-9c1d-35a4a3ea5ddc",
+      "helpCardId": null,
+      "updatedAt": "2026-04-15T21:42:00.000Z"
+    },
+    {
+      "slug": "settings-email",
+      "title": "Email settings",
+      "description": "Transactional email — the From address, provider, and notification recipients for invites, form submissions, and alerts.",
+      "category": "settings",
+      "order": 2,
+      "locale": "en",
+      "translationGroup": "120f87a1-47f2-4bf0-9c1d-35a4a3ea5ddc",
+      "helpCardId": null,
+      "updatedAt": "2026-04-15T21:42:00.000Z"
+    },
+    {
+      "slug": "settings-general-da",
+      "title": "General-settings",
+      "description": "Site-identitet — navn, preview-URL, beskrivelse, tidszone og de små men vigtige defaults der styrer hvordan admin præsenterer dit site.",
+      "category": "settings",
+      "order": 0,
+      "locale": "da",
+      "translationGroup": "b495f314-6614-41be-a686-4fc701c7fe76",
+      "helpCardId": null,
+      "updatedAt": "2026-04-15T22:00:00.000Z"
+    },
+    {
+      "slug": "settings-general",
+      "title": "General settings",
+      "description": "Site identity — name, preview URL, description, timezone, and the small but important defaults that control how the admin presents your site.",
+      "category": "settings",
+      "order": 0,
+      "locale": "en",
+      "translationGroup": "b495f314-6614-41be-a686-4fc701c7fe76",
+      "helpCardId": null,
+      "updatedAt": "2026-04-15T22:00:00.000Z"
+    },
+    {
+      "slug": "settings-geo-da",
+      "title": "GEO-settings",
+      "description": "AI-synlighedskontrol — hvilke AI-crawlers der kan indeksere dit site, hvad robots.txt-strategien er, og hvordan dit indhold dukker op i ChatGPT / Claude / Perplexity-svar.",
+      "category": "settings",
+      "order": 3,
+      "locale": "da",
+      "translationGroup": "70b3be8e-31f6-4064-b5e9-c8628bee2730",
+      "helpCardId": null,
+      "updatedAt": "2026-04-15T21:44:00.000Z"
+    },
+    {
+      "slug": "settings-geo",
+      "title": "GEO settings",
+      "description": "AI visibility controls — which AI crawlers can index your site, what the robots.txt strategy is, and how your content surfaces in ChatGPT / Claude / Perplexity answers.",
+      "category": "settings",
+      "order": 3,
+      "locale": "en",
+      "translationGroup": "70b3be8e-31f6-4064-b5e9-c8628bee2730",
+      "helpCardId": null,
+      "updatedAt": "2026-04-15T21:44:00.000Z"
+    },
+    {
+      "slug": "settings-globals-da",
+      "title": "Globals-settings",
+      "description": "Single-record collections til site-wide data — footers, juridisk tekst, kontaktinfo, alt der dukker op på mange sider.",
+      "category": "settings",
+      "order": 12,
+      "locale": "da",
+      "translationGroup": "75f9bdc4-828d-4104-b149-ae5e8a181d25",
+      "helpCardId": null,
+      "updatedAt": "2026-04-15T22:14:00.000Z"
+    },
+    {
+      "slug": "settings-globals",
+      "title": "Globals settings",
+      "description": "Single-record collections for site-wide data — footers, legal text, contact info, anything that appears on many pages.",
+      "category": "settings",
+      "order": 12,
+      "locale": "en",
+      "translationGroup": "75f9bdc4-828d-4104-b149-ae5e8a181d25",
+      "helpCardId": null,
+      "updatedAt": "2026-04-15T22:14:00.000Z"
+    },
+    {
+      "slug": "settings-mcp-da",
+      "title": "MCP-settings",
+      "description": "Eksponér dit sites indhold til eksterne AI-værktøjer (Claude Desktop, Cursor, custom agenter) via Model Context Protocol. Read-only offentligt endpoint eller autentificeret read/write.",
+      "category": "settings",
+      "order": 11,
+      "locale": "da",
+      "translationGroup": "0a299cd9-b05c-4ccf-874f-a1d9bb9127a7",
+      "helpCardId": null,
+      "updatedAt": "2026-04-15T22:12:00.000Z"
+    },
+    {
+      "slug": "settings-mcp",
+      "title": "MCP settings",
+      "description": "Expose your site's content to external AI tools (Claude Desktop, Cursor, custom agents) via Model Context Protocol. Read-only public endpoint or authenticated read/write.",
+      "category": "settings",
+      "order": 11,
+      "locale": "en",
+      "translationGroup": "0a299cd9-b05c-4ccf-874f-a1d9bb9127a7",
+      "helpCardId": null,
+      "updatedAt": "2026-04-15T22:12:00.000Z"
+    },
+    {
+      "slug": "settings-prompts-da",
+      "title": "AI Prompts-settings",
+      "description": "Tilpas de prompt-templates CMS'et bruger til felt-generering, SEO-optimering, oversættelse og andre AI-features — per site.",
+      "category": "settings",
+      "order": 5,
+      "locale": "da",
+      "translationGroup": "1c7e7c66-1090-42b9-89f8-974a2a434bb3",
+      "helpCardId": null,
+      "updatedAt": "2026-04-15T21:48:00.000Z"
+    },
+    {
+      "slug": "settings-prompts",
+      "title": "AI Prompts settings",
+      "description": "Customise the prompt templates the CMS uses for field generation, SEO optimisation, translation, and other AI features — per site.",
+      "category": "settings",
+      "order": 5,
+      "locale": "en",
+      "translationGroup": "1c7e7c66-1090-42b9-89f8-974a2a434bb3",
+      "helpCardId": null,
+      "updatedAt": "2026-04-15T21:48:00.000Z"
+    },
+    {
+      "slug": "settings-schema-da",
+      "title": "Schema-settings",
+      "description": "Redigér collections og feltdefinitioner live — samme skema du ville skrive i cms.config.ts, men fra admin-UI'et. Kun synlig når schema-edit er aktiveret.",
+      "category": "settings",
+      "order": 13,
+      "locale": "da",
+      "translationGroup": "9e6d0b55-ec16-4284-86ca-acb19c70c7bc",
+      "helpCardId": null,
+      "updatedAt": "2026-04-15T22:16:00.000Z"
+    },
+    {
+      "slug": "settings-schema",
+      "title": "Schema settings",
+      "description": "Edit collections and field definitions live — the same schema you'd write in cms.config.ts, but from the admin UI. Only visible when schema-edit is enabled.",
+      "category": "settings",
+      "order": 13,
+      "locale": "en",
+      "translationGroup": "9e6d0b55-ec16-4284-86ca-acb19c70c7bc",
+      "helpCardId": null,
+      "updatedAt": "2026-04-15T22:16:00.000Z"
+    },
+    {
+      "slug": "settings-team-da",
+      "title": "Team-settings",
+      "description": "Invitér folk til dit site og tildel roller. Admin, editor og viewer — per-site, ikke per-konto.",
+      "category": "settings",
+      "order": 1,
+      "locale": "da",
+      "translationGroup": "cc7463f5-df60-46a8-9a62-94bd7b1be82e",
+      "helpCardId": null,
+      "updatedAt": "2026-04-15T21:40:00.000Z"
+    },
+    {
+      "slug": "settings-team",
+      "title": "Team settings",
+      "description": "Invite people to your site and assign roles. Admin, editor, and viewer — per-site, not per-account.",
+      "category": "settings",
+      "order": 1,
+      "locale": "en",
+      "translationGroup": "cc7463f5-df60-46a8-9a62-94bd7b1be82e",
+      "helpCardId": null,
+      "updatedAt": "2026-04-15T21:40:00.000Z"
     },
     {
       "slug": "shared-snippets-da",
@@ -831,7 +1667,7 @@
       "title": "Side-by-side oversættelsesredigering",
       "description": "Redigér kilde og oversættelse samtidigt i en split-screen editor — killer-featuren for flersproget indhold.",
       "category": "guides",
-      "order": 12,
+      "order": 13,
       "locale": "da",
       "translationGroup": "c06d4468-937b-4811-b98c-8672b8a76ecb",
       "helpCardId": null,
@@ -842,7 +1678,7 @@
       "title": "Side-by-Side Translation Editing",
       "description": "Edit source and translation simultaneously in a split-screen editor — the killer feature for multilingual content.",
       "category": "guides",
-      "order": 12,
+      "order": 13,
       "locale": "en",
       "translationGroup": "c06d4468-937b-4811-b98c-8672b8a76ecb",
       "helpCardId": null,
@@ -893,6 +1729,28 @@
       "updatedAt": "2026-03-29T21:41:59.068Z"
     },
     {
+      "slug": "svg-embeds-da",
+      "title": "Inline SVG-figurer (svgEmbed)",
+      "description": "Indsæt CSS-stylebare SVG-illustrationer i richtext via SVG figur-vælgeren eller {{svg:slug}}-shortcoden. Bygget på svgEmbed TipTap-noden.",
+      "category": "guides",
+      "order": 7,
+      "locale": "da",
+      "translationGroup": "505112c0-68af-4a30-b09f-499bfc64bde3",
+      "helpCardId": null,
+      "updatedAt": "2026-04-15T20:00:00.000Z"
+    },
+    {
+      "slug": "svg-embeds",
+      "title": "Inline SVG figures (svgEmbed)",
+      "description": "Embed CSS-stylable SVG illustrations in richtext via the SVG figure picker or the {{svg:slug}} shortcode. Backed by the svgEmbed TipTap node.",
+      "category": "guides",
+      "order": 7,
+      "locale": "en",
+      "translationGroup": "505112c0-68af-4a30-b09f-499bfc64bde3",
+      "helpCardId": null,
+      "updatedAt": "2026-04-15T20:00:00.000Z"
+    },
+    {
       "slug": "templates-da",
       "title": "Skabeloner & Boilerplates",
       "description": "Tre klar-til-brug boilerplates og otte eksempelsites til at komme hurtigt i gang.",
@@ -913,6 +1771,28 @@
       "translationGroup": "6344f539-e7b6-43b8-81ff-0ec77b980f01",
       "helpCardId": null,
       "updatedAt": "2026-03-30T12:01:00.047Z"
+    },
+    {
+      "slug": "testing-consumer-examples-da",
+      "title": "Test af consumer-eksemplerne",
+      "description": "Sådan testes Java- og .NET-consumer-eksemplerne. Test-opsætning, fixtures, sikkerhedstjek og hvordan du kører dem lokalt.",
+      "category": "consumers",
+      "order": 20,
+      "locale": "da",
+      "translationGroup": "310cc06f-80ed-4b36-8fe6-0958c04b5f02",
+      "helpCardId": null,
+      "updatedAt": "2026-04-08T12:00:00.000Z"
+    },
+    {
+      "slug": "testing-consumer-examples",
+      "title": "Testing the Consumer Examples",
+      "description": "How the Java and .NET consumer examples are tested. Test setup, fixtures, security checks, and how to run them locally.",
+      "category": "consumers",
+      "order": 20,
+      "locale": "en",
+      "translationGroup": "310cc06f-80ed-4b36-8fe6-0958c04b5f02",
+      "helpCardId": null,
+      "updatedAt": "2026-04-08T12:00:00.000Z"
     },
     {
       "slug": "trash-da",
@@ -979,6 +1859,28 @@
       "translationGroup": "0bda0ab4-43d9-4b9b-930a-a6a15e8bebf8",
       "helpCardId": null,
       "updatedAt": "2026-03-31T00:26:34.000Z"
+    },
+    {
+      "slug": "wordpress-migration-da",
+      "title": "WordPress-migration (F03)",
+      "description": "Probe et live WordPress-site, gennemgå tema/builder/indhold, og importér posts, pages, medier og taxonomier til et nyt @webhouse/cms site.",
+      "category": "guides",
+      "order": 22,
+      "locale": "da",
+      "translationGroup": "4b2c7eb3-13c9-4ba0-8049-ad7c64724db8",
+      "helpCardId": null,
+      "updatedAt": "2026-04-15T21:00:00.000Z"
+    },
+    {
+      "slug": "wordpress-migration",
+      "title": "WordPress migration (F03)",
+      "description": "Probe a live WordPress site, review its theme/builder/content, and import posts, pages, media and taxonomies into a fresh @webhouse/cms site.",
+      "category": "guides",
+      "order": 22,
+      "locale": "en",
+      "translationGroup": "4b2c7eb3-13c9-4ba0-8049-ad7c64724db8",
+      "helpCardId": null,
+      "updatedAt": "2026-04-15T21:00:00.000Z"
     }
   ]
 }

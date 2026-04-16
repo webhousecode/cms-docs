@@ -1,0 +1,27 @@
+{
+  "slug": "settings-globals",
+  "title": "Globals settings",
+  "description": "Single-record collections for site-wide data — footers, legal text, contact info, anything that appears on many pages.",
+  "category": "settings",
+  "order": 12,
+  "locale": "en",
+  "translationGroup": "75f9bdc4-828d-4104-b149-ae5e8a181d25",
+  "helpCardId": null,
+  "content": "## Where it is\n\n**Settings → Globals** (`/admin/settings?tab=globals`) — only visible when your site has at least one collection with `kind: 'global'`.\n\n## What a global is\n\nA **global** is a collection that holds exactly one document. Use it for site-wide data that doesn't belong in a standalone page:\n\n- **Footer** — links, tagline, copyright, social handles\n- **Legal** — privacy policy reference, GDPR contact, cookie notice\n- **Contact** — email, phone, address, opening hours\n- **Pricing tiers** — if prices appear on multiple pages, keep them here\n- **Settings-like content** — announcement banners, holiday mode, A/B flags\n\nUnlike regular collections, globals don't have `/admin/<collection>/<slug>` URLs. They're edited via this tab and consumed by the frontend via the content API.\n\n## Defining a global in cms.config.ts\n\n```typescript\nimport { defineConfig, defineCollection } from '@webhouse/cms';\n\nexport default defineConfig({\n  collections: [\n    defineCollection({\n      name: 'footer',\n      label: 'Footer',\n      kind: 'global',\n      description: 'Site-wide footer: links, tagline, copyright. Single record, rendered on every page.',\n      fields: [\n        { name: 'tagline', type: 'text' },\n        { name: 'copyright', type: 'text' },\n        { name: 'links', type: 'array', fields: [\n          { name: 'label', type: 'text' },\n          { name: 'href', type: 'text' },\n        ]},\n      ],\n    }),\n  ],\n});\n```\n\n`kind: 'global'` is the switch. The CMS admin creates exactly one document, usually at slug `global`. You can't add more.\n\n## Per-tab layout\n\nThe Globals tab lists each global collection with an **Edit** button. Click one and you're taken to the regular document editor — same richtext, image, and field support as any collection.\n\n## Consuming globals on your frontend\n\n**In a static build (build.ts):**\n\n```typescript\nimport { readFileSync } from 'node:fs';\nimport { join } from 'node:path';\n\nconst footer = JSON.parse(\n  readFileSync(join('content/footer/footer.json'), 'utf-8'),\n).data;\n\n// Use footer.tagline, footer.links, etc. in every page render\n```\n\n**In Next.js:**\n\n```typescript\n// app/lib/globals.ts\nexport async function getFooter() {\n  const raw = await fs.readFile('content/footer/footer.json', 'utf-8');\n  return JSON.parse(raw).data;\n}\n```\n\nGlobals are cached by the content service at request time — reading them is effectively free.\n\n## When to use a global vs a regular collection\n\n| Use a global | Use a regular collection |\n|---|---|\n| Footer text | Blog posts |\n| Site metadata | Team members |\n| Legal disclaimers | Case studies |\n| Single record, no URL | Many records, each with its own URL |\n\nIf in doubt, ask: does this appear on many pages? Is there always exactly one? If both yes → global.\n\n## Related\n\n- [Collections](/docs/collections) — the fundamentals of defining collections\n- [Field types](/docs/field-types) — what field types are allowed in globals\n- [Config reference](/docs/config-reference) — full `kind` value reference",
+  "excerpt": "Where it is\n\nSettings → Globals (/admin/settings?tab=globals) — only visible when your site has at least one collection with kind: 'global'.\n\n What a global is\n\nA global is a collection that holds exactly one document. Use it for site-wide data that doesn't belong in a standalone page:\n\n- Footer — l",
+  "seo": {
+    "metaTitle": "Globals settings — webhouse.app Docs",
+    "metaDescription": "Single-record collections for site-wide data: footer, legal, contact, anything shared across many pages.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "settings",
+      "globals",
+      "site-wide",
+      "footer",
+      "collection-kind"
+    ]
+  },
+  "createdAt": "2026-04-15T22:14:00.000Z",
+  "updatedAt": "2026-04-15T22:14:00.000Z"
+}

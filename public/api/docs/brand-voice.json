@@ -1,0 +1,29 @@
+{
+  "slug": "brand-voice",
+  "title": "Brand Voice",
+  "description": "Per-site, locale-aware brand voice configuration that gets injected into every AI prompt — chat, agents, generation, SEO.",
+  "category": "guides",
+  "order": 16,
+  "locale": "en",
+  "translationGroup": "64d32254-5897-402b-993e-2f71316248f2",
+  "helpCardId": null,
+  "content": "## What it is\n\nBrand Voice is a structured description of how your site should sound. It's a per-site config that the CMS injects into every AI prompt — chat, agents, AI content generation, SEO optimization, rewrites. Instead of repeating \"write in a friendly tone, avoid jargon, mention our pillars\" in every chat message, you describe your voice once and every downstream AI task inherits it.\n\n## The fields\n\n| Field | What it captures |\n|---|---|\n| `name`, `industry`, `description` | Basic brand metadata |\n| `language`, `targetAudience` | Localization context — who the site speaks to |\n| `primaryTone` | One-sentence voice summary (e.g. \"Technical, neutral, factual\") |\n| `brandPersonality` | 3–5 adjectives (e.g. `[\"pragmatic\", \"precise\", \"warm\"]`) |\n| `contentGoals` | What the content is trying to achieve |\n| `contentPillars` | Strategic topics the brand covers |\n| `avoidTopics` | Topics / phrasings the AI should steer clear of |\n| `seoKeywords` | Target keywords surfaced to the SEO optimizer |\n| `examplePhrases` | Voice samples — actual sentences that sound like the brand |\n\n## Configuring via interview\n\nThe fastest path is the guided AI interview at **Settings → Brand Voice**. Claude plays the role of a brand strategist and asks questions about your business, audience, and goals. At the end it generates the JSON, shows a preview, and saves it as a new version.\n\nYou can also edit fields directly in the admin form or paste in a JSON payload.\n\n## Locale-aware structure\n\nBrand Voice has one primary record plus a cached variant per locale. When an AI consumer requests the voice for `locale=da`, the CMS:\n\n1. If the primary language matches `da`, returns the primary record.\n2. Otherwise, checks `brand-voice-da.json` in `_data/`.\n3. If no cache exists, calls `/api/cms/brand-voice/translate` to auto-translate the primary record into Danish and writes the result to `brand-voice-da.json`.\n4. Returns the localized record.\n\nThis means editing the primary record can (optionally) invalidate locale caches — subsequent AI calls will regenerate the translation on demand.\n\n## What consumes Brand Voice\n\n- **Chat system prompt** — the full Brand Voice block is injected at the top of every Chat conversation via `gatherSiteContext()` and `buildChatSystemPrompt()`.\n- **Agent runner** — long-running content agents (SEO, rewrite, translate, generate) include the brand voice in their prompts automatically.\n- **AI generate route** — `/api/cms/ai/generate` wraps the user request with the voice context before dispatching to the LLM.\n- **SEO optimizer** — uses `seoKeywords` as the keyword list to optimize against.\n\nThe injection format is a markdown `## Brand Voice` block produced by `brandVoiceToPromptContext()`. Every AI consumer calls that helper — so adding a new consumer is one line.\n\n## Versions\n\nEvery save creates a new version. The admin shows the history and lets you roll back: `activeId` in `brand-voice.json` points to the current version, `versions[]` holds the full record of changes. Useful when you iterate on tone and want to revert — or A/B test two voice drafts.\n\n## Storage\n\n- **Primary**: `{dataDir}/brand-voice.json` — versioned store\n- **Per-locale cache**: `{dataDir}/brand-voice-{locale}.json` — flat files, one per target locale\n\n`dataDir` is the site's `_data/` directory (sibling of `content/`).\n\n## API endpoints\n\n| Route | Purpose |\n|---|---|\n| `GET /api/cms/brand-voice` | Read primary. `?locale=xx` returns the locale variant (auto-translating if needed) |\n| `POST /api/cms/brand-voice` | Save a new version |\n| `POST /api/cms/brand-voice/chat` | Stream the interview — Claude as brand strategist |\n| `POST /api/cms/brand-voice/translate` | Force regenerate a locale cache |\n| `PATCH /api/cms/brand-voice/versions/[id]` | Activate or edit a historical version |\n\nAll routes require an authenticated admin session.\n\n## When to revisit\n\n- Launching a new locale → translate the voice first, review the auto-translation, edit the tone words (they often don't translate 1:1).\n- Rebranding → create a new version, leave the old one in `versions[]` for reference.\n- Noticing AI output drifting → check which version is active and whether a recent edit loosened a constraint.\n\nBrand Voice is the single knob that tunes every AI surface at once. A 30-minute interview at project start pays off on every chat message and every agent run after that.",
+  "excerpt": "What it is\n\nBrand Voice is a structured description of how your site should sound. It's a per-site config that the CMS injects into every AI prompt — chat, agents, AI content generation, SEO optimization, rewrites. Instead of repeating \"write in a friendly tone, avoid jargon, mention our pillars\" in",
+  "seo": {
+    "metaTitle": "Brand Voice — webhouse.app Docs",
+    "metaDescription": "Per-site, locale-aware brand voice config that gets injected into every AI prompt — chat, agents, generation, SEO.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "brand-voice",
+      "ai",
+      "tone",
+      "locale",
+      "chat",
+      "agents",
+      "seo"
+    ]
+  },
+  "createdAt": "2026-04-15T20:30:00.000Z",
+  "updatedAt": "2026-04-15T20:30:00.000Z"
+}

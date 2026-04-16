@@ -1,0 +1,28 @@
+{
+  "slug": "settings-mcp",
+  "title": "MCP settings",
+  "description": "Expose your site's content to external AI tools (Claude Desktop, Cursor, custom agents) via Model Context Protocol. Read-only public endpoint or authenticated read/write.",
+  "category": "settings",
+  "order": 11,
+  "locale": "en",
+  "translationGroup": "0a299cd9-b05c-4ccf-874f-a1d9bb9127a7",
+  "helpCardId": null,
+  "content": "## Where it is\n\n**Settings → MCP** (`/admin/settings?tab=mcp`).\n\n## What MCP is\n\nModel Context Protocol is an open standard that lets AI tools discover and interact with your content via a typed, structured API. Where REST is for humans + scripts, MCP is for AI.\n\nWhen you plug an MCP endpoint into Claude Desktop (or Cursor, or a custom agent), the AI sees a list of tools it can call — `list_documents`, `get_document`, `create_document`, `search_content`, etc. It uses those tools during conversation without you copy-pasting content back and forth.\n\n## Two endpoints\n\nThe CMS exposes two MCP endpoints per site:\n\n| Endpoint | Auth | Access | Use for |\n|---|---|---|---|\n| **Public MCP** | None | Read-only | AI-powered search on your site. Anyone can plug it into their agent |\n| **Authenticated MCP** | API key | Full read + write | Content production from AI tools. Used by staff |\n\nThe public endpoint is discoverable via `/ai-plugin.json` at the site root — AI platforms that support MCP discovery can auto-connect.\n\n## Configuration\n\n### Public MCP\n\nNothing to configure. It's on when GEO settings allow crawlers. Toggle it off from this tab if you want a closed site.\n\n### Authenticated MCP\n\n1. Click **Generate new API key** — stored as a site secret, never echoed back\n2. Copy the generated key (shown once)\n3. Pick scopes: read / write / admin\n4. Optionally pin to a specific Claude Desktop or Cursor config\n\nThe tab also shows the full MCP configuration JSON:\n\n```json\n{\n  \"mcpServers\": {\n    \"my-site\": {\n      \"url\": \"https://my-site.com/api/mcp/authed\",\n      \"headers\": {\n        \"Authorization\": \"Bearer <your-key>\"\n      }\n    }\n  }\n}\n```\n\nPaste that into Claude Desktop's `config.json` or Cursor's MCP settings to connect.\n\n## Available tools via MCP\n\nThe authenticated endpoint exposes the same 49-tool surface as the in-app chat, with some additions for file-system operations. The public endpoint exposes a reduced subset (read-only, no configuration or destructive actions).\n\nSee [AI Chat tools](/docs/help-and-shortcuts) for the full list.\n\n## Key rotation\n\nClick **Revoke** on any API key to invalidate it. Generate a new one — tools configured with the old key stop working, reconfigure with the new.\n\nNo automatic rotation; set a calendar reminder if you need 90-day rotation for compliance.\n\n## Audit\n\nEvery MCP tool call is logged to the event log with: tool name, arguments, timestamp, result summary, duration. Filter the event log to `source: mcp` to see only MCP activity.\n\n## Related\n\n- [MCP server concept](/docs/mcp-server) — protocol explained\n- [MCP client](/docs/mcp-client) — the read-only public MCP\n- [Help panel AI Chat list](/docs/help-and-shortcuts) — tool catalogue\n- [GEO settings](/docs/settings-geo) — where public MCP discovery is toggled",
+  "excerpt": "Where it is\n\nSettings → MCP (/admin/settings?tab=mcp).\n\n What MCP is\n\nModel Context Protocol is an open standard that lets AI tools discover and interact with your content via a typed, structured API. Where REST is for humans + scripts, MCP is for AI.\n\nWhen you plug an MCP endpoint into Claude Deskt",
+  "seo": {
+    "metaTitle": "MCP settings — webhouse.app Docs",
+    "metaDescription": "Expose your CMS content to external AI tools via Model Context Protocol — public read-only endpoint or authenticated read/write.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "settings",
+      "mcp",
+      "model-context-protocol",
+      "claude-desktop",
+      "cursor",
+      "api-key"
+    ]
+  },
+  "createdAt": "2026-04-15T22:12:00.000Z",
+  "updatedAt": "2026-04-15T22:12:00.000Z"
+}

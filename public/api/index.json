@@ -1,6 +1,6 @@
 {
   "site": "docs.webhouse.app",
-  "generated": "2026-03-31T17:12:02.797Z",
+  "generated": "2026-04-16T15:45:41.370Z",
   "endpoints": {
     "GET /api/docs.json": "List all documentation pages",
     "GET /api/docs/{slug}.json": "Get a single doc page with full markdown content",
@@ -10,7 +10,7 @@
     "GET /api/search.json": "Lightweight search index for client-side search"
   },
   "stats": {
-    "docs": 89,
+    "docs": 171,
     "changelog": 14,
     "snippets": 15
   }

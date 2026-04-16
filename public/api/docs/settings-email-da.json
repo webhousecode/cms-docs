@@ -1,0 +1,28 @@
+{
+  "slug": "settings-email-da",
+  "title": "Email-settings",
+  "description": "Transaktionsmail — From-adressen, udbyderen og notifikationsmodtagere til invitationer, formular-indsendelser og alerts.",
+  "category": "settings",
+  "order": 2,
+  "locale": "da",
+  "translationGroup": "120f87a1-47f2-4bf0-9c1d-35a4a3ea5ddc",
+  "helpCardId": null,
+  "content": "## Hvor det er\n\n**Settings → Email** (`/admin/settings?tab=email`).\n\n## Hvad fanen konfigurerer\n\nHvordan udgående mail sendes fra dit site. CMS'et sender mail til:\n\n- **Team-invitationer** — onboarding af nye medlemmer\n- **Formular-indsendelser** — form-engine mailer en kopi af hver indsendelse til site-ejeren\n- **Agent-notifikationer** — alerts når en langvarig agent afslutter\n- **Backup-alerts** — når en scheduled backup fejler\n- **Link-checker rapporter** — når crawleren finder brudte links\n- **Lighthouse-alerts** — når scores falder under tærskler\n\nUden denne fane udfyldt falder CMS'et tilbage til environment-level defaults fra `.env`. Per-site konfiguration her overrider disse.\n\n## Felterne\n\n| Felt | Formål |\n|---|---|\n| **Provider** | Hvilken email-service. P.t.: Resend |\n| **API-nøgle** | Din udbyders API-nøgle. Gemmes som site-level secret — aldrig eksponeret til redaktører |\n| **From-adresse** | `From:`-headeren på udgående mail. Skal være et domæne du har verificeret hos udbyderen |\n| **From-navn** | Visningsnavn på `From:`-headeren (f.eks. \"Acme CMS\") |\n| **Reply-to** | Hvor svar går hen. Ofte en inbox du faktisk overvåger |\n| **Notifikationsmodtagere** | Kommasepareret liste af emails der får system-alerts (build-fejl, scheduled backups, link-check rapporter) |\n\n## Resend-opsætning\n\n1. Opret en Resend-konto og verificér dit sending-domæne.\n2. Opret en API-nøgle scoped til det domæne.\n3. Indsæt nøglen i denne fane.\n4. Send en test-email via **Test**-knappen.\n\nTesten sender en kort besked til den første notifikationsmodtager. Hvis den lander, er du færdig.\n\n## Leveringsevne-tjekliste\n\nHvis mails lander i spam, tjek i rækkefølge:\n\n- **SPF** — domænet DNS har `v=spf1 include:amazonses.com ~all` (eller Resends tilsvarende)\n- **DKIM** — Resends DKIM-records er i DNS og verificeret\n- **DMARC** — mindst `v=DMARC1; p=none;` til passiv overvågning\n- **From-domæne matcher sending-domæne** — send ikke `@webhouse.dk`-mail fra et ikke-webhouse-verificeret Resend-domæne\n\nResends dashboard viser per-mail leveringsstatus og SPF/DKIM-verifikationsresultater.\n\n## Per-form overrides\n\nForm-engine kan overrule modtagerlisten per formular via `notifications.email` i `cms.config.ts`:\n\n```typescript\nforms: [\n  {\n    name: 'contact',\n    notifications: {\n      email: ['sales@example.com', 'cc@example.com'],\n    },\n    ...\n  },\n],\n```\n\nNår sat, går indsendelser fra den formular til de listede modtagere i stedet for sitets default-notifikationsliste.\n\n## Hvad der sker uden en udbyder\n\nEmail-triggede features degraderer pænt:\n\n- Team-invitationer viser signup-URL'en på skærmen (kopier manuelt)\n- Formular-indsendelser gemmer stadig i inboxen, bare ingen mail\n- Agent- og backup-alerts logger til event-loggen men pinger ingen\n\n## Relateret\n\n- [Forms](/docs/form-engine-da) — hvordan indgående formular-indsendelser virker\n- [Notifikationer & alerts](/docs/notifications-da) — den fulde liste af system-events der kan maile\n- [Agenter](/docs/agents-da) — agent-afslutningsnotifikationer",
+  "excerpt": "Hvor det er\n\nSettings → Email (/admin/settings?tab=email).\n\n Hvad fanen konfigurerer\n\nHvordan udgående mail sendes fra dit site. CMS'et sender mail til:\n\n- Team-invitationer — onboarding af nye medlemmer\n- Formular-indsendelser — form-engine mailer en kopi af hver indsendelse til site-ejeren\n- Agent",
+  "seo": {
+    "metaTitle": "Email-settings — webhouse.app Docs",
+    "metaDescription": "Konfigurér transaktionsmail til invitationer, formular-indsendelser, agent-alerts og backup-rapporter via Resend.",
+    "keywords": [
+      "webhouse",
+      "cms",
+      "settings",
+      "email",
+      "resend",
+      "transaktion",
+      "spf",
+      "dkim"
+    ]
+  },
+  "createdAt": "2026-04-15T21:42:00.000Z",
+  "updatedAt": "2026-04-15T21:42:00.000Z"
+}
