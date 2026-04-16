@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@webhouse/cms':
-        specifier: ^0.2.13
-        version: 0.2.13(@types/react@19.2.14)(react@19.2.4)
+        specifier: ^0.2.17
+        version: 0.2.17(@types/react@19.2.14)(react@19.2.4)
       lucide-react:
         specifier: ^0.511.0
         version: 0.511.0(react@19.2.4)
@@ -451,8 +451,8 @@ packages:
   '@ungap/structured-clone@1.3.0':
     resolution: {integrity: sha512-WmoN8qaIAo7WTYWbAZuG8PYEhn5fkz7dZrqTBZ7dtt//lL2Gwms1IcnQ5yHqjDfX8Ft5j4YzDM23f87zBfDe9g==}
 
-  '@webhouse/cms@0.2.13':
-    resolution: {integrity: sha512-pDPbRSmbOX2x2jGmHP8gYxDxeB8s8n0ExFSIJz5cdgL3QzyFTyaK60J4KrvSn3ztFkcrMfUqi13qjHOn6iOlkA==}
+  '@webhouse/cms@0.2.17':
+    resolution: {integrity: sha512-lQxKlEBRNWhqbJSDrt4MugmTd0TKrvTP8/sS84vJ9vNr9rgt5QSw4FdC3/mvIWLInR21sM9Y1qBqyYHMjOuPjw==}
     engines: {node: '>=22'}
 
   bail@2.0.2:
@@ -1499,7 +1499,7 @@ snapshots:
 
   '@ungap/structured-clone@1.3.0': {}
 
-  '@webhouse/cms@0.2.13(@types/react@19.2.14)(react@19.2.4)':
+  '@webhouse/cms@0.2.17(@types/react@19.2.14)(react@19.2.4)':
     dependencies:
       '@hono/node-server': 1.19.11(hono@4.12.9)
       better-sqlite3: 11.10.0
