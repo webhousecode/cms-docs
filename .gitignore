@@ -3,3 +3,6 @@ node_modules/
 .env
 .env.local
 *.tsbuildinfo
+
+# CMS runtime data (secrets, user state, deploy log — must never be committed)
+_data/
