@@ -1,0 +1,67 @@
+name: Auto-tag new docs
+
+# Runs the Haiku-powered auto-tag script on pushes to main that touch
+# docs JSON files. If any EN article without tags is detected, the
+# script calls Claude Haiku to pick 3-5 tags from the curated vocabulary,
+# applies them to the EN file + syncs to the DA sibling, and pushes a
+# follow-up commit.
+#
+# Idempotent: articles with tags already set are skipped unless --retag
+# is passed. Safe to re-run.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "content/docs/**.json"
+  workflow_dispatch:
+    inputs:
+      retag:
+        description: "Re-tag every article (ignores existing tags)"
+        required: false
+        default: "false"
+
+jobs:
+  auto-tag:
+    # Skip if this commit was itself produced by the action (avoid loops)
+    if: "!contains(github.event.head_commit.message, '[auto-tag]')"
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run auto-tag
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ "${{ github.event.inputs.retag }}" = "true" ]; then
+            pnpm auto-tag:retag-all
+          else
+            pnpm auto-tag
+          fi
+
+      - name: Commit and push changes
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name "webhouse-bot"
+            git config user.email "bot@webhouse.dk"
+            git add content/docs/
+            git commit -m "docs(tags): auto-tag new/untagged articles via Haiku [auto-tag]"
+            git push
+          else
+            echo "No articles needed tagging."
+          fi
