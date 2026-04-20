@@ -13,8 +13,19 @@
     "_seo": {
       "metaTitle": "Agent workflows — webhouse.app Docs",
       "metaDescription": "Chain flere agenter ind i en enkelt pipeline. Én prompt ind, ét kurateringskø-item ud, selv om flere agenter rørte det.",
-      "keywords": ["webhouse", "cms", "ai", "workflows", "pipelines", "agenter"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "ai",
+        "workflows",
+        "pipelines",
+        "agenter"
+      ]
+    },
+    "tags": [
+      "ai-agents",
+      "ai-prompts"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-08T00:00:00.000Z",

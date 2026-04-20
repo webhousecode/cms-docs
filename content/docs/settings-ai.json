@@ -13,8 +13,23 @@
     "_seo": {
       "metaTitle": "AI settings — webhouse.app Docs",
       "metaDescription": "Configure Anthropic and OpenAI API keys, choose default models for chat, agents, and content generation.",
-      "keywords": ["webhouse", "cms", "settings", "ai", "anthropic", "openai", "api-keys", "models", "claude"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "settings",
+        "ai",
+        "anthropic",
+        "openai",
+        "api-keys",
+        "models",
+        "claude"
+      ]
+    },
+    "tags": [
+      "ai-agents",
+      "ai-prompts",
+      "ai-budget"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-15T22:02:00.000Z",

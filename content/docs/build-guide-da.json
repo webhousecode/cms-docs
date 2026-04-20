@@ -13,7 +13,12 @@
     "_seo": {
       "metaTitle": "Guide til build.ts — Statisk site-generering — webhouse.app Docs",
       "metaDescription": "Trin-for-trin guide til at bygge den perfekte build.ts til et statisk HTML-site drevet af @webhouse/cms."
-    }
+    },
+    "tags": [
+      "architecture",
+      "deploy-github-pages",
+      "cli"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-03-30T12:14:24.905Z",

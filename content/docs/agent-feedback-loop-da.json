@@ -13,8 +13,20 @@
     "_seo": {
       "metaTitle": "Agent feedback-loop — webhouse.app Docs",
       "metaDescription": "Kuratorrettelser og afvisninger gemmes pr. agent og injectes i næste kørsel som few-shot eksempler. Agenter lærer automatisk af rettelser.",
-      "keywords": ["webhouse", "cms", "ai", "feedback", "agenter", "læring"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "ai",
+        "feedback",
+        "agenter",
+        "læring"
+      ]
+    },
+    "tags": [
+      "ai-agents",
+      "ai-prompts",
+      "analytics"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-08T00:00:00.000Z",

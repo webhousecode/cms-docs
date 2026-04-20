@@ -13,8 +13,20 @@
     "_seo": {
       "metaTitle": "Lighthouse ydeevneaudit — webhouse.app Docs",
       "metaDescription": "Overvåg ydeevne, tilgængelighed, SEO med integreret Google PageSpeed Insights. Core Web Vitals forklaret, API-nøgle opsætning, score-historik.",
-      "keywords": ["lighthouse", "ydeevne", "core web vitals", "pagespeed", "webhouse", "cms"]
-    }
+      "keywords": [
+        "lighthouse",
+        "ydeevne",
+        "core web vitals",
+        "pagespeed",
+        "webhouse",
+        "cms"
+      ]
+    },
+    "tags": [
+      "analytics",
+      "seo",
+      "deploy-vercel"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-09T18:00:00.000Z",

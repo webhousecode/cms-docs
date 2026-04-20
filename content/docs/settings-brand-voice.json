@@ -13,8 +13,20 @@
     "_seo": {
       "metaTitle": "Brand Voice tab — webhouse.app Docs",
       "metaDescription": "Run the guided brand voice interview, review the generated voice, and manage versions from the Settings → Brand Voice tab.",
-      "keywords": ["webhouse", "cms", "settings", "brand-voice", "interview", "ai-voice", "tone"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "settings",
+        "brand-voice",
+        "interview",
+        "ai-voice",
+        "tone"
+      ]
+    },
+    "tags": [
+      "ai-prompts",
+      "ai-agents"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-15T22:04:00.000Z",

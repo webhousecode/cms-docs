@@ -13,7 +13,12 @@
     "_seo": {
       "metaTitle": "Chat med dit site — webhouse.app Docs",
       "metaDescription": "Administrér hele dit CMS via naturligt sprog — opret indhold, redigér sider, kør agenter, deploy og mere ved bare at tale til det."
-    }
+    },
+    "tags": [
+      "chat",
+      "ai-agents",
+      "ai-prompts"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-03-30T19:16:36.448Z",

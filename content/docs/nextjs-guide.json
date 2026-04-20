@@ -13,7 +13,12 @@
     "_seo": {
       "metaTitle": "Next.js Integration Guide — webhouse.app Docs",
       "metaDescription": "Complete guide to building a Next.js App Router site with @webhouse/cms — from content reading to deployment."
-    }
+    },
+    "tags": [
+      "nextjs",
+      "frameworks",
+      "deploy-vercel"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-03-30T12:14:24.905Z",

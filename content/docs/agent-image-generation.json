@@ -13,8 +13,19 @@
     "_seo": {
       "metaTitle": "Image Generation — webhouse.app Docs",
       "metaDescription": "Agents generate images via Gemini 3 Pro Image. Same media pipeline as uploads, with full AI-generated provenance and a media library filter.",
-      "keywords": ["webhouse", "cms", "ai", "image generation", "gemini", "nano banana"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "ai",
+        "image generation",
+        "gemini",
+        "nano banana"
+      ]
+    },
+    "tags": [
+      "ai-agents",
+      "media"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-08T00:00:00.000Z",

@@ -13,8 +13,20 @@
     "_seo": {
       "metaTitle": "Brand Voice-fanen — webhouse.app Docs",
       "metaDescription": "Kør det guidede brand voice-interview, gennemgå den genererede voice og administrér versioner fra Settings → Brand Voice-fanen.",
-      "keywords": ["webhouse", "cms", "settings", "brand-voice", "interview", "ai-voice", "tone"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "settings",
+        "brand-voice",
+        "interview",
+        "ai-voice",
+        "tone"
+      ]
+    },
+    "tags": [
+      "ai-prompts",
+      "ai-agents"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-15T22:04:00.000Z",

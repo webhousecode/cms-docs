@@ -13,8 +13,18 @@
     "_seo": {
       "metaTitle": "Consume from Django (Python) — webhouse.app Docs",
       "metaDescription": "Read @webhouse/cms content from a Django application. Helper module, views, templates.",
-      "keywords": ["webhouse", "cms", "django", "python", "consumer"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "django",
+        "python",
+        "consumer"
+      ]
+    },
+    "tags": [
+      "frameworks",
+      "filesystem-adapter"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-08T12:00:00.000Z",

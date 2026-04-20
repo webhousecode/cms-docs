@@ -13,8 +13,19 @@
     "_seo": {
       "metaTitle": "Agent template-bibliotek — webhouse.app Docs",
       "metaDescription": "Genbrugelige agent-presets. Gem dine egne som lokale templates, eller browse den kuraterede marketplace på github.com/webhousecode/cms-agents.",
-      "keywords": ["webhouse", "cms", "ai", "templates", "marketplace", "agenter"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "ai",
+        "templates",
+        "marketplace",
+        "agenter"
+      ]
+    },
+    "tags": [
+      "ai-agents",
+      "ai-prompts"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-08T00:00:00.000Z",

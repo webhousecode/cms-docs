@@ -13,8 +13,20 @@
     "_seo": {
       "metaTitle": "Per-agent budgetkontrol — webhouse.app Docs",
       "metaDescription": "Sæt et loft over en agents daglige, ugentlige eller månedlige LLM-forbrug. Pre-flight tjek blokerer løbske agenter før det næste kald foretages.",
-      "keywords": ["webhouse", "cms", "ai", "budget", "omkostninger", "agenter"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "ai",
+        "budget",
+        "omkostninger",
+        "agenter"
+      ]
+    },
+    "tags": [
+      "ai-agents",
+      "ai-budget",
+      "analytics"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-08T00:00:00.000Z",

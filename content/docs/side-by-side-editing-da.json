@@ -13,7 +13,12 @@
     "_seo": {
       "metaTitle": "Side-by-side oversættelsesredigering — webhouse.app Docs",
       "metaDescription": "Redigér kilde og oversættelse samtidigt i en split-screen editor — killer-featuren for flersproget indhold."
-    }
+    },
+    "tags": [
+      "i18n",
+      "translation",
+      "richtext"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-03-30T19:08:49.345Z",

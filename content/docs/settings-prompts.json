@@ -13,8 +13,22 @@
     "_seo": {
       "metaTitle": "AI Prompts settings — webhouse.app Docs",
       "metaDescription": "Override the built-in prompt templates for field generation, SEO, translation, and every other AI feature — per site.",
-      "keywords": ["webhouse", "cms", "settings", "prompts", "ai", "templates", "override", "customise"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "settings",
+        "prompts",
+        "ai",
+        "templates",
+        "override",
+        "customise"
+      ]
+    },
+    "tags": [
+      "ai-prompts",
+      "ai-agents",
+      "i18n"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-15T21:48:00.000Z",

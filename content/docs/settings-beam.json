@@ -13,8 +13,23 @@
     "_seo": {
       "metaTitle": "Beam — site export & import — webhouse.app Docs",
       "metaDescription": "Export a complete @webhouse/cms site as a portable .beam archive: content, settings, schema, agents. Import into a new environment.",
-      "keywords": ["webhouse", "cms", "settings", "beam", "export", "import", "migration", "backup", "archive"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "settings",
+        "beam",
+        "export",
+        "import",
+        "migration",
+        "backup",
+        "archive"
+      ]
+    },
+    "tags": [
+      "migration",
+      "backup",
+      "architecture"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-15T21:46:00.000Z",

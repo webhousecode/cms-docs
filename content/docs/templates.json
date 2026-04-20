@@ -13,7 +13,12 @@
     "_seo": {
       "metaTitle": "Templates & Boilerplates — webhouse.app Docs",
       "metaDescription": "Three ready-to-use boilerplates and eight example sites to jump-start your project."
-    }
+    },
+    "tags": [
+      "cli",
+      "architecture",
+      "frameworks"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-03-30T11:04:41.758Z",

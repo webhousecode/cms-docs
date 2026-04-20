@@ -1,11 +1,13 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import Link from "next/link";
 import {
   getCollection,
   getDocument,
   getDocsByCategory,
   getPrevNext,
   getCategories,
+  tagLabel,
   type DocDocument,
 } from "@/lib/content";
 import { extractHeadings } from "@/lib/markdown";
@@ -115,6 +117,42 @@ export default async function DocPage(props: {
         )}
 
         <DocContent content={content} />
+
+        {doc.data.tags && doc.data.tags.length > 0 && (
+          <div
+            style={{
+              marginTop: "2rem",
+              paddingTop: "1rem",
+              borderTop: "1px solid var(--border)",
+              display: "flex",
+              alignItems: "center",
+              flexWrap: "wrap",
+              gap: "0.4rem",
+            }}
+          >
+            <span style={{ fontSize: "0.7rem", color: "var(--fg-muted)", marginRight: "0.2rem" }}>
+              {locale === "da" ? "Tags:" : "Tags:"}
+            </span>
+            {doc.data.tags.map((t) => (
+              <Link
+                key={t}
+                href={`/docs/tags/${t}${locale === "da" ? "?lang=da" : ""}`}
+                style={{
+                  fontSize: "0.7rem",
+                  padding: "0.2rem 0.55rem",
+                  borderRadius: "999px",
+                  border: "1px solid var(--border)",
+                  background: "var(--bg-subtle)",
+                  color: "var(--fg-muted)",
+                  textDecoration: "none",
+                  fontFamily: "var(--font-mono)",
+                }}
+              >
+                {tagLabel(t)}
+              </Link>
+            ))}
+          </div>
+        )}
 
         <PrevNext
           locale={locale}

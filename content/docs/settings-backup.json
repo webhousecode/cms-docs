@@ -13,8 +13,22 @@
     "_seo": {
       "metaTitle": "Backup settings — webhouse.app Docs",
       "metaDescription": "Schedule automatic backups of content, settings, and agents. Sync to Cloudflare R2, S3, or pCloud. Restore with one click.",
-      "keywords": ["webhouse", "cms", "settings", "backup", "schedule", "r2", "s3", "pcloud", "restore"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "settings",
+        "backup",
+        "schedule",
+        "r2",
+        "s3",
+        "pcloud",
+        "restore"
+      ]
+    },
+    "tags": [
+      "backup",
+      "migration"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-15T22:08:00.000Z",

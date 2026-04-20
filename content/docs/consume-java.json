@@ -13,8 +13,19 @@
     "_seo": {
       "metaTitle": "Consume from Java (Spring Boot) — webhouse.app Docs",
       "metaDescription": "Read @webhouse/cms content from a Spring Boot application. Reader class, controllers, Thymeleaf templates.",
-      "keywords": ["webhouse", "cms", "java", "spring-boot", "thymeleaf", "consumer"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "java",
+        "spring-boot",
+        "thymeleaf",
+        "consumer"
+      ]
+    },
+    "tags": [
+      "frameworks",
+      "filesystem-adapter"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-08T12:00:00.000Z",

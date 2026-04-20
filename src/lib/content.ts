@@ -14,6 +14,7 @@ export interface DocDocument {
     category?: string;
     order?: number;
     helpCardId?: string;
+    tags?: string[];
     version?: string;
     date?: string;
     breaking?: boolean;
@@ -83,6 +84,75 @@ export function getCategories(locale: string = "en"): Category[] {
 }
 
 export const CATEGORIES = getCategories("en");
+
+// ─── Tags ─────────────────────────────────────────────────────────
+
+/** Human label for every tag in the curated vocabulary. Keep in sync
+ *  with the `tags` select options in cms-docs/cms.config.ts. */
+export const TAG_LABELS: Record<string, string> = {
+  "deploy-docker": "Deploy: Docker",
+  "deploy-fly": "Deploy: Fly.io",
+  "deploy-github-pages": "Deploy: GitHub Pages",
+  "deploy-vercel": "Deploy: Vercel",
+  "deploy-cloudflare": "Deploy: Cloudflare",
+  "ai-agents": "AI Agents",
+  "ai-budget": "AI Budget",
+  "ai-prompts": "AI Prompts",
+  "chat": "Chat",
+  "translation": "Translation",
+  "schema": "Schema",
+  "richtext": "Richtext",
+  "blocks": "Blocks",
+  "shortcodes": "Shortcodes",
+  "media": "Media",
+  "relationships": "Relationships",
+  "interactives": "Interactives",
+  "i18n": "i18n",
+  "seo": "SEO",
+  "geo": "GEO",
+  "auth": "Auth",
+  "permissions": "Permissions",
+  "access-tokens": "Access Tokens",
+  "mcp": "MCP",
+  "webhooks": "Webhooks",
+  "nextjs": "Next.js",
+  "mobile": "Mobile",
+  "frameworks": "Frameworks",
+  "forms": "Forms",
+  "backup": "Backup",
+  "analytics": "Analytics",
+  "architecture": "Architecture",
+  "cli": "CLI",
+  "github-adapter": "GitHub Adapter",
+  "filesystem-adapter": "Filesystem Adapter",
+  "migration": "Migration",
+};
+
+export function tagLabel(tag: string): string {
+  return TAG_LABELS[tag] ?? tag;
+}
+
+/** All tags actually in use, counted, sorted by count desc then label. */
+export function getAllTags(locale: string = "en"): Array<{ tag: string; count: number; label: string }> {
+  const counts = new Map<string, number>();
+  const docs = getCollection("docs").filter((d) => (d.locale ?? "en") === locale);
+  for (const d of docs) {
+    for (const t of d.data.tags ?? []) {
+      counts.set(t, (counts.get(t) ?? 0) + 1);
+    }
+  }
+  return Array.from(counts.entries())
+    .map(([tag, count]) => ({ tag, count, label: tagLabel(tag) }))
+    .sort((a, b) => b.count - a.count || a.label.localeCompare(b.label));
+}
+
+/** Docs that carry a given tag, filtered by locale, newest-first. */
+export function getDocsByTag(tag: string, locale: string = "en"): DocDocument[] {
+  return getCollection("docs")
+    .filter((d) => (d.locale ?? "en") === locale)
+    .filter((d) => (d.data.tags ?? []).includes(tag))
+    .sort((a, b) => (a.data.title ?? "").localeCompare(b.data.title ?? ""));
+}
 
 /** Get all docs grouped by category, sorted by order, filtered by locale */
 export function getDocsByCategory(locale: string = "en"): Map<

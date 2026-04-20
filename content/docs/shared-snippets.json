@@ -13,7 +13,12 @@
     "_seo": {
       "metaTitle": "Shared Snippets — Reusable Code Blocks — webhouse.app Docs",
       "metaDescription": "How we built a shared snippets system for docs.webhouse.app using our own CMS — and how you can do the same."
-    }
+    },
+    "tags": [
+      "shortcodes",
+      "richtext",
+      "schema"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-03-30T12:14:24.902Z",

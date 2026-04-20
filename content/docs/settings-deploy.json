@@ -13,8 +13,25 @@
     "_seo": {
       "metaTitle": "Deploy settings — webhouse.app Docs",
       "metaDescription": "Configure your deploy target (GitHub Pages, Vercel, Netlify, Fly.io, Cloudflare), revalidation webhook, and deploy-on-save.",
-      "keywords": ["webhouse", "cms", "settings", "deploy", "icd", "revalidation", "github-pages", "vercel", "netlify", "fly.io"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "settings",
+        "deploy",
+        "icd",
+        "revalidation",
+        "github-pages",
+        "vercel",
+        "netlify",
+        "fly.io"
+      ]
+    },
+    "tags": [
+      "deploy-docker",
+      "deploy-fly",
+      "deploy-vercel",
+      "deploy-github-pages"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-15T22:06:00.000Z",

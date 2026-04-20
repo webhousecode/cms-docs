@@ -13,7 +13,12 @@
     "_seo": {
       "metaTitle": "AI Builder Guide — webhouse.app Docs",
       "metaDescription": "ai.webhouse.app is a self-guided walkthrough site for any AI coding assistant building with @webhouse/cms. One URL, Step 0-9, all 21 modules, llms.txt + manifest.json."
-    }
+    },
+    "tags": [
+      "ai-agents",
+      "frameworks",
+      "architecture"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-03-30T11:04:41.760Z",

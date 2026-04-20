@@ -13,7 +13,12 @@
     "_seo": {
       "metaTitle": "AI Lock — Field-Level Content Protection — webhouse.app Docs",
       "metaDescription": "How AI Lock prevents AI agents from overwriting human edits — field-level protection enforced at the engine level."
-    }
+    },
+    "tags": [
+      "ai-agents",
+      "schema",
+      "permissions"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-03-30T19:25:39.857Z",

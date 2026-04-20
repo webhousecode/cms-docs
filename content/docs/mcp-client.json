@@ -13,7 +13,11 @@
     "_seo": {
       "metaTitle": "MCP Client — Public Read-Only Access — webhouse.app Docs",
       "metaDescription": "Every site gets a public MCP server that AI platforms can query — no API keys, no configuration needed."
-    }
+    },
+    "tags": [
+      "mcp",
+      "architecture"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-03-30T19:29:52.744Z",

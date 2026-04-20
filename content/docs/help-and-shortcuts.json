@@ -13,8 +13,21 @@
     "_seo": {
       "metaTitle": "Help panel, shortcuts & AI Chat tools — webhouse.app Docs",
       "metaDescription": "Full reference for the in-app Help drawer: documentation links, every keyboard shortcut, and the complete list of tools the AI Chat can call.",
-      "keywords": ["webhouse", "cms", "help", "shortcuts", "keyboard", "ai-chat", "tools", "reference"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "help",
+        "shortcuts",
+        "keyboard",
+        "ai-chat",
+        "tools",
+        "reference"
+      ]
+    },
+    "tags": [
+      "chat",
+      "architecture"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-15T21:30:00.000Z",

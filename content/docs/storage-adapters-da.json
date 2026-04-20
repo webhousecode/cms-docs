@@ -19,7 +19,12 @@
         "dokumentation",
         "guides"
       ]
-    }
+    },
+    "tags": [
+      "filesystem-adapter",
+      "github-adapter",
+      "architecture"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-03-29T21:57:53.110Z",

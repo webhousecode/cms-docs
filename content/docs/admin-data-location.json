@@ -13,8 +13,25 @@
     "_seo": {
       "metaTitle": "Admin Data Location — webhouse.app Docs",
       "metaDescription": "Where cms-admin stores registry, users, and access-tokens. Resolution order for Docker, Fly, Kubernetes, and local dev — with volume + env var setup.",
-      "keywords": ["webhouse", "cms", "admin", "deployment", "docker", "fly", "kubernetes", "persistent volume", "data directory"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "admin",
+        "deployment",
+        "docker",
+        "fly",
+        "kubernetes",
+        "persistent volume",
+        "data directory"
+      ]
+    },
+    "tags": [
+      "architecture",
+      "deploy-docker",
+      "deploy-fly",
+      "access-tokens",
+      "migration"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-20T00:00:00.000Z",

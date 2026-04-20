@@ -13,7 +13,11 @@
     "_seo": {
       "metaTitle": "MCP Client — Offentlig læseadgang — webhouse.app Docs",
       "metaDescription": "Hvert site får en offentlig MCP-server som AI-platforme kan forespørge — ingen API-nøgler, ingen konfiguration."
-    }
+    },
+    "tags": [
+      "mcp",
+      "architecture"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-03-30T19:29:52.746Z",

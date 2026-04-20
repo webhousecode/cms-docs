@@ -13,8 +13,22 @@
     "_seo": {
       "metaTitle": "Team settings — webhouse.app Docs",
       "metaDescription": "Invite members, assign admin/editor/viewer roles, and manage per-site team membership.",
-      "keywords": ["webhouse", "cms", "settings", "team", "members", "roles", "admin", "editor", "viewer"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "settings",
+        "team",
+        "members",
+        "roles",
+        "admin",
+        "editor",
+        "viewer"
+      ]
+    },
+    "tags": [
+      "permissions",
+      "auth"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-15T21:40:00.000Z",

@@ -27,7 +27,12 @@
         "{{svg:slug}}",
         "expandShortcodes"
       ]
-    }
+    },
+    "tags": [
+      "media",
+      "richtext",
+      "shortcodes"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-15T20:00:00.000Z",

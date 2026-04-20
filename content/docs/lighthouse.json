@@ -13,8 +13,20 @@
     "_seo": {
       "metaTitle": "Lighthouse Performance Audit — webhouse.app Docs",
       "metaDescription": "Monitor site performance, accessibility, SEO with integrated Google PageSpeed Insights. Core Web Vitals explained, API key setup, score history.",
-      "keywords": ["lighthouse", "performance", "core web vitals", "pagespeed", "webhouse", "cms"]
-    }
+      "keywords": [
+        "lighthouse",
+        "performance",
+        "core web vitals",
+        "pagespeed",
+        "webhouse",
+        "cms"
+      ]
+    },
+    "tags": [
+      "analytics",
+      "seo",
+      "deploy-vercel"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-09T18:00:00.000Z",

@@ -13,7 +13,12 @@
     "_seo": {
       "metaTitle": "Delte Snippets — Genbrugelige kodeblokke — webhouse.app Docs",
       "metaDescription": "Sådan byggede vi et delt snippet-system til docs.webhouse.app med vores eget CMS — og hvordan du kan gøre det samme."
-    }
+    },
+    "tags": [
+      "shortcodes",
+      "richtext",
+      "schema"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-03-30T12:14:24.904Z",

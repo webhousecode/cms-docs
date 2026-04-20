@@ -13,8 +13,23 @@
     "_seo": {
       "metaTitle": "Brand Voice — webhouse.app Docs",
       "metaDescription": "Per-site, locale-aware brand voice-konfiguration der indsprøjtes i enhver AI-prompt — chat, agenter, generering, SEO.",
-      "keywords": ["webhouse", "cms", "brand-voice", "ai", "tone", "lokalitet", "chat", "agenter", "seo"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "brand-voice",
+        "ai",
+        "tone",
+        "lokalitet",
+        "chat",
+        "agenter",
+        "seo"
+      ]
+    },
+    "tags": [
+      "ai-prompts",
+      "ai-agents",
+      "i18n"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-15T20:30:00.000Z",

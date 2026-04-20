@@ -13,8 +13,21 @@
     "_seo": {
       "metaTitle": "Schema settings — webhouse.app Docs",
       "metaDescription": "Edit collection schemas live from the admin UI — add, remove, reorder, and retype fields without restarting.",
-      "keywords": ["webhouse", "cms", "settings", "schema", "collections", "fields", "kind", "cms.config.ts"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "settings",
+        "schema",
+        "collections",
+        "fields",
+        "kind",
+        "cms.config.ts"
+      ]
+    },
+    "tags": [
+      "schema",
+      "permissions"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-15T22:16:00.000Z",

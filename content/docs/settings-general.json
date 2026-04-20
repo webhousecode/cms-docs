@@ -13,8 +13,19 @@
     "_seo": {
       "metaTitle": "General settings — webhouse.app Docs",
       "metaDescription": "Configure site name, preview URL, description, timezone, locales, and trash purge in the General settings tab.",
-      "keywords": ["webhouse", "cms", "settings", "general", "preview-url", "timezone", "locales"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "settings",
+        "general",
+        "preview-url",
+        "timezone",
+        "locales"
+      ]
+    },
+    "tags": [
+      "architecture"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-15T22:00:00.000Z",

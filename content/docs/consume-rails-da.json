@@ -13,8 +13,18 @@
     "_seo": {
       "metaTitle": "Forbrug fra Rails (Ruby) — webhouse.app Docs",
       "metaDescription": "Læs @webhouse/cms-indhold fra en Ruby on Rails-applikation. Hjælpemodul, controllers, ERB-views.",
-      "keywords": ["webhouse", "cms", "rails", "ruby", "forbruger"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "rails",
+        "ruby",
+        "forbruger"
+      ]
+    },
+    "tags": [
+      "frameworks",
+      "filesystem-adapter"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-08T12:00:00.000Z",

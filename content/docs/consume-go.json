@@ -13,8 +13,20 @@
     "_seo": {
       "metaTitle": "Consume from Go — webhouse.app Docs",
       "metaDescription": "Read @webhouse/cms content from Go — Hugo themes, Gin handlers, and standard library file I/O.",
-      "keywords": ["webhouse", "cms", "go", "golang", "gin", "hugo", "consumer"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "go",
+        "golang",
+        "gin",
+        "hugo",
+        "consumer"
+      ]
+    },
+    "tags": [
+      "frameworks",
+      "filesystem-adapter"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-08T12:00:00.000Z",

@@ -13,8 +13,19 @@
     "_seo": {
       "metaTitle": "General-settings — webhouse.app Docs",
       "metaDescription": "Konfigurér site-navn, preview-URL, beskrivelse, tidszone, lokaliteter og papirkurvs-tømning i General settings-fanen.",
-      "keywords": ["webhouse", "cms", "settings", "general", "preview-url", "tidszone", "lokaliteter"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "settings",
+        "general",
+        "preview-url",
+        "tidszone",
+        "lokaliteter"
+      ]
+    },
+    "tags": [
+      "architecture"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-15T22:00:00.000Z",

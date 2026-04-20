@@ -13,7 +13,12 @@
     "_seo": {
       "metaTitle": "Docker-udrulning — webhouse.app Docs",
       "metaDescription": "Deploy @webhouse/cms med Docker — færdigbygget GHCR image eller custom Dockerfile. Trin-for-trin guide til lokal og cloud-udrulning."
-    }
+    },
+    "tags": [
+      "deploy-docker",
+      "deploy-fly",
+      "architecture"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-03-30T12:31:03.308Z",

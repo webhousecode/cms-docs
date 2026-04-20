@@ -13,8 +13,20 @@
     "_seo": {
       "metaTitle": "Globals-settings — webhouse.app Docs",
       "metaDescription": "Single-record collections til site-wide data: footer, juridisk, kontakt, alt delt på tværs af mange sider.",
-      "keywords": ["webhouse", "cms", "settings", "globals", "site-wide", "footer", "collection-kind"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "settings",
+        "globals",
+        "site-wide",
+        "footer",
+        "collection-kind"
+      ]
+    },
+    "tags": [
+      "schema",
+      "architecture"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-15T22:14:00.000Z",

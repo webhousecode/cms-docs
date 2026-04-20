@@ -13,7 +13,12 @@
     "_seo": {
       "metaTitle": "Collection Naming Best Practices — webhouse.app Docs",
       "metaDescription": "Reserved names to avoid, recommended naming patterns, and why the validator catches conflicts."
-    }
+    },
+    "tags": [
+      "schema",
+      "architecture",
+      "migration"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-03-30T21:48:54.521Z",

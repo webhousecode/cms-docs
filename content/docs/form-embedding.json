@@ -1,28 +1,34 @@
 {
-    "id": "f30-form-embedding-en",
-    "slug": "form-embedding",
-    "status": "published",
-    "locale": "en",
-    "data": {
-        "title": "Three Ways to Embed Forms",
-        "description": "Embed CMS forms in your pages using a richtext shortcode, a content block, or a dedicated field type.",
-        "content": "## Overview\n\nOnce you've [defined a form](/docs/form-engine), you need to put it on a page. The CMS gives you three methods — pick the one that fits your content model.\n\n| Method | Best for | How it works |\n|--------|----------|-------------|\n| **A. Shortcode** | Richtext articles | Type `{{form:contact}}` in any richtext field |\n| **B. Block** | Block-based pages | Add a \"Form Embed\" block to any blocks field |\n| **C. Field type** | Dedicated form pages | Add a `type: \"form\"` field to a collection |\n\nAll three render the same semantic `<form>` HTML with honeypot, async submit, and JS-free fallback.\n\n## A. Richtext shortcode\n\nType `{{form:contact}}` anywhere in a richtext field. At build time, the CMS replaces it with the full `<form>` HTML.\n\n```markdown\n## Get in touch\n\nFill out the form below and we'll get back to you.\n\n{{form:contact}}\n```\n\nThe shortcode follows the same pattern as [snippet embeds](/docs/snippet-embeds) (`{{snippet:slug}}`). The form name must match a form defined in `cms.config.ts` or created in the admin Form Builder.\n\nFor Next.js dynamic sites: the shortcode appears as literal text in the JSON. Your renderer should replace `{{form:name}}` with a React form component at render time.\n\n## B. Content block\n\nFor pages that use the block editor (hero, features, testimonials, etc.), add a **Form Embed** block:\n\n1. In the block editor, click **+ Add block**\n2. Select **Form Embed**\n3. Type the form name (e.g. `contact`)\n4. The block renders the form inline with the other blocks\n\nThe block is built in — no configuration needed. It stores:\n\n```json\n{\n  \"_block\": \"form\",\n  \"formName\": \"contact\"\n}\n```\n\nYour site's block renderer should check for `_block === \"form\"` and render the form. For static builds, `cms build` handles this automatically.\n\n## C. Dedicated field type\n\nFor collections where a specific page always shows a form (e.g. a \"Landing Pages\" collection), add a `form` field:\n\n```typescript\ndefineCollection({\n  name: 'landing-pages',\n  label: 'Landing Pages',\n  fields: [\n    { name: 'title', type: 'text', required: true },\n    { name: 'heroText', type: 'richtext' },\n    { name: 'contactForm', type: 'form', label: 'Embedded form' },\n    // ...\n  ],\n});\n```\n\nThe field value is the form name (a string like `\"contact\"`). In the admin editor, it renders as a dropdown of all available forms. In your site template:\n\n```typescript\n// Next.js example\nimport { generateFormHtml } from '@webhouse/cms';\n\nfunction LandingPage({ page }) {\n  const formHtml = page.data.contactForm\n    ? generateFormHtml(\n        forms.find(f => f.name === page.data.contactForm),\n        process.env.CMS_ADMIN_URL\n      )\n    : null;\n\n  return (\n    <main>\n      <h1>{page.data.title}</h1>\n      {formHtml && <div dangerouslySetInnerHTML={{ __html: formHtml }} />}\n    </main>\n  );\n}\n```\n\n## Which method to choose\n\n- **You write blog posts with occasional forms** → use shortcodes (A). Zero config, type it inline.\n- **You build pages from blocks** → use the Form Embed block (B). Drag it where you want it.\n- **You have a collection where every entry has a form** → use the field type (C). Structured, explicit, queryable.\n- **You want to embed on a page not built by the CMS** → use the [embeddable widget script](/docs/form-engine#2-embeddable-widget-one-script-tag) instead.\n\n## The generated form\n\nAll three methods produce the same HTML:\n\n- Semantic `<form>` with `action` pointing at the CMS admin's public endpoint\n- All fields with HTML5 types (`email`, `tel`, `date`, etc.) and validation attributes\n- Honeypot field (invisible to humans, catches bots)\n- Inline `<script>` for async submit + success/error message\n- Works without JavaScript — plain POST + redirect as fallback\n\nStyle the form with your site's CSS. The generated HTML uses minimal inline styles that are easy to override.\n\n## See also\n\n- [Form Engine](/docs/form-engine) — define forms, inbox, notifications, spam protection\n- [Snippet Embeds](/docs/snippet-embeds) — the `{{snippet:slug}}` pattern this is based on\n- [Blocks](/docs/blocks) — how block-based content works\n",
-        "category": "guides",
-        "order": 6,
-        "_seo": {
-            "metaTitle": "Three Ways to Embed Forms — webhouse.app Docs",
-            "metaDescription": "Embed CMS forms via richtext shortcode, content block, or dedicated field type. Same form HTML, three integration patterns.",
-            "keywords": [
-                "webhouse",
-                "cms",
-                "forms",
-                "embed",
-                "shortcode",
-                "block",
-                "field type"
-            ]
-        }
+  "id": "f30-form-embedding-en",
+  "slug": "form-embedding",
+  "status": "published",
+  "locale": "en",
+  "data": {
+    "title": "Three Ways to Embed Forms",
+    "description": "Embed CMS forms in your pages using a richtext shortcode, a content block, or a dedicated field type.",
+    "content": "## Overview\n\nOnce you've [defined a form](/docs/form-engine), you need to put it on a page. The CMS gives you three methods — pick the one that fits your content model.\n\n| Method | Best for | How it works |\n|--------|----------|-------------|\n| **A. Shortcode** | Richtext articles | Type `{{form:contact}}` in any richtext field |\n| **B. Block** | Block-based pages | Add a \"Form Embed\" block to any blocks field |\n| **C. Field type** | Dedicated form pages | Add a `type: \"form\"` field to a collection |\n\nAll three render the same semantic `<form>` HTML with honeypot, async submit, and JS-free fallback.\n\n## A. Richtext shortcode\n\nType `{{form:contact}}` anywhere in a richtext field. At build time, the CMS replaces it with the full `<form>` HTML.\n\n```markdown\n## Get in touch\n\nFill out the form below and we'll get back to you.\n\n{{form:contact}}\n```\n\nThe shortcode follows the same pattern as [snippet embeds](/docs/snippet-embeds) (`{{snippet:slug}}`). The form name must match a form defined in `cms.config.ts` or created in the admin Form Builder.\n\nFor Next.js dynamic sites: the shortcode appears as literal text in the JSON. Your renderer should replace `{{form:name}}` with a React form component at render time.\n\n## B. Content block\n\nFor pages that use the block editor (hero, features, testimonials, etc.), add a **Form Embed** block:\n\n1. In the block editor, click **+ Add block**\n2. Select **Form Embed**\n3. Type the form name (e.g. `contact`)\n4. The block renders the form inline with the other blocks\n\nThe block is built in — no configuration needed. It stores:\n\n```json\n{\n  \"_block\": \"form\",\n  \"formName\": \"contact\"\n}\n```\n\nYour site's block renderer should check for `_block === \"form\"` and render the form. For static builds, `cms build` handles this automatically.\n\n## C. Dedicated field type\n\nFor collections where a specific page always shows a form (e.g. a \"Landing Pages\" collection), add a `form` field:\n\n```typescript\ndefineCollection({\n  name: 'landing-pages',\n  label: 'Landing Pages',\n  fields: [\n    { name: 'title', type: 'text', required: true },\n    { name: 'heroText', type: 'richtext' },\n    { name: 'contactForm', type: 'form', label: 'Embedded form' },\n    // ...\n  ],\n});\n```\n\nThe field value is the form name (a string like `\"contact\"`). In the admin editor, it renders as a dropdown of all available forms. In your site template:\n\n```typescript\n// Next.js example\nimport { generateFormHtml } from '@webhouse/cms';\n\nfunction LandingPage({ page }) {\n  const formHtml = page.data.contactForm\n    ? generateFormHtml(\n        forms.find(f => f.name === page.data.contactForm),\n        process.env.CMS_ADMIN_URL\n      )\n    : null;\n\n  return (\n    <main>\n      <h1>{page.data.title}</h1>\n      {formHtml && <div dangerouslySetInnerHTML={{ __html: formHtml }} />}\n    </main>\n  );\n}\n```\n\n## Which method to choose\n\n- **You write blog posts with occasional forms** → use shortcodes (A). Zero config, type it inline.\n- **You build pages from blocks** → use the Form Embed block (B). Drag it where you want it.\n- **You have a collection where every entry has a form** → use the field type (C). Structured, explicit, queryable.\n- **You want to embed on a page not built by the CMS** → use the [embeddable widget script](/docs/form-engine#2-embeddable-widget-one-script-tag) instead.\n\n## The generated form\n\nAll three methods produce the same HTML:\n\n- Semantic `<form>` with `action` pointing at the CMS admin's public endpoint\n- All fields with HTML5 types (`email`, `tel`, `date`, etc.) and validation attributes\n- Honeypot field (invisible to humans, catches bots)\n- Inline `<script>` for async submit + success/error message\n- Works without JavaScript — plain POST + redirect as fallback\n\nStyle the form with your site's CSS. The generated HTML uses minimal inline styles that are easy to override.\n\n## See also\n\n- [Form Engine](/docs/form-engine) — define forms, inbox, notifications, spam protection\n- [Snippet Embeds](/docs/snippet-embeds) — the `{{snippet:slug}}` pattern this is based on\n- [Blocks](/docs/blocks) — how block-based content works\n",
+    "category": "guides",
+    "order": 6,
+    "_seo": {
+      "metaTitle": "Three Ways to Embed Forms — webhouse.app Docs",
+      "metaDescription": "Embed CMS forms via richtext shortcode, content block, or dedicated field type. Same form HTML, three integration patterns.",
+      "keywords": [
+        "webhouse",
+        "cms",
+        "forms",
+        "embed",
+        "shortcode",
+        "block",
+        "field type"
+      ]
     },
-    "createdAt": "2026-04-09T00:00:00.000Z",
-    "updatedAt": "2026-04-09T00:00:00.000Z"
+    "tags": [
+      "forms",
+      "blocks",
+      "shortcodes",
+      "richtext"
+    ]
+  },
+  "createdAt": "2026-04-09T00:00:00.000Z",
+  "updatedAt": "2026-04-09T00:00:00.000Z"
 }

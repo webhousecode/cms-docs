@@ -13,8 +13,20 @@
     "_seo": {
       "metaTitle": "Per-Agent Cost Guards — webhouse.app Docs",
       "metaDescription": "Cap an agent's daily, weekly or monthly LLM spend. Pre-flight checks block runaway agents before another call is made.",
-      "keywords": ["webhouse", "cms", "ai", "budget", "cost", "agents"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "ai",
+        "budget",
+        "cost",
+        "agents"
+      ]
+    },
+    "tags": [
+      "ai-agents",
+      "ai-budget",
+      "analytics"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-08T00:00:00.000Z",

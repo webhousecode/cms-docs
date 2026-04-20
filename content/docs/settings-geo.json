@@ -13,8 +13,23 @@
     "_seo": {
       "metaTitle": "GEO settings — webhouse.app Docs",
       "metaDescription": "Configure AI crawler policy, robots.txt strategy, and discovery files so ChatGPT, Claude, and Perplexity can find and cite your content.",
-      "keywords": ["webhouse", "cms", "settings", "geo", "ai", "llms.txt", "robots.txt", "mcp", "generative-engine-optimization"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "settings",
+        "geo",
+        "ai",
+        "llms.txt",
+        "robots.txt",
+        "mcp",
+        "generative-engine-optimization"
+      ]
+    },
+    "tags": [
+      "geo",
+      "seo",
+      "permissions"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-15T21:44:00.000Z",

@@ -13,8 +13,23 @@
     "_seo": {
       "metaTitle": "AI-settings — webhouse.app Docs",
       "metaDescription": "Konfigurér Anthropic- og OpenAI-API-nøgler, vælg default-modeller til chat, agenter og indholdsgenerering.",
-      "keywords": ["webhouse", "cms", "settings", "ai", "anthropic", "openai", "api-nøgler", "modeller", "claude"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "settings",
+        "ai",
+        "anthropic",
+        "openai",
+        "api-nøgler",
+        "modeller",
+        "claude"
+      ]
+    },
+    "tags": [
+      "ai-agents",
+      "ai-prompts",
+      "ai-budget"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-15T22:02:00.000Z",

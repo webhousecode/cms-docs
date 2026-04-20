@@ -21,7 +21,11 @@
         "publicer",
         "afpublicer"
       ]
-    }
+    },
+    "tags": [
+      "analytics",
+      "webhooks"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-03-31T00:26:34.000Z",

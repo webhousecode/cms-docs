@@ -13,7 +13,12 @@
     "_seo": {
       "metaTitle": "Best practices for collection-navngivning — webhouse.app Docs",
       "metaDescription": "Reserverede navne du skal undgå, anbefalede navngivningsmønstre, og hvorfor validatoren fanger konflikter."
-    }
+    },
+    "tags": [
+      "schema",
+      "architecture",
+      "migration"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-03-30T21:48:54.523Z",

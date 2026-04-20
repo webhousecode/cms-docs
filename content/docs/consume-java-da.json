@@ -13,8 +13,19 @@
     "_seo": {
       "metaTitle": "Forbrug fra Java (Spring Boot) — webhouse.app Docs",
       "metaDescription": "Læs @webhouse/cms-indhold fra en Spring Boot-applikation. Reader-klasse, controllers, Thymeleaf-skabeloner.",
-      "keywords": ["webhouse", "cms", "java", "spring-boot", "thymeleaf", "forbruger"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "java",
+        "spring-boot",
+        "thymeleaf",
+        "forbruger"
+      ]
+    },
+    "tags": [
+      "frameworks",
+      "filesystem-adapter"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-08T12:00:00.000Z",

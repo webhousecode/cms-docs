@@ -13,8 +13,20 @@
     "_seo": {
       "metaTitle": "Test af consumer-eksemplerne — webhouse.app Docs",
       "metaDescription": "Sådan testes Java- og .NET-consumer-eksemplerne. Test-opsætning, fixtures, sikkerhedstjek og hvordan du kører dem lokalt.",
-      "keywords": ["webhouse", "cms", "test", "junit", "xunit", "java", "dotnet"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "test",
+        "junit",
+        "xunit",
+        "java",
+        "dotnet"
+      ]
+    },
+    "tags": [
+      "frameworks",
+      "filesystem-adapter"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-08T12:00:00.000Z",

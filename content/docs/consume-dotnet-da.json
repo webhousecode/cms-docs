@@ -13,8 +13,19 @@
     "_seo": {
       "metaTitle": "Forbrug fra C# / .NET — webhouse.app Docs",
       "metaDescription": "Læs @webhouse/cms-indhold fra ASP.NET Core — Razor Pages, MVC eller minimal APIs.",
-      "keywords": ["webhouse", "cms", "dotnet", "csharp", "aspnet", "forbruger"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "dotnet",
+        "csharp",
+        "aspnet",
+        "forbruger"
+      ]
+    },
+    "tags": [
+      "frameworks",
+      "filesystem-adapter"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-08T12:00:00.000Z",

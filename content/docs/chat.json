@@ -13,7 +13,12 @@
     "_seo": {
       "metaTitle": "Chat with Your Site — webhouse.app Docs",
       "metaDescription": "Manage your entire CMS through natural language — create content, edit pages, run agents, deploy, and more by just talking to it."
-    }
+    },
+    "tags": [
+      "chat",
+      "ai-agents",
+      "ai-prompts"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-03-30T19:16:36.447Z",

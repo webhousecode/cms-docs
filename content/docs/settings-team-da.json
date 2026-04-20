@@ -13,8 +13,22 @@
     "_seo": {
       "metaTitle": "Team-settings — webhouse.app Docs",
       "metaDescription": "Invitér medlemmer, tildel admin/editor/viewer-roller og administrér per-site team-medlemskab.",
-      "keywords": ["webhouse", "cms", "settings", "team", "medlemmer", "roller", "admin", "editor", "viewer"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "settings",
+        "team",
+        "medlemmer",
+        "roller",
+        "admin",
+        "editor",
+        "viewer"
+      ]
+    },
+    "tags": [
+      "permissions",
+      "auth"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-15T21:40:00.000Z",

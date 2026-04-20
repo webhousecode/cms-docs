@@ -13,8 +13,19 @@
     "_seo": {
       "metaTitle": "Billedgenerering — webhouse.app Docs",
       "metaDescription": "Agenter genererer billeder via Gemini 3 Pro Image. Samme media pipeline som uploads, med fuld AI-genereret provenance og et media library-filter.",
-      "keywords": ["webhouse", "cms", "ai", "billedgenerering", "gemini", "nano banana"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "ai",
+        "billedgenerering",
+        "gemini",
+        "nano banana"
+      ]
+    },
+    "tags": [
+      "ai-agents",
+      "media"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-08T00:00:00.000Z",

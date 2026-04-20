@@ -13,7 +13,12 @@
     "_seo": {
       "metaTitle": "MCP Server — Authenticated Content Production — webhouse.app Docs",
       "metaDescription": "Full read+write CMS access from Claude, Cursor, or any MCP client — 43 tools with scope-based access control."
-    }
+    },
+    "tags": [
+      "mcp",
+      "access-tokens",
+      "architecture"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-03-30T19:29:52.746Z",

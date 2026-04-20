@@ -13,8 +13,20 @@
     "_seo": {
       "metaTitle": "Schema-eksport — webhouse.app Docs",
       "metaDescription": "Generér webhouse-schema.json fra cms.config.ts så PHP-, Python-, Ruby-, Go-, Java- og .NET-reader-biblioteker kan introspektere din indholdsmodel.",
-      "keywords": ["webhouse", "cms", "schema", "json-schema", "framework-agnostisk", "eksport"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "schema",
+        "json-schema",
+        "framework-agnostisk",
+        "eksport"
+      ]
+    },
+    "tags": [
+      "schema",
+      "frameworks",
+      "architecture"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-09T00:00:00.000Z",

@@ -13,8 +13,22 @@
     "_seo": {
       "metaTitle": "Releases & downloads — webhouse.app Docs",
       "metaDescription": "Download the webhouse.app CMS admin server as a tarball or Docker image. Weekly auto-builds + tagged stable releases.",
-      "keywords": ["webhouse", "cms", "release", "download", "docker", "tarball", "ghcr", "self-hosted"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "release",
+        "download",
+        "docker",
+        "tarball",
+        "ghcr",
+        "self-hosted"
+      ]
+    },
+    "tags": [
+      "deploy-docker",
+      "migration",
+      "architecture"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-16T17:00:00.000Z",

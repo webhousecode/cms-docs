@@ -13,7 +13,12 @@
     "_seo": {
       "metaTitle": "AI Lock — Feltbaseret indholdsbeskyttelse — webhouse.app Docs",
       "metaDescription": "Hvordan AI Lock forhindrer AI-agenter i at overskrive menneskelige redigeringer — feltbaseret beskyttelse håndhævet på motorniveau."
-    }
+    },
+    "tags": [
+      "ai-agents",
+      "schema",
+      "permissions"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-03-30T19:25:39.858Z",

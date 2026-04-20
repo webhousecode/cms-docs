@@ -13,7 +13,12 @@
     "_seo": {
       "metaTitle": "Side-by-Side Translation Editing — webhouse.app Docs",
       "metaDescription": "Edit source and translation simultaneously in a split-screen editor — the killer feature for multilingual content."
-    }
+    },
+    "tags": [
+      "i18n",
+      "translation",
+      "richtext"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-03-30T19:08:49.344Z",

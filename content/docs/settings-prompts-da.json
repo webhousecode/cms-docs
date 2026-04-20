@@ -13,8 +13,22 @@
     "_seo": {
       "metaTitle": "AI Prompts-settings — webhouse.app Docs",
       "metaDescription": "Overrul de indbyggede prompt-templates til felt-generering, SEO, oversættelse og ethvert andet AI-feature — per site.",
-      "keywords": ["webhouse", "cms", "settings", "prompts", "ai", "templates", "override", "tilpasning"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "settings",
+        "prompts",
+        "ai",
+        "templates",
+        "override",
+        "tilpasning"
+      ]
+    },
+    "tags": [
+      "ai-prompts",
+      "ai-agents",
+      "i18n"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-15T21:48:00.000Z",

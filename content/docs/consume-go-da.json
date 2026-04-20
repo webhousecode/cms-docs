@@ -13,8 +13,20 @@
     "_seo": {
       "metaTitle": "Forbrug fra Go — webhouse.app Docs",
       "metaDescription": "Læs @webhouse/cms-indhold fra Go — Hugo-temaer, Gin-handlers og standard bibliotek fil I/O.",
-      "keywords": ["webhouse", "cms", "go", "golang", "gin", "hugo", "forbruger"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "go",
+        "golang",
+        "gin",
+        "hugo",
+        "forbruger"
+      ]
+    },
+    "tags": [
+      "frameworks",
+      "filesystem-adapter"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-08T12:00:00.000Z",

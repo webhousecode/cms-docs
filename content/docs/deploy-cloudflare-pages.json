@@ -13,8 +13,21 @@
     "_seo": {
       "metaTitle": "Cloudflare Pages (direct) — webhouse.app Docs",
       "metaDescription": "Direct Cloudflare Pages API upload. 300+ edge PoPs, free tier, no CLI. The fastest path for pure-static content worldwide.",
-      "keywords": ["webhouse", "cms", "cloudflare", "pages", "deploy", "edge", "cdn", "static"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "cloudflare",
+        "pages",
+        "deploy",
+        "edge",
+        "cdn",
+        "static"
+      ]
+    },
+    "tags": [
+      "deploy-cloudflare",
+      "deploy-github-pages"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-16T12:00:00.000Z",

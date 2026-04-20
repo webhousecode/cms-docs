@@ -13,8 +13,23 @@
     "_seo": {
       "metaTitle": "Beam — site-export & import — webhouse.app Docs",
       "metaDescription": "Eksportér et komplet @webhouse/cms-site som et portabelt .beam-arkiv: indhold, settings, skema, agenter. Importér ind i et nyt miljø.",
-      "keywords": ["webhouse", "cms", "settings", "beam", "export", "import", "migration", "backup", "arkiv"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "settings",
+        "beam",
+        "export",
+        "import",
+        "migration",
+        "backup",
+        "arkiv"
+      ]
+    },
+    "tags": [
+      "migration",
+      "backup",
+      "architecture"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-15T21:46:00.000Z",

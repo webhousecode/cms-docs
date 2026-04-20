@@ -21,7 +21,12 @@
         "generation",
         "parameters"
       ]
-    }
+    },
+    "tags": [
+      "ai-agents",
+      "ai-prompts",
+      "ai-budget"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-03-31T00:26:34.000Z",

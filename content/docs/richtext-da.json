@@ -22,7 +22,13 @@
         "tiptap",
         "editor"
       ]
-    }
+    },
+    "tags": [
+      "richtext",
+      "blocks",
+      "shortcodes",
+      "media"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-03-29T21:57:53.109Z",

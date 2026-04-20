@@ -21,7 +21,13 @@
         "hosting",
         "icd"
       ]
-    }
+    },
+    "tags": [
+      "deploy-github-pages",
+      "deploy-vercel",
+      "deploy-fly",
+      "deploy-docker"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-03-31T00:26:34.000Z",

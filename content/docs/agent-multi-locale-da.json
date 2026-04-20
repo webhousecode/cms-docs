@@ -13,8 +13,21 @@
     "_seo": {
       "metaTitle": "Multi-locale agenter — webhouse.app Docs",
       "metaDescription": "Vælg hvilket sprog hver agent skriver på. Auto-translate udfylder de andre locales når en default-locale kladde godkendes.",
-      "keywords": ["webhouse", "cms", "ai", "i18n", "locale", "oversættelse", "agenter"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "ai",
+        "i18n",
+        "locale",
+        "oversættelse",
+        "agenter"
+      ]
+    },
+    "tags": [
+      "ai-agents",
+      "i18n",
+      "translation"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-08T00:00:00.000Z",

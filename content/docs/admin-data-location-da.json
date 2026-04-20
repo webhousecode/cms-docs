@@ -13,8 +13,25 @@
     "_seo": {
       "metaTitle": "Placering af admin-data — webhouse.app Docs",
       "metaDescription": "Hvor cms-admin gemmer registry, brugere og access-tokens. Resolution-orden for Docker, Fly, Kubernetes og lokal dev — med volume + env-variabel opsætning.",
-      "keywords": ["webhouse", "cms", "admin", "deployment", "docker", "fly", "kubernetes", "persistent volume", "data-mappe"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "admin",
+        "deployment",
+        "docker",
+        "fly",
+        "kubernetes",
+        "persistent volume",
+        "data-mappe"
+      ]
+    },
+    "tags": [
+      "architecture",
+      "deploy-docker",
+      "deploy-fly",
+      "access-tokens",
+      "migration"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-20T00:00:00.000Z",

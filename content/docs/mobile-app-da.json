@@ -13,8 +13,24 @@
     "_seo": {
       "metaTitle": "Mobilapp (F07) — webhouse.app Docs",
       "metaDescription": "Native iOS & Android CMS-klient bygget med Capacitor. QR-pairing, push-notifikationer, chat, indholdsredigering mod ethvert @webhouse/cms server.",
-      "keywords": ["webhouse", "cms", "mobil", "ios", "android", "capacitor", "jwt", "push-notifikationer", "qr-login", "f07"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "mobil",
+        "ios",
+        "android",
+        "capacitor",
+        "jwt",
+        "push-notifikationer",
+        "qr-login",
+        "f07"
+      ]
+    },
+    "tags": [
+      "mobile",
+      "access-tokens",
+      "architecture"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-15T20:45:00.000Z",

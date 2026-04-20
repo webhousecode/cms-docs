@@ -13,8 +13,19 @@
     "_seo": {
       "metaTitle": "Agent Workflows — webhouse.app Docs",
       "metaDescription": "Chain multiple agents into a single pipeline. One prompt in, one curation queue item out, even though several agents touched it.",
-      "keywords": ["webhouse", "cms", "ai", "workflows", "pipelines", "agents"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "ai",
+        "workflows",
+        "pipelines",
+        "agents"
+      ]
+    },
+    "tags": [
+      "ai-agents",
+      "ai-prompts"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-08T00:00:00.000Z",

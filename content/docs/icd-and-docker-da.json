@@ -13,8 +13,24 @@
     "_seo": {
       "metaTitle": "ICD & Docker Deploy (F126) — webhouse.app Docs",
       "metaDescription": "Instant Content Deployment til 2-sekunders indholds-push via ISR; One-Click Docker Deploy til nye CMS-instanser på Fly.io fra template.",
-      "keywords": ["webhouse", "cms", "deploy", "icd", "instant-content-deployment", "docker", "fly.io", "revalidation", "isr", "f126"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "deploy",
+        "icd",
+        "instant-content-deployment",
+        "docker",
+        "fly.io",
+        "revalidation",
+        "isr",
+        "f126"
+      ]
+    },
+    "tags": [
+      "deploy-docker",
+      "deploy-fly",
+      "webhooks"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-15T20:55:00.000Z",

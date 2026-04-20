@@ -13,7 +13,12 @@
     "_seo": {
       "metaTitle": "Docker Deployment — webhouse.app Docs",
       "metaDescription": "Deploy @webhouse/cms with Docker — pre-built GHCR image or custom Dockerfile. Step-by-step guide for local and cloud deployment."
-    }
+    },
+    "tags": [
+      "deploy-docker",
+      "deploy-fly",
+      "architecture"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-03-30T12:31:03.308Z",

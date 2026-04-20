@@ -13,7 +13,12 @@
     "_seo": {
       "metaTitle": "Guide to build.ts — Static Site Generation — webhouse.app Docs",
       "metaDescription": "Step-by-step guide to building the perfect build.ts for a static HTML site powered by @webhouse/cms."
-    }
+    },
+    "tags": [
+      "architecture",
+      "deploy-github-pages",
+      "cli"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-03-30T12:14:24.904Z",

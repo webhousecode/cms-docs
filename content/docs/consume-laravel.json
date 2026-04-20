@@ -13,8 +13,18 @@
     "_seo": {
       "metaTitle": "Consume from Laravel (PHP) — webhouse.app Docs",
       "metaDescription": "Read @webhouse/cms content from a Laravel application. Helper class, routes, Blade templates.",
-      "keywords": ["webhouse", "cms", "laravel", "php", "consumer"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "laravel",
+        "php",
+        "consumer"
+      ]
+    },
+    "tags": [
+      "frameworks",
+      "filesystem-adapter"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-08T12:00:00.000Z",

@@ -13,8 +13,21 @@
     "_seo": {
       "metaTitle": "Fly.io Live — instant deploys on Fly — webhouse.app Docs",
       "metaDescription": "Volume-backed Fly.io deploys. First push creates the infrastructure; every edit after that syncs only changed files in under a second.",
-      "keywords": ["webhouse", "cms", "fly.io", "deploy", "instant", "volume", "incremental", "hmac"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "fly.io",
+        "deploy",
+        "instant",
+        "volume",
+        "incremental",
+        "hmac"
+      ]
+    },
+    "tags": [
+      "deploy-fly",
+      "deploy-docker"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-16T12:00:00.000Z",

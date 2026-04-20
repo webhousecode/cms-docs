@@ -13,8 +13,20 @@
     "_seo": {
       "metaTitle": "Agent Feedback Loop — webhouse.app Docs",
       "metaDescription": "Curator edits and rejections are persisted per agent and injected into the next run as few-shot examples. Agents learn from corrections automatically.",
-      "keywords": ["webhouse", "cms", "ai", "feedback", "agents", "learning"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "ai",
+        "feedback",
+        "agents",
+        "learning"
+      ]
+    },
+    "tags": [
+      "ai-agents",
+      "ai-prompts",
+      "analytics"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-08T00:00:00.000Z",

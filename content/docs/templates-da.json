@@ -13,7 +13,12 @@
     "_seo": {
       "metaTitle": "Skabeloner & Boilerplates — webhouse.app Docs",
       "metaDescription": "Tre klar-til-brug boilerplates og otte eksempelsites til at komme hurtigt i gang."
-    }
+    },
+    "tags": [
+      "cli",
+      "architecture",
+      "frameworks"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-03-30T11:04:41.759Z",

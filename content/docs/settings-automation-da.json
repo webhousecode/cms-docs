@@ -13,8 +13,23 @@
     "_seo": {
       "metaTitle": "Automation-settings — webhouse.app Docs",
       "metaDescription": "Konfigurér scheduled link checks, Lighthouse-audits, media processing-defaults og udgående webhooks.",
-      "keywords": ["webhouse", "cms", "settings", "automation", "tools", "link-checker", "lighthouse", "webhooks", "media-processing"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "settings",
+        "automation",
+        "tools",
+        "link-checker",
+        "lighthouse",
+        "webhooks",
+        "media-processing"
+      ]
+    },
+    "tags": [
+      "webhooks",
+      "analytics",
+      "seo"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-15T22:10:00.000Z",

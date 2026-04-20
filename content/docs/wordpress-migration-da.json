@@ -13,8 +13,21 @@
     "_seo": {
       "metaTitle": "WordPress-migration (F03) — webhouse.app Docs",
       "metaDescription": "Migrér posts, pages, medier og taxonomier fra et live WordPress-site til et nyt @webhouse/cms site via en 4-trins wizard.",
-      "keywords": ["webhouse", "cms", "wordpress", "migration", "import", "rest-api", "f03"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "wordpress",
+        "migration",
+        "import",
+        "rest-api",
+        "f03"
+      ]
+    },
+    "tags": [
+      "migration",
+      "media",
+      "schema"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-15T21:00:00.000Z",

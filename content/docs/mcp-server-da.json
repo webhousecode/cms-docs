@@ -13,7 +13,12 @@
     "_seo": {
       "metaTitle": "MCP Server — Autentificeret indholdsproduktion — webhouse.app Docs",
       "metaDescription": "Fuld læse+skrive CMS-adgang fra Claude, Cursor eller enhver MCP-klient — 43 værktøjer med scope-baseret adgangskontrol."
-    }
+    },
+    "tags": [
+      "mcp",
+      "access-tokens",
+      "architecture"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-03-30T19:29:52.746Z",

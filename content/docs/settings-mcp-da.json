@@ -13,8 +13,21 @@
     "_seo": {
       "metaTitle": "MCP-settings — webhouse.app Docs",
       "metaDescription": "Eksponér dit CMS-indhold til eksterne AI-værktøjer via Model Context Protocol — offentligt read-only endpoint eller autentificeret read/write.",
-      "keywords": ["webhouse", "cms", "settings", "mcp", "model-context-protocol", "claude-desktop", "cursor", "api-nøgle"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "settings",
+        "mcp",
+        "model-context-protocol",
+        "claude-desktop",
+        "cursor",
+        "api-nøgle"
+      ]
+    },
+    "tags": [
+      "mcp",
+      "access-tokens"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-15T22:12:00.000Z",

@@ -13,8 +13,21 @@
     "_seo": {
       "metaTitle": "Email settings — webhouse.app Docs",
       "metaDescription": "Configure transactional email for invites, form submissions, agent alerts, and backup reports via Resend.",
-      "keywords": ["webhouse", "cms", "settings", "email", "resend", "transactional", "spf", "dkim"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "settings",
+        "email",
+        "resend",
+        "transactional",
+        "spf",
+        "dkim"
+      ]
+    },
+    "tags": [
+      "webhooks",
+      "permissions"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-15T21:42:00.000Z",

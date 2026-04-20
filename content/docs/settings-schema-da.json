@@ -13,8 +13,21 @@
     "_seo": {
       "metaTitle": "Schema-settings — webhouse.app Docs",
       "metaDescription": "Redigér collection-skemaer live fra admin-UI'et — tilføj, fjern, omarrangér og ændr typer på felter uden at genstarte.",
-      "keywords": ["webhouse", "cms", "settings", "schema", "collections", "felter", "kind", "cms.config.ts"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "settings",
+        "schema",
+        "collections",
+        "felter",
+        "kind",
+        "cms.config.ts"
+      ]
+    },
+    "tags": [
+      "schema",
+      "permissions"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-15T22:16:00.000Z",

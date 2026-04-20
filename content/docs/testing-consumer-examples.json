@@ -13,8 +13,20 @@
     "_seo": {
       "metaTitle": "Testing the Consumer Examples — webhouse.app Docs",
       "metaDescription": "How the Java and .NET consumer examples are tested. Test setup, fixtures, security checks, and how to run them locally.",
-      "keywords": ["webhouse", "cms", "testing", "junit", "xunit", "java", "dotnet"]
-    }
+      "keywords": [
+        "webhouse",
+        "cms",
+        "testing",
+        "junit",
+        "xunit",
+        "java",
+        "dotnet"
+      ]
+    },
+    "tags": [
+      "frameworks",
+      "filesystem-adapter"
+    ]
   },
   "_fieldMeta": {},
   "createdAt": "2026-04-08T12:00:00.000Z",
