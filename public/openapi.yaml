@@ -1,0 +1,1556 @@
+openapi: 3.1.0
+info:
+  title: "@webhouse/cms API"
+  version: "0.3.0"
+  description: |
+    WebHouse CMS REST API — headless content, admin operations, AI chat, and deploy triggers.
+
+    ## Authentication
+
+    ### Bearer Token (recommended for sites & integrations)
+    Create a `wh_` Access Token in **Account Preferences → Access Tokens**.
+    Send it as a Bearer token in the `Authorization` header:
+    ```
+    Authorization: Bearer wh_xxxxxxxxxxxxxxxxxxxx
+    ```
+    Tokens are scoped to specific sites and permissions. Never expose them client-side.
+
+    ### Session Cookie (admin UI)
+    Login via `POST /api/auth/login` → sets `cms-session` httpOnly cookie.
+
+    ### Service Token (machine-to-machine)
+    Set `X-CMS-Service-Token: {CMS_JWT_SECRET}` header for cron/heartbeat calls.
+
+    ## Field-level AI lock
+    `_fieldMeta` is not included in standard document responses.
+    Use the dedicated `/_fieldMeta` endpoints to read and manipulate lock state.
+
+servers:
+  - url: https://webhouse.app
+    description: WebHouse Cloud (production)
+  - url: https://localhost:3010
+    description: Local dev (HTTPS, mkcert)
+  - url: "{baseUrl}"
+    description: Self-hosted
+    variables:
+      baseUrl:
+        default: https://localhost:3010
+
+tags:
+  - name: Headless
+    description: |
+      Content API for sites and integrations. Use Bearer `wh_` token.
+      See [Headless Site API guide](https://docs.webhouse.app/docs/headless-api).
+  - name: Content
+    description: Low-level content CRUD (legacy `/api/content/` prefix)
+  - name: FieldMeta
+    description: Field-level lock and AI-provenance metadata
+  - name: Schema
+    description: Collection JSON Schemas (read-only)
+  - name: Manifest
+    description: CMS configuration and manifest
+  - name: Auth
+    description: Authentication (login, logout, session)
+  - name: Admin
+    description: Admin operations (profile, team, config, deploy, access tokens)
+  - name: Deploy
+    description: Deploy triggers, status, and completion webhooks
+  - name: Search
+    description: Full-text search across all collections and media
+  - name: Chat
+    description: AI chat — same model and tools as CMS Admin UI
+  - name: Scheduler
+    description: Heartbeat, scheduled tasks, calendar feed
+  - name: Media
+    description: File upload, media library, serving
+  - name: AI
+    description: AI generation, rewriting, agents, curation
+  - name: MCP
+    description: Model Context Protocol servers (public + admin)
+
+# ---------------------------------------------------------------------------
+# Security schemes
+# ---------------------------------------------------------------------------
+components:
+  securitySchemes:
+    BearerToken:
+      type: http
+      scheme: bearer
+      description: |
+        `wh_` Access Token created in Account Preferences → Access Tokens.
+        Scoped to specific sites and permissions.
+        Example: `Authorization: Bearer wh_76a2153cc365ed47...`
+    SessionCookie:
+      type: apiKey
+      in: cookie
+      name: cms-session
+      description: JWT cookie set after login via POST /api/auth/login
+    ServiceToken:
+      type: apiKey
+      in: header
+      name: X-CMS-Service-Token
+      description: CMS_JWT_SECRET value — for machine-to-machine (cron, heartbeat)
+
+# ---------------------------------------------------------------------------
+# Reusable components
+# ---------------------------------------------------------------------------
+components:
+  parameters:
+    collection:
+      name: collection
+      in: path
+      required: true
+      schema:
+        type: string
+        example: posts
+      description: Navn på collection som defineret i cms.config.ts
+
+    slug:
+      name: slug
+      in: path
+      required: true
+      schema:
+        type: string
+        example: hello-world
+      description: Dokumentets URL-slug
+
+    fieldPath:
+      name: fieldPath
+      in: path
+      required: true
+      schema:
+        type: string
+        example: title
+      description: Feltnavnet der skal låses/åbnes
+
+    status:
+      name: status
+      in: query
+      schema:
+        $ref: "#/components/schemas/DocumentStatus"
+      description: Filtrer på status
+
+    limit:
+      name: limit
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        example: 20
+      description: Maks antal dokumenter i svaret
+
+    offset:
+      name: offset
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+        example: 0
+      description: Antal dokumenter at springe over (pagination)
+
+    orderBy:
+      name: orderBy
+      in: query
+      schema:
+        type: string
+        example: createdAt
+      description: Felt at sortere på (createdAt, updatedAt, eller et data-felt)
+
+    order:
+      name: order
+      in: query
+      schema:
+        type: string
+        enum: [asc, desc]
+        default: desc
+      description: Sorteringsretning
+
+    locale:
+      name: locale
+      in: query
+      schema:
+        type: string
+        example: "da"
+      description: Filter by locale (BCP 47, e.g. "en", "da")
+
+    tags:
+      name: tags
+      in: query
+      schema:
+        type: string
+        example: "typescript,cms"
+      description: Komma-separeret liste af tags at filtrere på (AND logik)
+
+  schemas:
+    DocumentStatus:
+      type: string
+      enum: [draft, published, archived]
+
+    FieldMeta:
+      type: object
+      description: |
+        Per-felt metadata. Beskriver om feltet er låst og/eller AI-genereret.
+        `lockedBy` angiver hvem der låste feltet — er den sat, vil AI-writes blive afvist.
+      properties:
+        lockedBy:
+          type: string
+          enum: [user, ai, import]
+          description: Hvem der har låst feltet
+        lockedAt:
+          type: string
+          format: date-time
+          description: ISO-timestamp for hvornår feltet blev låst
+        userId:
+          type: string
+          description: ID på brugeren der låste feltet (audit trail)
+        reason:
+          type: string
+          description: Human-readable årsag til låsning (f.eks. "user-edit", "import", "manual-lock")
+        aiGenerated:
+          type: boolean
+          description: Om feltets nuværende indhold er AI-genereret
+        aiGeneratedAt:
+          type: string
+          format: date-time
+          description: ISO-timestamp for hvornår AI genererede indholdet
+        aiModel:
+          type: string
+          description: AI-modellen der genererede indholdet (f.eks. "claude-sonnet-4-6")
+
+    DocumentFieldMeta:
+      type: object
+      description: Map fra feltnavn til FieldMeta
+      additionalProperties:
+        $ref: "#/components/schemas/FieldMeta"
+      example:
+        title:
+          lockedBy: user
+          lockedAt: "2024-06-01T10:00:00Z"
+          userId: user-abc
+          reason: user-edit
+          aiGenerated: true
+          aiGeneratedAt: "2024-05-31T09:00:00Z"
+          aiModel: claude-sonnet-4-6
+        content:
+          aiGenerated: true
+          aiGeneratedAt: "2024-05-31T09:00:00Z"
+          aiModel: claude-sonnet-4-6
+
+    Document:
+      type: object
+      required: [id, slug, collection, status, data, createdAt, updatedAt]
+      properties:
+        id:
+          type: string
+          description: Unik dokument-ID (nanoid)
+          example: V1StGXR8_Z5jdHi6B-myT
+        slug:
+          type: string
+          description: URL-venligt slug (unikt inden for collection)
+          example: hello-world
+        collection:
+          type: string
+          example: posts
+        status:
+          $ref: "#/components/schemas/DocumentStatus"
+        data:
+          type: object
+          description: Dokumentets felt-data (fri form, defineret af collection-schema)
+          additionalProperties: true
+          example:
+            title: Hello World
+            content: "# Min første post"
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        locale:
+          type: string
+          description: BCP 47 locale tag (e.g. "en", "da")
+          example: en
+        translationOf:
+          type: string
+          description: Slug of the source document (for translations)
+          example: hello-world
+        publishAt:
+          type: string
+          format: date-time
+          description: Scheduled publish timestamp (ISO)
+      description: |
+        `_fieldMeta` returneres **ikke** i dette objekt.
+        Brug `GET /{collection}/{slug}/_fieldMeta` for at hente det.
+
+    DocumentList:
+      type: object
+      required: [documents, total]
+      properties:
+        documents:
+          type: array
+          items:
+            $ref: "#/components/schemas/Document"
+        total:
+          type: integer
+          description: Samlet antal dokumenter (uanset limit/offset)
+
+    CreateDocumentBody:
+      type: object
+      required: [data]
+      properties:
+        slug:
+          type: string
+          description: Valgfrit. Autogenereres fra title-felt hvis udeladt.
+        status:
+          $ref: "#/components/schemas/DocumentStatus"
+        data:
+          type: object
+          additionalProperties: true
+
+    UpdateDocumentBody:
+      type: object
+      properties:
+        slug:
+          type: string
+        status:
+          $ref: "#/components/schemas/DocumentStatus"
+        data:
+          type: object
+          additionalProperties: true
+          description: Felter merges med eksisterende data (partial update)
+        locale:
+          type: string
+          description: BCP 47 locale tag
+        translationOf:
+          type: string
+          description: Slug of source document
+        publishAt:
+          type: string
+          format: date-time
+          description: Schedule publish at this time (null to clear)
+
+    LockFieldBody:
+      type: object
+      properties:
+        userId:
+          type: string
+          description: ID på den bruger der udfører låsningen (audit trail)
+        reason:
+          type: string
+          description: Årsag til manuel låsning
+          example: sensitive-copy
+
+    LockAllBody:
+      type: object
+      properties:
+        userId:
+          type: string
+          description: ID på den bruger der udfører bulk-låsningen
+
+    ErrorResponse:
+      type: object
+      required: [error]
+      properties:
+        error:
+          type: string
+
+  responses:
+    NotFound:
+      description: Dokument eller collection ikke fundet
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+    BadRequest:
+      description: Ugyldig input
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+
+# ---------------------------------------------------------------------------
+# Root
+# ---------------------------------------------------------------------------
+paths:
+  /:
+    get:
+      summary: API info
+      operationId: getInfo
+      tags: [Content]
+      responses:
+        "200":
+          description: Navn, version og API-prefix
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    example: "@webhouse/cms"
+                  version:
+                    type: string
+                    example: "0.1.0"
+                  api:
+                    type: string
+                    example: /api
+
+# ---------------------------------------------------------------------------
+# Content
+# ---------------------------------------------------------------------------
+  /api/content/{collection}:
+    get:
+      summary: List dokumenter
+      operationId: listDocuments
+      tags: [Content]
+      parameters:
+        - $ref: "#/components/parameters/collection"
+        - $ref: "#/components/parameters/status"
+        - $ref: "#/components/parameters/limit"
+        - $ref: "#/components/parameters/offset"
+        - $ref: "#/components/parameters/orderBy"
+        - $ref: "#/components/parameters/order"
+        - $ref: "#/components/parameters/tags"
+      responses:
+        "200":
+          description: Pagineret liste af dokumenter (uden _fieldMeta)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DocumentList"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+    post:
+      summary: Opret dokument
+      operationId: createDocument
+      tags: [Content]
+      parameters:
+        - $ref: "#/components/parameters/collection"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateDocumentBody"
+      responses:
+        "201":
+          description: Oprettet dokument (uden _fieldMeta)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Document"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+
+  /api/content/{collection}/{slug}:
+    get:
+      summary: Hent dokument
+      operationId: getDocument
+      tags: [Content]
+      parameters:
+        - $ref: "#/components/parameters/collection"
+        - $ref: "#/components/parameters/slug"
+      responses:
+        "200":
+          description: Dokument (uden _fieldMeta)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Document"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+    put:
+      summary: Opdater dokument
+      operationId: updateDocument
+      tags: [Content]
+      description: |
+        Felter i `data` merges med eksisterende data (shallow merge).
+        Felter der er låst af en bruger vil **ikke** blive overskrevet —
+        kaldet sker med `actor: user`, så eksisterende user-locks respekteres ikke her.
+        Brug `/_fieldMeta`-endpoints til at styre locks manuelt.
+      parameters:
+        - $ref: "#/components/parameters/collection"
+        - $ref: "#/components/parameters/slug"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateDocumentBody"
+      responses:
+        "200":
+          description: Opdateret dokument (uden _fieldMeta)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Document"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+    delete:
+      summary: Slet dokument
+      operationId: deleteDocument
+      tags: [Content]
+      parameters:
+        - $ref: "#/components/parameters/collection"
+        - $ref: "#/components/parameters/slug"
+      responses:
+        "200":
+          description: Slettet
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+# ---------------------------------------------------------------------------
+# FieldMeta
+# ---------------------------------------------------------------------------
+  /api/content/{collection}/{slug}/_fieldMeta:
+    get:
+      summary: Hent field metadata
+      operationId: getFieldMeta
+      tags: [FieldMeta]
+      description: |
+        Returnerer `_fieldMeta` for dokumentet: lock-state og AI-provenance pr. felt.
+        Denne information er stripet fra alle standard GET-responses.
+      parameters:
+        - $ref: "#/components/parameters/collection"
+        - $ref: "#/components/parameters/slug"
+      responses:
+        "200":
+          description: Field metadata map
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DocumentFieldMeta"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /api/content/{collection}/{slug}/_fieldMeta/lock-all:
+    put:
+      summary: Lås alle AI-genererede felter
+      operationId: lockAllFields
+      tags: [FieldMeta]
+      description: Sætter `lockedBy: user` på alle felter der har `aiGenerated: true`.
+      parameters:
+        - $ref: "#/components/parameters/collection"
+        - $ref: "#/components/parameters/slug"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LockAllBody"
+      responses:
+        "200":
+          description: Opdateret field metadata map
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DocumentFieldMeta"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /api/content/{collection}/{slug}/_fieldMeta/unlock-all:
+    put:
+      summary: Fjern alle locks
+      operationId: unlockAllFields
+      tags: [FieldMeta]
+      description: Fjerner `lockedBy`, `lockedAt`, `userId` og `reason` fra alle felter. AI-genererings-metadata bevares.
+      parameters:
+        - $ref: "#/components/parameters/collection"
+        - $ref: "#/components/parameters/slug"
+      responses:
+        "200":
+          description: Opdateret field metadata map
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DocumentFieldMeta"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /api/content/{collection}/{slug}/_fieldMeta/{fieldPath}/lock:
+    put:
+      summary: Lås enkelt felt manuelt
+      operationId: lockField
+      tags: [FieldMeta]
+      description: |
+        Sætter `lockedBy: user` på det angivne felt.
+        Fremtidige AI-writes til dette felt vil blive afvist.
+      parameters:
+        - $ref: "#/components/parameters/collection"
+        - $ref: "#/components/parameters/slug"
+        - $ref: "#/components/parameters/fieldPath"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LockFieldBody"
+      responses:
+        "200":
+          description: Opdateret FieldMeta for det låste felt
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FieldMeta"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /api/content/{collection}/{slug}/_fieldMeta/{fieldPath}/unlock:
+    put:
+      summary: Fjern lock fra enkelt felt
+      operationId: unlockField
+      tags: [FieldMeta]
+      description: |
+        Fjerner `lockedBy`, `lockedAt`, `userId` og `reason` fra feltet.
+        AI-genererings-metadata (`aiGenerated`, `aiModel` osv.) bevares intakt.
+      parameters:
+        - $ref: "#/components/parameters/collection"
+        - $ref: "#/components/parameters/slug"
+        - $ref: "#/components/parameters/fieldPath"
+      responses:
+        "200":
+          description: Opdateret FieldMeta for det åbnede felt
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FieldMeta"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+# ---------------------------------------------------------------------------
+# Schema
+# ---------------------------------------------------------------------------
+  /api/schema:
+    get:
+      summary: Hent alle collection-schemas
+      operationId: listSchemas
+      tags: [Schema]
+      responses:
+        "200":
+          description: Alle collections med JSON Schema
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  collections:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        label:
+                          type: string
+                        slug:
+                          type: string
+                        jsonSchema:
+                          type: object
+                          description: JSON Schema for collectionens data-felter
+                  blocks:
+                    type: array
+                    items:
+                      type: object
+
+  /api/schema/{collection}:
+    get:
+      summary: Hent schema for én collection
+      operationId: getSchema
+      tags: [Schema]
+      parameters:
+        - $ref: "#/components/parameters/collection"
+      responses:
+        "200":
+          description: Collection med JSON Schema
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  label:
+                    type: string
+                  jsonSchema:
+                    type: object
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+# ---------------------------------------------------------------------------
+# Manifest
+# ---------------------------------------------------------------------------
+  /api/manifest:
+    get:
+      summary: Get CMS manifest
+      operationId: getManifest
+      tags: [Manifest]
+      description: Returns full CMS configuration (collections, build config, storage type, etc.)
+      responses:
+        "200":
+          description: CMS manifest
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Serialized CmsConfig
+
+# ---------------------------------------------------------------------------
+# Auth
+# ---------------------------------------------------------------------------
+  /api/auth/login:
+    post:
+      summary: Log in
+      operationId: login
+      tags: [Auth]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password]
+              properties:
+                email: { type: string, example: "admin@example.com" }
+                password: { type: string, example: "my-password" }
+      responses:
+        "200":
+          description: Login successful — sets cms-session cookie
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ok: { type: boolean }
+                  email: { type: string }
+                  name: { type: string }
+        "401":
+          description: Invalid credentials
+
+  /api/auth/logout:
+    post:
+      summary: Log out
+      operationId: logout
+      tags: [Auth]
+      responses:
+        "200":
+          description: Session cookie cleared
+
+  /api/auth/me:
+    get:
+      summary: Get current user
+      operationId: getMe
+      tags: [Auth]
+      responses:
+        "200":
+          description: Authenticated user profile (or user: null)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    type: object
+                    nullable: true
+                    properties:
+                      id: { type: string }
+                      email: { type: string }
+                      name: { type: string }
+                      role: { type: string, enum: [admin, editor, viewer] }
+                      siteRole: { type: string, nullable: true }
+                      zoom: { type: integer }
+
+  /api/auth/setup:
+    get:
+      summary: Check if initial setup is needed
+      operationId: checkSetup
+      tags: [Auth]
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  hasUsers: { type: boolean }
+
+    post:
+      summary: Create first admin account
+      operationId: setupAdmin
+      tags: [Auth]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password, name]
+              properties:
+                email: { type: string }
+                password: { type: string, minLength: 8 }
+                name: { type: string }
+      responses:
+        "200":
+          description: Account created — sets cms-session cookie
+        "403":
+          description: Setup already complete
+
+# ---------------------------------------------------------------------------
+# Scheduler & Heartbeat
+# ---------------------------------------------------------------------------
+  /api/cms/heartbeat:
+    get:
+      summary: Run all pending scheduled tasks
+      operationId: heartbeat
+      tags: [Scheduler]
+      description: |
+        Executes all pending scheduled tasks immediately:
+        1. Publish/unpublish documents past their scheduled date
+        2. Run due AI agents
+        3. Run tools scheduler (backup, link check)
+        4. Update calendar snapshot
+
+        Designed to be called by an external cron (macOS crontab, GitHub Actions,
+        or any uptime monitor) to keep scheduled tasks running even when the
+        CMS admin has no interactive traffic.
+
+        **Auth:** Requires `X-CMS-Service-Token` header matching `CMS_JWT_SECRET`.
+      responses:
+        "200":
+          description: Tasks executed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ok: { type: boolean }
+                  durationMs: { type: integer, example: 1234 }
+                  ran:
+                    type: array
+                    items: { type: string }
+                    example: ["published: 2 doc(s)", "backup: completed", "snapshot: updated"]
+                  errors:
+                    type: array
+                    items: { type: string }
+                  timestamp: { type: string, format: date-time }
+        "401":
+          description: Missing or invalid service token
+
+  /api/cms/scheduled/calendar.ics:
+    get:
+      summary: iCalendar feed of scheduled events
+      operationId: calendarFeed
+      tags: [Scheduler]
+      description: |
+        Returns an iCalendar (.ics) feed with all scheduled publish/unpublish events,
+        upcoming backups, and link checks. Subscribe from Apple Calendar, Google Calendar, etc.
+
+        **Auth:** Token-based via `?token=` query parameter (HMAC of user ID).
+      parameters:
+        - name: token
+          in: query
+          required: true
+          schema: { type: string }
+          description: HMAC token for calendar access
+        - name: org
+          in: query
+          schema: { type: string }
+          description: Organization ID
+        - name: site
+          in: query
+          schema: { type: string }
+          description: Site ID
+      responses:
+        "200":
+          description: iCalendar feed
+          content:
+            text/calendar:
+              schema:
+                type: string
+        "401":
+          description: Invalid token
+
+# ---------------------------------------------------------------------------
+# Media
+# ---------------------------------------------------------------------------
+  /api/upload:
+    post:
+      summary: Upload file
+      operationId: uploadFile
+      tags: [Media]
+      description: Upload a file to the media library. Supports images, audio, documents, SVG.
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                folder:
+                  type: string
+                  description: Target folder (e.g. "images", "audio")
+      responses:
+        "200":
+          description: Upload successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  url: { type: string, example: "/uploads/images/photo.jpg" }
+                  filename: { type: string }
+                  size: { type: integer }
+
+  /api/media:
+    get:
+      summary: List media files
+      operationId: listMedia
+      tags: [Media]
+      responses:
+        "200":
+          description: All media files with metadata
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  files:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name: { type: string }
+                        url: { type: string }
+                        folder: { type: string }
+                        size: { type: integer }
+                        type: { type: string, enum: [image, audio, document, svg] }
+
+# ---------------------------------------------------------------------------
+# AI Agents
+# ---------------------------------------------------------------------------
+  /api/cms/agents:
+    get:
+      summary: List AI agents
+      operationId: listAgents
+      tags: [AI]
+      responses:
+        "200":
+          description: All agent configurations
+    post:
+      summary: Create AI agent
+      operationId: createAgent
+      tags: [AI]
+      responses:
+        "201":
+          description: Agent created
+
+  /api/cms/agents/{id}/run:
+    post:
+      summary: Run AI agent
+      operationId: runAgent
+      tags: [AI]
+      description: Execute an agent with a prompt. Results go to curation queue or publish directly based on autonomy setting.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                prompt: { type: string }
+                collection: { type: string }
+      responses:
+        "200":
+          description: Agent execution result
+
+# ---------------------------------------------------------------------------
+# Curation
+# ---------------------------------------------------------------------------
+  /api/cms/curation:
+    get:
+      summary: List curation queue
+      operationId: listCuration
+      tags: [AI]
+      description: AI-generated content waiting for human review.
+      parameters:
+        - name: stats
+          in: query
+          schema: { type: boolean }
+          description: Include queue statistics
+      responses:
+        "200":
+          description: Queue items
+
+  /api/cms/curation/{id}/approve:
+    post:
+      summary: Approve curation item
+      operationId: approveCuration
+      tags: [AI]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: Item approved and published/drafted
+
+  /api/cms/curation/{id}/reject:
+    post:
+      summary: Reject curation item
+      operationId: rejectCuration
+      tags: [AI]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: Item rejected
+
+# ---------------------------------------------------------------------------
+# Admin
+# ---------------------------------------------------------------------------
+  /api/admin/profile:
+    post:
+      summary: Update user profile
+      operationId: updateProfile
+      tags: [Admin]
+      description: Update name, email, password, zoom, or last active site.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name: { type: string }
+                email: { type: string }
+                currentPassword: { type: string }
+                newPassword: { type: string, minLength: 8 }
+                zoom: { type: integer }
+                lastActiveOrg: { type: string }
+                lastActiveSite: { type: string }
+      responses:
+        "200":
+          description: Profile updated — new JWT cookie set
+        "400":
+          description: Validation error (wrong password, etc.)
+
+  /api/admin/site-config:
+    get:
+      summary: Get site configuration
+      operationId: getSiteConfig
+      tags: [Admin]
+      description: Returns site-specific settings (backup schedule, link check, revalidation, etc.) plus resolvedContentDir.
+      responses:
+        "200":
+          description: Site configuration
+
+    post:
+      summary: Update site configuration
+      operationId: updateSiteConfig
+      tags: [Admin]
+      responses:
+        "200":
+          description: Updated configuration
+        "403":
+          description: Admin role required
+
+  /api/admin/backups:
+    get:
+      summary: List backups
+      operationId: listBackups
+      tags: [Admin]
+      responses:
+        "200":
+          description: Backup manifest with snapshots
+
+    post:
+      summary: Create backup
+      operationId: createBackup
+      tags: [Admin]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                trigger: { type: string, enum: [manual, scheduled] }
+      responses:
+        "200":
+          description: Backup created
+
+  /api/admin/deploy:
+    post:
+      summary: Trigger deploy
+      operationId: triggerDeploy
+      tags: [Admin]
+      description: Trigger a site deployment via configured deploy hook (Vercel, Netlify, Fly.io, etc.)
+      responses:
+        "200":
+          description: Deploy triggered
+        "400":
+          description: No deploy hook configured
+
+# ---------------------------------------------------------------------------
+# MCP (Model Context Protocol)
+# ---------------------------------------------------------------------------
+  /api/mcp/info:
+    get:
+      summary: MCP server info
+      operationId: mcpInfo
+      tags: [MCP]
+      description: Returns available MCP tools, collections, auth status, and rate limit info.
+      responses:
+        "200":
+          description: MCP server metadata
+
+# ---------------------------------------------------------------------------
+# Headless Content API (F139) — use Bearer wh_ token
+# ---------------------------------------------------------------------------
+  /api/cms/{collection}:
+    get:
+      summary: List documents (headless)
+      operationId: headlessListDocuments
+      tags: [Headless]
+      security:
+        - BearerToken: []
+        - SessionCookie: []
+      description: |
+        List documents in a collection. Requires `content:read` permission.
+        Add `?site=<siteId>` when calling from a token with multi-site scope.
+      parameters:
+        - $ref: "#/components/parameters/collection"
+        - $ref: "#/components/parameters/status"
+        - $ref: "#/components/parameters/locale"
+        - $ref: "#/components/parameters/limit"
+        - $ref: "#/components/parameters/offset"
+        - $ref: "#/components/parameters/tags"
+        - name: site
+          in: query
+          schema: { type: string }
+          description: Site ID (required for multi-site tokens)
+      responses:
+        "200":
+          description: Document list
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DocumentList"
+        "401":
+          description: Invalid or missing token
+        "403":
+          description: Token lacks content:read permission
+
+    post:
+      summary: Create document (headless)
+      operationId: headlessCreateDocument
+      tags: [Headless]
+      security:
+        - BearerToken: []
+        - SessionCookie: []
+      description: Requires `content:write` permission.
+      parameters:
+        - $ref: "#/components/parameters/collection"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateDocumentBody"
+      responses:
+        "200":
+          description: Created document
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Document"
+        "403":
+          description: Token lacks content:write permission
+
+  /api/cms/{collection}/{slug}:
+    get:
+      summary: Get document by slug (headless)
+      operationId: headlessGetDocument
+      tags: [Headless]
+      security:
+        - BearerToken: []
+        - SessionCookie: []
+      parameters:
+        - $ref: "#/components/parameters/collection"
+        - $ref: "#/components/parameters/slug"
+      responses:
+        "200":
+          description: Document
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Document"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+    patch:
+      summary: Update document (headless)
+      operationId: headlessUpdateDocument
+      tags: [Headless]
+      security:
+        - BearerToken: []
+        - SessionCookie: []
+      description: Partial update — only supplied `data` fields are merged. Requires `content:write`.
+      parameters:
+        - $ref: "#/components/parameters/collection"
+        - $ref: "#/components/parameters/slug"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateDocumentBody"
+      responses:
+        "200":
+          description: Updated document
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Document"
+
+# ---------------------------------------------------------------------------
+# Full-text Search (F139)
+# ---------------------------------------------------------------------------
+  /api/search:
+    get:
+      summary: Search all collections + media
+      operationId: searchContent
+      tags: [Search]
+      security:
+        - BearerToken: []
+        - SessionCookie: []
+      description: |
+        Multi-token AND search across all collections. Tokens are split on spaces
+        and commas — all must appear somewhere in the document (slug, title, or any field).
+        Richtext body is fully indexed (TipTap JSON traversed to leaf text nodes).
+      parameters:
+        - name: q
+          in: query
+          required: true
+          schema: { type: string }
+          description: Search query. Comma/space-separated terms are ANDed.
+          example: "Qigong, sund mad"
+      responses:
+        "200":
+          description: Search results
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    collection: { type: string }
+                    collectionLabel: { type: string }
+                    slug: { type: string }
+                    title: { type: string }
+                    status: { type: string }
+                    matchedIn:
+                      type: string
+                      enum: [title, body]
+                      description: Whether the match was in the title or body/fields
+
+# ---------------------------------------------------------------------------
+# Deploy (F139, deploy notifications)
+# ---------------------------------------------------------------------------
+  /api/admin/deploy/notify:
+    get:
+      summary: SSE stream — deploy completion events
+      operationId: deployNotifyStream
+      tags: [Deploy]
+      security:
+        - BearerToken: []
+        - SessionCookie: []
+      description: |
+        Server-Sent Events stream. Receives `deploy-done` events when GitHub Actions
+        (or any CI) calls `POST /api/admin/deploy/notify` on completion.
+        Connect once per tab/session; the CMS admin UI uses this to show the
+        "Published! 🚀" toast without polling.
+      responses:
+        "200":
+          description: SSE stream (text/event-stream)
+
+    post:
+      summary: Webhook — notify CMS of completed deploy
+      operationId: deployNotifyWebhook
+      tags: [Deploy]
+      description: |
+        Called by GitHub Actions (or other CI) at the end of a deploy workflow.
+        Broadcasts a `deploy-done` SSE event to all connected admin tabs.
+        Authenticate with `Authorization: Bearer {DEPLOY_NOTIFY_SECRET}`.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  enum: [success, failure]
+                url:
+                  type: string
+                  description: Live site URL to show in the toast
+                app:
+                  type: string
+                  description: Fly.io app name or other identifier
+                duration:
+                  type: integer
+                  description: Build duration in seconds
+      responses:
+        "200":
+          description: Event broadcast to connected clients
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ok: { type: boolean }
+                  clients: { type: integer, description: Number of SSE clients notified }
+        "401":
+          description: Invalid DEPLOY_NOTIFY_SECRET
+
+  /api/admin/deploy/github-status:
+    get:
+      summary: Latest GitHub Actions run status
+      operationId: deployGitHubStatus
+      tags: [Deploy]
+      security:
+        - BearerToken: []
+        - SessionCookie: []
+      description: |
+        Polls the latest workflow run for the active site's `deployAppName` repo.
+        Used by the Deploy button to show "Building..." / "Queued..." live status.
+        Requires `deployApiToken` (GitHub PAT) configured in site settings.
+      responses:
+        "200":
+          description: Latest run status
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  found: { type: boolean }
+                  runId: { type: integer }
+                  status:
+                    type: string
+                    enum: [queued, in_progress, completed]
+                  conclusion:
+                    type: string
+                    enum: [success, failure, cancelled, skipped]
+                    nullable: true
+                  url: { type: string, description: GitHub Actions run URL }
+                  startedAt: { type: string, format: date-time }
+
+# ---------------------------------------------------------------------------
+# Access Tokens (F134)
+# ---------------------------------------------------------------------------
+  /api/admin/access-tokens:
+    get:
+      summary: List access tokens
+      operationId: listAccessTokens
+      tags: [Admin]
+      security:
+        - SessionCookie: []
+      description: Returns all tokens for the current user (tokens masked — first 10 + last 4 chars shown).
+      responses:
+        "200":
+          description: Token list
+
+    post:
+      summary: Create access token
+      operationId: createAccessToken
+      tags: [Admin]
+      security:
+        - SessionCookie: []
+      description: |
+        Create a `wh_` Bearer token for headless site access, CI integrations, or MCP clients.
+        Returns the full token value **once only** — store it immediately.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name, permissions]
+              properties:
+                name:
+                  type: string
+                  example: "Sanne Andersen site headless"
+                permissions:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - content:read
+                      - content:write
+                      - content:publish
+                      - media:read
+                      - media:write
+                      - media:delete
+                      - deploy:trigger
+                      - deploy:read
+                      - forms:read
+                      - forms:write
+                      - team:manage
+                      - tokens:manage
+                      - sites:read
+                      - sites:write
+                      - org:settings:read
+                      - org:settings:write
+                  example: ["content:read", "forms:read", "deploy:trigger", "deploy:read"]
+                resources:
+                  type: array
+                  description: Restrict token to specific sites or orgs
+                  items:
+                    type: object
+                    required: [scope, effect, targets]
+                    properties:
+                      scope:
+                        type: string
+                        enum: [org, site, admin-area]
+                      effect:
+                        type: string
+                        enum: [include, exclude]
+                      targets:
+                        oneOf:
+                          - type: string
+                            enum: ["*"]
+                          - type: array
+                            items: { type: string }
+                  example:
+                    - scope: site
+                      effect: include
+                      targets: ["sanneandersen"]
+                notAfter:
+                  type: string
+                  format: date-time
+                  description: Optional expiry timestamp
+      responses:
+        "200":
+          description: Token created — full value returned once
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                    description: Full wh_ token (only returned on creation)
+                    example: "wh_76a2153cc365ed47..."
+                  id: { type: string }
+                  name: { type: string }
+                  permissions:
+                    type: array
+                    items: { type: string }
+
+  /api/admin/access-tokens/{id}:
+    delete:
+      summary: Revoke access token
+      operationId: revokeAccessToken
+      tags: [Admin]
+      security:
+        - SessionCookie: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: Token revoked
+
+# ---------------------------------------------------------------------------
+# AI Chat (F139 — embed in sites)
+# ---------------------------------------------------------------------------
+  /api/cms/chat:
+    post:
+      summary: Chat — streaming AI response
+      operationId: chat
+      tags: [Chat]
+      security:
+        - BearerToken: []
+        - SessionCookie: []
+      description: |
+        Runs the same Claude model and tool set as CMS Admin chat.
+        Returns a Server-Sent Events stream. Parse events:
+        - `event: text` `data: {"text":"..."}` — streamed text chunk
+        - `event: tool_call` `data: {"tool":"...","input":{}}` — tool executing
+        - `event: tool_result` `data: {"tool":"...","result":"..."}` — tool result
+        - `event: done` `data: {}` — stream complete
+
+        **Restrict tools** by only granting the permissions you need on the Bearer token.
+        Example: omit `content:write` to make the chat read-only.
+
+        For site embedding, proxy through a server route — never call from client-side
+        with the token directly. See [docs](https://docs.webhouse.app/docs/headless-api#5-embed-the-ai-chat).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [messages]
+              properties:
+                messages:
+                  type: array
+                  items:
+                    type: object
+                    required: [role, content]
+                    properties:
+                      role:
+                        type: string
+                        enum: [user, assistant]
+                      content:
+                        type: string
+                conversationId:
+                  type: string
+                  description: UUID for conversation persistence and memory extraction
+                model:
+                  type: string
+                  description: Override model (must be in allowed list)
+                  example: claude-haiku-4-5-20251001
+      responses:
+        "200":
+          description: SSE stream (text/event-stream)
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: text/event-stream
+        "401":
+          description: Invalid token
+        "503":
+          description: Anthropic API key not configured

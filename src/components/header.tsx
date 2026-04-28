@@ -84,6 +84,16 @@ export function Header() {
             Docs
           </Link>
           <Link
+            href="/api-reference"
+            style={{
+              fontSize: "0.85rem",
+              color: "var(--fg-muted)",
+              textDecoration: "none",
+            }}
+          >
+            API
+          </Link>
+          <Link
             href="/changelog"
             style={{
               fontSize: "0.85rem",
