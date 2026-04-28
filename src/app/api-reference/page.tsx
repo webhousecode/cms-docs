@@ -19,7 +19,7 @@ export default function ApiReferencePage() {
     script.async = true;
     script.onload = () => {
       (window as any).Redoc.init(
-        "/api/openapi-webhouse-cms.yaml",
+        "/openapi-webhouse-cms.yaml",
         {
           theme: {
             colors: {
@@ -81,7 +81,7 @@ export default function ApiReferencePage() {
         </div>
         <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
           <a
-            href="/api/openapi-webhouse-cms.yaml"
+            href="/openapi-webhouse-cms.yaml"
             download="openapi-webhouse-cms.yaml"
             style={{
               fontSize: "0.75rem",
