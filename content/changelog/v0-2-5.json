@@ -1,9 +1,9 @@
 {
-  "id": "c4f6b7da-464a-4b43-9071-a3917e382a14",
+  "id": "39553700-cc07-4677-b808-64830fa2ec0a",
   "slug": "v0-2-5",
   "status": "published",
   "locale": "en",
-  "translationGroup": "80ebb2ae-092f-4137-a48d-17e07f134d40",
+  "translationGroup": "6cc306c7-aeb7-4093-849a-5b2fd17b3819",
   "data": {
     "title": "Release v0.2.5",
     "version": "0.2.5",
@@ -16,6 +16,6 @@
     }
   },
   "_fieldMeta": {},
-  "createdAt": "2026-03-30T23:02:10.068Z",
-  "updatedAt": "2026-03-30T23:02:10.068Z"
+  "createdAt": "2026-05-02T14:49:38.037Z",
+  "updatedAt": "2026-05-02T14:49:38.037Z"
 }

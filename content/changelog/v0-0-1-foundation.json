@@ -1,9 +1,9 @@
 {
-  "id": "b2043692-4b59-49f1-9a81-0c0d1db71446",
+  "id": "bc243bd2-497d-43bb-b302-e706edba229a",
   "slug": "v0-0-1-foundation",
   "status": "published",
   "locale": "en",
-  "translationGroup": "13d2662f-3762-413f-b793-df222b31cd6c",
+  "translationGroup": "6a5dbbc0-1f0b-4396-aa14-3c51d867e099",
   "data": {
     "title": "Foundation — Initial Development",
     "version": "0.0.1",
@@ -16,6 +16,6 @@
     }
   },
   "_fieldMeta": {},
-  "createdAt": "2026-03-30T23:02:09.907Z",
-  "updatedAt": "2026-03-30T23:02:09.908Z"
+  "createdAt": "2026-05-02T14:49:37.673Z",
+  "updatedAt": "2026-05-02T14:49:37.674Z"
 }
