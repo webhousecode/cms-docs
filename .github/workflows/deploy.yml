@@ -31,7 +31,9 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: webhousecode/cms
-          path: cms-source
+          # Outside the cms-docs workspace so Next.js doesn't try to
+          # type-check the cms repo's example sites during build.
+          path: ../cms-source
           fetch-depth: 0
 
       - uses: pnpm/action-setup@v4
@@ -52,7 +54,7 @@ jobs:
       - name: Regenerate changelog from cms repo
         run: npx tsx scripts/seed-full-changelog.ts
         env:
-          CMS_REPO: ${{ github.workspace }}/cms-source
+          CMS_REPO: ${{ github.workspace }}/../cms-source
 
       # Build
       - run: pnpm build
