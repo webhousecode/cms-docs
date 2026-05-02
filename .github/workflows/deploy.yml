@@ -25,16 +25,15 @@ jobs:
         with:
           fetch-depth: 0  # full history for changelog generation
 
-      # Check out the cms monorepo too — seed-full-changelog.ts scrapes
-      # its git tags + commit log. Public repo, no token needed.
-      - name: Checkout @webhouse/cms repo
-        uses: actions/checkout@v4
-        with:
-          repository: webhousecode/cms
-          # Outside the cms-docs workspace so Next.js doesn't try to
-          # type-check the cms repo's example sites during build.
-          path: ../cms-source
-          fetch-depth: 0
+      # Clone the cms repo OUTSIDE the cms-docs workspace so Next.js's
+      # build doesn't try to type-check its examples. actions/checkout
+      # refuses paths above the runner workspace, so we shell-clone
+      # instead. Public repo, no token needed.
+      - name: Clone @webhouse/cms (outside workspace)
+        run: |
+          git clone --depth=200 https://github.com/webhousecode/cms.git /tmp/cms-source
+          # We need tags for the changelog generator, but not full history.
+          cd /tmp/cms-source && git fetch --tags --depth=200 origin
 
       - uses: pnpm/action-setup@v4
         with:
@@ -54,7 +53,7 @@ jobs:
       - name: Regenerate changelog from cms repo
         run: npx tsx scripts/seed-full-changelog.ts
         env:
-          CMS_REPO: ${{ github.workspace }}/../cms-source
+          CMS_REPO: /tmp/cms-source
 
       # Build
       - run: pnpm build
