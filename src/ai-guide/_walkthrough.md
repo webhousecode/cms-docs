@@ -268,7 +268,70 @@ Full SEO guide: fetch `/ai/15-seo`
 
 ## Step 8 — Deploy
 
-The CMS admin has a **Deploy** button (rocket icon) in the header. It supports:
+### Default for Next.js sites: Instant Content Deployment (ICD) ⚡
+
+**If you're scaffolding a Next.js site, bake ICD in NOW.** It's the difference between content edits going live in ~2 seconds vs triggering a 60–90 second Docker rebuild for every word change.
+
+ICD = a tiny `app/api/revalidate/route.ts` route in your Next.js site that receives HMAC-signed POSTs from CMS admin, writes the document to disk, and calls `revalidatePath()`. No rebuild needed for content. Full Docker deploy is still used for code/config changes.
+
+Drop in the route (full template below), generate a secret, set it as `REVALIDATE_SECRET` env on your host, and paste the same secret + the URL `https://your-site.tld/api/revalidate` into CMS admin → Site Settings → General. Done.
+
+```ts
+// app/api/revalidate/route.ts
+import { revalidatePath } from "next/cache";
+import { NextRequest, NextResponse } from "next/server";
+import crypto from "node:crypto";
+import { writeFileSync, mkdirSync, unlinkSync, existsSync } from "node:fs";
+import { join, dirname } from "node:path";
+
+const SECRET = process.env.REVALIDATE_SECRET;
+const CONTENT_DIR = process.env.CONTENT_DIR ?? join(process.cwd(), "content");
+
+export async function POST(request: NextRequest) {
+  const body = await request.text();
+  const signature = request.headers.get("x-cms-signature");
+  if (SECRET) {
+    if (!signature) return NextResponse.json({ error: "Missing signature" }, { status: 401 });
+    const expected = "sha256=" + crypto.createHmac("sha256", SECRET).update(body).digest("hex");
+    if (signature.length !== expected.length || !crypto.timingSafeEqual(Buffer.from(signature), Buffer.from(expected))) {
+      return NextResponse.json({ error: "Invalid signature" }, { status: 401 });
+    }
+  }
+  const payload = JSON.parse(body) as { collection?: string; slug?: string; action?: string; document?: unknown };
+
+  // 1. Persist to disk so next request reads fresh content.
+  if (payload.collection && payload.slug) {
+    const filePath = join(CONTENT_DIR, payload.collection, `${payload.slug}.json`);
+    if (payload.action === "deleted") {
+      if (existsSync(filePath)) unlinkSync(filePath);
+    } else if (payload.document) {
+      mkdirSync(dirname(filePath), { recursive: true });
+      writeFileSync(filePath, JSON.stringify(payload.document, null, 2), "utf-8");
+    }
+  }
+
+  // 2. Invalidate ACTUAL routes your app renders (not the cms collection
+  //    paths). cms-admin sends "/posts/my-post" but your route is likely
+  //    "/[locale]/blog/[slug]" — map collection → route here.
+  if (payload.collection === "posts") {
+    for (const locale of ["da", "en"]) {
+      revalidatePath(`/${locale}/blog`);
+      if (payload.slug) revalidatePath(`/${locale}/blog/${payload.slug}`);
+    }
+  }
+  // (repeat per collection / route shape)
+
+  return NextResponse.json({ ok: true });
+}
+```
+
+**Persistence requirement:** mount a volume at `CONTENT_DIR` (e.g. `/app/content` on Fly.io) so writes survive container restarts. Without this, ICD writes go to the overlay layer and disappear on next deploy. On first boot, seed the volume from baked content in `docker-entrypoint.sh` or the volume will appear empty after deploy.
+
+Once configured, the admin header shows an `ICD · auto` pill and the rocket button is hidden — content updates are automatic on every save.
+
+### Other deploy providers
+
+The CMS admin **Deploy** button (rocket icon) also supports full rebuilds:
 
 | Provider | Type | Config needed |
 |----------|------|---------------|
