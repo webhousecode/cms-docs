@@ -223,6 +223,24 @@ export default function HomePage() {
           >
             Read the Docs
           </Link>
+          <Link
+            href="/docs/hot-features"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.4rem",
+              padding: "0.65rem 1.5rem",
+              border: "1px solid var(--color-gold)",
+              borderRadius: 8,
+              color: "var(--color-gold)",
+              fontWeight: 600,
+              fontSize: "0.9rem",
+              textDecoration: "none",
+            }}
+            title="What's new and worth knowing right now"
+          >
+            🔥 Hot Features
+          </Link>
           <a
             href="https://github.com/webhousecode/cms"
             target="_blank"
