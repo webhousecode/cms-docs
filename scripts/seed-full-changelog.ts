@@ -7,7 +7,9 @@ import { writeFileSync, mkdirSync, readdirSync, unlinkSync } from "fs";
 import { join } from "path";
 import { randomUUID } from "crypto";
 
-const CMS_REPO = "/Users/cb/Apps/webhouse/cms";
+// Path to the cms monorepo. Defaults to Christian's local checkout for
+// manual runs; CI sets CMS_REPO to a path it cloned (e.g. ./cms-source).
+const CMS_REPO = process.env.CMS_REPO ?? "/Users/cb/Apps/webhouse/cms";
 const CONTENT_DIR = join(__dirname, "..", "content", "changelog");
 mkdirSync(CONTENT_DIR, { recursive: true });
 
