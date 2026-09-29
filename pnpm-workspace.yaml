@@ -1,5 +1,11 @@
+# pnpm@latest (the Dockerfile's pin) now FAILS the install on undeclared build
+# scripts (ERR_PNPM_IGNORED_BUILDS) where older pnpm only warned. These two were
+# always skipped; `false` keeps the image exactly as it was built before.
+allowBuilds:
+  better-sqlite3: false
+  sharp: false
 # Our OWN package (components, @broberg/*), published hours earlier by our own
-# CI. minimumReleaseAge (24h in pnpm 11) guards against a hijacked third-party
+# CI. minimumReleaseAge (24h in current pnpm) guards against a hijacked third-party
 # release; it is not for first-party packages, and it blocked the deploy that
 # ships the cookie banner. Every other entry stays covered.
 minimumReleaseAgeExclude:
