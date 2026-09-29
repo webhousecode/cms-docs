@@ -5,6 +5,7 @@ import { Header } from "@/components/header";
 import { MobileNavDrawer } from "@/components/mobile-nav-drawer";
 import { DocsSearch } from "@/components/docs-search";
 import { CodeCopyHandler } from "@/components/code-copy-handler";
+import { ConsentBanner } from "@/components/consent-banner";
 import { getSearchIndex } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -35,6 +36,7 @@ export default function RootLayout({
         <DocsSearch searchIndex={searchIndex} />
         <CodeCopyHandler />
         <ThemeInit />
+        <ConsentBanner />
       </body>
     </html>
   );
