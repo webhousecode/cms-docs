@@ -12,6 +12,7 @@ declare module "react" {
         "policy-version": string;
         // Optional categories the site actually uses; "" = none (no stats, no marketing).
         categories?: string;
+        "privacy-href"?: string;
         lang?: string;
       };
     }
@@ -31,5 +32,7 @@ const tokens = {
 export function ConsentBanner() {
   // DA docs live at /docs/<slug>-da (same rule as LocaleSwitcher).
   const lang = /\/docs\/[\w-]+-da$/.test(usePathname()) ? "da" : "en";
-  return <broberg-consent policy-version="2026-09" categories="" lang={lang} data-testid="consent-root" style={tokens} />;
+  // The shared WEB HOUSE ApS privacy policy lives on www.webhouse.dk (F203.4).
+  const privacyHref = lang === "da" ? "https://www.webhouse.dk/privacy" : "https://www.webhouse.dk/en/privacy";
+  return <broberg-consent policy-version="2026-09" categories="" lang={lang} privacy-href={privacyHref} data-testid="consent-root" style={tokens} />;
 }
