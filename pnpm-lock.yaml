@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@broberg/consent-cookie':
-        specifier: 0.4.1
-        version: 0.4.1
+        specifier: 0.5.0
+        version: 0.5.0
       '@webhouse/cms':
         specifier: ^0.2.17
         version: 0.2.17(@types/react@19.2.14)(react@19.2.4)
@@ -67,8 +67,8 @@ packages:
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
     engines: {node: '>=10'}
 
-  '@broberg/consent-cookie@0.4.1':
-    resolution: {integrity: sha512-mZ6d183Jr9Mt3HLXCV2Tu+2ik75hcD4qQWB8IyTiEW0swsXWNI4vKHo70d2QDkwpW8DD88cO160oU8eYlMh8Hg==}
+  '@broberg/consent-cookie@0.5.0':
+    resolution: {integrity: sha512-cedUOCJCrqS94QF/XsoaaI6u9RnVuNQ9AIR05SjzSxxiOuUdbLEgCTukZRq4HGTCWmxVNXxkS6K11/aHsNPCDQ==}
 
   '@emnapi/runtime@1.9.1':
     resolution: {integrity: sha512-VYi5+ZVLhpgK4hQ0TAjiQiZ6ol0oe4mBx7mVv7IflsiEp0OWoVsp/+f9Vc1hOhE0TtkORVrI1GvzyreqpgWtkA==}
@@ -1210,7 +1210,7 @@ snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
 
-  '@broberg/consent-cookie@0.4.1': {}
+  '@broberg/consent-cookie@0.5.0': {}
 
   '@emnapi/runtime@1.9.1':
     dependencies:

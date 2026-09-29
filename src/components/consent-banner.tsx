@@ -10,6 +10,8 @@ declare module "react" {
     interface IntrinsicElements {
       "broberg-consent": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
         "policy-version": string;
+        // Optional categories the site actually uses; "" = none (no stats, no marketing).
+        categories?: string;
         lang?: string;
       };
     }
@@ -29,5 +31,5 @@ const tokens = {
 export function ConsentBanner() {
   // DA docs live at /docs/<slug>-da (same rule as LocaleSwitcher).
   const lang = /\/docs\/[\w-]+-da$/.test(usePathname()) ? "da" : "en";
-  return <broberg-consent policy-version="2026-09" lang={lang} data-testid="consent-root" style={tokens} />;
+  return <broberg-consent policy-version="2026-09" categories="" lang={lang} data-testid="consent-root" style={tokens} />;
 }

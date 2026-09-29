@@ -1,0 +1,6 @@
+# Our OWN package (components, @broberg/*), published hours earlier by our own
+# CI. minimumReleaseAge (24h in pnpm 11) guards against a hijacked third-party
+# release; it is not for first-party packages, and it blocked the deploy that
+# ships the cookie banner. Every other entry stays covered.
+minimumReleaseAgeExclude:
+  - "@broberg/consent-cookie"
