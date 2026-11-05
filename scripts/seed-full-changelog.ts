@@ -4,6 +4,7 @@
  */
 import { execSync } from "child_process";
 import { writeFileSync, mkdirSync, readdirSync, unlinkSync } from "fs";
+import { tagBrandJson } from "./brand-tags";
 import { join } from "path";
 import { randomUUID } from "crypto";
 
@@ -40,7 +41,8 @@ function writeEntry(slug: string, data: Record<string, unknown>) {
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
   };
-  writeFileSync(join(CONTENT_DIR, `${slug}.json`), JSON.stringify(doc, null, 2));
+  // F212 — the product's name as a brand tag, like the rest of the content.
+  writeFileSync(join(CONTENT_DIR, `${slug}.json`), tagBrandJson(JSON.stringify(doc, null, 2)));
 }
 
 // Get all tags sorted by version

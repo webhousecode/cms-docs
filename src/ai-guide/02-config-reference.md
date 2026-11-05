@@ -132,7 +132,7 @@ defineCollection({
 });
 ```
 
-Full reference: `docs.webhouse.app/docs/collection-metadata`
+Full reference: `{{brand.docs.pages}}/collection-metadata`
 
 ### Build Config (F126)
 

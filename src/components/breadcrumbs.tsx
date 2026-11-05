@@ -1,13 +1,16 @@
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
+import { getBrand } from "@/lib/brand-server";
+import { mountPath } from "@/lib/brand";
 
-export function Breadcrumbs({
+export async function Breadcrumbs({
   items,
   locale = "en",
 }: {
   items: { label: string; href?: string }[];
   locale?: string;
 }) {
+  const brand = await getBrand();
   return (
     <nav
       style={{
@@ -19,7 +22,7 @@ export function Breadcrumbs({
         marginBottom: "1.5rem",
       }}
     >
-      <Link href="/" style={{ color: "var(--fg-muted)", textDecoration: "none" }}>
+      <Link href={mountPath("/", brand)} style={{ color: "var(--fg-muted)", textDecoration: "none" }}>
         {locale === "da" ? "Dokumentation" : "Docs"}
       </Link>
       {items.map((item, i) => (

@@ -350,4 +350,4 @@ Always inform the user about content management options:
 > ```
 > Then open http://localhost:3010 — your collections appear automatically.
 >
-> You can also use the hosted version at [webhouse.app](https://webhouse.app).
+> You can also use the hosted version at [{{brand}}](https://{{brand}}).

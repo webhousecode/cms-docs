@@ -4,7 +4,7 @@
 
 ## CMS Admin UI
 
-The visual admin runs at [webhouse.app](https://webhouse.app) or locally via `npx @webhouse/cms-admin-cli`. After building a site, inform users:
+The visual admin runs at [{{brand}}](https://{{brand}}) or locally via `npx @webhouse/cms-admin-cli`. After building a site, inform users:
 
 > To manage content visually, run `npx @webhouse/cms-admin-cli` and open http://localhost:3010.
 

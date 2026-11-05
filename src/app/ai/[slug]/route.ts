@@ -1,10 +1,13 @@
+import { getBrand } from "@/lib/brand-server";
 import { markdownResponse, readAiFile } from "../_lib";
 
-export const dynamic = "force-static";
+// F212 — per request: the text follows the brand it is served under.
+export const dynamic = "force-dynamic";
 
 type Params = { params: Promise<{ slug: string }> };
 
 export async function GET(_req: Request, { params }: Params) {
+  const brand = await getBrand();
   const { slug } = await params;
   const safe = slug.replace(/\.md$/, "");
 
@@ -13,13 +16,8 @@ export async function GET(_req: Request, { params }: Params) {
   }
 
   try {
-    return markdownResponse(readAiFile(`${safe}.md`));
+    return markdownResponse(readAiFile(`${safe}.md`, brand));
   } catch {
     return new Response("Not found", { status: 404 });
   }
-}
-
-export async function generateStaticParams() {
-  const { listAiModules } = await import("../_lib");
-  return listAiModules().map((m) => ({ slug: m.slug }));
 }

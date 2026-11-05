@@ -11,7 +11,7 @@
     "category": "guides",
     "order": 30,
     "_seo": {
-      "metaTitle": "Trash — webhouse.app Docs",
+      "metaTitle": "Trash — {{brand}} Docs",
       "metaDescription": "Recover deleted documents from the Trash or permanently remove them.",
       "keywords": [
         "webhouse",

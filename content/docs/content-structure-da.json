@@ -11,7 +11,7 @@
     "category": "concepts",
     "order": 0,
     "_seo": {
-      "metaTitle": "Indholdsstruktur — webhouse.app Docs",
+      "metaTitle": "Indholdsstruktur — {{brand}} Docs",
       "metaDescription": "Hvordan dokumenter gemmes som JSON-filer — dokumentformat, mappestruktur og konventioner.",
       "keywords": [
         "webhouse",

@@ -2,6 +2,7 @@ import { codeToHtml } from "shiki";
 import { CopyButtonClient } from "./copy-button-client";
 import { readFileSync, existsSync } from "fs";
 import { join } from "path";
+import { applyBrand, mountPath, type DocsBrand } from "@/lib/brand";
 
 const SNIPPETS_DIR = join(process.cwd(), "content", "snippets");
 
@@ -9,7 +10,7 @@ const SNIPPETS_DIR = join(process.cwd(), "content", "snippets");
  * Resolve {{snippet:slug}} tokens to actual code blocks from the snippets collection.
  * Tokens inside code fences (``` ... ```) are left as literal text.
  */
-function resolveSnippets(content: string): string {
+function resolveSnippets(content: string, brand: DocsBrand): string {
   // Split on code fences — odd indices are inside fences, even are outside
   const parts = content.split(/(```[\s\S]*?```)/g);
   return parts
@@ -20,7 +21,7 @@ function resolveSnippets(content: string): string {
       return part.replace(/\{\{snippet:([a-z0-9-]+)\}\}/g, (_match, slug) => {
         const file = join(SNIPPETS_DIR, `${slug}.json`);
         if (!existsSync(file)) return `<!-- snippet not found: ${slug} -->`;
-        const snippet = JSON.parse(readFileSync(file, "utf-8"));
+        const snippet = JSON.parse(applyBrand(readFileSync(file, "utf-8"), brand));
         const lang = snippet.data.lang || "text";
         const code = snippet.data.code || "";
         return "```" + lang + "\n" + code + "\n```";
@@ -33,10 +34,10 @@ function resolveSnippets(content: string): string {
  * Renders markdown doc content with Shiki syntax highlighting.
  * Pre-processes snippets and code blocks server-side, then renders as HTML.
  */
-export async function DocContent({ content }: { content: string }) {
+export async function DocContent({ content, brand }: { content: string; brand: DocsBrand }) {
   // Step 0: Resolve shared snippets
-  const resolved = resolveSnippets(content);
-  const html = await markdownToHtml(resolved);
+  const resolved = resolveSnippets(content, brand);
+  const html = await markdownToHtml(resolved, (path) => mountPath(path, brand));
 
   return (
     <div className="doc-content" dangerouslySetInnerHTML={{ __html: html }} />
@@ -47,7 +48,7 @@ export async function DocContent({ content }: { content: string }) {
  * Simple markdown → HTML with Shiki code blocks.
  * Processes code fences first, then basic markdown.
  */
-async function markdownToHtml(md: string): Promise<string> {
+async function markdownToHtml(md: string, link: (path: string) => string): Promise<string> {
   // Step 1: Extract and highlight code blocks
   const codeRegex = /```(\w+)?\n([\s\S]*?)```/g;
   const codeBlocks: { placeholder: string; html: string }[] = [];
@@ -104,20 +105,20 @@ async function markdownToHtml(md: string): Promise<string> {
   // Headings with IDs
   html = html.replace(/^#### (.+)$/gm, (_m, t) => {
     const id = slugify(t);
-    return `<h4 id="${id}">${inlineMarkdown(t)}</h4>`;
+    return `<h4 id="${id}">${inlineMarkdown(t, link)}</h4>`;
   });
   html = html.replace(/^### (.+)$/gm, (_m, t) => {
     const id = slugify(t);
-    return `<h3 id="${id}">${inlineMarkdown(t)}</h3>`;
+    return `<h3 id="${id}">${inlineMarkdown(t, link)}</h3>`;
   });
   html = html.replace(/^## (.+)$/gm, (_m, t) => {
     const id = slugify(t);
-    return `<h2 id="${id}">${inlineMarkdown(t)}</h2>`;
+    return `<h2 id="${id}">${inlineMarkdown(t, link)}</h2>`;
   });
-  html = html.replace(/^# (.+)$/gm, (_m, t) => `<h1>${inlineMarkdown(t)}</h1>`);
+  html = html.replace(/^# (.+)$/gm, (_m, t) => `<h1>${inlineMarkdown(t, link)}</h1>`);
 
   // Blockquotes
-  html = html.replace(/^> (.+)$/gm, (_m, text) => `<blockquote><p>${inlineMarkdown(text)}</p></blockquote>`);
+  html = html.replace(/^> (.+)$/gm, (_m, text) => `<blockquote><p>${inlineMarkdown(text, link)}</p></blockquote>`);
   // Merge adjacent blockquotes
   html = html.replace(/<\/blockquote>\n<blockquote>/g, "\n");
 
@@ -130,11 +131,11 @@ async function markdownToHtml(md: string): Promise<string> {
         row.split("|").map((c: string) => c.trim()).filter(Boolean)
       );
       let table = "<div style=\"overflow-x:auto\"><table><thead><tr>";
-      for (const h of headers) table += `<th>${inlineMarkdown(h)}</th>`;
+      for (const h of headers) table += `<th>${inlineMarkdown(h, link)}</th>`;
       table += "</tr></thead><tbody>";
       for (const row of rows) {
         table += "<tr>";
-        for (const cell of row) table += `<td>${inlineMarkdown(cell)}</td>`;
+        for (const cell of row) table += `<td>${inlineMarkdown(cell, link)}</td>`;
         table += "</tr>";
       }
       table += "</tbody></table></div>";
@@ -147,7 +148,7 @@ async function markdownToHtml(md: string): Promise<string> {
     /^((?:- .+\n?)+)/gm,
     (_match, block) => {
       const items = block.trim().split("\n").map((l: string) => l.replace(/^- /, ""));
-      return "<ul>" + items.map((i: string) => `<li>${inlineMarkdown(i)}</li>`).join("") + "</ul>";
+      return "<ul>" + items.map((i: string) => `<li>${inlineMarkdown(i, link)}</li>`).join("") + "</ul>";
     }
   );
 
@@ -156,7 +157,7 @@ async function markdownToHtml(md: string): Promise<string> {
     /^((?:\d+\. .+\n?)+)/gm,
     (_match, block) => {
       const items = block.trim().split("\n").map((l: string) => l.replace(/^\d+\. /, ""));
-      return "<ol>" + items.map((i: string) => `<li>${inlineMarkdown(i)}</li>`).join("") + "</ol>";
+      return "<ol>" + items.map((i: string) => `<li>${inlineMarkdown(i, link)}</li>`).join("") + "</ol>";
     }
   );
 
@@ -164,7 +165,7 @@ async function markdownToHtml(md: string): Promise<string> {
   html = html.replace(
     /^!\[([^\]]*)\]\(([^)]+)\)$/gm,
     (_m, alt, src) =>
-      `<img src="${src}" alt="${alt}" style="max-width:100%;border-radius:8px;margin:1rem 0" loading="lazy" />`
+      `<img src="${link(src)}" alt="${alt}" style="max-width:100%;border-radius:8px;margin:1rem 0" loading="lazy" />`
   );
 
   // Horizontal rules
@@ -173,7 +174,7 @@ async function markdownToHtml(md: string): Promise<string> {
   // Paragraphs — wrap remaining text lines
   html = html.replace(/^(?!<[a-z/]|___CODE)((?!<).+)$/gm, (line) => {
     if (line.trim() === "") return "";
-    return `<p>${inlineMarkdown(line)}</p>`;
+    return `<p>${inlineMarkdown(line, link)}</p>`;
   });
 
   // Restore code blocks
@@ -188,7 +189,7 @@ async function markdownToHtml(md: string): Promise<string> {
 }
 
 /** Inline markdown: bold, italic, code, links */
-function inlineMarkdown(text: string): string {
+function inlineMarkdown(text: string, link: (path: string) => string): string {
   let s = text;
   // Code (before bold/italic — escape HTML inside code spans)
   s = s.replace(/`([^`]+)`/g, (_m, code) => `<code>${esc(code)}</code>`);
@@ -202,7 +203,7 @@ function inlineMarkdown(text: string): string {
   s = s.replace(
     /!\[([^\]]*)\]\(([^)]+)\)/g,
     (_m, alt, src) =>
-      `<img src="${src}" alt="${alt}" style="max-width:100%;border-radius:8px" loading="lazy" />`
+      `<img src="${link(src)}" alt="${alt}" style="max-width:100%;border-radius:8px" loading="lazy" />`
   );
   // Links
   s = s.replace(
@@ -211,7 +212,7 @@ function inlineMarkdown(text: string): string {
       const external = href.startsWith("http");
       return external
         ? `<a href="${href}" target="_blank" rel="noopener noreferrer">${text}</a>`
-        : `<a href="${href}">${text}</a>`;
+        : `<a href="${link(href)}">${text}</a>`;
     }
   );
   return s;

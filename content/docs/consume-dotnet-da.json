@@ -11,7 +11,7 @@
     "category": "consumers",
     "order": 14,
     "_seo": {
-      "metaTitle": "Forbrug fra C# / .NET — webhouse.app Docs",
+      "metaTitle": "Forbrug fra C# / .NET — {{brand}} Docs",
       "metaDescription": "Læs @webhouse/cms-indhold fra ASP.NET Core — Razor Pages, MVC eller minimal APIs.",
       "keywords": [
         "webhouse",

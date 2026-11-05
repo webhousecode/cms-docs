@@ -11,7 +11,7 @@
     "category": "guides",
     "order": 31,
     "_seo": {
-      "metaTitle": "Deploy-side — webhouse.app Docs",
+      "metaTitle": "Deploy-side — {{brand}} Docs",
       "metaDescription": "Brug Deploy-siden til at publicere dit site og administrere Instant Content Deployment (ICD).",
       "keywords": [
         "webhouse",

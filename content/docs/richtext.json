@@ -11,7 +11,7 @@
     "category": "guides",
     "order": 5,
     "_seo": {
-      "metaTitle": "Richtext Editor — webhouse.app Docs",
+      "metaTitle": "Richtext Editor — {{brand}} Docs",
       "metaDescription": "TipTap-based rich text editor with inline AI proofreading, embedded media, callouts, tables, and code blocks.",
       "keywords": [
         "webhouse",

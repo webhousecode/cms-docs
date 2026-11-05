@@ -11,7 +11,7 @@
     "category": "guides",
     "order": 1,
     "_seo": {
-      "metaTitle": "Blocks — webhouse.app Docs",
+      "metaTitle": "Blocks — {{brand}} Docs",
       "metaDescription": "Build content-rich pages with reusable block components — hero, features, CTA, and custom blocks.",
       "keywords": [
         "webhouse",

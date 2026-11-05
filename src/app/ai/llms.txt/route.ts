@@ -1,6 +1,8 @@
+import { getBrand } from "@/lib/brand-server";
 import { listAiModules, textResponse } from "../_lib";
 
-export const dynamic = "force-static";
+// F212 — per request: the text follows the brand it is served under.
+export const dynamic = "force-dynamic";
 
 const TITLES: Record<string, string> = {
   "01-getting-started": "Getting Started",
@@ -26,9 +28,10 @@ const TITLES: Record<string, string> = {
   "21-framework-consumers": "Framework Consumers",
 };
 
-export function GET() {
+export async function GET() {
+  const brand = await getBrand();
   const modules = listAiModules();
-  const base = "https://ai.webhouse.app/ai";
+  const base = `https://${brand.aiGuide}`;
 
   const body = `# @webhouse/cms — AI Builder Site
 
@@ -56,7 +59,7 @@ ${modules.map((m) => `- [${TITLES[m.slug] ?? m.slug}](${base}/${m.slug})`).join(
 
 - [Package](https://www.npmjs.com/package/@webhouse/cms): The npm package
 - [Repository](https://github.com/webhousecode/cms): Source code and issues
-- [Docs site](https://docs.webhouse.app): Human-facing documentation
+- [Docs site](https://${brand.docs}): Human-facing documentation
 `;
 
   return textResponse(body);

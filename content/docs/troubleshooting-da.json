@@ -11,7 +11,7 @@
     "category": "guides",
     "order": 7,
     "_seo": {
-      "metaTitle": "Fejlfinding — webhouse.app Docs",
+      "metaTitle": "Fejlfinding — {{brand}} Docs",
       "metaDescription": "Almindelige problemer og løsninger — GitHub-adapter, indhold vises ikke, portkonflikter, billeder og mere.",
       "keywords": [
         "webhouse",

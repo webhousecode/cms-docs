@@ -11,7 +11,7 @@
     "category": "getting-started",
     "order": 2,
     "_seo": {
-      "metaTitle": "Skabeloner & Boilerplates — webhouse.app Docs",
+      "metaTitle": "Skabeloner & Boilerplates — {{brand}} Docs",
       "metaDescription": "Tre klar-til-brug boilerplates og otte eksempelsites til at komme hurtigt i gang."
     },
     "tags": [

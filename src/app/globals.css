@@ -3,6 +3,9 @@
 @theme {
   --color-gold: #F7BB2E;
   --color-gold-hover: #e5ac24;
+  --color-gold-fg: #000;
+  /* Brand colour as text on a light background (gold itself is too pale). */
+  --color-gold-text-light: #b08315;
   --color-dark: #0D0D0D;
   --color-dark-secondary: #161616;
   --color-dark-tertiary: #1a1a1a;
@@ -27,8 +30,8 @@
   --border-hover: #d0d0d0;
   --code-bg: #f5f5f5;
   --sidebar-bg: #fafafa;
-  --sidebar-active: #F7BB2E15;
-  --sidebar-active-border: #F7BB2E;
+  --sidebar-active: color-mix(in srgb, var(--color-gold) 8%, transparent);
+  --sidebar-active-border: var(--color-gold);
 }
 
 .dark {
@@ -41,8 +44,8 @@
   --border-hover: #3a3a3a;
   --code-bg: #1a1a1a;
   --sidebar-bg: #111;
-  --sidebar-active: #F7BB2E15;
-  --sidebar-active-border: #F7BB2E;
+  --sidebar-active: color-mix(in srgb, var(--color-gold) 8%, transparent);
+  --sidebar-active-border: var(--color-gold);
 }
 
 * { box-sizing: border-box; }
@@ -105,16 +108,16 @@ body {
 .doc-content code {
   font-family: var(--font-mono);
   font-size: 0.85em;
-  background: rgba(247, 187, 46, 0.1);
-  color: #F7BB2E;
+  background: color-mix(in srgb, var(--color-gold) 10%, transparent);
+  color: var(--color-gold);
   padding: 0.2em 0.45em;
   border-radius: 5px;
-  border: 1px solid rgba(247, 187, 46, 0.15);
+  border: 1px solid color-mix(in srgb, var(--color-gold) 15%, transparent);
 }
 :root:not(.dark) .doc-content code {
-  background: rgba(247, 187, 46, 0.12);
-  color: #b08315;
-  border-color: rgba(247, 187, 46, 0.25);
+  background: color-mix(in srgb, var(--color-gold) 12%, transparent);
+  color: var(--color-gold-text-light);
+  border-color: color-mix(in srgb, var(--color-gold) 25%, transparent);
 }
 
 .doc-content pre {

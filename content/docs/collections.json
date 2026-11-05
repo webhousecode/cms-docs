@@ -11,7 +11,7 @@
     "category": "guides",
     "order": 24,
     "_seo": {
-      "metaTitle": "Collections — webhouse.app Docs",
+      "metaTitle": "Collections — {{brand}} Docs",
       "metaDescription": "Manage documents in CMS collections: grid and list views, filtering, AI generation, and preview.",
       "keywords": [
         "webhouse",

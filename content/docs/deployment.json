@@ -11,7 +11,7 @@
     "category": "deployment",
     "order": 0,
     "_seo": {
-      "metaTitle": "Deployment — webhouse.app Docs",
+      "metaTitle": "Deployment — {{brand}} Docs",
       "metaDescription": "Deploy your CMS-powered site to Vercel, Fly.io, Netlify, or Docker.",
       "keywords": [
         "webhouse",

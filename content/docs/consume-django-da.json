@@ -11,7 +11,7 @@
     "category": "consumers",
     "order": 11,
     "_seo": {
-      "metaTitle": "Forbrug fra Django (Python) — webhouse.app Docs",
+      "metaTitle": "Forbrug fra Django (Python) — {{brand}} Docs",
       "metaDescription": "Læs @webhouse/cms-indhold fra en Django-applikation. Hjælpemodul, views, skabeloner.",
       "keywords": [
         "webhouse",

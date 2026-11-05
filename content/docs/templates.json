@@ -11,7 +11,7 @@
     "category": "getting-started",
     "order": 2,
     "_seo": {
-      "metaTitle": "Templates & Boilerplates — webhouse.app Docs",
+      "metaTitle": "Templates & Boilerplates — {{brand}} Docs",
       "metaDescription": "Three ready-to-use boilerplates and eight example sites to jump-start your project."
     },
     "tags": [

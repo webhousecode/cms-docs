@@ -11,7 +11,7 @@
     "category": "reference",
     "order": 27,
     "_seo": {
-      "metaTitle": "Collection Metadata (kind & description) — webhouse.app Docs",
+      "metaTitle": "Collection Metadata (kind & description) — {{brand}} Docs",
       "metaDescription": "Tell AI tools what each CMS collection is for with kind and description fields. Five kinds: page, snippet, data, form, global.",
       "keywords": [
         "webhouse",

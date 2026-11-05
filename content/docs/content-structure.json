@@ -11,7 +11,7 @@
     "category": "concepts",
     "order": 0,
     "_seo": {
-      "metaTitle": "Content Structure — webhouse.app Docs",
+      "metaTitle": "Content Structure — {{brand}} Docs",
       "metaDescription": "How documents are stored as JSON files — the document format, directory layout, and conventions.",
       "keywords": [
         "webhouse",

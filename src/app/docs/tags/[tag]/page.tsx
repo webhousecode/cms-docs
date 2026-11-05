@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getAllTags, getDocsByTag, tagLabel, TAG_LABELS } from "@/lib/content";
 import { Breadcrumbs } from "@/components/breadcrumbs";
+import { getBrand } from "@/lib/brand-server";
 
 export async function generateStaticParams() {
   return Object.keys(TAG_LABELS).map((tag) => ({ tag }));
@@ -13,14 +14,15 @@ export async function generateMetadata(props: {
 }): Promise<Metadata> {
   const { tag } = await props.params;
   const label = tagLabel(tag);
+  const brand = await getBrand();
   return {
     title: `${label} — Docs Tag`,
     description: `All documentation articles tagged ${label}.`,
     openGraph: {
-      title: `${label} — webhouse.app docs`,
+      title: `${label} — ${brand.address} docs`,
       description: `All documentation articles tagged ${label}.`,
       type: "website",
-      url: `https://docs.webhouse.app/docs/tags/${tag}`,
+      url: `https://${brand.docsPages}/tags/${tag}`,
     },
   };
 }
@@ -35,9 +37,10 @@ export default async function TagIndexPage(props: {
 
   if (!(tag in TAG_LABELS)) notFound();
 
-  const docs = getDocsByTag(tag, locale);
+  const brand = await getBrand();
+  const docs = getDocsByTag(tag, locale, brand);
   const label = tagLabel(tag);
-  const allTags = getAllTags(locale);
+  const allTags = getAllTags(locale, brand);
 
   return (
     <main style={{ maxWidth: "48rem", margin: "0 auto", padding: "2rem 2.5rem" }}>

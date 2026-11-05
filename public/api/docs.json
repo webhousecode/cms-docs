@@ -1,6 +1,28 @@
 {
-  "count": 171,
+  "count": 181,
   "docs": [
+    {
+      "slug": "admin-data-location-da",
+      "title": "Placering af admin-data",
+      "description": "Hvor cms-admin gemmer registry, brugere, access-tokens og anden server-level tilstand — og hvordan du konfigurerer det for dev, Docker, Fly og Kubernetes så det overlever genstarter.",
+      "category": "deployment",
+      "order": 5,
+      "locale": "da",
+      "translationGroup": "40c73852-3fdf-4d8b-8984-69255de0533b",
+      "helpCardId": null,
+      "updatedAt": "2026-04-20T00:00:00.000Z"
+    },
+    {
+      "slug": "admin-data-location",
+      "title": "Admin data location",
+      "description": "Where cms-admin stores registry, users, access-tokens, and other server-level state — and how to configure it for dev, Docker, Fly, and Kubernetes so it survives restarts.",
+      "category": "deployment",
+      "order": 5,
+      "locale": "en",
+      "translationGroup": "40c73852-3fdf-4d8b-8984-69255de0533b",
+      "helpCardId": null,
+      "updatedAt": "2026-04-20T00:00:00.000Z"
+    },
     {
       "slug": "agent-cost-guards-da",
       "title": "Per-agent budgetkontrol",
@@ -882,6 +904,28 @@
       "updatedAt": "2026-04-08T12:00:00.000Z"
     },
     {
+      "slug": "headless-api-da",
+      "title": "Headless Site API & Chat-integrering",
+      "description": "Brug CMS Admin som et headless backend i dit eget Next.js-site. Læs indhold, trigger deploys og integrer AI-chat — alt autentificeret med et permanent wh_ Access Token.",
+      "category": "api-reference",
+      "order": 10,
+      "locale": "da",
+      "translationGroup": "dfab20dd-24ca-4976-9527-7806ef94afb9",
+      "helpCardId": null,
+      "updatedAt": "2026-04-28T00:00:00.000Z"
+    },
+    {
+      "slug": "headless-api",
+      "title": "Headless Site API & Chat Embedding",
+      "description": "Use CMS Admin as a headless backend inside your own Next.js site. Read content, trigger deploys, and embed the AI chat — all authenticated with a permanent wh_ Access Token.",
+      "category": "api-reference",
+      "order": 10,
+      "locale": "en",
+      "translationGroup": "dfab20dd-24ca-4976-9527-7806ef94afb9",
+      "helpCardId": null,
+      "updatedAt": "2026-04-28T00:00:00.000Z"
+    },
+    {
       "slug": "help-and-shortcuts-da",
       "title": "Hjælp-panel, genveje & AI Chat-værktøjer",
       "description": "In-app Help & Support-drawer — dokumentationslinks, tastaturgenveje og en quick reference for alle værktøjer AI Chat kan kalde.",
@@ -902,6 +946,26 @@
       "translationGroup": "69786a7c-399e-454e-b1ce-702f72f97ecd",
       "helpCardId": null,
       "updatedAt": "2026-04-15T21:30:00.000Z"
+    },
+    {
+      "slug": "hot-features-da",
+      "title": "Hot Features",
+      "description": "Hvad er nyt og værd at kende lige nu i @webhouse/cms — de patterns vi anbefaler som default for nye sites.",
+      "category": "",
+      "order": 99,
+      "locale": "da",
+      "translationGroup": "hot-features-group-2026-05",
+      "helpCardId": null
+    },
+    {
+      "slug": "hot-features",
+      "title": "Hot Features",
+      "description": "What's new and worth knowing right now in @webhouse/cms — the patterns we recommend by default for new sites.",
+      "category": "",
+      "order": 99,
+      "locale": "en",
+      "translationGroup": "hot-features-group-2026-05",
+      "helpCardId": null
     },
     {
       "slug": "i18n-da",
@@ -1223,6 +1287,28 @@
       "updatedAt": "2026-04-08T20:00:00.000Z"
     },
     {
+      "slug": "producing-articles-via-api-da",
+      "title": "Producér artikler via API",
+      "description": "Hvordan AI-sessioner og eksterne tjenester opretter og publicerer CMS-indhold programmatisk — endpoint, JSON-shape, access-tokens, og hvad der sker efter en succesfuld POST.",
+      "category": "api-reference",
+      "order": 5,
+      "locale": "da",
+      "translationGroup": "e31fecc5-03e0-4cfd-a713-8a45a1b2ab83",
+      "helpCardId": null,
+      "updatedAt": "2026-05-03T15:42:00.000Z"
+    },
+    {
+      "slug": "producing-articles-via-api",
+      "title": "Producing articles via API",
+      "description": "How AI sessions and external services create and publish CMS content programmatically — endpoint, JSON shape, access tokens, and what happens after a successful POST.",
+      "category": "api-reference",
+      "order": 5,
+      "locale": "en",
+      "translationGroup": "e31fecc5-03e0-4cfd-a713-8a45a1b2ab83",
+      "helpCardId": null,
+      "updatedAt": "2026-05-03T15:42:00.000Z"
+    },
+    {
       "slug": "quick-start-da",
       "title": "Hurtig start",
       "description": "Opret et nyt projekt og hav en CMS-drevet side kørende på under 5 minutter.",
@@ -1265,6 +1351,28 @@
       "translationGroup": "88a07cc8-f0b8-4298-be7b-4c97f93779b0",
       "helpCardId": null,
       "updatedAt": "2026-03-29T21:56:59.902Z"
+    },
+    {
+      "slug": "releases-da",
+      "title": "Releases & downloads",
+      "description": "Download webhouse.app CMS admin-serveren som tarball eller Docker-image. Ugentlige auto-builds + taggede stable-releases.",
+      "category": "deployment",
+      "order": 1,
+      "locale": "da",
+      "translationGroup": "c598ad07-5c43-4c42-8037-f3b633ffee80",
+      "helpCardId": null,
+      "updatedAt": "2026-04-16T17:00:00.000Z"
+    },
+    {
+      "slug": "releases",
+      "title": "Releases & downloads",
+      "description": "Download the webhouse.app CMS admin server as a tarball or Docker image. Weekly auto-builds + tagged stable releases.",
+      "category": "deployment",
+      "order": 1,
+      "locale": "en",
+      "translationGroup": "c598ad07-5c43-4c42-8037-f3b633ffee80",
+      "helpCardId": null,
+      "updatedAt": "2026-04-16T17:00:00.000Z"
     },
     {
       "slug": "richtext-da",

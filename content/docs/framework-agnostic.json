@@ -11,7 +11,7 @@
     "category": "consumers",
     "order": 1,
     "_seo": {
-      "metaTitle": "Framework-Agnostic Architecture — webhouse.app Docs",
+      "metaTitle": "Framework-Agnostic Architecture — {{brand}} Docs",
       "metaDescription": "Your content as flat JSON files. Render it with any language, any framework, any runtime.",
       "keywords": [
         "webhouse",

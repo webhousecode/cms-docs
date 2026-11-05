@@ -11,7 +11,7 @@
     "category": "consumers",
     "order": 20,
     "_seo": {
-      "metaTitle": "Test af consumer-eksemplerne — webhouse.app Docs",
+      "metaTitle": "Test af consumer-eksemplerne — {{brand}} Docs",
       "metaDescription": "Sådan testes Java- og .NET-consumer-eksemplerne. Test-opsætning, fixtures, sikkerhedstjek og hvordan du kører dem lokalt.",
       "keywords": [
         "webhouse",

@@ -11,7 +11,7 @@
     "category": "guides",
     "order": 29,
     "_seo": {
-      "metaTitle": "Site Settings — webhouse.app Docs",
+      "metaTitle": "Site Settings — {{brand}} Docs",
       "metaDescription": "Configure all aspects of your CMS site: general settings, locales, preview URLs, deploy targets, and more.",
       "keywords": [
         "webhouse",

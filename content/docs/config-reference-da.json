@@ -11,7 +11,7 @@
     "category": "config",
     "order": 0,
     "_seo": {
-      "metaTitle": "Konfigurationsreference — webhouse.app Docs",
+      "metaTitle": "Konfigurationsreference — {{brand}} Docs",
       "metaDescription": "Komplet reference for cms.config.ts — collections, felter, lagring, build og API-indstillinger.",
       "keywords": [
         "webhouse",

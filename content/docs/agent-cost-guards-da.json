@@ -11,7 +11,7 @@
     "category": "concepts",
     "order": 2,
     "_seo": {
-      "metaTitle": "Per-agent budgetkontrol — webhouse.app Docs",
+      "metaTitle": "Per-agent budgetkontrol — {{brand}} Docs",
       "metaDescription": "Sæt et loft over en agents daglige, ugentlige eller månedlige LLM-forbrug. Pre-flight tjek blokerer løbske agenter før det næste kald foretages.",
       "keywords": [
         "webhouse",

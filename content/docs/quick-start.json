@@ -11,7 +11,7 @@
     "category": "getting-started",
     "order": 1,
     "_seo": {
-      "metaTitle": "Quick Start — webhouse.app Docs",
+      "metaTitle": "Quick Start — {{brand}} Docs",
       "metaDescription": "Scaffold a new project and have a CMS-powered site running in under 5 minutes.",
       "keywords": [
         "webhouse",

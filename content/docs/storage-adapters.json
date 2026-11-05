@@ -11,7 +11,7 @@
     "category": "guides",
     "order": 0,
     "_seo": {
-      "metaTitle": "Storage Adapters — webhouse.app Docs",
+      "metaTitle": "Storage Adapters — {{brand}} Docs",
       "metaDescription": "Choose where your content is stored — filesystem, GitHub, SQLite, or Supabase.",
       "keywords": [
         "webhouse",

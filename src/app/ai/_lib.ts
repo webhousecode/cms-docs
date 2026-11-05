@@ -1,10 +1,12 @@
 import { readFileSync, readdirSync } from "fs";
 import { join } from "path";
+import { applyBrand, type DocsBrand } from "@/lib/brand";
 
 const AI_GUIDE_DIR = join(process.cwd(), "src", "ai-guide");
 
-export function readAiFile(filename: string): string {
-  return readFileSync(join(AI_GUIDE_DIR, filename), "utf-8");
+/** F212 — an AI-guide module with its name tags resolved for the brand. */
+export function readAiFile(filename: string, brand: DocsBrand): string {
+  return applyBrand(readFileSync(join(AI_GUIDE_DIR, filename), "utf-8"), brand);
 }
 
 export function listAiModules(): Array<{ slug: string; filename: string }> {

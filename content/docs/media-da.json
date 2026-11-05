@@ -12,7 +12,7 @@
     "order": 2,
     "helpCardId": "media-ai-analysis",
     "_seo": {
-      "metaTitle": "Mediehåndtering — webhouse.app Docs",
+      "metaTitle": "Mediehåndtering — {{brand}} Docs",
       "metaDescription": "Billedbehandling, AI-analyse, gallerier og mediebibliotekets funktioner.",
       "keywords": [
         "webhouse",

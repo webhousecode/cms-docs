@@ -11,7 +11,7 @@
     "category": "guides",
     "order": 2,
     "_seo": {
-      "metaTitle": "Next.js Patterns — webhouse.app Docs",
+      "metaTitle": "Next.js Patterns — {{brand}} Docs",
       "metaDescription": "How to read CMS content in Next.js — loader functions, pages, static generation, and metadata.",
       "keywords": [
         "webhouse",

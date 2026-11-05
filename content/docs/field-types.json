@@ -11,7 +11,7 @@
     "category": "config",
     "order": 1,
     "_seo": {
-      "metaTitle": "Field Types — webhouse.app Docs",
+      "metaTitle": "Field Types — {{brand}} Docs",
       "metaDescription": "Complete reference for all 22 field types — text, richtext, image, blocks, relation, and more.",
       "keywords": [
         "webhouse",

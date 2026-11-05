@@ -11,7 +11,7 @@
     "category": "guides",
     "order": 20,
     "_seo": {
-      "metaTitle": "Dashboard — webhouse.app Docs",
+      "metaTitle": "Dashboard — {{brand}} Docs",
       "metaDescription": "Overblik over CMS-dashboardet: indholdsstatistik, genveje og sundhedsindikatorer.",
       "keywords": [
         "webhouse",

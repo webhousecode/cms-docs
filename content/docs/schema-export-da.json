@@ -11,7 +11,7 @@
     "category": "consumers",
     "order": 8,
     "_seo": {
-      "metaTitle": "Schema-eksport — webhouse.app Docs",
+      "metaTitle": "Schema-eksport — {{brand}} Docs",
       "metaDescription": "Generér webhouse-schema.json fra cms.config.ts så PHP-, Python-, Ruby-, Go-, Java- og .NET-reader-biblioteker kan introspektere din indholdsmodel.",
       "keywords": [
         "webhouse",

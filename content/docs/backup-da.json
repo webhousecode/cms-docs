@@ -11,7 +11,7 @@
     "category": "guides",
     "order": 26,
     "_seo": {
-      "metaTitle": "Backup — webhouse.app Docs",
+      "metaTitle": "Backup — {{brand}} Docs",
       "metaDescription": "Opret og gendan indholdssnapshots lokalt eller til cloud-udbydere som pCloud og S3.",
       "keywords": [
         "webhouse",

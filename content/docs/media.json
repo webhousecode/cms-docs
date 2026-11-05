@@ -12,7 +12,7 @@
     "order": 2,
     "helpCardId": "media-ai-analysis",
     "_seo": {
-      "metaTitle": "Media Management — webhouse.app Docs",
+      "metaTitle": "Media Management — {{brand}} Docs",
       "metaDescription": "Image processing, AI analysis, galleries, and media library features.",
       "keywords": [
         "webhouse",

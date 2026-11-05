@@ -11,7 +11,7 @@
     "category": "guides",
     "order": 22,
     "_seo": {
-      "metaTitle": "Curation Queue — webhouse.app Docs",
+      "metaTitle": "Curation Queue — {{brand}} Docs",
       "metaDescription": "Gennemgå og godkend AI-genereret indhold i Curation Queue før publicering.",
       "keywords": [
         "webhouse",

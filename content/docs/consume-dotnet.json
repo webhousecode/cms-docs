@@ -11,7 +11,7 @@
     "category": "consumers",
     "order": 14,
     "_seo": {
-      "metaTitle": "Consume from C# / .NET — webhouse.app Docs",
+      "metaTitle": "Consume from C# / .NET — {{brand}} Docs",
       "metaDescription": "Read @webhouse/cms content from ASP.NET Core — Razor Pages, MVC, or minimal APIs.",
       "keywords": [
         "webhouse",

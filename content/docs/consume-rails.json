@@ -11,7 +11,7 @@
     "category": "consumers",
     "order": 12,
     "_seo": {
-      "metaTitle": "Consume from Rails (Ruby) — webhouse.app Docs",
+      "metaTitle": "Consume from Rails (Ruby) — {{brand}} Docs",
       "metaDescription": "Read @webhouse/cms content from a Ruby on Rails application. Helper module, controllers, ERB views.",
       "keywords": [
         "webhouse",

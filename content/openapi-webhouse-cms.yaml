@@ -3,7 +3,7 @@ info:
   title: "@webhouse/cms API"
   version: "0.3.0"
   description: |
-    WebHouse CMS REST API — headless content, admin operations, AI chat, and deploy triggers.
+    {{brand}} REST API — headless content, admin operations, AI chat, and deploy triggers.
 
     ## Authentication
 
@@ -26,8 +26,8 @@ info:
     Use the dedicated `/_fieldMeta` endpoints to read and manipulate lock state.
 
 servers:
-  - url: https://webhouse.app
-    description: WebHouse Cloud (production)
+  - url: https://{{brand}}
+    description: "{{brand}} (production)"
   - url: https://localhost:3010
     description: Local dev (HTTPS, mkcert)
   - url: "{baseUrl}"
@@ -40,7 +40,7 @@ tags:
   - name: Headless
     description: |
       Content API for sites and integrations. Use Bearer `wh_` token.
-      See [Headless Site API guide](https://docs.webhouse.app/docs/headless-api).
+      See [Headless Site API guide](https://{{brand.docs.pages}}/headless-api).
   - name: Content
     description: Low-level content CRUD (legacy `/api/content/` prefix)
   - name: FieldMeta
@@ -1510,7 +1510,7 @@ paths:
         Example: omit `content:write` to make the chat read-only.
 
         For site embedding, proxy through a server route — never call from client-side
-        with the token directly. See [docs](https://docs.webhouse.app/docs/headless-api#5-embed-the-ai-chat).
+        with the token directly. See [docs](https://{{brand.docs.pages}}/headless-api#5-embed-the-ai-chat).
       requestBody:
         required: true
         content:

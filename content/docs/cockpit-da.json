@@ -11,7 +11,7 @@
     "category": "guides",
     "order": 21,
     "_seo": {
-      "metaTitle": "Cockpit — webhouse.app Docs",
+      "metaTitle": "Cockpit — {{brand}} Docs",
       "metaDescription": "AI Cockpit: konfigurer genereringsparametre, håndter brandvoice og start AI-indholdsopgaver.",
       "keywords": [
         "webhouse",

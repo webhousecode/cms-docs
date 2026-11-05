@@ -11,7 +11,7 @@
     "category": "config",
     "order": 1,
     "_seo": {
-      "metaTitle": "Felttyper — webhouse.app Docs",
+      "metaTitle": "Felttyper — {{brand}} Docs",
       "metaDescription": "Komplet reference for alle 22 felttyper — text, richtext, image, blocks, relation og mere.",
       "keywords": [
         "webhouse",

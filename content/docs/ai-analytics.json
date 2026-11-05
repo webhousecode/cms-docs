@@ -11,7 +11,7 @@
     "category": "guides",
     "order": 27,
     "_seo": {
-      "metaTitle": "AI Analytics — webhouse.app Docs",
+      "metaTitle": "AI Analytics — {{brand}} Docs",
       "metaDescription": "Monitor AI agent performance, generation costs, and content acceptance rates.",
       "keywords": [
         "webhouse",

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { useBrand, useMountPath } from "@/components/brand-context";
 
 /**
  * Interactive API Reference — Redoc viewer.
@@ -10,20 +11,26 @@ import { useEffect } from "react";
  * for its clean three-panel layout and better mobile behaviour.
  */
 export default function ApiReferencePage() {
+  const brand = useBrand();
+  const path = useMountPath();
+  const spec = path("/openapi-webhouse-cms.yaml");
   useEffect(() => {
     // Inject Redoc standalone script only once
     if (document.getElementById("redoc-script")) return;
     const script = document.createElement("script");
     script.id = "redoc-script";
-    script.src = "https://cdn.redoc.ly/redoc/latest/bundles/redoc.standalone.js";
+    // Pinned: the CDN's "latest" became an ES-module build that no longer
+    // loads as a classic script (import.meta), leaving the page blank.
+    script.src = "https://cdn.jsdelivr.net/npm/redoc@2.5.2/bundles/redoc.standalone.js";
     script.async = true;
     script.onload = () => {
       (window as any).Redoc.init(
-        "/openapi-webhouse-cms.yaml",
+        spec,
         {
           theme: {
             colors: {
-              primary: { main: "#F7BB2E" },
+              // Redoc parses the colour itself, so it needs the value, not var().
+              primary: { main: getComputedStyle(document.documentElement).getPropertyValue("--color-gold").trim() },
               text: { primary: "#e5e7eb" },
             },
             typography: {
@@ -48,7 +55,7 @@ export default function ApiReferencePage() {
       );
     };
     document.body.appendChild(script);
-  }, []);
+  }, [spec]);
 
   return (
     <div
@@ -73,15 +80,15 @@ export default function ApiReferencePage() {
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-          <a href="/" style={{ color: "#F7BB2E", fontWeight: 700, fontSize: "1rem", textDecoration: "none" }}>
-            webhouse<span style={{ color: "#e5e7eb" }}>.app</span>
+          <a href={path("/")} style={{ color: "var(--color-gold)", fontWeight: 700, fontSize: "1rem", textDecoration: "none" }}>
+            {brand.address}
           </a>
           <span style={{ color: "#4b5563" }}>/</span>
           <span style={{ fontSize: "0.875rem", color: "#9ca3af" }}>API Reference</span>
         </div>
         <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
           <a
-            href="/openapi-webhouse-cms.yaml"
+            href={spec}
             download="openapi-webhouse-cms.yaml"
             style={{
               fontSize: "0.75rem",

@@ -11,7 +11,7 @@
     "category": "guides",
     "order": 6,
     "_seo": {
-      "metaTitle": "Content Relationships — webhouse.app Docs",
+      "metaTitle": "Content Relationships — {{brand}} Docs",
       "metaDescription": "Connect documents across collections with relation fields — single, multi, and reverse lookups.",
       "keywords": [
         "webhouse",

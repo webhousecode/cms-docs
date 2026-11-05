@@ -11,7 +11,7 @@
     "category": "consumers",
     "order": 10,
     "_seo": {
-      "metaTitle": "Consume from Laravel (PHP) — webhouse.app Docs",
+      "metaTitle": "Consume from Laravel (PHP) — {{brand}} Docs",
       "metaDescription": "Read @webhouse/cms content from a Laravel application. Helper class, routes, Blade templates.",
       "keywords": [
         "webhouse",

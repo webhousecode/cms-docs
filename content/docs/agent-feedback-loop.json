@@ -11,7 +11,7 @@
     "category": "concepts",
     "order": 3,
     "_seo": {
-      "metaTitle": "Agent Feedback Loop — webhouse.app Docs",
+      "metaTitle": "Agent Feedback Loop — {{brand}} Docs",
       "metaDescription": "Curator edits and rejections are persisted per agent and injected into the next run as few-shot examples. Agents learn from corrections automatically.",
       "keywords": [
         "webhouse",

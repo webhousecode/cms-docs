@@ -11,7 +11,7 @@
     "category": "consumers",
     "order": 10,
     "_seo": {
-      "metaTitle": "Forbrug fra Laravel (PHP) — webhouse.app Docs",
+      "metaTitle": "Forbrug fra Laravel (PHP) — {{brand}} Docs",
       "metaDescription": "Læs @webhouse/cms-indhold fra en Laravel-applikation. Hjælpeklasse, routes, Blade-skabeloner.",
       "keywords": [
         "webhouse",

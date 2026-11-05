@@ -12,7 +12,7 @@
     "order": 4,
     "helpCardId": "visibility-intro",
     "_seo": {
-      "metaTitle": "SEO & Visibility — webhouse.app Docs",
+      "metaTitle": "SEO & Visibility — {{brand}} Docs",
       "metaDescription": "Meta fields, JSON-LD structured data, sitemap, robots.txt, and AI visibility optimization.",
       "keywords": [
         "webhouse",

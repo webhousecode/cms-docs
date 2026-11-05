@@ -11,7 +11,7 @@
     "category": "consumers",
     "order": 1,
     "_seo": {
-      "metaTitle": "Framework-agnostisk arkitektur — webhouse.app Docs",
+      "metaTitle": "Framework-agnostisk arkitektur — {{brand}} Docs",
       "metaDescription": "Dit indhold som flade JSON-filer. Render det med ethvert sprog, enhver framework, enhver runtime.",
       "keywords": [
         "webhouse",

@@ -11,7 +11,7 @@
     "category": "concepts",
     "order": 2,
     "_seo": {
-      "metaTitle": "Per-Agent Cost Guards — webhouse.app Docs",
+      "metaTitle": "Per-Agent Cost Guards — {{brand}} Docs",
       "metaDescription": "Cap an agent's daily, weekly or monthly LLM spend. Pre-flight checks block runaway agents before another call is made.",
       "keywords": [
         "webhouse",

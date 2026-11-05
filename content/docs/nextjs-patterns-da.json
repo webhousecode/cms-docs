@@ -11,7 +11,7 @@
     "category": "guides",
     "order": 2,
     "_seo": {
-      "metaTitle": "Next.js-mønstre — webhouse.app Docs",
+      "metaTitle": "Next.js-mønstre — {{brand}} Docs",
       "metaDescription": "Sådan læser du CMS-indhold i Next.js — loader-funktioner, sider, statisk generering og metadata.",
       "keywords": [
         "webhouse",

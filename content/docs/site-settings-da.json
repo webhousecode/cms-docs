@@ -11,7 +11,7 @@
     "category": "guides",
     "order": 29,
     "_seo": {
-      "metaTitle": "Siteindstillinger — webhouse.app Docs",
+      "metaTitle": "Siteindstillinger — {{brand}} Docs",
       "metaDescription": "Konfigurer alle aspekter af dit CMS-site: generelle indstillinger, sprog, preview-URL'er, deploymål og mere.",
       "keywords": [
         "webhouse",

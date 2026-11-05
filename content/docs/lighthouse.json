@@ -11,7 +11,7 @@
     "category": "guides",
     "order": 32,
     "_seo": {
-      "metaTitle": "Lighthouse Performance Audit — webhouse.app Docs",
+      "metaTitle": "Lighthouse Performance Audit — {{brand}} Docs",
       "metaDescription": "Monitor site performance, accessibility, SEO with integrated Google PageSpeed Insights. Core Web Vitals explained, API key setup, score history.",
       "keywords": [
         "lighthouse",

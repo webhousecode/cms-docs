@@ -11,7 +11,7 @@
     "content": "## What's New in v0.2.9\n\n**3 changes** released on 2026-03-16\n\n### Bug Fixes\n\n- fix: upgrade GHA to Node 24, fix SQLite close() null guard\n\n### Other Changes\n\n- chore: release v0.2.9\n- docs: add root CLAUDE.md with development instructions\n\n",
     "breaking": false,
     "_seo": {
-      "metaTitle": "Release v0.2.9 — webhouse.app Changelog",
+      "metaTitle": "Release v0.2.9 — {{brand}} Changelog",
       "metaDescription": "Release notes for @webhouse/cms 0.2.9"
     }
   },

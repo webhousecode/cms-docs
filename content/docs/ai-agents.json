@@ -12,7 +12,7 @@
     "order": 1,
     "helpCardId": "agents-intro",
     "_seo": {
-      "metaTitle": "AI Agents — webhouse.app Docs",
+      "metaTitle": "AI Agents — {{brand}} Docs",
       "metaDescription": "Built-in AI agents for content generation, SEO optimization, GEO optimization, and translation.",
       "keywords": [
         "webhouse",

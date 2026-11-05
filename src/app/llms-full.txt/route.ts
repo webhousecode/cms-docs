@@ -1,10 +1,14 @@
 import { cmsLlmsFullTxt } from "@webhouse/cms/next";
 
-export const dynamic = "force-static";
+import { applyBrand } from "@/lib/brand";
+import { getBrand } from "@/lib/brand-server";
 
-export const GET = cmsLlmsFullTxt({
+// F212 — per request, so the content's name tags follow the brand.
+export const dynamic = "force-dynamic";
+
+const llms = cmsLlmsFullTxt({
   baseUrl: "https://docs.webhouse.app",
-  siteTitle: "webhouse.app Docs",
+  siteTitle: "{{brand}} Docs",
   siteDescription:
     "Documentation for @webhouse/cms — the AI-native, file-based, framework-agnostic CMS.",
   collections: [
@@ -14,3 +18,11 @@ export const GET = cmsLlmsFullTxt({
   defaultLocale: "en",
   locales: ["en", "da"],
 });
+
+export async function GET() {
+  const res = llms();
+  return new Response(applyBrand(await res.text(), await getBrand()), {
+    status: res.status,
+    headers: res.headers,
+  });
+}

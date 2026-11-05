@@ -2,24 +2,28 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { getAllTags } from "@/lib/content";
 import { Breadcrumbs } from "@/components/breadcrumbs";
+import { getBrand } from "@/lib/brand-server";
 
-export const metadata: Metadata = {
-  title: "Tags — webhouse.app docs",
-  description: "Browse documentation by topic tag — deploy targets, AI features, schema, SEO, and more.",
-  openGraph: {
-    title: "Tags — webhouse.app docs",
-    description: "Browse documentation by topic tag.",
-    type: "website",
-    url: "https://docs.webhouse.app/docs/tags",
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const brand = await getBrand();
+  return {
+    title: `Tags — ${brand.address} docs`,
+    description: "Browse documentation by topic tag — deploy targets, AI features, schema, SEO, and more.",
+    openGraph: {
+      title: `Tags — ${brand.address} docs`,
+      description: "Browse documentation by topic tag.",
+      type: "website",
+      url: `https://${brand.docsPages}/tags`,
+    },
+  };
+}
 
 export default async function TagsIndexPage(props: {
   searchParams?: Promise<{ lang?: string }>;
 }) {
   const sp = (await props.searchParams) ?? {};
   const locale = sp.lang === "da" ? "da" : "en";
-  const tags = getAllTags(locale);
+  const tags = getAllTags(locale, await getBrand());
 
   return (
     <main style={{ maxWidth: "48rem", margin: "0 auto", padding: "2rem 2.5rem" }}>

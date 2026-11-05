@@ -11,7 +11,7 @@
     "category": "guides",
     "order": 23,
     "_seo": {
-      "metaTitle": "Calendar — webhouse.app Docs",
+      "metaTitle": "Calendar — {{brand}} Docs",
       "metaDescription": "Use the Calendar to schedule content publishing and unpublishing at specific dates and times.",
       "keywords": [
         "webhouse",

@@ -179,7 +179,7 @@ The implementation per language is ~100-150 lines of code. See the reference imp
 - **Module 17** — i18n (translationGroup and locale handling)
 - **Feature plans** — `docs/features/F125-framework-agnostic-consumers.md`, `docs/features/F126-framework-agnostic-build.md`
 - **Live examples** — `examples/consumers/java-spring-blog/`, `examples/consumers/dotnet-blog/`
-- **External docs** — https://docs.webhouse.app/docs/framework-agnostic, /docs/schema-export
+- **External docs** — https://{{brand.docs.pages}}/framework-agnostic, /docs/schema-export
 
 ## Critical reminders
 

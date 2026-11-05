@@ -1,17 +1,16 @@
-export const dynamic = "force-static";
-
 import type { Metadata } from "next";
 import { getCollection } from "@/lib/content";
 import { Tag, GitBranch, AlertTriangle, Package } from "lucide-react";
 import { SimpleMarkdown } from "@/components/simple-markdown";
+import { getBrand } from "@/lib/brand-server";
 
 export const metadata: Metadata = {
   title: "Changelog",
   description: "Release notes and version history for @webhouse/cms",
 };
 
-export default function ChangelogPage() {
-  const entries = getCollection("changelog").sort((a, b) => {
+export default async function ChangelogPage() {
+  const entries = getCollection("changelog", await getBrand()).sort((a, b) => {
     const dateA = a.data.date ?? a.updatedAt ?? "";
     const dateB = b.data.date ?? b.updatedAt ?? "";
     return dateB.localeCompare(dateA);
@@ -143,9 +142,9 @@ export default function ChangelogPage() {
                     padding: "0.2rem 0.6rem",
                     background: isUnreleased
                       ? "rgba(74,222,128,0.1)"
-                      : "rgba(247,187,46,0.1)",
+                      : "color-mix(in srgb, var(--color-gold) 10%, transparent)",
                     borderRadius: 6,
-                    border: `1px solid ${isUnreleased ? "rgba(74,222,128,0.2)" : "rgba(247,187,46,0.2)"}`,
+                    border: `1px solid ${isUnreleased ? "rgba(74,222,128,0.2)" : "color-mix(in srgb, var(--color-gold) 20%, transparent)"}`,
                   }}
                 >
                   {isUnreleased ? (

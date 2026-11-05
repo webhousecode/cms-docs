@@ -11,7 +11,7 @@
     "category": "consumers",
     "order": 20,
     "_seo": {
-      "metaTitle": "Testing the Consumer Examples — webhouse.app Docs",
+      "metaTitle": "Testing the Consumer Examples — {{brand}} Docs",
       "metaDescription": "How the Java and .NET consumer examples are tested. Test setup, fixtures, security checks, and how to run them locally.",
       "keywords": [
         "webhouse",

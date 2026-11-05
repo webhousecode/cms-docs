@@ -11,7 +11,7 @@
     "category": "concepts",
     "order": 4,
     "_seo": {
-      "metaTitle": "Billedgenerering — webhouse.app Docs",
+      "metaTitle": "Billedgenerering — {{brand}} Docs",
       "metaDescription": "Agenter genererer billeder via Gemini 3 Pro Image. Samme media pipeline som uploads, med fuld AI-genereret provenance og et media library-filter.",
       "keywords": [
         "webhouse",

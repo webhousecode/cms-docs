@@ -11,7 +11,7 @@
     "category": "api-reference",
     "order": 0,
     "_seo": {
-      "metaTitle": "Indholds-API — webhouse.app Docs",
+      "metaTitle": "Indholds-API — {{brand}} Docs",
       "metaDescription": "Programmatisk API til læsning og skrivning af indhold — ContentService-metoder og REST-endpoints.",
       "keywords": [
         "webhouse",

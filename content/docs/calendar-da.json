@@ -11,7 +11,7 @@
     "category": "guides",
     "order": 23,
     "_seo": {
-      "metaTitle": "Kalender — webhouse.app Docs",
+      "metaTitle": "Kalender — {{brand}} Docs",
       "metaDescription": "Brug Kalenderen til at planlægge publicering og afpublicering af indhold på bestemte tidspunkter.",
       "keywords": [
         "webhouse",

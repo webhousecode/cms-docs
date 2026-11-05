@@ -11,7 +11,7 @@
     "category": "consumers",
     "order": 9,
     "_seo": {
-      "metaTitle": "Consume from Java (Spring Boot) — webhouse.app Docs",
+      "metaTitle": "Consume from Java (Spring Boot) — {{brand}} Docs",
       "metaDescription": "Read @webhouse/cms content from a Spring Boot application. Reader class, controllers, Thymeleaf templates.",
       "keywords": [
         "webhouse",

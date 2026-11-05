@@ -11,7 +11,7 @@
     "category": "guides",
     "order": 31,
     "_seo": {
-      "metaTitle": "Deploy Page — webhouse.app Docs",
+      "metaTitle": "Deploy Page — {{brand}} Docs",
       "metaDescription": "Use the Deploy page to publish your site and manage Instant Content Deployment (ICD).",
       "keywords": [
         "webhouse",

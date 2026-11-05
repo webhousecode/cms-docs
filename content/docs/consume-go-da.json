@@ -11,7 +11,7 @@
     "category": "consumers",
     "order": 13,
     "_seo": {
-      "metaTitle": "Forbrug fra Go — webhouse.app Docs",
+      "metaTitle": "Forbrug fra Go — {{brand}} Docs",
       "metaDescription": "Læs @webhouse/cms-indhold fra Go — Hugo-temaer, Gin-handlers og standard bibliotek fil I/O.",
       "keywords": [
         "webhouse",

@@ -1,6 +1,6 @@
 <!-- @webhouse/cms ai-builder-site v0.1.0 — last updated 2026-04-16 -->
 
-# ai.webhouse.app — AI Builder Site
+# {{brand.ai}} — AI Builder Site
 
 You are an AI coding assistant. A developer has directed you to this URL because they want
 to build a website using **@webhouse/cms** — a framework-agnostic, file-based, AI-native CMS.
@@ -9,7 +9,7 @@ This document is self-contained. Follow it **top to bottom**. Every step tells y
 to do next and where to fetch more detail if you need it. You do not need to visit any other
 page to finish a basic build.
 
-All URLs below that start with `/ai/` resolve relative to `https://ai.webhouse.app`.
+All URLs below that start with `/ai/` resolve relative to `https://{{brand.ai}}`.
 
 ---
 
@@ -431,7 +431,7 @@ Each module focuses on ONE topic. Fetch only what you need.
 
 ## Canonical source
 
-If `docs.webhouse.app` is unreachable, fetch the source of truth from GitHub:
+If `{{brand.docs}}` is unreachable, fetch the source of truth from GitHub:
 
 ```
 https://raw.githubusercontent.com/webhousecode/cms/main/docs/ai-guide/index.md

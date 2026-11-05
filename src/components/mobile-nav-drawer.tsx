@@ -20,10 +20,14 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { X, Moon, Sun } from "lucide-react";
+import { BrandLogo } from "./brand-logo";
+import { useBrand, useMountPath } from "./brand-context";
 
 export function MobileNavDrawer() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const brand = useBrand();
+  const path = useMountPath();
 
   // Only this drawer responds when we're NOT inside the docs section. On
   // /docs/* the existing DocsSidebar mobile drawer takes over (it has the
@@ -104,12 +108,12 @@ export function MobileNavDrawer() {
           }}
         >
           <Link
-            href="/"
+            data-testid="drawer-logo-link"
+            href={path("/")}
             onClick={() => setOpen(false)}
             style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: "0.5rem" }}
           >
-            <img src="/logo-dark.svg" alt="webhouse.app" className="dark-only" style={{ height: 18 }} />
-            <img src="/logo-light.svg" alt="webhouse.app" className="light-only" style={{ height: 18 }} />
+            <BrandLogo height={18} />
             <span style={{ fontSize: "0.9rem", fontWeight: 600, color: "var(--fg-muted)" }}>docs</span>
           </Link>
           <button
@@ -132,15 +136,17 @@ export function MobileNavDrawer() {
         </div>
 
         <nav style={{ display: "flex", flexDirection: "column", padding: "0.5rem 0" }}>
-          <DrawerLink href="/docs/introduction" onClose={() => setOpen(false)}>
+          <DrawerLink testid="drawer-docs-link" href={brand.locale === "da" ? "/docs/introduction-da" : "/docs/introduction"} onClose={() => setOpen(false)}>
             Documentation
           </DrawerLink>
-          <DrawerLink href="/changelog" onClose={() => setOpen(false)}>
+          <DrawerLink testid="drawer-changelog-link" href={path("/changelog")} onClose={() => setOpen(false)}>
             Changelog
           </DrawerLink>
-          <DrawerLink href="https://github.com/webhousecode/cms" external onClose={() => setOpen(false)}>
-            GitHub ↗
-          </DrawerLink>
+          {!brand.mounted && (
+            <DrawerLink testid="drawer-github-link" href="https://github.com/webhousecode/cms" external onClose={() => setOpen(false)}>
+              GitHub ↗
+            </DrawerLink>
+          )}
         </nav>
 
         <div
@@ -192,11 +198,13 @@ function DrawerThemeToggle() {
 }
 
 function DrawerLink({
+  testid,
   href,
   children,
   external,
   onClose,
 }: {
+  testid: string;
   href: string;
   children: React.ReactNode;
   external?: boolean;
@@ -213,13 +221,13 @@ function DrawerLink({
   } as const;
   if (external) {
     return (
-      <a href={href} target="_blank" rel="noopener" onClick={onClose} style={baseStyle}>
+      <a data-testid={testid} href={href} target="_blank" rel="noopener" onClick={onClose} style={baseStyle}>
         {children}
       </a>
     );
   }
   return (
-    <Link href={href} onClick={onClose} style={baseStyle}>
+    <Link data-testid={testid} href={href} onClick={onClose} style={baseStyle}>
       {children}
     </Link>
   );

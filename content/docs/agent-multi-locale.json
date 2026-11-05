@@ -11,7 +11,7 @@
     "category": "concepts",
     "order": 5,
     "_seo": {
-      "metaTitle": "Multi-Locale Agents — webhouse.app Docs",
+      "metaTitle": "Multi-Locale Agents — {{brand}} Docs",
       "metaDescription": "Pick the language each agent writes in. Auto-translate fills in the other locales when a default-locale draft is approved.",
       "keywords": [
         "webhouse",

@@ -11,7 +11,7 @@
     "category": "concepts",
     "order": 7,
     "_seo": {
-      "metaTitle": "Agent workflows — webhouse.app Docs",
+      "metaTitle": "Agent workflows — {{brand}} Docs",
       "metaDescription": "Chain flere agenter ind i en enkelt pipeline. Én prompt ind, ét kurateringskø-item ud, selv om flere agenter rørte det.",
       "keywords": [
         "webhouse",

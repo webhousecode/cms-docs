@@ -11,7 +11,7 @@
     "category": "consumers",
     "order": 9,
     "_seo": {
-      "metaTitle": "Forbrug fra Java (Spring Boot) — webhouse.app Docs",
+      "metaTitle": "Forbrug fra Java (Spring Boot) — {{brand}} Docs",
       "metaDescription": "Læs @webhouse/cms-indhold fra en Spring Boot-applikation. Reader-klasse, controllers, Thymeleaf-skabeloner.",
       "keywords": [
         "webhouse",

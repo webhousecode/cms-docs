@@ -11,7 +11,7 @@
     "category": "concepts",
     "order": 7,
     "_seo": {
-      "metaTitle": "Agent Workflows — webhouse.app Docs",
+      "metaTitle": "Agent Workflows — {{brand}} Docs",
       "metaDescription": "Chain multiple agents into a single pipeline. One prompt in, one curation queue item out, even though several agents touched it.",
       "keywords": [
         "webhouse",

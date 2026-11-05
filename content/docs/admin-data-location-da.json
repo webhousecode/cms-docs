@@ -11,7 +11,7 @@
     "category": "deployment",
     "order": 5,
     "_seo": {
-      "metaTitle": "Placering af admin-data — webhouse.app Docs",
+      "metaTitle": "Placering af admin-data — {{brand}} Docs",
       "metaDescription": "Hvor cms-admin gemmer registry, brugere og access-tokens. Resolution-orden for Docker, Fly, Kubernetes og lokal dev — med volume + env-variabel opsætning.",
       "keywords": [
         "webhouse",

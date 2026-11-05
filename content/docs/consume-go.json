@@ -11,7 +11,7 @@
     "category": "consumers",
     "order": 13,
     "_seo": {
-      "metaTitle": "Consume from Go — webhouse.app Docs",
+      "metaTitle": "Consume from Go — {{brand}} Docs",
       "metaDescription": "Read @webhouse/cms content from Go — Hugo themes, Gin handlers, and standard library file I/O.",
       "keywords": [
         "webhouse",

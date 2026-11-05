@@ -11,7 +11,7 @@
     "category": "concepts",
     "order": 4,
     "_seo": {
-      "metaTitle": "Image Generation — webhouse.app Docs",
+      "metaTitle": "Image Generation — {{brand}} Docs",
       "metaDescription": "Agents generate images via Gemini 3 Pro Image. Same media pipeline as uploads, with full AI-generated provenance and a media library filter.",
       "keywords": [
         "webhouse",

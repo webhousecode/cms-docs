@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getCollection } from "@/lib/content";
+import { getBrand } from "@/lib/brand-server";
 import {
   BookOpen,
   Terminal,
@@ -100,12 +101,13 @@ const STATS = [
   { value: "0", label: "Runtime JS in output" },
 ];
 
-export default function HomePage() {
-  const enDocs = getCollection("docs").filter(
+export default async function HomePage() {
+  const brand = await getBrand();
+  const enDocs = getCollection("docs", brand).filter(
     (d) => (d.locale ?? "en") === "en"
   );
-  const daDocs = getCollection("docs").filter((d) => d.locale === "da");
-  const changelogCount = getCollection("changelog").length;
+  const daDocs = getCollection("docs", brand).filter((d) => d.locale === "da");
+  const changelogCount = getCollection("changelog", brand).length;
 
   return (
     <div>
@@ -170,12 +172,12 @@ export default function HomePage() {
           pipeline. Your content as flat JSON — render it with{" "}
           <code
             style={{
-              background: "rgba(247,187,46,0.1)",
-              color: "#F7BB2E",
+              background: "color-mix(in srgb, var(--color-gold) 10%, transparent)",
+              color: "var(--color-gold)",
               padding: "0.15em 0.4em",
               borderRadius: 4,
               fontSize: "0.95em",
-              border: "1px solid rgba(247,187,46,0.15)",
+              border: "1px solid color-mix(in srgb, var(--color-gold) 15%, transparent)",
             }}
           >
             Next.js, Laravel, Django, C#, Rails
@@ -199,7 +201,7 @@ export default function HomePage() {
               gap: "0.4rem",
               padding: "0.65rem 1.5rem",
               background: "var(--color-gold)",
-              color: "#000",
+              color: "var(--color-gold-fg)",
               borderRadius: 8,
               fontWeight: 600,
               fontSize: "0.9rem",
@@ -688,7 +690,7 @@ export default function HomePage() {
               gap: "0.35rem",
               padding: "0.5rem 1.25rem",
               background: "var(--color-gold)",
-              color: "#000",
+              color: "var(--color-gold-fg)",
               borderRadius: 8,
               fontWeight: 600,
               fontSize: "0.85rem",

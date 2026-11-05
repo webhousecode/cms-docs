@@ -11,7 +11,7 @@
     "category": "cli",
     "order": 0,
     "_seo": {
-      "metaTitle": "CLI Reference — webhouse.app Docs",
+      "metaTitle": "CLI Reference — {{brand}} Docs",
       "metaDescription": "All CMS CLI commands — init, dev, build, serve, AI generate, AI rewrite, SEO, and MCP.",
       "keywords": [
         "webhouse",

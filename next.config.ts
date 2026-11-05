@@ -2,6 +2,10 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: "standalone",
+  // F212 — build assets under /docs/_ so they load on a white-label mount
+  // (cms.<brand>/docs/_/_next/…, forwarded here). src/proxy.ts rewrites
+  // /docs/_/x → /x on every address, docs.webhouse.app included.
+  assetPrefix: "/docs/_",
   outputFileTracingIncludes: {
     "/ai": ["./src/ai-guide/**/*.md"],
     "/ai/[slug]": ["./src/ai-guide/**/*.md"],

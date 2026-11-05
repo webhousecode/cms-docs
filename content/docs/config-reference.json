@@ -11,7 +11,7 @@
     "category": "config",
     "order": 0,
     "_seo": {
-      "metaTitle": "Configuration Reference — webhouse.app Docs",
+      "metaTitle": "Configuration Reference — {{brand}} Docs",
       "metaDescription": "Complete reference for cms.config.ts — collections, fields, storage, build, and API settings.",
       "keywords": [
         "webhouse",

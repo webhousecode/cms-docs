@@ -10,7 +10,7 @@
     "category": "guides",
     "order": 6,
     "_seo": {
-      "metaTitle": "Three Ways to Embed Forms — webhouse.app Docs",
+      "metaTitle": "Three Ways to Embed Forms — {{brand}} Docs",
       "metaDescription": "Embed CMS forms via richtext shortcode, content block, or dedicated field type. Same form HTML, three integration patterns.",
       "keywords": [
         "webhouse",

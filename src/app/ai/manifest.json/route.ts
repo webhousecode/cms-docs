@@ -1,6 +1,8 @@
+import { getBrand } from "@/lib/brand-server";
 import { jsonResponse, listAiModules } from "../_lib";
 
-export const dynamic = "force-static";
+// F212 — per request: the text follows the brand it is served under.
+export const dynamic = "force-dynamic";
 
 const MODULE_DESCRIPTIONS: Record<string, string> = {
   "01-getting-started": "New project, first setup, scaffolding",
@@ -30,8 +32,9 @@ const MODULE_DESCRIPTIONS: Record<string, string> = {
     "Non-TS readers (Java, .NET, PHP, Python, Ruby, Go), schema export rules",
 };
 
-export function GET() {
-  const base = "https://ai.webhouse.app/ai";
+export async function GET() {
+  const brand = await getBrand();
+  const base = `https://${brand.aiGuide}`;
   const modules = listAiModules().map((m) => ({
     slug: m.slug,
     url: `${base}/${m.slug}`,

@@ -11,7 +11,7 @@
     "category": "guides",
     "order": 32,
     "_seo": {
-      "metaTitle": "Lighthouse ydeevneaudit — webhouse.app Docs",
+      "metaTitle": "Lighthouse ydeevneaudit — {{brand}} Docs",
       "metaDescription": "Overvåg ydeevne, tilgængelighed, SEO med integreret Google PageSpeed Insights. Core Web Vitals forklaret, API-nøgle opsætning, score-historik.",
       "keywords": [
         "lighthouse",

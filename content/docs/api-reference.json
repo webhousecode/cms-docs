@@ -11,7 +11,7 @@
     "category": "api-reference",
     "order": 0,
     "_seo": {
-      "metaTitle": "Content API — webhouse.app Docs",
+      "metaTitle": "Content API — {{brand}} Docs",
       "metaDescription": "Programmatic API for reading and writing content — ContentService methods and REST endpoints.",
       "keywords": [
         "webhouse",

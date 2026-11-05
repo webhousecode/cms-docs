@@ -11,7 +11,7 @@
     "category": "guides",
     "order": 27,
     "_seo": {
-      "metaTitle": "AI Analytics — webhouse.app Docs",
+      "metaTitle": "AI Analytics — {{brand}} Docs",
       "metaDescription": "Overvåg AI-agentperformance, genereringsomkostninger og indholdsgodkendelsesrater.",
       "keywords": [
         "webhouse",

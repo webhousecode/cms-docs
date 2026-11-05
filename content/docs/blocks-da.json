@@ -11,7 +11,7 @@
     "category": "guides",
     "order": 1,
     "_seo": {
-      "metaTitle": "Blokke — webhouse.app Docs",
+      "metaTitle": "Blokke — {{brand}} Docs",
       "metaDescription": "Byg indholdsrige sider med genanvendelige blokkomponenter — hero, features, CTA og brugerdefinerede blokke.",
       "keywords": [
         "webhouse",

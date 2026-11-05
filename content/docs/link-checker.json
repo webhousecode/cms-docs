@@ -11,7 +11,7 @@
     "category": "guides",
     "order": 25,
     "_seo": {
-      "metaTitle": "Link Checker — webhouse.app Docs",
+      "metaTitle": "Link Checker — {{brand}} Docs",
       "metaDescription": "Scan your site for broken links and fix them before visitors encounter errors.",
       "keywords": [
         "webhouse",

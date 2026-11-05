@@ -1,5 +1,6 @@
 import { readFileSync, readdirSync, existsSync } from "fs";
 import { join } from "path";
+import { applyBrand, DEFAULT_BRAND, type DocsBrand } from "./brand";
 
 const CONTENT = join(process.cwd(), "content");
 
@@ -32,22 +33,34 @@ export interface DocDocument {
   updatedAt?: string;
 }
 
-export function getCollection(name: string): DocDocument[] {
+/** F212 — a document file with its name tags resolved for the brand. The
+ *  tag values are validated hostnames (no quotes or backslashes), so the
+ *  replacement is safe on the raw JSON text. */
+function readDoc(file: string, brand: DocsBrand): DocDocument {
+  return JSON.parse(applyBrand(readFileSync(file, "utf-8"), brand)) as DocDocument;
+}
+
+export function getCollection(name: string, brand: DocsBrand = DEFAULT_BRAND): DocDocument[] {
   const dir = join(CONTENT, name);
   if (!existsSync(dir)) return [];
   return readdirSync(dir)
     .filter((f) => f.endsWith(".json"))
-    .map((f) => JSON.parse(readFileSync(join(dir, f), "utf-8")) as DocDocument)
+    .map((f) => readDoc(join(dir, f), brand))
     .filter((d) => d.status === "published");
 }
 
+const SLUG = /^[a-z0-9-]+$/;
+
 export function getDocument(
   collection: string,
-  slug: string
+  slug: string,
+  brand: DocsBrand = DEFAULT_BRAND
 ): DocDocument | null {
+  // A slug comes from the URL; only a plain slug may become a file name.
+  if (!SLUG.test(slug)) return null;
   const file = join(CONTENT, collection, `${slug}.json`);
   if (!existsSync(file)) return null;
-  return JSON.parse(readFileSync(file, "utf-8")) as DocDocument;
+  return readDoc(file, brand);
 }
 
 /** Category metadata for sidebar navigation */
@@ -133,9 +146,9 @@ export function tagLabel(tag: string): string {
 }
 
 /** All tags actually in use, counted, sorted by count desc then label. */
-export function getAllTags(locale: string = "en"): Array<{ tag: string; count: number; label: string }> {
+export function getAllTags(locale: string = "en", brand: DocsBrand = DEFAULT_BRAND): Array<{ tag: string; count: number; label: string }> {
   const counts = new Map<string, number>();
-  const docs = getCollection("docs").filter((d) => (d.locale ?? "en") === locale);
+  const docs = getCollection("docs", brand).filter((d) => (d.locale ?? "en") === locale);
   for (const d of docs) {
     for (const t of d.data.tags ?? []) {
       counts.set(t, (counts.get(t) ?? 0) + 1);
@@ -147,19 +160,19 @@ export function getAllTags(locale: string = "en"): Array<{ tag: string; count: n
 }
 
 /** Docs that carry a given tag, filtered by locale, newest-first. */
-export function getDocsByTag(tag: string, locale: string = "en"): DocDocument[] {
-  return getCollection("docs")
+export function getDocsByTag(tag: string, locale: string = "en", brand: DocsBrand = DEFAULT_BRAND): DocDocument[] {
+  return getCollection("docs", brand)
     .filter((d) => (d.locale ?? "en") === locale)
     .filter((d) => (d.data.tags ?? []).includes(tag))
     .sort((a, b) => (a.data.title ?? "").localeCompare(b.data.title ?? ""));
 }
 
 /** Get all docs grouped by category, sorted by order, filtered by locale */
-export function getDocsByCategory(locale: string = "en"): Map<
+export function getDocsByCategory(locale: string = "en", brand: DocsBrand = DEFAULT_BRAND): Map<
   string,
   { category: Category; docs: DocDocument[] }
 > {
-  const allDocs = getCollection("docs").filter(
+  const allDocs = getCollection("docs", brand).filter(
     (d) => (d.locale ?? "en") === locale
   );
   const cats = getCategories(locale);
@@ -178,7 +191,7 @@ export function getDocsByCategory(locale: string = "en"): Map<
 }
 
 /** Get prev/next docs within same category and locale */
-export function getPrevNext(doc: DocDocument): {
+export function getPrevNext(doc: DocDocument, brand: DocsBrand = DEFAULT_BRAND): {
   prev: DocDocument | null;
   next: DocDocument | null;
 } {
@@ -186,7 +199,7 @@ export function getPrevNext(doc: DocDocument): {
   const locale = doc.locale ?? "en";
   if (!category) return { prev: null, next: null };
 
-  const allDocs = getCollection("docs")
+  const allDocs = getCollection("docs", brand)
     .filter((d) => d.data.category === category && (d.locale ?? "en") === locale)
     .sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99));
 
@@ -198,14 +211,14 @@ export function getPrevNext(doc: DocDocument): {
 }
 
 /** Build search index data */
-export function getSearchIndex(): {
+export function getSearchIndex(brand: DocsBrand = DEFAULT_BRAND): {
   slug: string;
   title: string;
   description: string;
   category: string;
   content: string;
 }[] {
-  const docs = getCollection("docs");
+  const docs = getCollection("docs", brand);
   return docs.map((d) => ({
     slug: d.slug,
     title: d.data.title,

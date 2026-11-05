@@ -11,7 +11,7 @@
     "category": "deployment",
     "order": 1,
     "_seo": {
-      "metaTitle": "Instant Content Deployment (ICD) — webhouse.app Docs",
+      "metaTitle": "Instant Content Deployment (ICD) — {{brand}} Docs",
       "metaDescription": "Push indholdsændringer til deployede Next.js-sites på ~2 sekunder via signeret webhook, uden fuld Docker-rebuild.",
       "keywords": [
         "webhouse",

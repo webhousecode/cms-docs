@@ -24,7 +24,7 @@ const tokens = {
   "--card": "var(--bg-secondary)",
   "--card-foreground": "var(--fg)",
   "--primary": "var(--color-gold)",
-  "--primary-foreground": "var(--color-dark)",
+  "--primary-foreground": "var(--color-gold-fg)",
   "--muted-foreground": "var(--fg-muted)",
   "--secondary": "var(--bg-tertiary)",
 } as CSSProperties;

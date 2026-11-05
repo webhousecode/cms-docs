@@ -16,6 +16,8 @@ import { DocsToc } from "@/components/docs-toc";
 import { DocContent } from "@/components/doc-content";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { PrevNext } from "@/components/prev-next";
+import { getBrand } from "@/lib/brand-server";
+import { CANONICAL_ORIGIN, type DocsBrand } from "@/lib/brand";
 
 export async function generateStaticParams() {
   const docs = getCollection("docs");
@@ -26,7 +28,8 @@ export async function generateMetadata(props: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await props.params;
-  const doc = getDocument("docs", slug);
+  const brand = await getBrand();
+  const doc = getDocument("docs", slug, brand);
   if (!doc) return {};
 
   const title = doc.data._seo?.metaTitle ?? doc.data.title;
@@ -34,19 +37,23 @@ export async function generateMetadata(props: {
     doc.data._seo?.metaDescription ?? doc.data.description ?? "";
 
   return {
-    title,
+    // A metaTitle that already names the docs is used as is — the layout's
+    // "%s — <brand> Docs" template would otherwise name them twice.
+    title: / Docs$/.test(title) ? { absolute: title } : title,
     description,
     openGraph: {
       title,
       description,
       type: "article",
-      url: `https://docs.webhouse.app/docs/${slug}`,
+      url: `https://${brand.docsPages}/${slug}`,
     },
+    // F212 — a mounted copy points search engines at the original.
+    alternates: { canonical: `${CANONICAL_ORIGIN}/docs/${slug}` },
   };
 }
 
-function buildSidebarData(locale: string): SidebarCategory[] {
-  const grouped = getDocsByCategory(locale);
+function buildSidebarData(locale: string, brand: DocsBrand): SidebarCategory[] {
+  const grouped = getDocsByCategory(locale, brand);
   const cats = getCategories(locale);
   const result: SidebarCategory[] = [];
   for (const cat of cats) {
@@ -69,14 +76,15 @@ export default async function DocPage(props: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await props.params;
-  const doc = getDocument("docs", slug);
+  const brand = await getBrand();
+  const doc = getDocument("docs", slug, brand);
   if (!doc || doc.status !== "published") notFound();
 
   const locale = doc.locale ?? "en";
-  const sidebarData = buildSidebarData(locale);
+  const sidebarData = buildSidebarData(locale, brand);
   const content = doc.data.content ?? "";
   const headings = extractHeadings(content);
-  const { prev, next } = getPrevNext(doc);
+  const { prev, next } = getPrevNext(doc, brand);
 
   const categoryLabel =
     getCategories(locale).find((c) => c.slug === doc.data.category)?.label ?? "";
@@ -116,7 +124,7 @@ export default async function DocPage(props: {
           </p>
         )}
 
-        <DocContent content={content} />
+        <DocContent content={content} brand={brand} />
 
         {doc.data.tags && doc.data.tags.length > 0 && (
           <div
@@ -164,7 +172,8 @@ export default async function DocPage(props: {
           }
         />
 
-        {/* API link */}
+        {/* API link — webhouse's raw data and repo, so a white-label mount (F212) leaves it out */}
+        {!brand.mounted && (
         <div
           style={{
             marginTop: "1.5rem",
@@ -194,6 +203,7 @@ export default async function DocPage(props: {
             Edit on GitHub →
           </a>
         </div>
+        )}
       </main>
 
       <DocsToc items={headings} locale={locale} />

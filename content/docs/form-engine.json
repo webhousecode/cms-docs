@@ -10,7 +10,7 @@
     "category": "guides",
     "order": 5,
     "_seo": {
-      "metaTitle": "Form Engine — webhouse.app Docs",
+      "metaTitle": "Form Engine — {{brand}} Docs",
       "metaDescription": "Collect form submissions with zero third-party dependencies. Define, render, and receive — all built into the CMS.",
       "keywords": [
         "webhouse",

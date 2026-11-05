@@ -11,7 +11,7 @@
     "category": "consumers",
     "order": 12,
     "_seo": {
-      "metaTitle": "Forbrug fra Rails (Ruby) — webhouse.app Docs",
+      "metaTitle": "Forbrug fra Rails (Ruby) — {{brand}} Docs",
       "metaDescription": "Læs @webhouse/cms-indhold fra en Ruby on Rails-applikation. Hjælpemodul, controllers, ERB-views.",
       "keywords": [
         "webhouse",

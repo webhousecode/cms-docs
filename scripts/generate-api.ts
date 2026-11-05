@@ -11,6 +11,7 @@
  */
 import { readFileSync, writeFileSync, readdirSync, mkdirSync, existsSync } from "fs";
 import { join } from "path";
+import { applyBrand, DEFAULT_BRAND } from "../src/lib/brand";
 
 const CONTENT = join(__dirname, "..", "content");
 const OUT = join(__dirname, "..", "public", "api");
@@ -25,7 +26,8 @@ function readCollection(name: string) {
   if (!existsSync(dir)) return [];
   return readdirSync(dir)
     .filter(f => f.endsWith(".json"))
-    .map(f => JSON.parse(readFileSync(join(dir, f), "utf-8")))
+    // F212 — the public JSON API is docs.webhouse.app's: name tags resolved.
+    .map(f => JSON.parse(applyBrand(readFileSync(join(dir, f), "utf-8"), DEFAULT_BRAND)))
     .filter(d => d.status === "published");
 }
 

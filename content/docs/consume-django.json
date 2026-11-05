@@ -11,7 +11,7 @@
     "category": "consumers",
     "order": 11,
     "_seo": {
-      "metaTitle": "Consume from Django (Python) — webhouse.app Docs",
+      "metaTitle": "Consume from Django (Python) — {{brand}} Docs",
       "metaDescription": "Read @webhouse/cms content from a Django application. Helper module, views, templates.",
       "keywords": [
         "webhouse",

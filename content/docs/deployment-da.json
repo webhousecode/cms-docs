@@ -11,7 +11,7 @@
     "category": "deployment",
     "order": 0,
     "_seo": {
-      "metaTitle": "Udrulning — webhouse.app Docs",
+      "metaTitle": "Udrulning — {{brand}} Docs",
       "metaDescription": "Deploy din CMS-drevne side til Vercel, Fly.io, Netlify eller Docker.",
       "keywords": [
         "webhouse",

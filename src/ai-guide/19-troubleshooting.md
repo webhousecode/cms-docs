@@ -35,9 +35,9 @@ These must be identical. If your collection is named `blogPosts` in config, the 
 
 **Fix options:**
 
-1. **On-demand revalidation via webhouse.app content push (recommended):**
+1. **On-demand revalidation via {{brand}} content push (recommended):**
 
-webhouse.app sends a signed webhook with the **full document JSON** after every content save/publish/delete. The site writes the document directly to disk and calls `revalidatePath()`. No git pull, no API latency, instant updates.
+{{brand}} sends a signed webhook with the **full document JSON** after every content save/publish/delete. The site writes the document directly to disk and calls `revalidatePath()`. No git pull, no API latency, instant updates.
 
 **This only applies to GitHub-backed sites.** Filesystem sites (CMS + site on same disk) update content files directly — no webhook needed.
 

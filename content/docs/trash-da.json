@@ -11,7 +11,7 @@
     "category": "guides",
     "order": 30,
     "_seo": {
-      "metaTitle": "Papirkurv — webhouse.app Docs",
+      "metaTitle": "Papirkurv — {{brand}} Docs",
       "metaDescription": "Gendan slettede dokumenter fra Papirkurven eller fjern dem permanent.",
       "keywords": [
         "webhouse",

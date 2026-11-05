@@ -11,7 +11,7 @@
     "content": "## What's New in v0.2.3\n\n**2 changes** released on 2026-03-14\n\n### Bug Fixes\n\n- fix: add pnpm permissions to scaffolded .claude/settings.json\n\n### Other Changes\n\n- chore: release v0.2.3\n\n",
     "breaking": false,
     "_seo": {
-      "metaTitle": "Release v0.2.3 — webhouse.app Changelog",
+      "metaTitle": "Release v0.2.3 — {{brand}} Changelog",
       "metaDescription": "Release notes for @webhouse/cms 0.2.3"
     }
   },

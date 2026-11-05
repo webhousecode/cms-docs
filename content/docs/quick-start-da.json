@@ -11,7 +11,7 @@
     "category": "getting-started",
     "order": 1,
     "_seo": {
-      "metaTitle": "Hurtig start — webhouse.app Docs",
+      "metaTitle": "Hurtig start — {{brand}} Docs",
       "metaDescription": "Opret et nyt projekt og hav en CMS-drevet side kørende på under 5 minutter.",
       "keywords": [
         "webhouse",

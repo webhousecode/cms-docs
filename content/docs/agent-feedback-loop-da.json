@@ -11,7 +11,7 @@
     "category": "concepts",
     "order": 3,
     "_seo": {
-      "metaTitle": "Agent feedback-loop — webhouse.app Docs",
+      "metaTitle": "Agent feedback-loop — {{brand}} Docs",
       "metaDescription": "Kuratorrettelser og afvisninger gemmes pr. agent og injectes i næste kørsel som few-shot eksempler. Agenter lærer automatisk af rettelser.",
       "keywords": [
         "webhouse",

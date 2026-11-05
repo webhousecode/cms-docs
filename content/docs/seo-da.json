@@ -12,7 +12,7 @@
     "order": 4,
     "helpCardId": "visibility-intro",
     "_seo": {
-      "metaTitle": "SEO & Synlighed — webhouse.app Docs",
+      "metaTitle": "SEO & Synlighed — {{brand}} Docs",
       "metaDescription": "Meta-felter, JSON-LD strukturerede data, sitemap, robots.txt og AI-synlighedsoptimering.",
       "keywords": [
         "webhouse",

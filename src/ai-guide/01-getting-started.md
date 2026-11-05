@@ -4,7 +4,7 @@
 
 ## What is @webhouse/cms
 
-`@webhouse/cms` is a file-based, AI-native CMS engine for TypeScript projects. You define collections and fields in a `cms.config.ts` file, and the CMS stores content as flat JSON files in a `content/` directory (one file per document, organized by collection). It provides a REST API server, a static site builder, AI content generation via `@webhouse/cms-ai`, and a visual admin UI at [webhouse.app](https://webhouse.app). The primary use case is powering Next.js websites where content is read directly from JSON files at build time or runtime.
+`@webhouse/cms` is a file-based, AI-native CMS engine for TypeScript projects. You define collections and fields in a `cms.config.ts` file, and the CMS stores content as flat JSON files in a `content/` directory (one file per document, organized by collection). It provides a REST API server, a static site builder, AI content generation via `@webhouse/cms-ai`, and a visual admin UI at [{{brand}}](https://{{brand}}). The primary use case is powering Next.js websites where content is read directly from JSON files at build time or runtime.
 
 ## Quick Start
 

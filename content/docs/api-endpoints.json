@@ -11,7 +11,7 @@
     "category": "api-reference",
     "order": 1,
     "_seo": {
-      "metaTitle": "API Endpoints Reference — webhouse.app Docs",
+      "metaTitle": "API Endpoints Reference — {{brand}} Docs",
       "metaDescription": "Complete reference of all 136 REST API endpoints in the CMS admin.",
       "keywords": [
         "webhouse",
