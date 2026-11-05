@@ -17,7 +17,7 @@ import { DocContent } from "@/components/doc-content";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { PrevNext } from "@/components/prev-next";
 import { getBrand } from "@/lib/brand-server";
-import { CANONICAL_ORIGIN, type DocsBrand } from "@/lib/brand";
+import { CANONICAL_ORIGIN, isWhiteLabel, mountPath, type DocsBrand } from "@/lib/brand";
 
 export async function generateStaticParams() {
   const docs = getCollection("docs");
@@ -172,8 +172,8 @@ export default async function DocPage(props: {
           }
         />
 
-        {/* API link — webhouse's raw data and repo, so a white-label mount (F212) leaves it out */}
-        {!brand.mounted && (
+        {/* API link — webhouse's raw data and repo, so a white-label copy (F212) leaves it out */}
+        {!isWhiteLabel(brand) && (
         <div
           style={{
             marginTop: "1.5rem",
@@ -187,7 +187,7 @@ export default async function DocPage(props: {
           }}
         >
           <a
-            href={`/api/docs/${slug}.json`}
+            href={mountPath(`/api/docs/${slug}.json`, brand)}
             target="_blank"
             rel="noopener"
             style={{ color: "var(--fg-muted)", textDecoration: "none" }}

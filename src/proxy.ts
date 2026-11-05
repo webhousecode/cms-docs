@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { BRAND_HEADER, MOUNT_ROOT, parseBrandHeader } from "@/lib/brand";
+import { BRAND_HEADER, MOUNT_ROOT, isWhiteLabel, parseBrandHeader } from "@/lib/brand";
 
 /**
  * ai.webhouse.app → /ai route group on this app.
@@ -26,6 +26,7 @@ export function proxy(request: NextRequest) {
   const { pathname: path, search: query } = request.nextUrl;
   const brand = parseBrandHeader(request.headers.get(BRAND_HEADER));
   const mounted = brand.mounted;
+  const noindex = mounted && isWhiteLabel(brand);
   let response: NextResponse | null = null;
   const frontDoor = path === "/docs" || path === "/docs/" || path === MOUNT_ROOT || path === `${MOUNT_ROOT}/`;
   if (mounted && frontDoor) {
@@ -37,11 +38,11 @@ export function proxy(request: NextRequest) {
     response = NextResponse.rewrite(new URL(`${path.slice(MOUNT_ROOT.length) || "/"}${query}`, request.url));
   }
   if (response) {
-    // A mounted copy is never indexed; docs.webhouse.app is the original.
-    if (mounted) response.headers.set("x-robots-tag", "noindex");
+    // A customer's copy is never indexed; webhouse.app/docs is the original.
+    if (noindex) response.headers.set("x-robots-tag", "noindex");
     return response;
   }
-  if (mounted) {
+  if (noindex) {
     const next = NextResponse.next();
     next.headers.set("x-robots-tag", "noindex");
     return next;

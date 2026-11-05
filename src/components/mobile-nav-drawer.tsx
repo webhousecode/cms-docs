@@ -22,6 +22,7 @@ import { usePathname } from "next/navigation";
 import { X, Moon, Sun } from "lucide-react";
 import { BrandLogo } from "./brand-logo";
 import { useBrand, useMountPath } from "./brand-context";
+import { isWhiteLabel } from "@/lib/brand";
 
 export function MobileNavDrawer() {
   const pathname = usePathname();
@@ -142,7 +143,7 @@ export function MobileNavDrawer() {
           <DrawerLink testid="drawer-changelog-link" href={path("/changelog")} onClose={() => setOpen(false)}>
             Changelog
           </DrawerLink>
-          {!brand.mounted && (
+          {!isWhiteLabel(brand) && (
             <DrawerLink testid="drawer-github-link" href="https://github.com/webhousecode/cms" external onClose={() => setOpen(false)}>
               GitHub ↗
             </DrawerLink>

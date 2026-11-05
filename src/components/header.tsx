@@ -5,7 +5,7 @@ import { MobileMenuButton } from "./mobile-menu-button";
 import { LocaleSwitcher } from "./locale-switcher";
 import { BrandLogo } from "./brand-logo";
 import { getBrand } from "@/lib/brand-server";
-import { mountPath } from "@/lib/brand";
+import { isWhiteLabel, mountPath } from "@/lib/brand";
 
 export async function Header() {
   const brand = await getBrand();
@@ -99,8 +99,8 @@ export async function Header() {
           >
             Changelog
           </Link>
-          {/* F212 — the GitHub repo is webhouse's, so a white-label mount leaves it out. */}
-          {!brand.mounted && (
+          {/* F212 — the GitHub repo is webhouse's, so a white-label copy leaves it out. */}
+          {!isWhiteLabel(brand) && (
           <a
             data-testid="header-github-link"
             href="https://github.com/webhousecode/cms"

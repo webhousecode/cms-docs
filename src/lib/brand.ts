@@ -21,9 +21,10 @@ export const BRAND_HEADER = "x-docs-brand";
  *  proxy rewrites /docs/_/x → /x. Doc pages keep their /docs/<slug> path. */
 export const MOUNT_ROOT = "/docs/_";
 
-/** The canonical address of these docs — where search engines are pointed
- *  from a mounted copy. */
-export const CANONICAL_ORIGIN = "https://docs.webhouse.app";
+/** The canonical address of these docs (doc pages at /docs/<slug> under it)
+ *  — where search engines are pointed from a white-label copy. Since F212 the
+ *  docs live at webhouse.app/docs, served by the webhouse.app machine. */
+export const CANONICAL_ORIGIN = "https://webhouse.app";
 
 export interface DocsBrand {
   id: string;
@@ -110,6 +111,13 @@ export function parseBrandHeader(raw: string | null | undefined): DocsBrand {
     fontFamily: pick(data.fontFamily, FONT_FAMILY),
     fontStylesheet: pick(data.fontStylesheet, BRAND_FILE),
   };
+}
+
+/** A customer's copy (cms.fysio.work/docs) — not webhouse's own docs, which
+ *  are mounted at webhouse.app/docs. White-label copies are not indexed and
+ *  leave out webhouse's GitHub links. */
+export function isWhiteLabel(brand: Pick<DocsBrand, "id">): boolean {
+  return brand.id !== DEFAULT_BRAND.id;
 }
 
 /** Replace the name tags in a text with this brand's values. */

@@ -1,4 +1,4 @@
-name: Update changelog & deploy
+name: Update changelog & build
 
 on:
   # Trigger when CMS monorepo pushes a new tag
@@ -58,8 +58,8 @@ jobs:
       # Build
       - run: pnpm build
 
-      # Deploy to Fly.io
-      - run: curl -L https://fly.io/install.sh | sh
-      - run: ~/.fly/bin/flyctl deploy --remote-only --now
-        env:
-          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+      # F212 (5/11-2026): the docs no longer have a machine of their own. They
+      # are built into the webhouse.app image (webhousecode/cms,
+      # deploy/webhouse-app/Dockerfile) and served at webhouse.app/docs and
+      # cms.<brand>/docs. This workflow now only proves the build; a docs
+      # change goes live with the next webhouse.app deploy.

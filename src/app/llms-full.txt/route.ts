@@ -1,3 +1,4 @@
+import { CANONICAL_ORIGIN } from "@/lib/brand";
 import { cmsLlmsFullTxt } from "@webhouse/cms/next";
 
 import { applyBrand } from "@/lib/brand";
@@ -7,7 +8,7 @@ import { getBrand } from "@/lib/brand-server";
 export const dynamic = "force-dynamic";
 
 const llms = cmsLlmsFullTxt({
-  baseUrl: "https://docs.webhouse.app",
+  baseUrl: CANONICAL_ORIGIN,
   siteTitle: "{{brand}} Docs",
   siteDescription:
     "Documentation for @webhouse/cms — the AI-native, file-based, framework-agnostic CMS.",

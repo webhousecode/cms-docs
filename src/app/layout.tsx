@@ -9,7 +9,7 @@ import { ConsentBanner } from "@/components/consent-banner";
 import { BrandProvider } from "@/components/brand-context";
 import { getSearchIndex } from "@/lib/content";
 import { getBrand } from "@/lib/brand-server";
-import { mountPath, type DocsBrand } from "@/lib/brand";
+import { isWhiteLabel, mountPath, type DocsBrand } from "@/lib/brand";
 
 export async function generateMetadata(): Promise<Metadata> {
   const brand = await getBrand();
@@ -23,8 +23,8 @@ export async function generateMetadata(): Promise<Metadata> {
     icons: {
       icon: brand.favicon ?? mountPath("/favicon.svg", brand),
     },
-    // F212 — a mounted copy is never indexed (docs.webhouse.app is the original).
-    ...(brand.mounted ? { robots: { index: false, follow: false } } : {}),
+    // F212 — a customer's copy is never indexed (webhouse.app/docs is the original).
+    ...(isWhiteLabel(brand) ? { robots: { index: false, follow: false } } : {}),
   };
 }
 
