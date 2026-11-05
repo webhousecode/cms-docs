@@ -161,7 +161,10 @@ body {
   background: transparent !important;
   background-color: transparent !important;
   border: none !important;
-  color: inherit;
+  /* The block's own text colour (Shiki's, on its dark background). Without
+   * !important the light theme's inline-code colour won — dark brand text
+   * on the dark block for plain-text blocks. */
+  color: inherit !important;
   padding: 0;
 }
 .code-block .shiki pre {
